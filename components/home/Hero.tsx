@@ -15,43 +15,44 @@ export default function Hero() {
 
   return (
     <>
-      <section className="hero-main-section pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12 pb-4 sm:pb-5 md:pb-6 lg:pb-8 xl:pb-10 bg-white w-full overflow-x-hidden min-h-0">
-        <div className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10 w-full h-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 items-center w-full min-h-0">
+      <section className="hero-main-section w-full overflow-x-hidden bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8 2xl:px-12 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8 items-center w-full py-4 sm:py-5 md:py-6 lg:py-8 xl:py-10 2xl:py-12">
             {/* Content Section */}
-            <div className="text-center md:text-left order-2 md:order-1 w-full flex flex-col justify-center min-h-0 overflow-hidden">
-              <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-semibold mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 leading-tight sm:leading-snug md:leading-normal text-blue-900 wrap-break-word hyphens-auto px-1 sm:px-0">
+            <div className="text-center md:text-left order-2 md:order-1 w-full flex flex-col justify-center space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-4 xl:space-y-5">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold text-blue-900 leading-tight sm:leading-tight md:leading-tight lg:leading-tight xl:leading-tight wrap-break-word">
                 Transform Your Ideas Into Scalable SaaS Products
               </h1>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-slate-600 mb-3 sm:mb-3.5 md:mb-4 lg:mb-5 xl:mb-6 leading-relaxed max-w-xl md:max-w-none mx-auto md:mx-0 px-2 sm:px-0 wrap-break-word hyphens-auto">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl text-slate-600 leading-relaxed max-w-xl md:max-w-none mx-auto md:mx-0 wrap-break-word mt-2 sm:mt-2.5 md:mt-3 lg:mt-4">
                 We build modern, AI-powered software solutions for healthcare,
                 hyperlocal markets, and enterprise clients across India and
                 globally.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-2.5 md:gap-3 lg:gap-4 justify-center md:justify-start items-stretch sm:items-center flex-wrap w-full px-2 sm:px-0">
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 lg:gap-5 justify-center md:justify-start items-stretch sm:items-center w-full pt-2 sm:pt-2.5 md:pt-3 lg:pt-4">
                 <Button
                   onClick={scrollToContact}
-                  className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 py-1.5 sm:py-2 md:py-2.5 lg:py-3 text-xs sm:text-sm md:text-base font-medium transition-all hover:-translate-y-0.5 hover:shadow-lg w-full sm:w-auto shrink-0">
+                  className="bg-blue-900 hover:bg-blue-800 text-white px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10 py-2.5 sm:py-3 md:py-3.5 lg:py-4 text-sm sm:text-base md:text-lg font-medium transition-all hover:-translate-y-0.5 hover:shadow-lg w-full sm:w-auto shrink-0">
                   Get Started
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-2 border-blue-900 text-blue-900 bg-transparent hover:bg-blue-900 hover:text-white px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 py-1.5 sm:py-2 md:py-2.5 lg:py-3 text-xs sm:text-sm md:text-base font-medium w-full sm:w-auto shrink-0">
+                  className="border-2 border-blue-900 text-blue-900 bg-transparent hover:bg-blue-900 hover:text-white px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10 py-2.5 sm:py-3 md:py-3.5 lg:py-4 text-sm sm:text-base md:text-lg font-medium w-full sm:w-auto shrink-0">
                   Learn More
                 </Button>
               </div>
             </div>
 
             {/* Image Section */}
-            <div className="relative rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden order-1 md:order-2 w-full max-w-full mx-auto md:mx-0 flex justify-center items-center min-h-0 shrink-0">
-              <div className="relative w-full max-w-[140px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[300px] xl:max-w-[360px] 2xl:max-w-[420px] aspect-square h-auto">
+            <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden order-1 md:order-2 w-full flex justify-center items-center">
+              <div className="relative w-full aspect-square max-w-[200px] sm:max-w-[240px] md:max-w-[300px] lg:max-w-[380px] xl:max-w-[450px] 2xl:max-w-[520px] shadow-xl ring-2 ring-blue-100 hover:ring-blue-200 transition-all duration-300">
                 <Image
                   src="/images/hero page image.jpg"
                   alt="Codagam - Software Development"
                   fill
-                  className="object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+                  className="object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl transition-transform duration-500 hover:scale-105"
                   priority
-                  sizes="(max-width: 640px) 140px, (max-width: 768px) 180px, (max-width: 1024px) 240px, (max-width: 1280px) 300px, (max-width: 1536px) 360px, 420px"
+                  quality={95}
+                  sizes="(max-width: 640px) 200px, (max-width: 768px) 240px, (max-width: 1024px) 300px, (max-width: 1280px) 380px, (max-width: 1536px) 450px, 520px"
                 />
               </div>
             </div>
@@ -60,7 +61,7 @@ export default function Hero() {
       </section>
 
       {/* Client Logo Carousel - Full Width */}
-      <div className="hero-carousel-section w-full pt-2 sm:pt-2.5 md:pt-3 lg:pt-3.5 xl:pt-4 overflow-x-hidden">
+      <div className="hero-carousel-section w-full pt-3 sm:pt-4 md:pt-5 lg:pt-4 xl:pt-5 2xl:pt-6 pb-3 sm:pb-4 md:pb-5 lg:pb-5 xl:pb-6 2xl:pb-7 overflow-x-hidden bg-white">
         <ClientLogoCarousel
           logos={clientLogos}
           pauseOnHover={true}

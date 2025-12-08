@@ -36,7 +36,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-6 sm:py-8 md:py-10 lg:py-6 xl:py-10 2xl:py-12 bg-slate-50 scroll-mt-[60px] sm:scroll-mt-[70px] w-full overflow-x-hidden">
+      className="pt-6 sm:pt-8 md:pt-10 lg:pt-8 xl:pt-10 2xl:pt-12 pb-6 sm:pb-8 md:pb-10 lg:pb-10 xl:pb-12 bg-slate-50 scroll-mt-[60px] sm:scroll-mt-[70px] w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full">
         <h2 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6 md:mb-8 text-center font-semibold text-blue-900 wrap-break-word px-2 sm:px-0">
           Our Services

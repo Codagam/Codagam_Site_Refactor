@@ -1553,3 +1553,174 @@ h6 {
 .mobile-menu-link.animate-slide-in-right {
   animation: slideInFromRight 0.4s ease-out forwards;
 }
+
+/* Clean Hero Section Responsive Styles - Portrait & Landscape */
+/* Mobile Portrait (<640px) */
+@media (max-width: 639px) and (orientation: portrait) {
+  .hero-main-section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    max-width: 200px;
+  }
+}
+
+/* Mobile Landscape (<640px) */
+@media (max-width: 639px) and (orientation: landscape) {
+  .hero-main-section {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-main-section > div > div[class*="grid"] {
+    gap: 1rem;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    max-width: 180px;
+  }
+}
+
+/* Tablet Portrait (640px - 1024px) */
+@media (min-width: 640px) and (max-width: 1023px) and (orientation: portrait) {
+  .hero-main-section {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    max-width: 280px;
+  }
+}
+
+/* Tablet Landscape (640px - 1024px) */
+@media (min-width: 640px) and (max-width: 1023px) and (orientation: landscape) {
+  .hero-main-section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-main-section > div > div[class*="grid"] {
+    gap: 1.5rem;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    max-width: 240px;
+  }
+}
+
+/* Desktop/Laptop (1024px+) - Portrait */
+@media (min-width: 1024px) and (orientation: portrait) {
+  .hero-main-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Desktop/Laptop (1024px+) - Landscape */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .hero-main-section {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-main-section > div > div[class*="grid"] {
+    gap: 2rem;
+  }
+}
+
+/* Large Desktop (1280px+) */
+@media (min-width: 1280px) {
+  .hero-main-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-main-section h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-main-section p {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Ensure Services section is visible on lg screens */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hero-main-section {
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-carousel-section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  #services {
+    padding-top: 2rem;
+  }
+}
