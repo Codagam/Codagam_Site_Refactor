@@ -1,81 +1,159 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      // Small delay to ensure Sheet is fully rendered before animating links
+      const timer = setTimeout(() => {
+        setShouldAnimate(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    } else {
+      setShouldAnimate(false);
+    }
+  }, [isOpen]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setMenuOpen(false);
+    setIsOpen(false);
+  };
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+    scrollToSection(id);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full overflow-x-hidden">
+    <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full">
       <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
         <div className="flex justify-between items-center h-[56px] min-[375px]:h-[60px] sm:h-[70px] w-full">
           <div className="text-lg min-[375px]:text-xl sm:text-2xl font-semibold text-blue-900 tracking-tight">
             Codagam
           </div>
-          <nav
-            className={cn(
-              "hidden lg:flex gap-4 md:gap-6 xl:gap-8 items-center",
-              menuOpen &&
-                "flex absolute top-[56px] min-[375px]:top-[60px] sm:top-[70px] left-0 right-0 bg-white flex-col p-4 sm:p-5 border-b border-slate-200 shadow-md lg:relative lg:top-0 lg:border-0 lg:shadow-none lg:flex-row w-full lg:w-auto"
-            )}>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex gap-4 md:gap-6 xl:gap-8 items-center">
             <a
               href="#services"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("services");
-              }}
-              className="text-xs min-[375px]:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors py-2 lg:py-0">
+              onClick={(e) => handleLinkClick(e, "services")}
+              className="text-xs min-[375px]:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
               Services
             </a>
             <a
               href="#products"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("products");
-              }}
-              className="text-xs min-[375px]:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors py-2 lg:py-0">
+              onClick={(e) => handleLinkClick(e, "products")}
+              className="text-xs min-[375px]:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
               Products
             </a>
             <a
               href="#stack"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("stack");
-              }}
-              className="text-xs min-[375px]:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors py-2 lg:py-0">
+              onClick={(e) => handleLinkClick(e, "stack")}
+              className="text-xs min-[375px]:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
               Tech Stack
             </a>
             <a
               href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("contact");
-              }}
-              className="text-xs min-[375px]:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors py-2 lg:py-0">
+              onClick={(e) => handleLinkClick(e, "contact")}
+              className="text-xs min-[375px]:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
               Contact
             </a>
           </nav>
+
           <Button
             onClick={() => scrollToSection("contact")}
             className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs min-[375px]:text-sm px-3 md:px-4 xl:px-6">
             Get Started
           </Button>
-          <button
-            className="lg:hidden text-xl min-[375px]:text-2xl cursor-pointer text-blue-900 bg-transparent border-none p-1.5 min-[375px]:p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu">
-            {menuOpen ? "✕" : "☰"}
-          </button>
+
+          {/* Mobile Menu Button with Sheet */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-blue-900 hover:bg-slate-100"
+                aria-label="Toggle menu">
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="w-[280px] sm:w-[350px] md:w-[400px] bg-white">
+              <SheetHeader>
+                <SheetTitle className="flex items-center space-x-3 text-left">
+                  <span className="text-lg min-[375px]:text-xl sm:text-2xl font-semibold text-blue-900 tracking-tight">
+                    Codagam
+                  </span>
+                </SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col space-y-2 mt-8">
+                <a
+                  href="#services"
+                  onClick={(e) => handleLinkClick(e, "services")}
+                  className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
+                    shouldAnimate ? "animate-slide-in-right" : ""
+                  }`}
+                  style={{
+                    animationDelay: shouldAnimate ? "0.1s" : "0s",
+                  }}>
+                  Services
+                </a>
+                <a
+                  href="#products"
+                  onClick={(e) => handleLinkClick(e, "products")}
+                  className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
+                    shouldAnimate ? "animate-slide-in-right" : ""
+                  }`}
+                  style={{
+                    animationDelay: shouldAnimate ? "0.2s" : "0s",
+                  }}>
+                  Products
+                </a>
+                <a
+                  href="#stack"
+                  onClick={(e) => handleLinkClick(e, "stack")}
+                  className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
+                    shouldAnimate ? "animate-slide-in-right" : ""
+                  }`}
+                  style={{
+                    animationDelay: shouldAnimate ? "0.3s" : "0s",
+                  }}>
+                  Tech Stack
+                </a>
+                <a
+                  href="#contact"
+                  onClick={(e) => handleLinkClick(e, "contact")}
+                  className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
+                    shouldAnimate ? "animate-slide-in-right" : ""
+                  }`}
+                  style={{
+                    animationDelay: shouldAnimate ? "0.4s" : "0s",
+                  }}>
+                  Contact
+                </a>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
