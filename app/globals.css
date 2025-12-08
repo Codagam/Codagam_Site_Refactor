@@ -1103,7 +1103,7 @@ h6 {
     }
   }
 
-  /* Product card background image heights at 150% zoom - responsive */
+  /* Product card background image heights at 150% zoom - reduced further */
   /* Target the background image container div */
   #products
     div[class*="group"]
@@ -1111,7 +1111,7 @@ h6 {
   section#products
     div[class*="group"]
     > div[class*="relative"][class*="overflow-hidden"] {
-    height: 133px !important; /* 200px / 1.5 = 133px */
+    height: 110px !important; /* Reduced from 133px */
   }
 
   @media (min-width: 375px) {
@@ -1121,7 +1121,7 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 147px !important; /* 220px / 1.5 = 147px */
+      height: 120px !important; /* Reduced from 147px */
     }
   }
 
@@ -1132,7 +1132,7 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 160px !important; /* 240px / 1.5 = 160px */
+      height: 135px !important; /* Reduced from 160px */
     }
   }
 
@@ -1143,7 +1143,7 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 187px !important; /* 280px / 1.5 = 187px */
+      height: 155px !important; /* Reduced from 187px */
     }
   }
 
@@ -1154,7 +1154,7 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 200px !important; /* 300px / 1.5 = 200px */
+      height: 165px !important; /* Reduced from 200px */
     }
   }
 
@@ -1165,7 +1165,7 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 213px !important; /* 320px / 1.5 = 213px */
+      height: 175px !important; /* Reduced from 213px */
     }
   }
 
@@ -1377,118 +1377,262 @@ h6 {
     }
   }
 
-  /* Product card text content padding at 150% zoom - responsive */
+  /* Product card text content padding at 150% zoom - increased for bigger text card */
   /* Target the white text card div */
   #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
   section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-    padding: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (p-4) */
+    padding: 0.8rem !important; /* Increased from 0.67rem */
   }
 
   @media (min-width: 375px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
+      padding: 1rem !important; /* Increased from 0.83rem */
     }
   }
 
   @media (min-width: 640px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
+      padding: 1rem !important; /* Increased from 0.83rem */
     }
   }
 
   @media (min-width: 768px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 1rem !important; /* 1.5rem / 1.5 = 1rem (p-6) */
+      padding: 1.2rem !important; /* Increased from 1rem */
     }
   }
 
   @media (min-width: 1024px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 1rem !important; /* 1.5rem / 1.5 = 1rem (p-6) */
+      padding: 1.2rem !important; /* Increased from 1rem */
     }
   }
 
   @media (min-width: 1280px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 1.17rem !important; /* 1.75rem / 1.5 = 1.17rem (p-7) */
+      padding: 1.4rem !important; /* Increased from 1.17rem */
     }
   }
 
-  /* Product card heading sizes at 150% zoom - responsive */
+  /* Product card heading sizes at 150% zoom - increased for bigger text */
   #products div[class*="bg-white"] h3,
   section#products div[class*="bg-white"] h3 {
-    font-size: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (text-base) */
-    margin-bottom: 0.4rem !important; /* 0.5rem / 1.5 = 0.33rem, rounded to 0.4rem */
+    font-size: 0.75rem !important; /* Increased from 0.67rem */
+    margin-bottom: 0.5rem !important; /* Increased from 0.4rem */
   }
 
   @media (min-width: 375px) {
     #products div[class*="bg-white"] h3,
     section#products div[class*="bg-white"] h3 {
-      font-size: 0.75rem !important; /* 1.125rem / 1.5 = 0.75rem (text-lg) */
-      margin-bottom: 0.53rem !important; /* 0.75rem / 1.5 = 0.5rem, rounded to 0.53rem */
+      font-size: 0.85rem !important; /* Increased from 0.75rem */
+      margin-bottom: 0.6rem !important; /* Increased from 0.53rem */
     }
   }
 
   @media (min-width: 640px) {
     #products div[class*="bg-white"] h3,
     section#products div[class*="bg-white"] h3 {
-      font-size: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (text-xl) */
-      margin-bottom: 0.53rem !important;
+      font-size: 0.95rem !important; /* Increased from 0.83rem */
+      margin-bottom: 0.6rem !important;
     }
   }
 
   @media (min-width: 768px) {
     #products div[class*="bg-white"] h3,
     section#products div[class*="bg-white"] h3 {
-      font-size: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (text-xl) */
-      margin-bottom: 0.53rem !important;
+      font-size: 0.95rem !important; /* Increased from 0.83rem */
+      margin-bottom: 0.6rem !important;
     }
   }
 
   @media (min-width: 1024px) {
     #products div[class*="bg-white"] h3,
     section#products div[class*="bg-white"] h3 {
-      font-size: 1rem !important; /* 1.5rem / 1.5 = 1rem (text-2xl) */
-      margin-bottom: 0.53rem !important;
+      font-size: 1.1rem !important; /* Increased from 1rem */
+      margin-bottom: 0.6rem !important;
     }
   }
 
-  /* Product card description text sizes at 150% zoom - responsive */
+  /* Product card description text sizes at 150% zoom - increased for bigger text */
   #products div[class*="bg-white"] p[class*="text-slate-600"],
   section#products div[class*="bg-white"] p[class*="text-slate-600"] {
-    font-size: 0.5rem !important; /* 0.75rem / 1.5 = 0.5rem (text-xs) */
+    font-size: 0.55rem !important; /* Increased from 0.5rem */
   }
 
   @media (min-width: 375px) {
     #products div[class*="bg-white"] p[class*="text-slate-600"],
     section#products div[class*="bg-white"] p[class*="text-slate-600"] {
-      font-size: 0.58rem !important; /* 0.875rem / 1.5 = 0.58rem (text-sm) */
+      font-size: 0.65rem !important; /* Increased from 0.58rem */
     }
   }
 
   @media (min-width: 640px) {
     #products div[class*="bg-white"] p[class*="text-slate-600"],
     section#products div[class*="bg-white"] p[class*="text-slate-600"] {
-      font-size: 0.58rem !important; /* 0.875rem / 1.5 = 0.58rem (text-sm) */
+      font-size: 0.65rem !important; /* Increased from 0.58rem */
     }
   }
 
   @media (min-width: 768px) {
     #products div[class*="bg-white"] p[class*="text-slate-600"],
     section#products div[class*="bg-white"] p[class*="text-slate-600"] {
-      font-size: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (text-base) */
+      font-size: 0.75rem !important; /* Increased from 0.67rem */
     }
   }
 
   @media (min-width: 1024px) {
     #products div[class*="bg-white"] p[class*="text-slate-600"],
     section#products div[class*="bg-white"] p[class*="text-slate-600"] {
+      font-size: 0.75rem !important; /* Increased from 0.67rem */
+    }
+  }
+
+  /* Product Dialog at 150% zoom - make it smaller like service dialog */
+  /* Target dialogs that contain product logo images (rounded-full with specific sizes) */
+  div[role="dialog"]
+    [class*="DialogContent"]:has(
+      div[class*="rounded-full"] img[alt*="product"]
+    ) {
+    max-width: 90vw !important;
+    padding: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (p-4) */
+  }
+
+  @media (min-width: 640px) {
+    div[role="dialog"]
+      [class*="DialogContent"]:has(
+        div[class*="rounded-full"] img[alt*="product"]
+      ) {
+      max-width: 24rem !important; /* Smaller than normal */
+      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
+    }
+  }
+
+  @media (min-width: 768px) {
+    div[role="dialog"]
+      [class*="DialogContent"]:has(
+        div[class*="rounded-full"] img[alt*="product"]
+      ) {
+      max-width: 28rem !important;
+      padding: 1rem !important; /* 1.5rem / 1.5 = 1rem (p-6) */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    div[role="dialog"]
+      [class*="DialogContent"]:has(
+        div[class*="rounded-full"] img[alt*="product"]
+      ) {
+      max-width: 36rem !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    div[role="dialog"]
+      [class*="DialogContent"]:has(
+        div[class*="rounded-full"] img[alt*="product"]
+      ) {
+      max-width: 42rem !important;
+    }
+  }
+
+  /* Product Dialog logo sizes at 150% zoom */
+  div[role="dialog"]:has([class*="DialogContent"])
+    div[class*="flex"][class*="flex-col"][class*="items-center"]
+    > div[class*="rounded-full"] {
+    width: 43px !important; /* 64px / 1.5 = 43px */
+    height: 43px !important;
+  }
+
+  @media (min-width: 640px) {
+    div[role="dialog"]:has([class*="DialogContent"])
+      div[class*="flex"][class*="flex-col"][class*="items-center"]
+      > div[class*="rounded-full"] {
+      width: 53px !important; /* 80px / 1.5 = 53px */
+      height: 53px !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    div[role="dialog"]:has([class*="DialogContent"])
+      div[class*="flex"][class*="flex-col"][class*="items-center"]
+      > div[class*="rounded-full"] {
+      width: 64px !important; /* 96px / 1.5 = 64px */
+      height: 64px !important;
+    }
+  }
+
+  /* Product Dialog title sizes at 150% zoom */
+  div[role="dialog"]:has([class*="DialogContent"]) [class*="DialogTitle"] {
+    font-size: 0.75rem !important; /* 1.125rem / 1.5 = 0.75rem (text-lg) */
+  }
+
+  @media (min-width: 640px) {
+    div[role="dialog"]:has([class*="DialogContent"]) [class*="DialogTitle"] {
+      font-size: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (text-xl) */
+    }
+  }
+
+  @media (min-width: 768px) {
+    div[role="dialog"]:has([class*="DialogContent"]) [class*="DialogTitle"] {
+      font-size: 1rem !important; /* 1.5rem / 1.5 = 1rem (text-2xl) */
+    }
+  }
+
+  /* Product Dialog text sizes at 150% zoom */
+  div[role="dialog"]:has([class*="DialogContent"]) p[class*="text-foreground"] {
+    font-size: 0.58rem !important; /* 0.875rem / 1.5 = 0.58rem (text-sm) */
+  }
+
+  @media (min-width: 640px) {
+    div[role="dialog"]:has([class*="DialogContent"])
+      p[class*="text-foreground"] {
       font-size: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (text-base) */
+    }
+  }
+
+  /* Product Dialog spacing at 150% zoom */
+  div[role="dialog"]:has([class*="DialogContent"]) [class*="DialogHeader"] {
+    gap: 0.33rem !important; /* 0.5rem / 1.5 = 0.33rem (space-y-2) */
+  }
+
+  @media (min-width: 640px) {
+    div[role="dialog"]:has([class*="DialogContent"]) [class*="DialogHeader"] {
+      gap: 0.5rem !important; /* 0.75rem / 1.5 = 0.5rem (space-y-3) */
+    }
+  }
+
+  /* Product Dialog content spacing at 150% zoom */
+  div[role="dialog"]:has([class*="DialogContent"]) div[class*="space-y"] {
+    gap: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (space-y-4) */
+  }
+
+  @media (min-width: 640px) {
+    div[role="dialog"]:has([class*="DialogContent"]) div[class*="space-y"] {
+      gap: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (space-y-5) */
+    }
+  }
+
+  @media (min-width: 768px) {
+    div[role="dialog"]:has([class*="DialogContent"]) div[class*="space-y"] {
+      gap: 1rem !important; /* 1.5rem / 1.5 = 1rem (space-y-6) */
+    }
+  }
+
+  /* Product Dialog logo container gap at 150% zoom */
+  div[role="dialog"]:has([class*="DialogContent"])
+    div[class*="flex"][class*="flex-col"][class*="items-center"] {
+    gap: 0.33rem !important; /* 0.5rem / 1.5 = 0.33rem (gap-2) */
+  }
+
+  @media (min-width: 640px) {
+    div[role="dialog"]:has([class*="DialogContent"])
+      div[class*="flex"][class*="flex-col"][class*="items-center"] {
+      gap: 0.5rem !important; /* 0.75rem / 1.5 = 0.5rem (gap-3) */
     }
   }
 }
