@@ -1,0 +1,1534 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 30 58 138;
+    --primary: 30 58 138;
+    --primary-foreground: 255 255 255;
+    --accent: 30 58 138;
+    --accent-foreground: 255 255 255;
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139;
+    --border: 226 232 240;
+    --card: 255 255 255;
+    --card-foreground: 30 58 138;
+  }
+}
+
+@theme inline {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent text overflow at high zoom levels */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure containers handle zoom properly */
+section {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Ensure all containers respect viewport width */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll on all elements */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hero section - responsive and zoom support */
+.hero-section {
+  overflow-x: hidden;
+}
+
+/* Hero Section - Mobile & Tablet Portrait/Landscape Responsive */
+/* Mobile SM (<640px) - Portrait */
+@media (max-width: 640px) and (orientation: portrait) {
+  .hero-main-section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(0.75rem, 3.5vw, 0.875rem) !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] {
+    gap: 0.75rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    height: 180px !important;
+    max-height: 220px !important;
+  }
+}
+
+/* Mobile SM (<640px) - Landscape */
+@media (max-width: 640px) and (orientation: landscape) {
+  .hero-main-section {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(1rem, 4vw, 1.4rem) !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(0.7rem, 2.8vw, 0.8rem) !important;
+    margin-bottom: 0.625rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] {
+    gap: 0.625rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    height: 120px !important;
+    max-height: 160px !important;
+  }
+
+  .hero-main-section > div > div[class*="flex"] {
+    gap: 0.5rem !important;
+  }
+}
+
+/* Tablet Responsive (MD: 640-1024px) */
+@media (min-width: 640px) and (max-width: 1024px) {
+  /* Tablet Portrait */
+  @media (orientation: portrait) {
+    .hero-main-section {
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+
+    .hero-main-section h1 {
+      font-size: clamp(1.5rem, 5vw, 2.5rem) !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .hero-main-section p {
+      font-size: clamp(0.875rem, 2.5vw, 1.125rem) !important;
+      margin-bottom: 1.25rem !important;
+    }
+
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="relative"]
+      > div {
+      height: 260px !important;
+      max-height: 300px !important;
+    }
+  }
+
+  /* Tablet Landscape */
+  @media (orientation: landscape) {
+    .hero-main-section {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+
+    .hero-main-section h1 {
+      font-size: clamp(1.25rem, 4vw, 2rem) !important;
+      margin-bottom: 0.75rem !important;
+    }
+
+    .hero-main-section p {
+      font-size: clamp(0.8rem, 2vw, 1rem) !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .hero-main-section > div > div[class*="grid"] {
+      gap: 1rem !important;
+    }
+
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="relative"]
+      > div {
+      height: 200px !important;
+      max-height: 240px !important;
+    }
+  }
+}
+
+/* Laptop Responsive (LG: 1024-1280px) */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .hero-main-section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .hero-main-section h1 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+    margin-bottom: 0.875rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-main-section p {
+    font-size: clamp(0.9375rem, 1.4vw, 1.125rem) !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] {
+    gap: 1.25rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    height: 340px !important;
+    max-height: 380px !important;
+  }
+
+  /* Laptop Landscape */
+  @media (orientation: landscape) and (max-height: 800px) {
+    .hero-main-section {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+
+    .hero-main-section h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem) !important;
+      margin-bottom: 0.625rem !important;
+    }
+
+    .hero-main-section p {
+      font-size: clamp(0.875rem, 1.2vw, 1rem) !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="relative"]
+      > div {
+      height: 280px !important;
+      max-height: 320px !important;
+    }
+  }
+}
+
+/* Ensure text remains readable at all zoom levels */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Hero Section 150% Zoom Support */
+/* At 150% zoom: 1920px screen reports as 1280px, 1536px reports as 1024px */
+/* These styles target the viewport sizes that occur at 150% zoom */
+
+/* Desktop screens at 150% zoom: 1920px → 1280px */
+@media (max-width: 1280px) {
+  /* Reduce font sizes for hero content when viewport is smaller (150% zoom scenario) */
+  .hero-landscape-title {
+    font-size: clamp(1rem, 2.5vw, 2.5rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.75rem, 1.2vw, 1rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(200px, 25vw, 320px) !important;
+  }
+
+  .hero-landscape-container {
+    padding-top: clamp(0.75rem, 1.5vw, 1.5rem) !important;
+    padding-bottom: clamp(0.75rem, 1.5vw, 1.5rem) !important;
+  }
+
+  .hero-landscape-grid {
+    gap: clamp(0.75rem, 1.5vw, 1.5rem) !important;
+  }
+}
+
+/* Medium desktop at 150% zoom: 1536px → 1024px */
+@media (max-width: 1024px) {
+  .hero-landscape-title {
+    font-size: clamp(0.875rem, 2.25vw, 2.25rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.7rem, 1.1vw, 0.9rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(180px, 23vw, 280px) !important;
+  }
+
+  .hero-landscape-container {
+    padding-top: clamp(0.5rem, 1vw, 1.25rem) !important;
+    padding-bottom: clamp(0.5rem, 1vw, 1.25rem) !important;
+  }
+}
+
+/* Tablet at 150% zoom: 1366px → 910px */
+@media (max-width: 910px) {
+  .hero-landscape-title {
+    font-size: clamp(0.75rem, 2vw, 2rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.65rem, 1vw, 0.8rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(160px, 20vw, 240px) !important;
+  }
+}
+
+/* Mobile at 150% zoom */
+@media (max-width: 768px) {
+  .hero-landscape-title {
+    font-size: clamp(0.7rem, 1.75vw, 1.75rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.6rem, 0.9vw, 0.75rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(140px, 18vw, 200px) !important;
+  }
+}
+
+/* Landscape orientation at 150% zoom - more aggressive scaling */
+@media (orientation: landscape) {
+  /* Base landscape - very small screens at 150% zoom */
+  .hero-landscape-title {
+    font-size: clamp(0.7rem, 1.5vw, 1.5rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.55rem, 0.8vw, 0.7rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(100px, 15vw, 180px) !important;
+  }
+
+  .hero-landscape-container {
+    padding-top: clamp(0.5rem, 1vw, 1rem) !important;
+    padding-bottom: clamp(0.5rem, 1vw, 1rem) !important;
+  }
+
+  .hero-landscape-grid {
+    gap: clamp(0.5rem, 1vw, 1rem) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 500px) {
+  .hero-landscape-title {
+    font-size: clamp(0.8rem, 1.75vw, 1.75rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.6rem, 0.9vw, 0.8rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(120px, 18vw, 200px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 700px) {
+  .hero-landscape-image {
+    max-width: clamp(140px, 20vw, 240px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 640px) {
+  .hero-landscape-image {
+    max-width: clamp(140px, 18vw, 220px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 768px) {
+  .hero-landscape-title {
+    font-size: clamp(0.9rem, 2vw, 2rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.7rem, 1vw, 0.9rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(160px, 22vw, 280px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  .hero-landscape-title {
+    font-size: clamp(1.125rem, 2.5vw, 2.5rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(200px, 25vw, 340px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1280px) {
+  .hero-landscape-title {
+    font-size: clamp(1.5rem, 3vw, 3rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.9rem, 1.4vw, 1.3rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(240px, 28vw, 400px) !important;
+  }
+}
+
+/* Hero Section 150% Zoom Support */
+/* At 150% zoom: 1920px screen reports as 1280px, 1536px reports as 1024px */
+
+/* Desktop screens at 150% zoom: 1920px → 1280px */
+@media (max-width: 1280px) {
+  /* Reduce font sizes for hero content */
+  .hero-landscape-title {
+    font-size: clamp(1rem, 2.5vw, 2.5rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.75rem, 1.2vw, 1rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(200px, 25vw, 320px) !important;
+  }
+
+  .hero-landscape-container {
+    padding-top: clamp(0.75rem, 1.5vw, 1.5rem) !important;
+    padding-bottom: clamp(0.75rem, 1.5vw, 1.5rem) !important;
+  }
+
+  .hero-landscape-grid {
+    gap: clamp(0.75rem, 1.5vw, 1.5rem) !important;
+  }
+}
+
+/* Medium desktop at 150% zoom: 1536px → 1024px */
+@media (max-width: 1024px) {
+  .hero-landscape-title {
+    font-size: clamp(0.875rem, 2.25vw, 2.25rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.7rem, 1.1vw, 0.9rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(180px, 23vw, 280px) !important;
+  }
+
+  .hero-landscape-container {
+    padding-top: clamp(0.5rem, 1vw, 1.25rem) !important;
+    padding-bottom: clamp(0.5rem, 1vw, 1.25rem) !important;
+  }
+}
+
+/* Tablet at 150% zoom: 1366px → 910px */
+@media (max-width: 910px) {
+  .hero-landscape-title {
+    font-size: clamp(0.75rem, 2vw, 2rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.65rem, 1vw, 0.8rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(160px, 20vw, 240px) !important;
+  }
+}
+
+/* Mobile at 150% zoom */
+@media (max-width: 768px) {
+  .hero-landscape-title {
+    font-size: clamp(0.7rem, 1.75vw, 1.75rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.6rem, 0.9vw, 0.75rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(140px, 18vw, 200px) !important;
+  }
+}
+
+/* Landscape orientation at 150% zoom - more aggressive scaling */
+@media (orientation: landscape) {
+  /* Base landscape - very small screens at 150% zoom */
+  .hero-landscape-title {
+    font-size: clamp(0.7rem, 1.5vw, 1.5rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.55rem, 0.8vw, 0.7rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(100px, 15vw, 180px) !important;
+  }
+
+  .hero-landscape-container {
+    padding-top: clamp(0.5rem, 1vw, 1rem) !important;
+    padding-bottom: clamp(0.5rem, 1vw, 1rem) !important;
+  }
+
+  .hero-landscape-grid {
+    gap: clamp(0.5rem, 1vw, 1rem) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 500px) {
+  .hero-landscape-title {
+    font-size: clamp(0.8rem, 1.75vw, 1.75rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.6rem, 0.9vw, 0.8rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(120px, 18vw, 200px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 700px) {
+  .hero-landscape-image {
+    max-width: clamp(140px, 20vw, 240px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 640px) {
+  .hero-landscape-image {
+    max-width: clamp(140px, 18vw, 220px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 768px) {
+  .hero-landscape-title {
+    font-size: clamp(0.9rem, 2vw, 2rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.7rem, 1vw, 0.9rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(160px, 22vw, 280px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  .hero-landscape-title {
+    font-size: clamp(1.125rem, 2.5vw, 2.5rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(200px, 25vw, 340px) !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1280px) {
+  .hero-landscape-title {
+    font-size: clamp(1.5rem, 3vw, 3rem) !important;
+  }
+
+  .hero-landscape-description {
+    font-size: clamp(0.9rem, 1.4vw, 1.3rem) !important;
+  }
+
+  .hero-landscape-image {
+    max-width: clamp(240px, 28vw, 400px) !important;
+  }
+}
+
+/* Current Hero Component (Hero.tsx) 150% Zoom Support */
+/* 
+ * HOW IT WORKS:
+ * - At 150% browser zoom, the browser scales ALL content by 1.5x visually
+ * - Viewport width is effectively reduced: 1920px screen → reports as 1280px
+ * - To make content APPEAR the same as 100% zoom, we reduce CSS sizes by dividing by 1.5
+ * - Formula: CSS_size / 1.5 = visual_size_at_150%_zoom
+ * - Example: 3rem / 1.5 = 2rem → browser scales 2rem by 1.5x → appears as 3rem (matches 100%)
+ * 
+ * This ensures the hero section looks identical at 150% zoom compared to 100% zoom.
+ */
+
+/* Desktop at 150% zoom: 1920px screen reports as 1280px viewport */
+/* Remove min-height restriction to catch more cases */
+@media (max-width: 1280px) {
+  /* Section padding: Added top padding at arrow-marked location for 150% zoom */
+  section.hero-main-section,
+  .hero-main-section {
+    padding-top: 1.2rem !important; /* Added top padding at arrow-marked place */
+    padding-bottom: 0.8rem !important; /* Reduced to fit maximum size content */
+  }
+
+  @media (min-width: 1024px) {
+    section.hero-main-section,
+    .hero-main-section {
+      padding-top: 2rem !important; /* Added top padding at arrow-marked place */
+      padding-bottom: 2rem !important; /* Reduced to fit maximum size content */
+    }
+  }
+
+  /* Container padding: px-4(1rem)→0.67rem, px-8(2rem)→1.33rem */
+  .hero-main-section > div,
+  section.hero-main-section > div {
+    padding-left: 0.67rem !important; /* 1rem / 1.5 - override px-4 */
+    padding-right: 0.67rem !important;
+    max-width: 53.33rem !important; /* 80rem / 1.5 - override max-w-7xl */
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section > div {
+      padding-left: 0.83rem !important; /* 1.25rem / 1.5 */
+      padding-right: 0.83rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section > div {
+      padding-left: 1rem !important; /* 1.5rem / 1.5 */
+      padding-right: 1rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-main-section > div {
+      padding-left: 1.33rem !important; /* 2rem / 1.5 */
+      padding-right: 1.33rem !important;
+    }
+  }
+
+  /* Heading: Make text appear MAXIMUM SIZE at 150% zoom */
+  /* To appear as 8.5rem at 150%, set CSS to 5.67rem (8.5/1.5=5.67) */
+  .hero-main-section h1,
+  section.hero-main-section h1 {
+    font-size: 1.9rem !important; /* Will appear as ~2.85rem - maximum size */
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  @media (min-width: 375px) {
+    .hero-main-section h1 {
+      font-size: 2.5rem !important; /* Will appear as ~3.75rem - maximum size */
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section h1 {
+      font-size: 3.1rem !important; /* Will appear as ~4.65rem - maximum size */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section h1 {
+      font-size: 3.9rem !important; /* Will appear as ~5.85rem - maximum size */
+      margin-bottom: 0.6rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-main-section h1 {
+      font-size: 5rem !important; /* Will appear as ~7.5rem - maximum size */
+      margin-bottom: 0.7rem !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-main-section h1 {
+      font-size: 5.7rem !important; /* Will appear as ~8.55rem - maximum size */
+    }
+  }
+
+  /* Paragraph: Make text appear MAXIMUM SIZE at 150% zoom */
+  .hero-main-section p,
+  section.hero-main-section p {
+    font-size: 1.05rem !important; /* Will appear as ~1.575rem - maximum size */
+    margin-bottom: 0.7rem !important;
+    line-height: 1.5 !important;
+  }
+
+  @media (min-width: 375px) {
+    .hero-main-section p,
+    section.hero-main-section p {
+      font-size: 1.2rem !important; /* Will appear as ~1.8rem - maximum size */
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section p,
+    section.hero-main-section p {
+      font-size: 1.35rem !important; /* Will appear as ~2.025rem - maximum size */
+      margin-bottom: 0.9rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section p,
+    section.hero-main-section p {
+      font-size: 1.5rem !important; /* Will appear as ~2.25rem - maximum size */
+      margin-bottom: 1.1rem !important;
+    }
+  }
+
+  /* Image heights: Make image appear MAXIMUM SIZE at 150% zoom */
+  /* To appear as 800px at 150%, set CSS to 533px (800/1.5=533) */
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"],
+  section.hero-main-section > div > div[class*="grid"] > div[class*="relative"],
+  .hero-main-section div[class*="relative"][class*="rounded"] {
+    height: 300px !important; /* Will appear as ~450px - maximum size */
+    max-height: 520px !important; /* Will appear as ~780px - maximum size */
+    min-height: 300px !important;
+    aspect-ratio: auto !important; /* Override aspect-* classes */
+  }
+
+  @media (min-width: 375px) {
+    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
+      height: 350px !important; /* Will appear as ~525px - maximum size */
+      min-height: 350px !important;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
+      height: 400px !important; /* Will appear as ~600px - maximum size */
+      min-height: 400px !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
+      height: 450px !important; /* Will appear as ~675px - maximum size */
+      min-height: 450px !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
+      height: 500px !important; /* Will appear as ~750px - maximum size */
+      max-height: 550px !important; /* Will appear as ~825px - maximum size */
+      min-height: 500px !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
+      height: 530px !important; /* Will appear as ~795px - maximum size */
+      max-height: 580px !important; /* Will appear as ~870px - maximum size */
+      min-height: 530px !important;
+    }
+  }
+
+  /* Grid gaps: Reduced to fit maximum size content */
+  .hero-main-section [class*="grid"],
+  .hero-main-section > div > div[class*="grid"],
+  section.hero-main-section [class*="grid"],
+  section.hero-main-section > div > div[class*="grid"] {
+    gap: 0.6rem !important;
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section [class*="grid"],
+    .hero-main-section > div > div[class*="grid"] {
+      gap: 0.8rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section [class*="grid"],
+    .hero-main-section > div > div[class*="grid"] {
+      gap: 1rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-main-section [class*="grid"],
+    .hero-main-section > div > div[class*="grid"] {
+      gap: 1.3rem !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-main-section [class*="grid"],
+    .hero-main-section > div > div[class*="grid"] {
+      gap: 1.6rem !important;
+    }
+  }
+
+  /* Buttons: Make buttons appear EXTREMELY BIG at 150% zoom */
+  .hero-main-section button,
+  section.hero-main-section button,
+  .hero-main-section [role="button"] {
+    padding: 0.7rem 1.2rem !important; /* Will appear extremely big */
+    font-size: 0.85rem !important; /* Will appear as ~1.275rem - extremely big */
+  }
+
+  @media (min-width: 375px) {
+    .hero-main-section button,
+    section.hero-main-section button {
+      padding: 0.7rem 1.4rem !important; /* Will appear extremely big */
+      font-size: 1rem !important; /* Will appear as ~1.5rem - extremely big */
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section button,
+    section.hero-main-section button {
+      padding: 0.8rem 1.8rem !important; /* Will appear extremely big */
+      font-size: 1.15rem !important; /* Will appear as ~1.725rem - extremely big */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section button,
+    section.hero-main-section button {
+      padding: 0.9rem 1.8rem !important; /* Will appear extremely big */
+    }
+  }
+
+  /* Button container gap: gap-3(0.75rem)→0.5rem, gap-4(1rem)→0.67rem */
+  .hero-main-section [class*="flex"],
+  section.hero-main-section [class*="flex"] {
+    gap: 0.5rem !important; /* 0.75rem / 1.5 - override gap-3 */
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section [class*="flex"],
+    section.hero-main-section [class*="flex"] {
+      gap: 0.67rem !important; /* 1rem / 1.5 - override gap-4 */
+    }
+  }
+
+  /* Carousel: Increased top padding for better spacing at 150% zoom */
+  .hero-carousel-section,
+  section.hero-main-section + div,
+  .hero-main-section ~ div.hero-carousel-section {
+    margin-top: 0 !important; /* Remove margin since it's outside section now */
+    padding-top: 1.5rem !important; /* Increased top padding */
+    padding-bottom: 0.4rem !important; /* Further reduced to fit extremely large content */
+    width: 100% !important; /* Ensure full width */
+    max-width: 100% !important; /* Remove any max-width constraints */
+    margin-left: 0 !important; /* Remove any left margin */
+    margin-right: 0 !important; /* Remove any right margin */
+    padding-left: 0 !important; /* Remove any left padding */
+    padding-right: 0 !important; /* Remove any right padding */
+  }
+
+  @media (min-width: 640px) {
+    .hero-carousel-section {
+      padding-top: 2rem !important; /* Increased top padding */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-carousel-section {
+      padding-top: 2.5rem !important; /* Increased top padding */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-carousel-section {
+      padding-top: 3rem !important; /* Increased top padding */
+    }
+  }
+
+  /* Carousel container height - increased to accommodate bigger logos */
+  .hero-carousel-section > div[class*="relative"],
+  .hero-carousel-section > div[class*="overflow"] {
+    min-height: 50px !important; /* Increased for bigger logos */
+  }
+
+  @media (min-width: 640px) {
+    .hero-carousel-section > div[class*="relative"],
+    .hero-carousel-section > div[class*="overflow"] {
+      min-height: 65px !important; /* Increased for bigger logos */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-carousel-section > div[class*="relative"],
+    .hero-carousel-section > div[class*="overflow"] {
+      min-height: 80px !important; /* Increased for bigger logos */
+    }
+  }
+
+  /* Carousel logo container sizes: Make logos BIGGER at 150% zoom */
+  /* To appear as 7.5rem width at 150%, set CSS to 5rem (7.5/1.5=5) */
+  .hero-carousel-section [class*="shrink-0"] > div[class*="relative"],
+  .hero-carousel-section div[class*="relative"][class*="w-20"],
+  .hero-carousel-section div[class*="relative"][class*="h-10"] {
+    width: 4rem !important; /* Will appear as ~6rem - bigger */
+    height: 2.5rem !important; /* Will appear as ~3.75rem - bigger */
+  }
+
+  @media (min-width: 640px) {
+    .hero-carousel-section [class*="shrink-0"] > div[class*="relative"],
+    .hero-carousel-section div[class*="relative"][class*="w-24"],
+    .hero-carousel-section div[class*="relative"][class*="h-12"] {
+      width: 4.8rem !important; /* Will appear as ~7.2rem - bigger */
+      height: 3rem !important; /* Will appear as ~4.5rem - bigger */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-carousel-section [class*="shrink-0"] > div[class*="relative"],
+    .hero-carousel-section div[class*="relative"][class*="w-28"],
+    .hero-carousel-section div[class*="relative"][class*="h-14"] {
+      width: 5.6rem !important; /* Will appear as ~8.4rem - bigger */
+      height: 3.5rem !important; /* Will appear as ~5.25rem - bigger */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-carousel-section [class*="shrink-0"] > div[class*="relative"],
+    .hero-carousel-section div[class*="relative"][class*="w-32"],
+    .hero-carousel-section div[class*="relative"][class*="h-16"] {
+      width: 6.4rem !important; /* Will appear as ~9.6rem - bigger */
+      height: 4rem !important; /* Will appear as ~6rem - bigger */
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-carousel-section [class*="shrink-0"] > div[class*="relative"],
+    .hero-carousel-section div[class*="relative"][class*="w-36"],
+    .hero-carousel-section div[class*="relative"][class*="h-18"] {
+      width: 7.2rem !important; /* Will appear as ~10.8rem - bigger */
+      height: 4.5rem !important; /* Will appear as ~6.75rem - bigger */
+    }
+  }
+
+  /* Carousel logo margins: Increased for bigger logos */
+  .hero-carousel-section [class*="shrink-0"][class*="mx-"] {
+    margin-left: 0.4rem !important; /* Increased for bigger logos */
+    margin-right: 0.4rem !important;
+  }
+
+  @media (min-width: 640px) {
+    .hero-carousel-section [class*="shrink-0"][class*="mx-"] {
+      margin-left: 0.8rem !important; /* Increased for bigger logos */
+      margin-right: 0.8rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-carousel-section [class*="shrink-0"][class*="mx-"] {
+      margin-left: 1.2rem !important; /* Increased for bigger logos */
+      margin-right: 1.2rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-carousel-section [class*="shrink-0"][class*="mx-"] {
+      margin-left: 1.6rem !important; /* Increased for bigger logos */
+      margin-right: 1.6rem !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-carousel-section [class*="shrink-0"][class*="mx-"] {
+      margin-left: 2rem !important; /* Increased for bigger logos */
+      margin-right: 2rem !important;
+    }
+  }
+
+  /* Products Section: Make cards bigger at 150% zoom while showing navigation arrows */
+  #products [class*="CarouselItem"],
+  section#products [class*="CarouselItem"] {
+    flex-basis: 80% !important; /* Bigger cards at 150% zoom */
+    padding-left: 0.5rem !important; /* More padding */
+    max-width: 80% !important; /* Limit max width */
+    min-width: 0 !important; /* Allow shrinking */
+  }
+
+  @media (min-width: 640px) {
+    #products [class*="CarouselItem"],
+    section#products [class*="CarouselItem"] {
+      flex-basis: 40% !important; /* sm: bigger to make room for arrows */
+      padding-left: 0.6rem !important; /* More padding */
+      max-width: 40% !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products [class*="CarouselItem"],
+    section#products [class*="CarouselItem"] {
+      flex-basis: 28% !important; /* lg: bigger to make room for arrows */
+      max-width: 28% !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    #products [class*="CarouselItem"],
+    section#products [class*="CarouselItem"] {
+      flex-basis: 22% !important; /* xl: bigger to make room for arrows */
+      max-width: 22% !important;
+    }
+  }
+
+  /* Reduce carousel content negative margin at 150% zoom */
+  #products [class*="CarouselContent"],
+  section#products [class*="CarouselContent"] {
+    margin-left: -0.4rem !important; /* Reduced negative margin */
+  }
+
+  @media (min-width: 640px) {
+    #products [class*="CarouselContent"],
+    section#products [class*="CarouselContent"] {
+      margin-left: -0.5rem !important; /* Reduced negative margin */
+    }
+  }
+
+  /* Ensure carousel container has space for arrows at 150% zoom */
+  #products [class*="relative"][class*="w-full"],
+  section#products [class*="relative"][class*="w-full"],
+  #products > div[class*="relative"] {
+    padding-left: 3rem !important; /* Space for left arrow */
+    padding-right: 3rem !important; /* Space for right arrow */
+    overflow: visible !important; /* Allow arrows to be visible */
+  }
+
+  @media (min-width: 640px) {
+    #products [class*="relative"][class*="w-full"],
+    section#products [class*="relative"][class*="w-full"],
+    #products > div[class*="relative"] {
+      padding-left: 3.5rem !important; /* More space for left arrow */
+      padding-right: 3.5rem !important; /* More space for right arrow */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products [class*="relative"][class*="w-full"],
+    section#products [class*="relative"][class*="w-full"],
+    #products > div[class*="relative"] {
+      padding-left: 4rem !important; /* More space for left arrow */
+      padding-right: 4rem !important; /* More space for right arrow */
+    }
+  }
+
+  /* Reduce product card image heights at 150% zoom - bigger */
+  #products [class*="relative"][class*="h-"],
+  section#products [class*="relative"][class*="h-"],
+  #products div[class*="relative"][class*="flex"] {
+    height: 120px !important; /* Bigger from 110px */
+  }
+
+  @media (min-width: 640px) {
+    #products [class*="relative"][class*="h-"],
+    section#products [class*="relative"][class*="h-"],
+    #products div[class*="relative"][class*="flex"] {
+      height: 130px !important; /* Bigger from 120px */
+    }
+  }
+
+  @media (min-width: 768px) {
+    #products [class*="relative"][class*="h-"],
+    section#products [class*="relative"][class*="h-"],
+    #products div[class*="relative"][class*="flex"] {
+      height: 145px !important; /* Bigger from 130px */
+    }
+  }
+
+  /* Force navigation arrows to be visible at 150% zoom - override hidden class */
+  #products [class*="CarouselPrevious"],
+  #products [class*="CarouselNext"],
+  section#products [class*="CarouselPrevious"],
+  section#products [class*="CarouselNext"],
+  #products button[class*="CarouselPrevious"],
+  #products button[class*="CarouselNext"],
+  #products button[class*="hidden"][class*="CarouselPrevious"],
+  #products button[class*="hidden"][class*="CarouselNext"] {
+    position: absolute !important;
+    z-index: 30 !important;
+    display: flex !important; /* Force display - override hidden */
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Override hidden class specifically for carousel buttons */
+  #products button[class*="hidden"][class*="sm:flex"],
+  section#products button[class*="hidden"][class*="sm:flex"] {
+    display: flex !important; /* Override hidden for arrows at 150% zoom */
+  }
+
+  #products [class*="CarouselPrevious"],
+  section#products [class*="CarouselPrevious"],
+  #products button[class*="CarouselPrevious"] {
+    left: 0.2rem !important; /* Position inside viewport */
+  }
+
+  @media (min-width: 640px) {
+    #products [class*="CarouselPrevious"],
+    section#products [class*="CarouselPrevious"],
+    #products button[class*="CarouselPrevious"] {
+      left: 0.2rem !important; /* Keep inside viewport */
+    }
+  }
+
+  @media (min-width: 768px) {
+    #products [class*="CarouselPrevious"],
+    section#products [class*="CarouselPrevious"],
+    #products button[class*="CarouselPrevious"] {
+      left: -1rem !important; /* Slightly outside but visible */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products [class*="CarouselPrevious"],
+    section#products [class*="CarouselPrevious"],
+    #products button[class*="CarouselPrevious"] {
+      left: -1.5rem !important; /* More space for arrows */
+    }
+  }
+
+  #products [class*="CarouselNext"],
+  section#products [class*="CarouselNext"],
+  #products button[class*="CarouselNext"] {
+    right: 0.2rem !important; /* Position inside viewport */
+  }
+
+  @media (min-width: 640px) {
+    #products [class*="CarouselNext"],
+    section#products [class*="CarouselNext"],
+    #products button[class*="CarouselNext"] {
+      right: 0.2rem !important; /* Keep inside viewport */
+    }
+  }
+
+  @media (min-width: 768px) {
+    #products [class*="CarouselNext"],
+    section#products [class*="CarouselNext"],
+    #products button[class*="CarouselNext"] {
+      right: -1rem !important; /* Slightly outside but visible */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products [class*="CarouselNext"],
+    section#products [class*="CarouselNext"],
+    #products button[class*="CarouselNext"] {
+      right: -1.5rem !important; /* More space for arrows */
+    }
+  }
+
+  /* Reduce product card padding at 150% zoom - bigger */
+  #products [class*="p-4"],
+  #products [class*="p-6"],
+  section#products [class*="p-4"],
+  section#products [class*="p-6"] {
+    padding: 0.8rem !important; /* Bigger padding */
+  }
+
+  @media (min-width: 640px) {
+    #products [class*="p-6"],
+    section#products [class*="p-6"] {
+      padding: 1rem !important; /* Bigger padding */
+    }
+  }
+
+  /* Reduce product card text sizes at 150% zoom - bigger */
+  #products h3,
+  section#products h3 {
+    font-size: 0.85rem !important; /* Bigger heading */
+    margin-bottom: 0.6rem !important;
+  }
+
+  @media (min-width: 640px) {
+    #products h3,
+    section#products h3 {
+      font-size: 0.95rem !important; /* Bigger heading */
+    }
+  }
+
+  #products p,
+  section#products p {
+    font-size: 0.75rem !important; /* Bigger text */
+  }
+
+  @media (min-width: 640px) {
+    #products p,
+    section#products p {
+      font-size: 0.8rem !important; /* Bigger text */
+    }
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left var(--speed, 20s) linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right var(--speed, 20s) linear infinite;
+}
+
+.hover-bg-career {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.group:hover .hover-bg-career {
+  transform: scaleX(1);
+}
+
+/* Service card hover animation - diagonal fill from bottom-left to top */
+.service-card-hover {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
+  transition: clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.service-card-group:hover .service-card-hover {
+  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+}
+
+/* Explore button hover animation - diagonal fill from bottom-left to top */
+.explore-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.explore-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.explore-button:hover::before {
+  transform: scale(1);
+}
+
+.explore-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Section - Landscape Orientation Responsive Fixes */
+@media (orientation: landscape) and (max-height: 500px) {
+  /* Mobile landscape - very short height */
+  .hero-main-section {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .hero-main-section h1 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-main-section p {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    height: 120px !important;
+    min-height: 120px !important;
+  }
+
+  .hero-main-section button {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 500px) and (max-height: 700px) {
+  /* Mobile/Tablet landscape - medium height */
+  .hero-main-section {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  .hero-main-section h1 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero-main-section p {
+    font-size: 0.875rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    height: 160px !important;
+    min-height: 160px !important;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 768px) and (max-width: 1024px) {
+  /* Tablet landscape */
+  .hero-main-section h1 {
+    font-size: 1.75rem !important;
+  }
+
+  .hero-main-section p {
+    font-size: 1rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    height: 240px !important;
+    min-height: 240px !important;
+  }
+}
+
+/* Ensure grid stays responsive in landscape on mobile */
+@media (orientation: landscape) and (max-width: 768px) {
+  .hero-main-section > div > div[class*="grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] {
+    order: 1 !important;
+  }
+
+  .hero-main-section > div > div[class*="grid"] > div[class*="order-2"] {
+    order: 2 !important;
+  }
+}
+
+/* Better spacing for small screens in portrait */
+@media (orientation: portrait) and (max-width: 640px) {
+  .hero-main-section {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  .hero-main-section > div {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/* Better spacing for medium screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-main-section > div > div[class*="grid"] {
+    gap: 1rem !important;
+  }
+}
+
+/* Force reduce padding on LG screens to show "Our Services" */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .hero-main-section {
+    padding-top: 0.5rem !important; /* lg:pt-2 - reduced */
+    padding-bottom: 0.5rem !important; /* lg:pb-2 - reduced */
+  }
+
+  .hero-carousel-section {
+    padding-top: 0.375rem !important; /* lg:pt-1.5 - reduced */
+    padding-bottom: 0 !important; /* Remove bottom padding */
+  }
+
+  .hero-main-section h1 {
+    margin-bottom: 0.5rem !important; /* lg:mb-2 - reduced */
+  }
+
+  .hero-main-section p {
+    margin-bottom: 0.625rem !important; /* lg:mb-2.5 - reduced */
+  }
+
+  .hero-main-section > div > div[class*="grid"] {
+    gap: 0.75rem !important; /* lg:gap-3 - reduced */
+  }
+
+  /* Reduce image size slightly on lg to save space */
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
+    max-width: 300px !important; /* Slightly smaller than lg:max-w-[340px] */
+  }
+}
+
+/* Hero Image Border Radius - Applied on All Screens */
+/* Ensure border radius is properly applied on all screen sizes */
+.hero-main-section
+  > div
+  > div[class*="grid"]
+  > div[class*="relative"][class*="rounded"],
+.hero-main-section
+  > div
+  > div[class*="grid"]
+  > div[class*="relative"][class*="rounded"]
+  > div {
+  border-radius: 0.375rem; /* rounded-md - base */
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="relative"][class*="rounded"],
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="relative"][class*="rounded"]
+    > div {
+    border-radius: 0.5rem; /* rounded-lg */
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="relative"][class*="rounded"],
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="relative"][class*="rounded"]
+    > div {
+    border-radius: 0.75rem; /* rounded-xl */
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="relative"][class*="rounded"],
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="relative"][class*="rounded"]
+    > div {
+    border-radius: 1rem; /* rounded-2xl */
+  }
+}
+
+/* Hero Image Border Radius - Reduced at 150% Zoom */
+/* At 150% zoom, reduce border radius to appear proportional */
+@media (max-width: 1280px) {
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="relative"][class*="rounded"] {
+    border-radius: 0.25rem !important; /* rounded-md → smaller at 150% zoom */
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="relative"][class*="rounded"] {
+      border-radius: 0.375rem !important; /* rounded-lg → smaller at 150% zoom */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="relative"][class*="rounded"] {
+      border-radius: 0.5rem !important; /* rounded-xl → smaller at 150% zoom */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="relative"][class*="rounded"] {
+      border-radius: 0.625rem !important; /* rounded-2xl → smaller at 150% zoom */
+    }
+  }
+}

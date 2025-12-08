@@ -1,0 +1,27 @@
+import Header from "@/components/home/Header";
+import Hero from "@/components/home/Hero";
+import Services from "@/components/home/Services";
+import Products from "@/components/home/Products";
+import TechStack from "@/components/home/TechStack";
+import Contact from "@/components/home/Contact";
+import CareerSection from "@/components/home/CareerSection";
+import Footer from "@/components/home/Footer";
+import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen w-full overflow-x-hidden">
+      <Header />
+      <main className="mt-[60px] sm:mt-[70px] w-full max-w-full">
+        <Hero />
+        <Services />
+        <Products />
+        <TechStack />
+        <CareerSection />
+        <Contact />
+      </main>
+      <Footer />
+      <ScrollToTopButton />
+    </div>
+  );
+}
