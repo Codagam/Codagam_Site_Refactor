@@ -71,41 +71,41 @@ export default function Products() {
                 return (
                   <CarouselItem
                     key={product.id}
-                    className="pl-0 pr-3 min-[375px]:pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-8 basis-full sm:basis-full md:basis-full lg:basis-1/3 xl:basis-1/4 w-full max-w-full">
+                    className="pl-0 pr-3 min-[375px]:pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-8 basis-full sm:basis-[85%] md:basis-[70%] lg:basis-1/3 xl:basis-1/4 w-full max-w-full">
                     <div
                       className="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer h-full flex flex-col w-full max-w-full"
                       onClick={() => handleCardClick(product)}>
                       {/* Background Image Section with Logo Overlay */}
-                      <div className="relative h-[220px] sm:h-[260px] md:h-[300px] overflow-hidden">
+                      <div className="relative h-[200px] min-[375px]:h-[220px] sm:h-[240px] md:h-[280px] lg:h-[300px] xl:h-[320px] overflow-hidden">
                         {/* Background Image */}
                         <Image
                           src={backgroundImage}
                           alt={`${product.headline} background`}
                           fill
                           className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 85vw, (max-width: 1024px) 70vw, (max-width: 1280px) 33vw, 25vw"
                         />
                         {/* Gradient overlay for better logo visibility */}
                         <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/50"></div>
                         {/* Logo Overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
-                          <div className="relative w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center p-3 min-[375px]:p-4 sm:p-5 md:p-6 lg:p-6">
+                          <div className="relative w-16 h-16 min-[375px]:w-20 min-[375px]:h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 rounded-full overflow-hidden">
                             <Image
                               src={product.image}
                               alt={product.alt}
                               fill
                               className="object-contain drop-shadow-2xl rounded-full"
-                              sizes="(max-width: 768px) 80px, (max-width: 1024px) 128px, 160px"
+                              sizes="(max-width: 375px) 64px, (max-width: 640px) 80px, (max-width: 768px) 96px, (max-width: 1024px) 128px, (max-width: 1280px) 144px, 160px"
                             />
                           </div>
                         </div>
                       </div>
                       {/* Text Card Below */}
-                      <div className="bg-white p-5 sm:p-6 md:p-7 flex-1 flex flex-col">
-                        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-3">
+                      <div className="bg-white p-4 min-[375px]:p-5 sm:p-5 md:p-6 lg:p-6 xl:p-7 flex-1 flex flex-col">
+                        <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold mb-2 min-[375px]:mb-3 sm:mb-3">
                           {product.headline}
                         </h3>
-                        <p className="text-slate-600 text-sm sm:text-base leading-relaxed m-0 flex-1">
+                        <p className="text-slate-600 text-xs min-[375px]:text-sm sm:text-sm md:text-base lg:text-base leading-relaxed m-0 flex-1">
                           {product.description}
                         </p>
                       </div>

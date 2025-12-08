@@ -1002,100 +1002,194 @@ h6 {
     }
   }
 
-  /* Products Section: Make cards bigger at 150% zoom while showing navigation arrows */
+  /* Products Section: Responsive card sizing at 150% zoom */
+  /* At 150% zoom, viewport is reduced, so we adjust card sizes proportionally */
   #products [class*="CarouselItem"],
   section#products [class*="CarouselItem"] {
-    flex-basis: 80% !important; /* Bigger cards at 150% zoom */
-    padding-left: 0.5rem !important; /* More padding */
-    max-width: 80% !important; /* Limit max width */
-    min-width: 0 !important; /* Allow shrinking */
+    flex-basis: 85% !important; /* Mobile: slightly smaller for better fit */
+    max-width: 85% !important;
+    min-width: 0 !important;
+  }
+
+  @media (min-width: 375px) {
+    #products [class*="CarouselItem"],
+    section#products [class*="CarouselItem"] {
+      flex-basis: 80% !important;
+      max-width: 80% !important;
+    }
   }
 
   @media (min-width: 640px) {
     #products [class*="CarouselItem"],
     section#products [class*="CarouselItem"] {
-      flex-basis: 40% !important; /* sm: bigger to make room for arrows */
-      padding-left: 0.6rem !important; /* More padding */
-      max-width: 40% !important;
+      flex-basis: 75% !important; /* Tablet: show more of next card */
+      max-width: 75% !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #products [class*="CarouselItem"],
+    section#products [class*="CarouselItem"] {
+      flex-basis: 60% !important; /* md: show partial next card */
+      max-width: 60% !important;
     }
   }
 
   @media (min-width: 1024px) {
     #products [class*="CarouselItem"],
     section#products [class*="CarouselItem"] {
-      flex-basis: 28% !important; /* lg: bigger to make room for arrows */
-      max-width: 28% !important;
+      flex-basis: 32% !important; /* lg: show 3 cards with spacing */
+      max-width: 32% !important;
     }
   }
 
   @media (min-width: 1280px) {
     #products [class*="CarouselItem"],
     section#products [class*="CarouselItem"] {
-      flex-basis: 22% !important; /* xl: bigger to make room for arrows */
-      max-width: 22% !important;
+      flex-basis: 24% !important; /* xl: show 4 cards with spacing */
+      max-width: 24% !important;
     }
   }
 
-  /* Reduce carousel content negative margin at 150% zoom */
+  /* Carousel content negative margin adjustment at 150% zoom */
   #products [class*="CarouselContent"],
   section#products [class*="CarouselContent"] {
-    margin-left: -0.4rem !important; /* Reduced negative margin */
+    margin-right: -0.5rem !important;
   }
 
   @media (min-width: 640px) {
     #products [class*="CarouselContent"],
     section#products [class*="CarouselContent"] {
-      margin-left: -0.5rem !important; /* Reduced negative margin */
-    }
-  }
-
-  /* Ensure carousel container has space for arrows at 150% zoom */
-  #products [class*="relative"][class*="w-full"],
-  section#products [class*="relative"][class*="w-full"],
-  #products > div[class*="relative"] {
-    padding-left: 3rem !important; /* Space for left arrow */
-    padding-right: 3rem !important; /* Space for right arrow */
-    overflow: visible !important; /* Allow arrows to be visible */
-  }
-
-  @media (min-width: 640px) {
-    #products [class*="relative"][class*="w-full"],
-    section#products [class*="relative"][class*="w-full"],
-    #products > div[class*="relative"] {
-      padding-left: 3.5rem !important; /* More space for left arrow */
-      padding-right: 3.5rem !important; /* More space for right arrow */
+      margin-right: -0.75rem !important;
     }
   }
 
   @media (min-width: 1024px) {
-    #products [class*="relative"][class*="w-full"],
-    section#products [class*="relative"][class*="w-full"],
-    #products > div[class*="relative"] {
-      padding-left: 4rem !important; /* More space for left arrow */
-      padding-right: 4rem !important; /* More space for right arrow */
+    #products [class*="CarouselContent"],
+    section#products [class*="CarouselContent"] {
+      margin-right: -1rem !important;
     }
   }
 
-  /* Reduce product card image heights at 150% zoom - bigger */
-  #products [class*="relative"][class*="h-"],
-  section#products [class*="relative"][class*="h-"],
-  #products div[class*="relative"][class*="flex"] {
-    height: 120px !important; /* Bigger from 110px */
+  /* Carousel container spacing for arrows at 150% zoom */
+  #products > div[class*="relative"][class*="w-full"],
+  section#products > div[class*="relative"][class*="w-full"] {
+    padding-left: 2.5rem !important; /* Space for left arrow */
+    padding-right: 2.5rem !important; /* Space for right arrow */
+    overflow: visible !important;
   }
 
   @media (min-width: 640px) {
-    #products [class*="relative"][class*="h-"],
-    section#products [class*="relative"][class*="h-"],
-    #products div[class*="relative"][class*="flex"] {
-      height: 130px !important; /* Bigger from 120px */
+    #products > div[class*="relative"][class*="w-full"],
+    section#products > div[class*="relative"][class*="w-full"] {
+      padding-left: 3rem !important;
+      padding-right: 3rem !important;
     }
   }
 
   @media (min-width: 768px) {
-    #products [class*="relative"][class*="h-"],
-    section#products [class*="relative"][class*="h-"],
-    #products div[class*="relative"][class*="flex"] {
-      height: 145px !important; /* Bigger from 130px */
+    #products > div[class*="relative"][class*="w-full"],
+    section#products > div[class*="relative"][class*="w-full"] {
+      padding-left: 3.5rem !important;
+      padding-right: 3.5rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products > div[class*="relative"][class*="w-full"],
+    section#products > div[class*="relative"][class*="w-full"] {
+      padding-left: 4rem !important;
+      padding-right: 4rem !important;
+    }
+  }
+
+  /* Product card background image heights at 150% zoom - responsive */
+  /* Target the background image container div */
+  #products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"],
+  section#products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"] {
+    height: 133px !important; /* 200px / 1.5 = 133px */
+  }
+
+  @media (min-width: 375px) {
+    #products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"],
+    section#products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"] {
+      height: 147px !important; /* 220px / 1.5 = 147px */
+    }
+  }
+
+  @media (min-width: 640px) {
+    #products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"],
+    section#products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"] {
+      height: 160px !important; /* 240px / 1.5 = 160px */
+    }
+  }
+
+  @media (min-width: 768px) {
+    #products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"],
+    section#products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"] {
+      height: 187px !important; /* 280px / 1.5 = 187px */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"],
+    section#products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"] {
+      height: 200px !important; /* 300px / 1.5 = 200px */
+    }
+  }
+
+  @media (min-width: 1280px) {
+    #products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"],
+    section#products div[class*="group"] > div[class*="relative"][class*="overflow-hidden"] {
+      height: 213px !important; /* 320px / 1.5 = 213px */
+    }
+  }
+
+  /* Product card logo sizes at 150% zoom - responsive */
+  /* Target the logo container div inside the background image */
+  #products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"],
+  section#products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"] {
+    width: 43px !important; /* 64px / 1.5 = 43px */
+    height: 43px !important;
+  }
+
+  @media (min-width: 375px) {
+    #products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"],
+    section#products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"] {
+      width: 53px !important; /* 80px / 1.5 = 53px */
+      height: 53px !important;
+    }
+  }
+
+  @media (min-width: 640px) {
+    #products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"],
+    section#products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"] {
+      width: 64px !important; /* 96px / 1.5 = 64px */
+      height: 64px !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"],
+    section#products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"] {
+      width: 85px !important; /* 128px / 1.5 = 85px */
+      height: 85px !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"],
+    section#products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"] {
+      width: 96px !important; /* 144px / 1.5 = 96px */
+      height: 96px !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    #products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"],
+    section#products div[class*="absolute"][class*="inset-0"][class*="flex"] > div[class*="relative"][class*="rounded-full"] {
+      width: 107px !important; /* 160px / 1.5 = 107px */
+      height: 107px !important;
     }
   }
 
@@ -1182,44 +1276,118 @@ h6 {
     }
   }
 
-  /* Reduce product card padding at 150% zoom - bigger */
-  #products [class*="p-4"],
-  #products [class*="p-6"],
-  section#products [class*="p-4"],
-  section#products [class*="p-6"] {
-    padding: 0.8rem !important; /* Bigger padding */
+  /* Product card text content padding at 150% zoom - responsive */
+  /* Target the white text card div */
+  #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
+  section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
+    padding: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (p-4) */
   }
 
-  @media (min-width: 640px) {
-    #products [class*="p-6"],
-    section#products [class*="p-6"] {
-      padding: 1rem !important; /* Bigger padding */
+  @media (min-width: 375px) {
+    #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
+    section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
+      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
     }
   }
 
-  /* Reduce product card text sizes at 150% zoom - bigger */
-  #products h3,
-  section#products h3 {
-    font-size: 0.85rem !important; /* Bigger heading */
-    margin-bottom: 0.6rem !important;
-  }
-
   @media (min-width: 640px) {
-    #products h3,
-    section#products h3 {
-      font-size: 0.95rem !important; /* Bigger heading */
+    #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
+    section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
+      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
     }
   }
 
-  #products p,
-  section#products p {
-    font-size: 0.75rem !important; /* Bigger text */
+  @media (min-width: 768px) {
+    #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
+    section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
+      padding: 1rem !important; /* 1.5rem / 1.5 = 1rem (p-6) */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
+    section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
+      padding: 1rem !important; /* 1.5rem / 1.5 = 1rem (p-6) */
+    }
+  }
+
+  @media (min-width: 1280px) {
+    #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
+    section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
+      padding: 1.17rem !important; /* 1.75rem / 1.5 = 1.17rem (p-7) */
+    }
+  }
+
+  /* Product card heading sizes at 150% zoom - responsive */
+  #products div[class*="bg-white"] h3,
+  section#products div[class*="bg-white"] h3 {
+    font-size: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (text-base) */
+    margin-bottom: 0.4rem !important; /* 0.5rem / 1.5 = 0.33rem, rounded to 0.4rem */
+  }
+
+  @media (min-width: 375px) {
+    #products div[class*="bg-white"] h3,
+    section#products div[class*="bg-white"] h3 {
+      font-size: 0.75rem !important; /* 1.125rem / 1.5 = 0.75rem (text-lg) */
+      margin-bottom: 0.53rem !important; /* 0.75rem / 1.5 = 0.5rem, rounded to 0.53rem */
+    }
   }
 
   @media (min-width: 640px) {
-    #products p,
-    section#products p {
-      font-size: 0.8rem !important; /* Bigger text */
+    #products div[class*="bg-white"] h3,
+    section#products div[class*="bg-white"] h3 {
+      font-size: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (text-xl) */
+      margin-bottom: 0.53rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #products div[class*="bg-white"] h3,
+    section#products div[class*="bg-white"] h3 {
+      font-size: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (text-xl) */
+      margin-bottom: 0.53rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products div[class*="bg-white"] h3,
+    section#products div[class*="bg-white"] h3 {
+      font-size: 1rem !important; /* 1.5rem / 1.5 = 1rem (text-2xl) */
+      margin-bottom: 0.53rem !important;
+    }
+  }
+
+  /* Product card description text sizes at 150% zoom - responsive */
+  #products div[class*="bg-white"] p[class*="text-slate-600"],
+  section#products div[class*="bg-white"] p[class*="text-slate-600"] {
+    font-size: 0.5rem !important; /* 0.75rem / 1.5 = 0.5rem (text-xs) */
+  }
+
+  @media (min-width: 375px) {
+    #products div[class*="bg-white"] p[class*="text-slate-600"],
+    section#products div[class*="bg-white"] p[class*="text-slate-600"] {
+      font-size: 0.58rem !important; /* 0.875rem / 1.5 = 0.58rem (text-sm) */
+    }
+  }
+
+  @media (min-width: 640px) {
+    #products div[class*="bg-white"] p[class*="text-slate-600"],
+    section#products div[class*="bg-white"] p[class*="text-slate-600"] {
+      font-size: 0.58rem !important; /* 0.875rem / 1.5 = 0.58rem (text-sm) */
+    }
+  }
+
+  @media (min-width: 768px) {
+    #products div[class*="bg-white"] p[class*="text-slate-600"],
+    section#products div[class*="bg-white"] p[class*="text-slate-600"] {
+      font-size: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (text-base) */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products div[class*="bg-white"] p[class*="text-slate-600"],
+    section#products div[class*="bg-white"] p[class*="text-slate-600"] {
+      font-size: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (text-base) */
     }
   }
 }
