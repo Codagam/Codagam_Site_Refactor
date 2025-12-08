@@ -1003,51 +1003,51 @@ h6 {
   }
 
   /* Products Section: Responsive card sizing at 150% zoom */
-  /* At 150% zoom, viewport is reduced, so we adjust card sizes proportionally */
+  /* At 150% zoom, viewport is reduced, so we adjust card sizes to show 3 cards based on screen size */
   #products [class*="CarouselItem"],
   section#products [class*="CarouselItem"] {
-    flex-basis: 85% !important; /* Mobile: slightly smaller for better fit */
-    max-width: 85% !important;
+    flex-basis: 100% !important; /* Mobile: 1 card */
+    max-width: 100% !important;
     min-width: 0 !important;
   }
 
   @media (min-width: 375px) {
     #products [class*="CarouselItem"],
     section#products [class*="CarouselItem"] {
-      flex-basis: 80% !important;
-      max-width: 80% !important;
+      flex-basis: 100% !important; /* Mobile: 1 card */
+      max-width: 100% !important;
     }
   }
 
   @media (min-width: 640px) {
     #products [class*="CarouselItem"],
     section#products [class*="CarouselItem"] {
-      flex-basis: 75% !important; /* Tablet: show more of next card */
-      max-width: 75% !important;
+      flex-basis: 100% !important; /* sm: 1 card */
+      max-width: 100% !important;
     }
   }
 
   @media (min-width: 768px) {
     #products [class*="CarouselItem"],
     section#products [class*="CarouselItem"] {
-      flex-basis: 60% !important; /* md: show partial next card */
-      max-width: 60% !important;
+      flex-basis: 50% !important; /* md: 2 cards (1/2 = 50%) */
+      max-width: 50% !important;
     }
   }
 
   @media (min-width: 1024px) {
     #products [class*="CarouselItem"],
     section#products [class*="CarouselItem"] {
-      flex-basis: 32% !important; /* lg: show 3 cards with spacing */
-      max-width: 32% !important;
+      flex-basis: 33.33% !important; /* lg: 3 cards (1/3 = 33.33%) */
+      max-width: 33.33% !important;
     }
   }
 
   @media (min-width: 1280px) {
     #products [class*="CarouselItem"],
     section#products [class*="CarouselItem"] {
-      flex-basis: 24% !important; /* xl: show 4 cards with spacing */
-      max-width: 24% !important;
+      flex-basis: 33.33% !important; /* xl: 3 cards (1/3 = 33.33%) */
+      max-width: 33.33% !important;
     }
   }
 
@@ -1169,7 +1169,7 @@ h6 {
     }
   }
 
-  /* Product card logo sizes at 150% zoom - responsive */
+  /* Product card logo sizes at 150% zoom - responsive (reduced sizes) */
   /* Target the logo container div inside the background image */
   #products
     div[class*="absolute"][class*="inset-0"][class*="flex"]
@@ -1177,11 +1177,23 @@ h6 {
   section#products
     div[class*="absolute"][class*="inset-0"][class*="flex"]
     > div[class*="relative"][class*="rounded-full"] {
-    width: 43px !important; /* 64px / 1.5 = 43px */
-    height: 43px !important;
+    width: 37px !important; /* 56px / 1.5 = 37px */
+    height: 37px !important;
   }
 
   @media (min-width: 375px) {
+    #products
+      div[class*="absolute"][class*="inset-0"][class*="flex"]
+      > div[class*="relative"][class*="rounded-full"],
+    section#products
+      div[class*="absolute"][class*="inset-0"][class*="flex"]
+      > div[class*="relative"][class*="rounded-full"] {
+      width: 43px !important; /* 64px / 1.5 = 43px */
+      height: 43px !important;
+    }
+  }
+
+  @media (min-width: 640px) {
     #products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"],
@@ -1193,7 +1205,7 @@ h6 {
     }
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     #products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"],
@@ -1205,18 +1217,6 @@ h6 {
     }
   }
 
-  @media (min-width: 768px) {
-    #products
-      div[class*="absolute"][class*="inset-0"][class*="flex"]
-      > div[class*="relative"][class*="rounded-full"],
-    section#products
-      div[class*="absolute"][class*="inset-0"][class*="flex"]
-      > div[class*="relative"][class*="rounded-full"] {
-      width: 85px !important; /* 128px / 1.5 = 85px */
-      height: 85px !important;
-    }
-  }
-
   @media (min-width: 1024px) {
     #products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
@@ -1224,8 +1224,8 @@ h6 {
     section#products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"] {
-      width: 96px !important; /* 144px / 1.5 = 96px */
-      height: 96px !important;
+      width: 75px !important; /* 112px / 1.5 = 75px */
+      height: 75px !important;
     }
   }
 
@@ -1236,8 +1236,8 @@ h6 {
     section#products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"] {
-      width: 107px !important; /* 160px / 1.5 = 107px */
-      height: 107px !important;
+      width: 85px !important; /* 128px / 1.5 = 85px */
+      height: 85px !important;
     }
   }
 
@@ -1263,7 +1263,7 @@ h6 {
       div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
     section#products
       div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
-      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
+      padding: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (p-4) */
     }
   }
 
@@ -1272,11 +1272,20 @@ h6 {
       div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
     section#products
       div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
-      padding: 1rem !important; /* 1.5rem / 1.5 = 1rem (p-6) */
+      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
     }
   }
 
   @media (min-width: 1024px) {
+    #products
+      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
+    section#products
+      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
+      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
+    }
+  }
+
+  @media (min-width: 1280px) {
     #products
       div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
     section#products

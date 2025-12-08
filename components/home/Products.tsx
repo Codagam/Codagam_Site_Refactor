@@ -71,7 +71,7 @@ export default function Products() {
                 return (
                   <CarouselItem
                     key={product.id}
-                    className="pl-0 pr-3 min-[375px]:pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-8 basis-full sm:basis-[85%] md:basis-[70%] lg:basis-1/3 xl:basis-1/4 w-full max-w-full">
+                    className="pl-0 pr-3 min-[375px]:pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-8 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 w-full max-w-full">
                     <div
                       className="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer h-full flex flex-col w-full max-w-full"
                       onClick={() => handleCardClick(product)}>
@@ -83,19 +83,19 @@ export default function Products() {
                           alt={`${product.headline} background`}
                           fill
                           className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 85vw, (max-width: 1024px) 70vw, (max-width: 1280px) 33vw, 25vw"
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 33vw"
                         />
                         {/* Gradient overlay for better logo visibility */}
                         <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/50"></div>
                         {/* Logo Overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center p-3 min-[375px]:p-4 sm:p-5 md:p-6 lg:p-6">
-                          <div className="relative w-16 h-16 min-[375px]:w-20 min-[375px]:h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 rounded-full overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center p-3 min-[375px]:p-4 sm:p-4 md:p-5 lg:p-5 xl:p-6">
+                          <div className="relative w-14 h-14 min-[375px]:w-16 min-[375px]:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full overflow-hidden">
                             <Image
                               src={product.image}
                               alt={product.alt}
                               fill
                               className="object-contain drop-shadow-2xl rounded-full"
-                              sizes="(max-width: 375px) 64px, (max-width: 640px) 80px, (max-width: 768px) 96px, (max-width: 1024px) 128px, (max-width: 1280px) 144px, 160px"
+                              sizes="(max-width: 375px) 56px, (max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, (max-width: 1280px) 112px, 128px"
                             />
                           </div>
                         </div>
