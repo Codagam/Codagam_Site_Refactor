@@ -143,7 +143,7 @@ export function CareerApplicationForm({
                 <FormControl>
                   <Input
                     placeholder="Enter your full name"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-black !border-0 !ring-0 !outline-none focus-visible:!ring-0 focus-visible:!outline-none rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-black border-0! ring-0! outline-none! focus-visible:ring-0! focus-visible:outline-none! rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm"
                     {...field}
                   />
                 </FormControl>
@@ -165,7 +165,7 @@ export function CareerApplicationForm({
                   <Input
                     type="email"
                     placeholder="Enter your email address"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-black !border-0 !ring-0 !outline-none focus-visible:!ring-0 focus-visible:!outline-none rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-black border-0! ring-0! outline-none! focus-visible:ring-0! focus-visible:outline-none! rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm"
                     {...field}
                   />
                 </FormControl>
@@ -187,7 +187,7 @@ export function CareerApplicationForm({
                   <Input
                     type="file"
                     accept=".pdf,.doc,.docx"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-black !border-0 !ring-0 !outline-none focus-visible:!ring-0 focus-visible:!outline-none rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm file:mr-2 sm:file:mr-3 file:py-1.5 sm:file:py-2 file:px-2 sm:file:px-3 file:border-0 file:text-xs file:font-medium file:bg-white file:text-black hover:file:bg-slate-50 file:rounded-md file:cursor-pointer"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-black border-0! ring-0! outline-none! focus-visible:ring-0! focus-visible:outline-none! rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm file:mr-2 sm:file:mr-3 file:py-1.5 sm:file:py-2 file:px-2 sm:file:px-3 file:border-0 file:text-xs file:font-medium file:bg-white file:text-black hover:file:bg-slate-50 file:rounded-md file:cursor-pointer"
                     {...fieldProps}
                     onChange={(event) => {
                       const file = event.target.files?.[0];
