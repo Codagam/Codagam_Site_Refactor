@@ -128,7 +128,7 @@ export function ContactForm({
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="h-12 text-white placeholder:text-slate-400"
+            className="h-12 text-black placeholder:text-slate-500"
             autoComplete="name"
             required
           />
@@ -144,7 +144,7 @@ export function ContactForm({
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className={`h-12 text-white placeholder:text-slate-400 ${
+            className={`h-12 text-black placeholder:text-slate-500 ${
               emailError ? "border-red-500" : ""
             }`}
             autoComplete="email"
@@ -165,7 +165,7 @@ export function ContactForm({
             placeholder="Your Phone (10 digits)"
             value={formData.phone}
             onChange={handleChange}
-            className="h-12 text-white placeholder:text-slate-400"
+            className="h-12 text-black placeholder:text-slate-500"
             maxLength={10}
             pattern="[0-9]{10}"
             autoComplete="tel"
@@ -183,7 +183,7 @@ export function ContactForm({
             rows={4}
             value={formData.message}
             onChange={handleChange}
-            className="resize-none text-white placeholder:text-slate-400"
+            className="resize-none text-black placeholder:text-slate-500"
             required
           />
         </div>

@@ -22,6 +22,8 @@ export async function POST(request: NextRequest) {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      debug: false,
+      logger: false,
     });
 
     // Convert file to buffer

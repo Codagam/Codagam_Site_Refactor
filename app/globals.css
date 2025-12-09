@@ -2178,4 +2178,256 @@ h6 {
     height: auto !important;
     min-height: 380px !important;
   }
+
+  /* Career Application Form Dialog at 150% zoom - make smaller to fit without scrolling */
+  .career-application-dialog,
+  div[role="dialog"] .career-application-dialog {
+    padding: 0.4rem !important; /* Reduced for compact size */
+    max-width: 85vw !important; /* Smaller width */
+    max-height: 95vh !important; /* Ensure fits viewport */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog,
+    div[role="dialog"] .career-application-dialog {
+      padding: 0.5rem !important; /* Reduced */
+      max-width: 20rem !important; /* Smaller width */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .career-application-dialog,
+    div[role="dialog"] .career-application-dialog {
+      padding: 0.6rem !important; /* Reduced */
+      max-width: 22rem !important; /* Smaller width */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .career-application-dialog,
+    div[role="dialog"] .career-application-dialog {
+      padding: 0.7rem !important; /* Reduced */
+      max-width: 24rem !important; /* Smaller width */
+    }
+  }
+
+  /* Career Form Dialog Title and Description at 150% zoom - smaller */
+  .career-application-dialog [class*="DialogHeader"],
+  div[role="dialog"] .career-application-dialog [class*="DialogHeader"] {
+    margin-bottom: 0.25rem !important; /* Reduced spacing */
+  }
+
+  .career-application-dialog [class*="DialogTitle"],
+  div[role="dialog"] .career-application-dialog [class*="DialogTitle"] {
+    font-size: 0.6rem !important; /* Smaller */
+    margin-bottom: 0.2rem !important; /* Reduced */
+    line-height: 1.2 !important; /* Tighter */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog [class*="DialogTitle"],
+    div[role="dialog"] .career-application-dialog [class*="DialogTitle"] {
+      font-size: 0.67rem !important; /* Smaller */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .career-application-dialog [class*="DialogTitle"],
+    div[role="dialog"] .career-application-dialog [class*="DialogTitle"] {
+      font-size: 0.75rem !important; /* Smaller */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .career-application-dialog [class*="DialogTitle"],
+    div[role="dialog"] .career-application-dialog [class*="DialogTitle"] {
+      font-size: 0.83rem !important; /* Smaller */
+    }
+  }
+
+  .career-application-dialog [class*="DialogDescription"],
+  div[role="dialog"] .career-application-dialog [class*="DialogDescription"] {
+    font-size: 0.45rem !important; /* Smaller */
+    margin-bottom: 0.2rem !important; /* Reduced */
+    line-height: 1.3 !important; /* Tighter */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog [class*="DialogDescription"],
+    div[role="dialog"] .career-application-dialog [class*="DialogDescription"] {
+      font-size: 0.5rem !important; /* Smaller */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .career-application-dialog [class*="DialogDescription"],
+    div[role="dialog"] .career-application-dialog [class*="DialogDescription"] {
+      font-size: 0.55rem !important; /* Smaller */
+    }
+  }
+
+  /* Career Form Inputs at 150% zoom - smaller */
+  .career-application-dialog input,
+  div[role="dialog"] .career-application-dialog input {
+    height: 30px !important; /* Reduced from 36px */
+    font-size: 0.5rem !important; /* Smaller text */
+    padding: 0.2rem 0.4rem !important; /* Reduced padding */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog input,
+    div[role="dialog"] .career-application-dialog input {
+      height: 32px !important; /* Reduced */
+      font-size: 0.55rem !important; /* Smaller */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .career-application-dialog input,
+    div[role="dialog"] .career-application-dialog input {
+      height: 34px !important; /* Reduced */
+      font-size: 0.6rem !important; /* Smaller */
+    }
+  }
+
+  /* Career Form Labels at 150% zoom - smaller */
+  .career-application-dialog label,
+  div[role="dialog"] .career-application-dialog label {
+    font-size: 0.5rem !important; /* Smaller */
+    margin-bottom: 0.25rem !important; /* Reduced */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog label,
+    div[role="dialog"] .career-application-dialog label {
+      font-size: 0.55rem !important; /* Smaller */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .career-application-dialog label,
+    div[role="dialog"] .career-application-dialog label {
+      font-size: 0.6rem !important; /* Smaller */
+    }
+  }
+
+  /* Career Form Icons at 150% zoom - smaller */
+  .career-application-dialog label svg,
+  div[role="dialog"] .career-application-dialog label svg {
+    width: 10px !important; /* Smaller icons */
+    height: 10px !important;
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog label svg,
+    div[role="dialog"] .career-application-dialog label svg {
+      width: 12px !important;
+      height: 12px !important;
+    }
+  }
+
+  /* Career Form Button at 150% zoom - smaller */
+  .career-application-dialog button[type="submit"],
+  div[role="dialog"] .career-application-dialog button[type="submit"] {
+    height: 32px !important; /* Reduced */
+    font-size: 0.5rem !important; /* Smaller */
+    padding: 0.2rem 0.4rem !important; /* Reduced */
+    margin-top: 0.25rem !important; /* Reduced spacing */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog button[type="submit"],
+    div[role="dialog"] .career-application-dialog button[type="submit"] {
+      height: 34px !important; /* Reduced */
+      font-size: 0.55rem !important; /* Smaller */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .career-application-dialog button[type="submit"],
+    div[role="dialog"] .career-application-dialog button[type="submit"] {
+      height: 36px !important; /* Reduced */
+      font-size: 0.6rem !important; /* Smaller */
+    }
+  }
+
+  /* Career Form spacing at 150% zoom - much tighter */
+  .career-application-dialog form,
+  div[role="dialog"] .career-application-dialog form {
+    gap: 0.33rem !important; /* Much tighter spacing */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog form,
+    div[role="dialog"] .career-application-dialog form {
+      gap: 0.4rem !important; /* Tighter */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .career-application-dialog form,
+    div[role="dialog"] .career-application-dialog form {
+      gap: 0.5rem !important; /* Tighter */
+    }
+  }
+
+  /* Career FormItem spacing - tighter */
+  .career-application-dialog [class*="FormItem"],
+  div[role="dialog"] .career-application-dialog [class*="FormItem"] {
+    margin-bottom: 0.25rem !important; /* Reduced */
+  }
+
+  /* Career Form Description text - smaller */
+  .career-application-dialog [class*="FormDescription"],
+  div[role="dialog"] .career-application-dialog [class*="FormDescription"] {
+    font-size: 0.4rem !important; /* Smaller */
+    margin-top: 0.15rem !important; /* Reduced */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog [class*="FormDescription"],
+    div[role="dialog"] .career-application-dialog [class*="FormDescription"] {
+      font-size: 0.45rem !important; /* Smaller */
+    }
+  }
+
+  /* Career Form Message - smaller */
+  .career-application-dialog [class*="FormMessage"],
+  div[role="dialog"] .career-application-dialog [class*="FormMessage"] {
+    font-size: 0.4rem !important; /* Smaller */
+    margin-top: 0.15rem !important; /* Reduced */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog [class*="FormMessage"],
+    div[role="dialog"] .career-application-dialog [class*="FormMessage"] {
+      font-size: 0.45rem !important; /* Smaller */
+    }
+  }
+
+  /* Career Form success/error message - smaller */
+  .career-application-dialog [class*="bg-red-50"],
+  .career-application-dialog [class*="bg-green-50"],
+  div[role="dialog"] .career-application-dialog [class*="bg-red-50"],
+  div[role="dialog"] .career-application-dialog [class*="bg-green-50"] {
+    padding: 0.33rem !important; /* Reduced */
+    font-size: 0.4rem !important; /* Smaller */
+    margin-top: 0.25rem !important; /* Reduced */
+  }
+
+  @media (min-width: 640px) {
+    .career-application-dialog [class*="bg-red-50"],
+    .career-application-dialog [class*="bg-green-50"],
+    div[role="dialog"] .career-application-dialog [class*="bg-red-50"],
+    div[role="dialog"] .career-application-dialog [class*="bg-green-50"] {
+      padding: 0.4rem !important;
+      font-size: 0.45rem !important;
+    }
+  }
+
+  /* Career Form wrapper spacing - reduce */
+  .career-application-dialog > div[class*="mt-"],
+  div[role="dialog"] .career-application-dialog > div[class*="mt-"] {
+    margin-top: 0.33rem !important; /* Reduced from mt-3/4/5 */
+  }
 }

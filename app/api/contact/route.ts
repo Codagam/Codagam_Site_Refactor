@@ -18,8 +18,8 @@ export async function POST(request: Request) {
     tls: {
       rejectUnauthorized: false,
     },
-    debug: true,
-    logger: true,
+    debug: false,
+    logger: false,
   });
 
   try {

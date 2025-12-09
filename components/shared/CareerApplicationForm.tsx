@@ -1,9 +1,20 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Dialog,
   DialogContent,
@@ -13,11 +24,29 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { User, Mail, FileText } from "lucide-react";
-import {
-  CareerFormData,
-  FormSubmitEvent,
-  FormChangeEvent,
-} from "@/models/interfaces";
+import { CareerFormData, FormSubmitEvent } from "@/models/interfaces";
+
+const formSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  resume: z
+    .any()
+    .refine((file) => file instanceof File, "Resume is required")
+    .refine(
+      (file) => !file || file.size <= 10 * 1024 * 1024,
+      "File size must be less than 10MB"
+    )
+    .refine(
+      (file) =>
+        !file ||
+        [
+          "application/pdf",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ].includes(file.type),
+      "Only PDF, DOC, or DOCX files are allowed"
+    ),
+});
 
 interface CareerApplicationFormProps {
   className?: string;
@@ -43,46 +72,28 @@ export function CareerApplicationForm({
   triggerVariant = "black",
   triggerSize = "default",
 }: CareerApplicationFormProps) {
-  const [formData, setFormData] = useState<CareerFormData>({
-    name: "",
-    email: "",
-    resume: null,
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
-  const [emailError, setEmailError] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const handleChange: FormChangeEvent = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const { name, value, files } = e.target;
-    if (name === "resume" && files) {
-      setFormData((prev: CareerFormData) => ({ ...prev, [name]: files[0] }));
-    } else {
-      setFormData((prev: CareerFormData) => ({ ...prev, [name]: value }));
-      if (name === "email") setEmailError("");
-    }
-  };
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      resume: undefined,
+    },
+  });
 
-  const handleSubmit: FormSubmitEvent = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     setSubmitMessage("");
-    setEmailError("");
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setEmailError("Please enter a valid email address");
-      setIsSubmitting(false);
-      return;
-    }
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("name", formData.name);
-      formDataToSend.append("email", formData.email);
-      if (formData.resume) formDataToSend.append("resume", formData.resume);
+      formDataToSend.append("name", data.name);
+      formDataToSend.append("email", data.email);
+      if (data.resume) formDataToSend.append("resume", data.resume);
 
       const response = await fetch("/api/careers", {
         method: "POST",
@@ -93,7 +104,7 @@ export function CareerApplicationForm({
         setSubmitMessage(
           "Thank you for your application! We'll review your resume and get back to you soon."
         );
-        setFormData({ name: "", email: "", resume: null });
+        form.reset();
         if (asDialog) {
           setTimeout(() => setIsDialogOpen(false), 2000);
         }
@@ -116,101 +127,103 @@ export function CareerApplicationForm({
   // Form content component
   const formContent = (
     <div className={`${className} w-full max-w-full`}>
-      <div className="bg-linear-to-br from-background to-muted border border-border rounded-2xl p-4 sm:p-6 shadow-lg w-full max-w-full">
+      <Form {...form}>
         <form
-          onSubmit={handleSubmit}
-          className="space-y-3 sm:space-y-4 w-full max-w-full">
-          <div className="space-y-2 sm:space-y-3">
-            <Label
-              htmlFor="name"
-              className="text-xs sm:text-sm font-semibold text-foreground flex items-center space-x-2">
-              <User className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" />
-              <span>Full Name</span>
-            </Label>
-            <Input
-              id="name"
-              name="name"
-              type="text"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-              className="h-10 sm:h-12 text-xs sm:text-sm border-border focus:border-ring focus:ring-ring transition-all duration-300 hover:border-ring/50 rounded-xl bg-background shadow-sm"
-              required
-            />
-          </div>
-
-          <div className="space-y-2 sm:space-y-3">
-            <Label
-              htmlFor="email"
-              className="text-xs sm:text-sm font-semibold text-foreground flex items-center space-x-2">
-              <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" />
-              <span>Email Address</span>
-            </Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email address"
-              className={`h-10 sm:h-12 text-xs sm:text-sm border-border focus:border-ring focus:ring-ring transition-all duration-300 hover:border-ring/50 rounded-xl bg-background shadow-sm ${
-                emailError ? "border-red-500" : ""
-              }`}
-              required
-            />
-            {emailError && (
-              <p className="text-destructive text-xs">{emailError}</p>
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-3 sm:space-y-3.5 md:space-y-4 w-full max-w-full">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem className="space-y-1.5">
+                <FormLabel className="text-xs sm:text-sm font-semibold text-black flex items-center gap-1.5">
+                  <User className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-600" />
+                  <span>Full Name</span>
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter your full name"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-black !border-0 !ring-0 !outline-none focus-visible:!ring-0 focus-visible:!outline-none rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-red-600 mt-0.5" />
+              </FormItem>
             )}
-          </div>
+          />
 
-          <div className="space-y-2 sm:space-y-3">
-            <Label
-              htmlFor="resume"
-              className="text-xs sm:text-sm font-semibold text-foreground flex items-center space-x-2">
-              <FileText className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" />
-              <span>Resume</span>
-            </Label>
-            <Input
-              id="resume"
-              name="resume"
-              type="file"
-              onChange={handleChange}
-              accept=".pdf,.doc,.docx"
-              className="h-10 sm:h-12 text-xs sm:text-sm border-border focus:border-ring focus:ring-ring transition-all duration-300 hover:border-ring/50 rounded-xl bg-background shadow-sm file:mr-2 sm:file:mr-4 file:py-1 sm:file:py-2 file:px-2 sm:file:px-4 file:border-0 file:text-xs sm:file:text-sm file:font-semibold file:bg-accent file:text-foreground hover:file:bg-accent/80"
-              required
-            />
-            <p className="text-xs sm:text-sm text-muted-foreground">
-              PDF, DOC, or DOCX files up to 10MB
-            </p>
-          </div>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="space-y-1.5">
+                <FormLabel className="text-xs sm:text-sm font-semibold text-black flex items-center gap-1.5">
+                  <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-600" />
+                  <span>Email Address</span>
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    placeholder="Enter your email address"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-black !border-0 !ring-0 !outline-none focus-visible:!ring-0 focus-visible:!outline-none rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-red-600 mt-0.5" />
+              </FormItem>
+            )}
+          />
 
-          <Button
-            className="w-full h-10 sm:h-12 text-sm sm:text-base font-semibold rounded-xl transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-xl group relative overflow-hidden"
-            type="submit"
-            variant="black"
-            size="lg"
-            disabled={isSubmitting}
-            aria-label={
-              isSubmitting ? "Submitting application" : "Submit application"
-            }>
-            <div className="hover-bg-career bg-green-600"></div>
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+          <FormField
+            control={form.control}
+            name="resume"
+            render={({ field: { value, onChange, ...fieldProps } }) => (
+              <FormItem className="space-y-1.5">
+                <FormLabel className="text-xs sm:text-sm font-semibold text-black flex items-center gap-1.5">
+                  <FileText className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-600" />
+                  <span>Resume</span>
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-black !border-0 !ring-0 !outline-none focus-visible:!ring-0 focus-visible:!outline-none rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm file:mr-2 sm:file:mr-3 file:py-1.5 sm:file:py-2 file:px-2 sm:file:px-3 file:border-0 file:text-xs file:font-medium file:bg-white file:text-black hover:file:bg-slate-50 file:rounded-md file:cursor-pointer"
+                    {...fieldProps}
+                    onChange={(event) => {
+                      const file = event.target.files?.[0];
+                      onChange(file);
+                    }}
+                  />
+                </FormControl>
+                <FormDescription className="text-xs text-slate-500 mt-0.5">
+                  PDF, DOC, or DOCX files up to 10MB
+                </FormDescription>
+                <FormMessage className="text-xs text-red-600 mt-0.5" />
+              </FormItem>
+            )}
+          />
+
+          <div className="pt-1">
+            <Button
+              className="w-full h-9 sm:h-10 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-300 hover:scale-[1.01] shadow-md hover:shadow-lg bg-blue-900 hover:bg-blue-800 text-white"
+              type="submit"
+              disabled={isSubmitting}>
               {isSubmitting ? "Submitting..." : "Submit Application"}
-            </span>
-          </Button>
+            </Button>
+          </div>
 
           {submitMessage && (
             <div
-              className={`p-3 sm:p-4 rounded-xl text-sm sm:text-base ${
+              className={`p-3 rounded-lg text-xs sm:text-sm mt-3 ${
                 submitMessage.includes("error")
-                  ? "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800"
-                  : "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800"
+                  ? "bg-red-50 text-red-700 border border-red-200"
+                  : "bg-green-50 text-green-700 border border-green-200"
               }`}>
               {submitMessage}
             </div>
           )}
         </form>
-      </div>
+      </Form>
     </div>
   );
 
@@ -223,17 +236,19 @@ export function CareerApplicationForm({
             {triggerText}
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg p-4 sm:p-6 w-full">
-          <DialogHeader>
-            <DialogTitle className="text-lg sm:text-xl text-foreground wrap-break-word">
+        <DialogContent className="career-application-dialog max-w-[90vw] sm:max-w-sm md:max-w-md lg:max-w-lg p-3 sm:p-4 md:p-4 lg:p-5 rounded-xl sm:rounded-2xl max-h-[95vh] overflow-y-auto w-full">
+          <DialogHeader className="space-y-1.5 sm:space-y-2">
+            <DialogTitle className="text-sm sm:text-base md:text-lg lg:text-xl font-bold leading-tight text-black wrap-break-word px-1 sm:px-0">
               Apply for a Position
             </DialogTitle>
-            <DialogDescription className="text-sm sm:text-base wrap-break-word">
+            <DialogDescription className="text-xs sm:text-xs md:text-sm text-slate-600 wrap-break-word px-1 sm:px-0">
               Fill out the form below to submit your application. We&apos;ll
               review your resume and get back to you soon.
             </DialogDescription>
           </DialogHeader>
-          <div className="mt-4 sm:mt-6 w-full max-w-full">{formContent}</div>
+          <div className="mt-2 sm:mt-3 md:mt-3 w-full max-w-full">
+            {formContent}
+          </div>
         </DialogContent>
       </Dialog>
     );
