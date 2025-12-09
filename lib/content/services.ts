@@ -8,7 +8,7 @@ export const servicesGalleryItems: GalleryItem[] = [
       "EMR/ABDM integration, patient management systems, and healthcare automation for clinics and hospitals. We build compliant healthcare solutions that improve patient care and streamline operations.",
     image: "/images/Codagam_Img (1).jpg",
     alt: "Healthcare Technology Solutions",
-    hoverColor: "247 120 114", // Coral/Red
+    hoverColor: "239 68 68", // Magma Red - Rolls-Royce premium deep red
   },
   {
     id: "hyperlocal-solutions",
@@ -17,7 +17,7 @@ export const servicesGalleryItems: GalleryItem[] = [
       "Classifieds, job marketplaces, and community platforms for Tier-2 Indian towns and cities. We create platforms that connect local communities and drive local economic growth.",
     image: "/images/gobi_today_splash.png",
     alt: "Hyperlocal Platform Solutions",
-    hoverColor: "30 58 138", // Blue-900 (primary theme)
+    hoverColor: "59 130 246", // Salamanca Blue - Rolls-Royce premium vibrant blue
   },
   {
     id: "ai-automation",
@@ -26,7 +26,7 @@ export const servicesGalleryItems: GalleryItem[] = [
       "Voice transcription, RAG pipelines, LLM integration, and workflow automation with n8n/Make. We leverage AI to automate processes and enhance user experiences.",
     image: "/images/AI & Machine Learning.png",
     alt: "AI and Automation Services",
-    hoverColor: "65 135 255", // Bright Blue
+    hoverColor: "168 85 247", // Belladonna Purple - Rolls-Royce premium striking purple
   },
   {
     id: "fullstack-dev",
@@ -35,7 +35,7 @@ export const servicesGalleryItems: GalleryItem[] = [
       "Next.js, React Native, Node.js, MongoDB—modern tech stacks for web and mobile apps. We build scalable, performant applications using cutting-edge technologies.",
     image: "/images/Web Development & Design.png",
     alt: "Full-Stack Development Services",
-    hoverColor: "159 196 30", // Green
+    hoverColor: "132 204 22", // Chartreuse - Rolls-Royce premium vivid green-yellow
   },
   {
     id: "api-integration",
@@ -44,7 +44,7 @@ export const servicesGalleryItems: GalleryItem[] = [
       "Third-party integrations, payment gateways, and microservices architecture design. We connect your systems seamlessly and securely with robust API solutions.",
     image: "/images/Cloud & DevOps Solutions.png",
     alt: "API Integration Services",
-    hoverColor: "118 70 254", // Purple
+    hoverColor: "236 72 153", // Morganite - Rolls-Royce premium rose pink
   },
   {
     id: "consulting",
@@ -53,6 +53,6 @@ export const servicesGalleryItems: GalleryItem[] = [
       "Product roadmapping, GTM strategy, and technical architecture for startups and SMEs. We help you make informed decisions and build products that succeed.",
     image: "/images/Custom Software Development.png",
     alt: "Consulting and Strategy Services",
-    hoverColor: "253 203 24", // Yellow/Gold
+    hoverColor: "20 184 166", // Imperial Jade - Rolls-Royce premium rich emerald
   },
 ];
