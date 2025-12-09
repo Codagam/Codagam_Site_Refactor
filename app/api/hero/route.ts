@@ -45,7 +45,6 @@ export async function GET() {
         id: hero.id,
         title: hero.title,
         imageUrl: constructImageUrl(hero.imageUrl),
-        buttonText: hero.buttonText || "Learn More",
         position: (hero as any).position ?? 0,
       }));
 
@@ -111,7 +110,7 @@ export async function PUT(request: NextRequest) {
     }
 
     // Handle single hero section update
-    let { title, imageUrl, buttonText, position } = body;
+    let { title, imageUrl, position } = body;
 
     if (!title || !imageUrl) {
       return NextResponse.json(
@@ -139,14 +138,12 @@ export async function PUT(request: NextRequest) {
       update: {
         title,
         imageUrl,
-        buttonText: buttonText || "Learn More",
         position: position !== undefined ? position : undefined,
       },
       create: {
         id: heroId,
         title,
         imageUrl,
-        buttonText: buttonText || "Learn More",
         position: position || 0,
       },
     });

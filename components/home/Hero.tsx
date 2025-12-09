@@ -9,7 +9,6 @@ interface HeroData {
   id: string;
   title: string;
   imageUrl: string;
-  buttonText: string;
 }
 
 const HERO_SWITCH_INTERVAL = 5000; // 5 seconds
@@ -77,7 +76,6 @@ export default function Hero() {
     currentHero?.title ||
     "We build modern, AI-powered software solutions for healthcare, hyperlocal markets, and enterprise clients across India and globally.";
   const imageUrl = currentHero?.imageUrl || "/images/web-design-studio.jpg";
-  const buttonText = currentHero?.buttonText || "Learn More";
 
   if (loading && heroList.length === 0) {
     return (
@@ -111,7 +109,7 @@ export default function Hero() {
                   <Button
                     onClick={() => scrollToSection("services")}
                     className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 md:px-5 lg:px-7 xl:px-8 2xl:px-10 py-2 sm:py-2.5 md:py-2.5 lg:py-4 xl:py-4 2xl:py-5 text-xs sm:text-sm md:text-sm lg:text-lg xl:text-xl font-medium">
-                    {buttonText}
+                    Learn More
                   </Button>
                 </div>
               </div>

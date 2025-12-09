@@ -14,7 +14,6 @@ model HeroSection {
   id         String   @id @default("hero") @map("_id")
   title      String
   imageUrl   String
-  buttonText String   @default("Learn More")
   position   Int      @default(0)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
