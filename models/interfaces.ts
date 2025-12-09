@@ -58,6 +58,7 @@ export type FormChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 // Client Logo interfaces
 export interface ClientLogoWithSize {
+  id?: string;
   name: string;
   logo: string;
   alt: string;

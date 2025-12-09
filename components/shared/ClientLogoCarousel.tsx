@@ -34,9 +34,26 @@ export default function ClientLogoCarousel({
         const data = await response.json();
         
         if (response.ok) {
+          // Deduplicate logos by id or name to prevent duplicates
+          const seenIds = new Set<string>();
+          const seenNames = new Set<string>();
+          
           const mappedLogos: ClientLogoWithSize[] = data
-            .filter((logo: any) => logo?.name && logo?.logoUrl)
+            .filter((logo: any) => {
+              // Filter out invalid logos
+              if (!logo?.name || !logo?.logoUrl) return false;
+              
+              // Deduplicate by id if available, otherwise by name
+              const uniqueKey = logo.id || logo.name;
+              if (logo.id && seenIds.has(logo.id)) return false;
+              if (!logo.id && seenNames.has(logo.name)) return false;
+              
+              if (logo.id) seenIds.add(logo.id);
+              seenNames.add(logo.name);
+              return true;
+            })
             .map((logo: any) => ({
+              id: logo.id,
               name: logo.name,
               logo: logo.logoUrl,
               alt: logo.alt,
@@ -64,15 +81,20 @@ export default function ClientLogoCarousel({
   // Calculate speed from duration string (e.g., "60s" -> 60)
   const speed = parseInt(duration.replace("s", "")) || 60;
 
+  // Only duplicate for seamless scrolling if we have enough logos (4+)
+  // For few logos (3 or less), don't duplicate to avoid showing duplicates
+  const shouldDuplicate = logos.length >= 4;
+
   return (
     <div className="relative w-full overflow-x-hidden min-h-[50px] sm:min-h-[60px] md:min-h-[70px] lg:min-h-[100px] max-w-full">
       <Marquee
         pauseOnHover={pauseOnHover}
         speed={speed}
+        duplicate={shouldDuplicate}
         className="smooth-marquee w-full max-w-full">
-        {logos.map((client) => (
+        {logos.map((client, index) => (
           <div
-            key={client.name}
+            key={client.id ? `${client.id}-${index}` : `${client.name}-${index}`}
             className="shrink-0 mx-2 sm:mx-3 md:mx-4 lg:mx-8 xl:mx-10">
             <div className="relative w-16 h-8 sm:w-20 sm:h-10 md:w-24 md:h-12 lg:w-32 lg:h-16 xl:w-36 xl:h-18 flex items-center justify-center group transition-all duration-300 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 brightness-0 hover:brightness-100">
               <Image
