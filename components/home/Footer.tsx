@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ContactForm } from "@/components/shared/ContactForm";
 import {
   Home,
@@ -83,13 +82,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="text-center sm:text-left w-full max-w-full">
             <div className="mb-4 flex justify-center sm:justify-start">
-              <Image
-                src="/images/og-image.jpg"
-                alt="Codagam Logo"
-                width={120}
-                height={60}
-                className="w-auto h-auto max-w-[120px]"
-              />
+              <h2 className="text-white font-bold text-xl sm:text-2xl">codagam</h2>
             </div>
             <div className="space-y-3 text-sm sm:text-base">
               <h4 className="font-semibold text-base sm:text-lg mb-3">
@@ -103,6 +96,15 @@ export default function Footer() {
                     <p>Nagarpalaya Rd,</p>
                     <p>Gobichettipalayam,</p>
                     <p>Tamil Nadu, India, 638452</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2 justify-center sm:justify-start">
+                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                  <div className="text-center sm:text-left">
+                    <p>45j Rukmani Illam,</p>
+                    <p>Ramnagar 3rd Cross St,</p>
+                    <p>Gobichettipalayam-638452,</p>
+                    <p>Tamil Nadu, India</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 justify-center sm:justify-start">
