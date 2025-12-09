@@ -47,7 +47,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full">
       <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
         <div className="flex justify-between items-center h-[56px] min-[375px]:h-[60px] sm:h-[70px] w-full">
-          <div className="text-lg min-[375px]:text-xl sm:text-2xl font-semibold text-blue-900 tracking-tight">
+          <div className="text-lg min-[375px]:text-xl sm:text-2xl font-bold text-blue-900 tracking-tight">
             Codagam
           </div>
 
@@ -93,7 +93,7 @@ export default function Header() {
                 size="icon"
                 className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-blue-900 hover:bg-slate-100"
                 aria-label="Toggle menu">
-                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
               </Button>
             </SheetTrigger>
             <SheetContent
@@ -101,7 +101,7 @@ export default function Header() {
               className="w-[280px] sm:w-[350px] md:w-[400px] bg-white">
               <SheetHeader>
                 <SheetTitle className="flex items-center space-x-3 text-left">
-                  <span className="text-lg min-[375px]:text-xl sm:text-2xl font-semibold text-blue-900 tracking-tight">
+                  <span className="text-lg min-[375px]:text-xl sm:text-2xl font-bold text-blue-900 tracking-tight">
                     Codagam
                   </span>
                 </SheetTitle>
