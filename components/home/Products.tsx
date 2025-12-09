@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -19,17 +18,68 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { ExternalLink } from "lucide-react";
-import {
-  productItemsContent,
-  productBackgroundImages,
-} from "@/lib/content/products";
 import type { ProductItem, ButtonWithUrlHandler } from "@/models/interfaces";
+
+interface ProductWithBackground extends ProductItem {
+  backgroundImage?: string;
+}
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(
     null
   );
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [products, setProducts] = useState<ProductWithBackground[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/products", { cache: "no-store" });
+        const data = await response.json();
+        
+        if (response.ok) {
+          const mappedProducts: ProductWithBackground[] = data
+            .filter(
+              (product: any) =>
+                product?.id && product?.headline && product?.imageUrl
+            )
+            .map((product: any) => {
+              let features: string[] = [];
+              try {
+                features =
+                  typeof product.features === "string"
+                    ? JSON.parse(product.features)
+                    : product.features || [];
+              } catch {
+                features = [];
+              }
+              return {
+                id: product.id,
+                label: product.label,
+                headline: product.headline,
+                description: product.description,
+                details: product.details,
+                features,
+                image: product.imageUrl,
+                alt: product.alt,
+                website: product.website,
+                backgroundImage: product.backgroundImageUrl,
+              };
+            });
+          setProducts(mappedProducts);
+        } else {
+          console.error("API error:", data.error);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleCardClick = useCallback((product: ProductItem) => {
     setSelectedProduct(product);
@@ -55,7 +105,6 @@ export default function Products() {
     stopOnMouseEnter: true,
   });
 
-
   return (
     <>
       <section
@@ -66,18 +115,27 @@ export default function Products() {
             Our Products
           </h2>
         </div>
-        <div className="relative w-full max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            plugins={[autoplayPlugin]}
-            className="w-full">
-            <CarouselContent className="ml-0 w-full -mr-3 min-[375px]:-mr-4 sm:-mr-5 md:-mr-6 lg:-mr-8">
-              {productItemsContent.map((product) => {
+        {loading ? (
+          <div className="text-center py-8">
+            <p className="text-gray-600">Loading products...</p>
+          </div>
+        ) : products.length === 0 ? (
+          <div className="text-center py-8">
+            <p className="text-gray-600">No products available.</p>
+          </div>
+        ) : (
+          <div className="relative w-full max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[autoplayPlugin]}
+              className="w-full">
+              <CarouselContent className="ml-0 w-full -mr-3 min-[375px]:-mr-4 sm:-mr-5 md:-mr-6 lg:-mr-8">
+              {products.map((product) => {
                 const backgroundImage =
-                  productBackgroundImages[product.id] || "/images/office1.jpg";
+                  product.backgroundImage || "/images/office1.jpg";
                 return (
                   <CarouselItem
                     key={product.id}
@@ -97,7 +155,7 @@ export default function Products() {
                           priority={false}
                         />
                         {/* Gradient overlay for better logo visibility */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
+                        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
                         {/* Logo Overlay */}
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="relative w-12 h-12 min-[375px]:w-14 min-[375px]:h-14 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-20 xl:h-20 2xl:w-24 2xl:h-24 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
@@ -125,10 +183,11 @@ export default function Products() {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex absolute left-2 sm:-left-4 md:-left-12 lg:-left-12 xl:-left-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white" />
-            <CarouselNext className="hidden sm:flex absolute right-2 sm:-right-4 md:-right-12 lg:-right-12 xl:-right-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white" />
-          </Carousel>
-        </div>
+              <CarouselPrevious className="hidden sm:flex absolute left-2 sm:-left-4 md:-left-12 lg:-left-12 xl:-left-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white" />
+              <CarouselNext className="hidden sm:flex absolute right-2 sm:-right-4 md:-right-12 lg:-right-12 xl:-right-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white" />
+            </Carousel>
+          </div>
+        )}
       </section>
 
       {/* Product Details Dialog */}

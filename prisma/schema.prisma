@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+
+
+model HeroSection {
+  id         String   @id @default("hero") @map("_id")
+  title      String
+  imageUrl   String
+  buttonText String   @default("Learn More")
+  position   Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([position])
+  @@map("hero_section")
+}
+
+model Product {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  label              String
+  headline           String
+  description        String
+  details            String   @default("")
+  features           String   @default("[]") // JSON array stored as string
+  imageUrl           String
+  alt                String
+  website            String
+  backgroundImageUrl String?
+  position           Int      @default(0)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([position])
+  @@map("products")
+}
+
+model ClientLogo {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  logoUrl   String
+  alt       String
+  width     Int      @default(160)
+  height    Int      @default(100)
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([position])
+  @@map("client_logos")
+}
+
+model TechStackItem {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  iconUrl   String
+  name      String
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([position])
+  @@map("tech_stack_items")
+}
