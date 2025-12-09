@@ -46,42 +46,42 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full">
       <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
-        <div className="flex justify-between items-center h-[56px] min-[375px]:h-[60px] sm:h-[70px] lg:h-[80px] xl:h-[90px] w-full">
-          <div className="text-lg min-[375px]:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-900 tracking-tight">
+        <div className="flex justify-between items-center h-[48px] min-[375px]:h-[52px] sm:h-[56px] lg:h-[64px] xl:h-[68px] w-full">
+          <div className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl xl:text-2xl font-bold text-blue-900 tracking-tight">
             Codagam
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-4 md:gap-6 xl:gap-8 items-center">
+          <nav className="hidden lg:flex gap-3 md:gap-4 xl:gap-5 items-center">
             <a
               href="#services"
               onClick={(e) => handleLinkClick(e, "services")}
-              className="text-xs min-[375px]:text-sm lg:text-base xl:text-lg font-medium text-slate-700 hover:text-blue-900 transition-colors">
+              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
               Services
             </a>
             <a
               href="#products"
               onClick={(e) => handleLinkClick(e, "products")}
-              className="text-xs min-[375px]:text-sm lg:text-base xl:text-lg font-medium text-slate-700 hover:text-blue-900 transition-colors">
+              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
               Products
             </a>
             <a
               href="#stack"
               onClick={(e) => handleLinkClick(e, "stack")}
-              className="text-xs min-[375px]:text-sm lg:text-base xl:text-lg font-medium text-slate-700 hover:text-blue-900 transition-colors">
+              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
               Tech Stack
             </a>
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, "contact")}
-              className="text-xs min-[375px]:text-sm lg:text-base xl:text-lg font-medium text-slate-700 hover:text-blue-900 transition-colors">
+              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
               Contact
             </a>
           </nav>
 
           <Button
             onClick={() => scrollToSection("contact")}
-            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs min-[375px]:text-sm lg:text-base xl:text-lg px-3 md:px-4 lg:px-5 xl:px-6">
+            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs min-[375px]:text-xs lg:text-sm xl:text-sm px-2 md:px-3 lg:px-4 xl:px-5 py-1.5">
             Get Started
           </Button>
 

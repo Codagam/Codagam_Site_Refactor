@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       <Header />
-      <main className="mt-[60px] sm:mt-[70px] w-full max-w-full">
+      <main className="mt-[48px] min-[375px]:mt-[52px] sm:mt-[56px] lg:mt-[64px] xl:mt-[68px] w-full max-w-full">
         <Hero />
         <Services />
         <Products />
