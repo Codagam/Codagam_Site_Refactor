@@ -7,8 +7,8 @@ import { clientLogos } from "@/lib/content/clients";
 
 export default function Hero() {
   return (
-    <>
-      <section className="hero-main-section pt-4 sm:pt-5 md:pt-6 lg:pt-8 xl:pt-12 2xl:pt-16 pb-4 sm:pb-5 md:pb-6 lg:pb-8 xl:pb-12 2xl:pb-20 bg-white">
+    <div className="flex flex-col lg:min-h-[calc(100vh-80px)] bg-white">
+      <section className="hero-main-section pt-4 sm:pt-5 md:pt-6 lg:pt-16 xl:pt-20 2xl:pt-24 pb-4 sm:pb-5 md:pb-6 lg:pb-8 xl:pb-12 2xl:pb-20 bg-white grow">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8 w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-12 items-center">
             {/* Content Section */}
@@ -18,16 +18,15 @@ export default function Hero() {
                 hyperlocal markets, and enterprise clients across India and
                 globally.
               </p>
-              <div className="flex justify-center md:justify-start mb-3 sm:mb-4 md:mb-5 lg:mb-6 md:mb-0">
-                <Button
-                  className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 md:px-5 lg:px-7 xl:px-8 2xl:px-10 py-2 sm:py-2.5 md:py-2.5 lg:py-4 xl:py-4 2xl:py-5 text-xs sm:text-sm md:text-sm lg:text-lg xl:text-xl font-medium">
+              <div className="flex justify-center md:justify-start mb-3 sm:mb-4 md:mb-0 lg:mb-6">
+                <Button className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 md:px-5 lg:px-7 xl:px-8 2xl:px-10 py-2 sm:py-2.5 md:py-2.5 lg:py-4 xl:py-4 2xl:py-5 text-xs sm:text-sm md:text-sm lg:text-lg xl:text-xl font-medium">
                   Learn More
                 </Button>
               </div>
             </div>
 
             {/* Image Section */}
-            <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden order-2 w-full aspect-[4/3] sm:aspect-[4/3] md:aspect-[4/3] lg:aspect-[4/3] xl:aspect-[4/3] 2xl:aspect-[4/3] min-h-[180px] sm:min-h-[200px] md:min-h-[240px] lg:min-h-[400px] xl:min-h-[480px] 2xl:min-h-[560px] bg-slate-50">
+            <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden order-2 w-full aspect-4/3 min-h-[180px] sm:min-h-[200px] md:min-h-[240px] lg:min-h-[400px] xl:min-h-[480px] 2xl:min-h-[560px] bg-slate-50">
               <Image
                 src="/images/web-design-studio.jpg"
                 alt="Codagam - Software Development"
@@ -42,7 +41,7 @@ export default function Hero() {
       </section>
 
       {/* Client Logo Carousel - Full Width */}
-      <div className="hero-carousel-section w-full  pt-8 sm:pt-10 md:pt-12">
+      <div className="hero-carousel-section w-full pt-8 sm:pt-10 md:pt-12 lg:pt-0 lg:mt-auto">
         <ClientLogoCarousel
           logos={clientLogos}
           pauseOnHover={true}
@@ -50,6 +49,6 @@ export default function Hero() {
           repeat={2}
         />
       </div>
-    </>
+    </div>
   );
 }
