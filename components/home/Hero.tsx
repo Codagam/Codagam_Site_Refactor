@@ -13,21 +13,21 @@ export default function Hero() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-12 items-center">
             {/* Content Section */}
             <div className="text-center md:text-left order-1">
-              <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-black leading-tight max-w-xl lg:max-w-none mx-auto md:mx-0 px-2 sm:px-3 md:px-0 wrap-break-word mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-8 2xl:mb-10">
+              <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-black leading-tight max-w-xl lg:max-w-none mx-auto md:mx-0 px-2 sm:px-3 md:px-0 wrap-break-word mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-8 2xl:mb-10">
                 We build modern, AI-powered software solutions for healthcare,
                 hyperlocal markets, and enterprise clients across India and
                 globally.
               </p>
               <div className="flex justify-center md:justify-start mb-3 sm:mb-4 md:mb-5 lg:mb-6 md:mb-0">
                 <Button
-                  className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 2xl:px-8 py-2 sm:py-2.5 md:py-2.5 lg:py-3 xl:py-3 2xl:py-3.5 text-xs sm:text-sm md:text-sm lg:text-base font-medium">
+                  className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 md:px-5 lg:px-7 xl:px-8 2xl:px-10 py-2 sm:py-2.5 md:py-2.5 lg:py-4 xl:py-4 2xl:py-5 text-xs sm:text-sm md:text-sm lg:text-lg xl:text-xl font-medium">
                   Learn More
                 </Button>
               </div>
             </div>
 
             {/* Image Section */}
-            <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden order-2 w-full aspect-[4/3] sm:aspect-[4/3] md:aspect-[4/3] lg:aspect-[4/3] xl:aspect-[4/3] 2xl:aspect-[4/3] min-h-[180px] sm:min-h-[200px] md:min-h-[240px] lg:min-h-[300px] xl:min-h-[360px] 2xl:min-h-[400px] bg-slate-50">
+            <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden order-2 w-full aspect-[4/3] sm:aspect-[4/3] md:aspect-[4/3] lg:aspect-[4/3] xl:aspect-[4/3] 2xl:aspect-[4/3] min-h-[180px] sm:min-h-[200px] md:min-h-[240px] lg:min-h-[400px] xl:min-h-[480px] 2xl:min-h-[560px] bg-slate-50">
               <Image
                 src="/images/web-design-studio.jpg"
                 alt="Codagam - Software Development"
