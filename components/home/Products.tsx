@@ -83,7 +83,7 @@ export default function Products() {
                     key={product.id}
                     className="pl-0 pr-3 min-[375px]:pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-8 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/4 w-full max-w-full">
                     <div
-                      className="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer h-full flex flex-col w-full max-w-full"
+                      className="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer h-full flex flex-col w-full max-w-full"
                       onClick={() => handleCardClick(product)}>
                       {/* Background Image Section with Logo Overlay */}
                       <div className="relative h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px] xl:h-[220px] 2xl:h-[240px] overflow-hidden">
@@ -92,15 +92,15 @@ export default function Products() {
                           src={backgroundImage}
                           alt={`${product.headline} background`}
                           fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          className="object-cover transition-all duration-300"
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1536px) 25vw, 25vw"
                           priority={false}
                         />
                         {/* Gradient overlay for better logo visibility */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
                         {/* Logo Overlay */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="relative w-12 h-12 min-[375px]:w-14 min-[375px]:h-14 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-20 xl:h-20 2xl:w-24 2xl:h-24 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
+                          <div className="relative w-12 h-12 min-[375px]:w-14 min-[375px]:h-14 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-20 xl:h-20 2xl:w-24 2xl:h-24 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
                             <Image
                               src={product.image}
                               alt={product.alt}
@@ -112,11 +112,11 @@ export default function Products() {
                         </div>
                       </div>
                       {/* Text Card Below */}
-                      <div className="bg-white p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 flex-1 flex flex-col">
-                        <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-1.5">
+                      <div className="bg-white p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 flex-1 flex flex-col transition-colors duration-300 group-hover:bg-slate-50">
+                        <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-1.5 transition-colors duration-300 group-hover:text-blue-900">
                           {product.headline}
                         </h3>
-                        <p className="text-slate-600 text-xs min-[375px]:text-sm sm:text-sm md:text-base lg:text-base leading-normal m-0 flex-1">
+                        <p className="text-slate-600 text-xs min-[375px]:text-sm sm:text-sm md:text-base lg:text-base leading-normal m-0 flex-1 transition-colors duration-300 group-hover:text-slate-700">
                           {product.description}
                         </p>
                       </div>

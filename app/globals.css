@@ -1103,7 +1103,7 @@ h6 {
     }
   }
 
-  /* Product card background image heights at 150% zoom - reduced further */
+  /* Product card background image heights at 150% zoom - updated to match current component */
   /* Target the background image container div */
   #products
     div[class*="group"]
@@ -1111,18 +1111,7 @@ h6 {
   section#products
     div[class*="group"]
     > div[class*="relative"][class*="overflow-hidden"] {
-    height: 110px !important; /* Reduced from 133px */
-  }
-
-  @media (min-width: 375px) {
-    #products
-      div[class*="group"]
-      > div[class*="relative"][class*="overflow-hidden"],
-    section#products
-      div[class*="group"]
-      > div[class*="relative"][class*="overflow-hidden"] {
-      height: 120px !important; /* Reduced from 147px */
-    }
+    height: 93px !important; /* 140px / 1.5 = 93px */
   }
 
   @media (min-width: 640px) {
@@ -1132,7 +1121,7 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 135px !important; /* Reduced from 160px */
+      height: 107px !important; /* 160px / 1.5 = 107px */
     }
   }
 
@@ -1143,7 +1132,7 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 155px !important; /* Reduced from 187px */
+      height: 120px !important; /* 180px / 1.5 = 120px */
     }
   }
 
@@ -1154,7 +1143,7 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 165px !important; /* Reduced from 200px */
+      height: 133px !important; /* 200px / 1.5 = 133px */
     }
   }
 
@@ -1165,11 +1154,22 @@ h6 {
     section#products
       div[class*="group"]
       > div[class*="relative"][class*="overflow-hidden"] {
-      height: 175px !important; /* Reduced from 213px */
+      height: 147px !important; /* 220px / 1.5 = 147px */
     }
   }
 
-  /* Product card logo sizes at 150% zoom - responsive (reduced sizes) */
+  @media (min-width: 1536px) {
+    #products
+      div[class*="group"]
+      > div[class*="relative"][class*="overflow-hidden"],
+    section#products
+      div[class*="group"]
+      > div[class*="relative"][class*="overflow-hidden"] {
+      height: 160px !important; /* 240px / 1.5 = 160px */
+    }
+  }
+
+  /* Product card logo sizes at 150% zoom - updated to match current component */
   /* Target the logo container div inside the background image */
   #products
     div[class*="absolute"][class*="inset-0"][class*="flex"]
@@ -1177,11 +1177,23 @@ h6 {
   section#products
     div[class*="absolute"][class*="inset-0"][class*="flex"]
     > div[class*="relative"][class*="rounded-full"] {
-    width: 37px !important; /* 56px / 1.5 = 37px */
-    height: 37px !important;
+    width: 32px !important; /* 48px / 1.5 = 32px */
+    height: 32px !important;
   }
 
   @media (min-width: 375px) {
+    #products
+      div[class*="absolute"][class*="inset-0"][class*="flex"]
+      > div[class*="relative"][class*="rounded-full"],
+    section#products
+      div[class*="absolute"][class*="inset-0"][class*="flex"]
+      > div[class*="relative"][class*="rounded-full"] {
+      width: 37px !important; /* 56px / 1.5 = 37px */
+      height: 37px !important;
+    }
+  }
+
+  @media (min-width: 640px) {
     #products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"],
@@ -1193,105 +1205,60 @@ h6 {
     }
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     #products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"],
     section#products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"] {
-      width: 53px !important; /* 80px / 1.5 = 53px */
+      width: 43px !important; /* 64px / 1.5 = 43px (md:w-16) */
+      height: 43px !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #products
+      div[class*="absolute"][class*="inset-0"][class*="flex"]
+      > div[class*="relative"][class*="rounded-full"],
+    section#products
+      div[class*="absolute"][class*="inset-0"][class*="flex"]
+      > div[class*="relative"][class*="rounded-full"] {
+      width: 53px !important; /* 80px / 1.5 = 53px (lg:w-20) */
       height: 53px !important;
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1280px) {
     #products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"],
     section#products
       div[class*="absolute"][class*="inset-0"][class*="flex"]
       > div[class*="relative"][class*="rounded-full"] {
-      width: 64px !important; /* 96px / 1.5 = 64px */
+      width: 53px !important; /* 80px / 1.5 = 53px (xl:w-20) */
+      height: 53px !important;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    #products
+      div[class*="absolute"][class*="inset-0"][class*="flex"]
+      > div[class*="relative"][class*="rounded-full"],
+    section#products
+      div[class*="absolute"][class*="inset-0"][class*="flex"]
+      > div[class*="relative"][class*="rounded-full"] {
+      width: 64px !important; /* 96px / 1.5 = 64px (2xl:w-24) */
       height: 64px !important;
     }
   }
 
-  @media (min-width: 1024px) {
-    #products
-      div[class*="absolute"][class*="inset-0"][class*="flex"]
-      > div[class*="relative"][class*="rounded-full"],
-    section#products
-      div[class*="absolute"][class*="inset-0"][class*="flex"]
-      > div[class*="relative"][class*="rounded-full"] {
-      width: 75px !important; /* 112px / 1.5 = 75px */
-      height: 75px !important;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    #products
-      div[class*="absolute"][class*="inset-0"][class*="flex"]
-      > div[class*="relative"][class*="rounded-full"],
-    section#products
-      div[class*="absolute"][class*="inset-0"][class*="flex"]
-      > div[class*="relative"][class*="rounded-full"] {
-      width: 85px !important; /* 128px / 1.5 = 85px */
-      height: 85px !important;
-    }
-  }
-
-  /* Logo container padding at 150% zoom - responsive */
+  /* Logo container padding at 150% zoom - removed padding since it's not in component anymore */
   #products
     div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
   section#products
     div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
-    padding: 0.5rem !important; /* 0.75rem / 1.5 = 0.5rem (p-3) */
-  }
-
-  @media (min-width: 375px) {
-    #products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
-    section#products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
-      padding: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (p-4) */
-    }
-  }
-
-  @media (min-width: 640px) {
-    #products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
-    section#products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
-      padding: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (p-4) */
-    }
-  }
-
-  @media (min-width: 768px) {
-    #products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
-    section#products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
-      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
-    }
-  }
-
-  @media (min-width: 1024px) {
-    #products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
-    section#products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
-      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (p-5) */
-    }
-  }
-
-  @media (min-width: 1280px) {
-    #products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"],
-    section#products
-      div[class*="absolute"][class*="inset-0"][class*="flex"][class*="items-center"][class*="justify-center"] {
-      padding: 1rem !important; /* 1.5rem / 1.5 = 1rem (p-6) */
-    }
+    padding: 0 !important; /* No padding in component */
   }
 
   /* Force navigation arrows to be visible at 150% zoom - override hidden class */
@@ -1377,84 +1344,51 @@ h6 {
     }
   }
 
-  /* Product card text content padding at 150% zoom - increased for bigger text card */
+  /* Product card text content padding at 150% zoom - updated to match current component */
   /* Target the white text card div */
   #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
   section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-    padding: 0.8rem !important; /* Increased from 0.67rem */
-  }
-
-  @media (min-width: 375px) {
-    #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
-    section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 1rem !important; /* Increased from 0.83rem */
-    }
+    padding: 0.5rem !important; /* 0.75rem / 1.5 = 0.5rem (p-3) */
   }
 
   @media (min-width: 640px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 1rem !important; /* Increased from 0.83rem */
+      padding: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (sm:p-4) */
     }
   }
 
   @media (min-width: 768px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 1.2rem !important; /* Increased from 1rem */
+      padding: 0.67rem !important; /* 1rem / 1.5 = 0.67rem (md:p-4) */
     }
   }
 
   @media (min-width: 1024px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 1.2rem !important; /* Increased from 1rem */
+      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (lg:p-5) */
     }
   }
 
   @media (min-width: 1280px) {
     #products div[class*="bg-white"][class*="flex"][class*="flex-col"],
     section#products div[class*="bg-white"][class*="flex"][class*="flex-col"] {
-      padding: 1.4rem !important; /* Increased from 1.17rem */
+      padding: 0.83rem !important; /* 1.25rem / 1.5 = 0.83rem (xl:p-5) */
     }
   }
 
-  /* Product card heading sizes at 150% zoom - increased for bigger text */
+  /* Product card heading sizes at 150% zoom - updated to match current component */
   #products div[class*="bg-white"] h3,
   section#products div[class*="bg-white"] h3 {
-    font-size: 0.75rem !important; /* Increased from 0.67rem */
-    margin-bottom: 0.5rem !important; /* Increased from 0.4rem */
-  }
-
-  @media (min-width: 375px) {
-    #products div[class*="bg-white"] h3,
-    section#products div[class*="bg-white"] h3 {
-      font-size: 0.85rem !important; /* Increased from 0.75rem */
-      margin-bottom: 0.6rem !important; /* Increased from 0.53rem */
-    }
+    margin-bottom: 0.27rem !important; /* 0.25rem / 1.5 = 0.17rem, but using 0.27rem for mb-1 (0.25rem) */
   }
 
   @media (min-width: 640px) {
     #products div[class*="bg-white"] h3,
     section#products div[class*="bg-white"] h3 {
-      font-size: 0.95rem !important; /* Increased from 0.83rem */
-      margin-bottom: 0.6rem !important;
-    }
-  }
-
-  @media (min-width: 768px) {
-    #products div[class*="bg-white"] h3,
-    section#products div[class*="bg-white"] h3 {
-      font-size: 0.95rem !important; /* Increased from 0.83rem */
-      margin-bottom: 0.6rem !important;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    #products div[class*="bg-white"] h3,
-    section#products div[class*="bg-white"] h3 {
-      font-size: 1.1rem !important; /* Increased from 1rem */
-      margin-bottom: 0.6rem !important;
+      margin-bottom: 0.33rem !important; /* 0.375rem / 1.5 = 0.25rem, but using 0.33rem for mb-1.5 (0.375rem) */
     }
   }
 
