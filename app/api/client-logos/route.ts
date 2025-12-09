@@ -104,9 +104,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { id, name, logoUrl, alt, width, height, position } = body;
 
-    if (!id || !name || !logoUrl || !alt) {
+    if (!id || !name || !logoUrl) {
       return NextResponse.json(
-        { error: "Missing required fields: id, name, logoUrl, alt" },
+        { error: "Missing required fields: id, name, logoUrl" },
         { status: 400 }
       );
     }
@@ -116,12 +116,15 @@ export async function POST(request: NextRequest) {
       ? constructImageUrl(logoUrl)
       : logoUrl;
 
+    // Use name as default alt text if alt is not provided
+    const altText = alt || name;
+
     const clientLogo = await codagamSitePrisma.clientLogo.create({
       data: {
         id,
         name,
         logoUrl: fullLogoUrl,
-        alt,
+        alt: altText,
         width: width || 160,
         height: height || 100,
         position: position || 0,

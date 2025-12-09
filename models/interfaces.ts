@@ -61,7 +61,7 @@ export interface ClientLogoWithSize {
   id?: string;
   name: string;
   logo: string;
-  alt: string;
+  alt?: string; // Optional alt text
   width?: number;
   height?: number;
 }

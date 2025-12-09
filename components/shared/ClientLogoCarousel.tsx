@@ -56,7 +56,7 @@ export default function ClientLogoCarousel({
               id: logo.id,
               name: logo.name,
               logo: logo.logoUrl,
-              alt: logo.alt,
+              alt: logo.alt || logo.name, // Use name as fallback if alt is missing
               width: logo.width || 160,
               height: logo.height || 100,
             }));
@@ -99,7 +99,7 @@ export default function ClientLogoCarousel({
             <div className="relative w-16 h-8 sm:w-20 sm:h-10 md:w-24 md:h-12 lg:w-32 lg:h-16 xl:w-36 xl:h-18 flex items-center justify-center group transition-all duration-300 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 brightness-0 hover:brightness-100">
               <Image
                 src={client.logo}
-                alt={client.alt}
+                alt={client.alt || client.name}
                 width={client.width || 160}
                 height={client.height || 100}
                 className="w-full h-full max-w-full max-h-full object-contain"

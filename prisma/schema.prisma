@@ -46,7 +46,7 @@ model ClientLogo {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   logoUrl   String
-  alt       String
+  alt       String?  // Optional alt text
   width     Int      @default(160)
   height    Int      @default(100)
   position  Int      @default(0)
