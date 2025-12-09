@@ -6,6 +6,13 @@ import ClientLogoCarousel from "@/components/shared/ClientLogoCarousel";
 import { clientLogos } from "@/lib/content/clients";
 
 export default function Hero() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div className="flex flex-col lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] bg-white">
       <section className="hero-main-section pt-4 sm:pt-5 md:pt-6 lg:pt-16 xl:pt-20 2xl:pt-24 pb-4 sm:pb-5 md:pb-6 lg:pb-8 xl:pb-12 2xl:pb-20 bg-white grow">
@@ -19,7 +26,9 @@ export default function Hero() {
                 globally.
               </p>
               <div className="flex justify-center md:justify-start mb-3 sm:mb-4 md:mb-0 lg:mb-6">
-                <Button className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 md:px-5 lg:px-7 xl:px-8 2xl:px-10 py-2 sm:py-2.5 md:py-2.5 lg:py-4 xl:py-4 2xl:py-5 text-xs sm:text-sm md:text-sm lg:text-lg xl:text-xl font-medium">
+                <Button
+                  onClick={() => scrollToSection("services")}
+                  className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 md:px-5 lg:px-7 xl:px-8 2xl:px-10 py-2 sm:py-2.5 md:py-2.5 lg:py-4 xl:py-4 2xl:py-5 text-xs sm:text-sm md:text-sm lg:text-lg xl:text-xl font-medium">
                   Learn More
                 </Button>
               </div>

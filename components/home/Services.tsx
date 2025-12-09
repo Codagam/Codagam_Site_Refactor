@@ -38,7 +38,7 @@ export default function Services() {
       id="services"
       className="pt-6 sm:pt-8 md:pt-10 lg:pt-8 xl:pt-10 2xl:pt-12 pb-6 sm:pb-8 md:pb-10 lg:pb-10 xl:pb-12 bg-slate-50 scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full">
-        <h2 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6 md:mb-8 text-center font-semibold text-blue-900 wrap-break-word px-2 sm:px-0">
+        <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 md:mb-8 text-center font-semibold text-blue-900 wrap-break-word px-2 sm:px-0">
           Our Services
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full">
@@ -100,20 +100,20 @@ export default function Services() {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-y-auto w-full">
             <DialogHeader className="space-y-2 sm:space-y-3">
-              <DialogTitle className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight wrap-break-word">
+              <DialogTitle className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight wrap-break-word text-black">
                 {selectedServiceData.title}
               </DialogTitle>
-              <DialogDescription className="text-xs sm:text-sm md:text-base wrap-break-word">
+              <DialogDescription className="text-xs sm:text-sm md:text-base wrap-break-word text-slate-600">
                 Learn more about our {selectedServiceData.title.toLowerCase()}{" "}
                 services
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 sm:space-y-6 md:space-y-8 mt-4 sm:mt-6 w-full max-w-full">
-              <p className="text-foreground leading-relaxed text-sm sm:text-base md:text-lg wrap-break-word">
+              <p className="text-black leading-relaxed text-sm sm:text-base md:text-lg wrap-break-word">
                 {selectedServiceData.description}
               </p>
               <div className="pt-2 sm:pt-4">
-                <p className="text-xs sm:text-sm md:text-base text-muted-foreground wrap-break-word">
+                <p className="text-xs sm:text-sm md:text-base text-slate-600 wrap-break-word">
                   For more information about this service, please contact us
                   using the contact form in the footer.
                 </p>

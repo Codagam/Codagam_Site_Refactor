@@ -62,7 +62,7 @@ export default function Products() {
         id="products"
         className="py-6 sm:py-8 md:py-10 lg:py-12 bg-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
-          <h2 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6 md:mb-8 text-center font-semibold text-blue-900 wrap-break-word px-2 sm:px-0">
+          <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 md:mb-8 text-center font-semibold text-blue-900 wrap-break-word px-2 sm:px-0">
             Our Products
           </h2>
         </div>
@@ -147,14 +147,14 @@ export default function Products() {
                     sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
                   />
                 </div>
-                <DialogTitle className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold leading-tight text-center wrap-break-word px-2">
+                <DialogTitle className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold leading-tight text-center wrap-break-word px-2 text-black">
                   {selectedProduct.headline}
                 </DialogTitle>
               </div>
             </DialogHeader>
             <div className="space-y-4 sm:space-y-5 md:space-y-6 mt-3 sm:mt-4 md:mt-5 w-full max-w-full">
               {/* Product Details */}
-              <p className="text-foreground leading-relaxed text-sm sm:text-base md:text-base wrap-break-word">
+              <p className="text-black leading-relaxed text-sm sm:text-base md:text-base wrap-break-word">
                 {selectedProduct.details}
               </p>
               {/* View Site Button */}

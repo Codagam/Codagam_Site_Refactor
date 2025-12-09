@@ -70,7 +70,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-8 sm:py-10 md:py-12 w-full">
         {/* Contact Section Header */}
         <div className="mb-6 sm:mb-8 md:mb-10 text-center w-full">
-          <h2 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6 md:mb-8 font-semibold wrap-break-word px-2 sm:px-0">
+          <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 md:mb-8 font-semibold wrap-break-word px-2 sm:px-0">
             Let&apos;s Build Something Great
           </h2>
           <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word">
@@ -86,9 +86,9 @@ export default function Footer() {
               <Image
                 src="/images/og-image.jpg"
                 alt="Codagam Logo"
-                width={200}
-                height={100}
-                className="w-auto h-auto max-w-full"
+                width={120}
+                height={60}
+                className="w-auto h-auto max-w-[120px]"
               />
             </div>
             <div className="space-y-3 text-sm sm:text-base">

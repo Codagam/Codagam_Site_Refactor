@@ -47,9 +47,15 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full">
       <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
         <div className="flex justify-between items-center h-[48px] min-[375px]:h-[52px] sm:h-[56px] lg:h-[64px] xl:h-[68px] w-full">
-          <div className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl xl:text-2xl font-bold text-blue-900 tracking-tight">
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl xl:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
             Codagam
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex gap-3 md:gap-4 xl:gap-5 items-center">
@@ -101,9 +107,16 @@ export default function Header() {
               className="w-[280px] sm:w-[350px] md:w-[400px] bg-white">
               <SheetHeader>
                 <SheetTitle className="flex items-center space-x-3 text-left">
-                  <span className="text-lg min-[375px]:text-xl sm:text-2xl font-bold text-blue-900 tracking-tight">
+                  <a
+                    href="/"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsOpen(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="text-lg min-[375px]:text-xl sm:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
                     Codagam
-                  </span>
+                  </a>
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col space-y-2 mt-8">
