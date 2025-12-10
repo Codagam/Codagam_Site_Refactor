@@ -175,7 +175,7 @@ export default function Products() {
                           <CardTitle className="text-base font-bold mb-2 sm:mb-3 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight p-0">
                             {product.headline}
                           </CardTitle>
-                          <p className="text-base sm:text-base leading-relaxed line-clamp-3 overflow-hidden text-ellipsis m-0 text-slate-600 p-0">
+                          <p className="text-base sm:text-base leading-relaxed line-clamp-5 overflow-hidden text-ellipsis m-0 text-slate-600 p-0">
                             {product.description}
                           </p>
                         </CardHeader>
