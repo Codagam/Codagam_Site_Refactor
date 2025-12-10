@@ -645,15 +645,8 @@ h6 {
   @media (min-width: 1024px) and (max-width: 1280px) {
     section.hero-main-section,
     .hero-main-section {
-      padding-bottom: 0 !important; /* Remove bottom padding on laptop to eliminate gap */
-    }
-  }
-
-  @media (min-width: 1024px) and (max-width: 1280px) {
-    section.hero-main-section,
-    .hero-main-section {
-      padding-top: 2rem !important; /* Added top padding at arrow-marked place */
-      padding-bottom: 0 !important; /* Remove bottom padding to eliminate gap */
+      padding-top: 1.5rem !important; /* Reduced top padding to show more content */
+      padding-bottom: 0 !important; /* No bottom padding to ensure carousel and Services are visible */
     }
   }
 
@@ -722,6 +715,13 @@ h6 {
     }
   }
 
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    .hero-main-section p {
+      font-size: 1.8rem !important; /* Bigger text for laptop at 150% zoom - will appear as ~2.7rem */
+      margin-bottom: 0.8rem !important;
+    }
+  }
+
   @media (min-width: 1024px) {
     .hero-main-section h1 {
       font-size: 5rem !important; /* Will appear as ~7.5rem - maximum size */
@@ -766,6 +766,14 @@ h6 {
     }
   }
 
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    .hero-main-section p,
+    section.hero-main-section p {
+      font-size: 1.8rem !important; /* Bigger text for laptop at 150% zoom - will appear as ~2.7rem */
+      margin-bottom: 0.8rem !important;
+    }
+  }
+
   /* Image heights: Make image appear MAXIMUM SIZE at 150% zoom */
   /* To appear as 800px at 150%, set CSS to 533px (800/1.5=533) */
   .hero-main-section > div > div[class*="grid"] > div[class*="relative"],
@@ -795,6 +803,14 @@ h6 {
     .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
       height: 450px !important; /* Will appear as ~675px - maximum size */
       min-height: 450px !important;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
+      height: 520px !important; /* Bigger image for laptop at 150% zoom - will appear as ~780px */
+      max-height: 560px !important; /* Will appear as ~840px */
+      min-height: 520px !important;
     }
   }
 
@@ -909,6 +925,16 @@ h6 {
     padding-right: 0 !important; /* Remove any right padding */
   }
 
+  /* At 150% zoom, ensure carousel matches 100% zoom spacing for laptop screens */
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    .hero-carousel-section,
+    section.hero-main-section + div,
+    .hero-main-section ~ div.hero-carousel-section {
+      padding-top: 0.33rem !important; /* Small padding to match 100% zoom visual spacing (0.5rem / 1.5) */
+      padding-bottom: 0 !important; /* No bottom padding */
+    }
+  }
+
   @media (min-width: 640px) {
     .hero-carousel-section {
       padding-top: 2rem !important; /* Increased top padding */
@@ -923,7 +949,8 @@ h6 {
 
   @media (min-width: 1024px) and (max-width: 1280px) {
     .hero-carousel-section {
-      padding-top: 0 !important; /* Remove padding on laptop screens to eliminate gap */
+      padding-top: 0 !important; /* No padding to maximize space */
+      padding-bottom: 0.67rem !important; /* Small padding to ensure Services section is visible (1rem / 1.5) */
     }
   }
 
@@ -2163,7 +2190,7 @@ h6 {
   }
 
   #services {
-    padding-top: 2rem;
+    padding-top: 1.33rem !important; /* Reduced padding at 150% zoom to show heading (2rem / 1.5 = 1.33rem) */
   }
 }
 
