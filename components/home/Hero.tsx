@@ -90,8 +90,8 @@ export default function Hero() {
 
   if (loading && heroList.length === 0) {
     return (
-      <div className="flex flex-col lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] bg-white">
-        <section className="hero-main-section pt-4 sm:pt-5 md:pt-6 lg:pt-8 xl:pt-12 2xl:pt-16 pb-4 sm:pb-5 md:pb-6 lg:pb-8 xl:pb-12 2xl:pb-20 bg-white grow">
+      <div className="flex flex-col lg:min-h-0 xl:min-h-[calc(100vh-68px)] bg-white">
+        <section className="hero-main-section pt-4 sm:pt-5 md:pt-6 lg:pt-8 xl:pt-12 2xl:pt-16 pb-4 sm:pb-5 md:pb-6 lg:pb-0 xl:pb-12 2xl:pb-20 bg-white lg:grow-0 xl:grow">
           <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8 w-full">
             <div className="text-center py-8">
               <p className="text-gray-600">Loading hero section...</p>
@@ -103,8 +103,8 @@ export default function Hero() {
   }
 
   return (
-    <div className="flex flex-col lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] bg-white">
-      <section className="hero-main-section pt-4 sm:pt-5 md:pt-6 lg:pt-8 xl:pt-12 2xl:pt-16 pb-4 sm:pb-5 md:pb-6 lg:pb-8 xl:pb-12 2xl:pb-20 bg-white grow">
+    <div className="flex flex-col lg:min-h-0 xl:min-h-[calc(100vh-68px)] bg-white">
+      <section className="hero-main-section pt-4 sm:pt-5 md:pt-6 lg:pt-8 xl:pt-12 2xl:pt-16 pb-4 sm:pb-5 md:pb-6 lg:pb-0 xl:pb-12 2xl:pb-20 bg-white lg:grow-0 xl:grow">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8 w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-12 items-start md:items-start lg:items-start">
             {/* Content Section */}
