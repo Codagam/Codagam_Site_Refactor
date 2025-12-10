@@ -11,6 +11,11 @@ import {
   FaGithub,
   FaWhatsapp,
   FaTelegram,
+  FaDribbble,
+  FaBehance,
+  FaPinterest,
+  FaTiktok,
+  FaSnapchat,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { ContactForm } from "@/components/shared/ContactForm";
@@ -53,7 +58,10 @@ interface CountryGroup {
 }
 
 // Constants
-const SOCIAL_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+const SOCIAL_ICON_MAP: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   instagram: FaInstagram,
   facebook: FaFacebook,
   twitter: FaXTwitter,
@@ -63,10 +71,15 @@ const SOCIAL_ICON_MAP: Record<string, React.ComponentType<{ className?: string }
   github: FaGithub,
   whatsapp: FaWhatsapp,
   telegram: FaTelegram,
+  dribbble: FaDribbble,
+  behance: FaBehance,
+  pinterest: FaPinterest,
+  tiktok: FaTiktok,
+  snapchat: FaSnapchat,
 };
 
 const SOCIAL_BG_COLORS: Record<string, string> = {
-  instagram: "bg-gradient-to-br from-purple-600 via-pink-500 to-orange-500",
+  instagram: "bg-linear-to-br from-purple-600 via-pink-500 to-orange-500",
   facebook: "bg-[#1877F2]",
   twitter: "bg-black",
   x: "bg-black",
@@ -75,6 +88,11 @@ const SOCIAL_BG_COLORS: Record<string, string> = {
   github: "bg-[#181717]",
   whatsapp: "bg-[#25D366]",
   telegram: "bg-[#0088cc]",
+  dribbble: "bg-[#EA4C89]",
+  behance: "bg-[#1769FF]",
+  pinterest: "bg-[#BD081C]",
+  tiktok: "bg-[#000000]",
+  snapchat: "bg-[#FFFC00]",
 };
 
 const QUICK_LINKS = [
@@ -86,7 +104,9 @@ const QUICK_LINKS = [
 // Helper functions
 const getCountryFlag = (countryCode: string | null): FlagComponent | null => {
   if (!countryCode) return null;
-  return (Flags as Record<string, FlagComponent>)[countryCode.toUpperCase()] || null;
+  return (
+    (Flags as Record<string, FlagComponent>)[countryCode.toUpperCase()] || null
+  );
 };
 
 const getSocialIcon = (platform: string) => {
@@ -108,33 +128,47 @@ const formatAddress = (address: string): string[] => {
 };
 
 // Sub-components
-const CountryFlag = ({ countryCode, flagUrl, country }: { countryCode: string | null; flagUrl: string | null; country: string }) => {
+const CountryFlag = ({
+  countryCode,
+  flagUrl,
+  country,
+}: {
+  countryCode: string | null;
+  flagUrl: string | null;
+  country: string;
+}) => {
   if (countryCode) {
     const FlagComponent = getCountryFlag(countryCode);
     if (FlagComponent) {
       return (
         <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
-          {React.createElement(FlagComponent, { className: "w-full h-full object-contain" })}
+          {React.createElement(FlagComponent, {
+            className: "w-full h-full object-contain",
+          })}
         </div>
       );
     }
   }
-  
+
   if (flagUrl) {
     return (
       <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={flagUrl} alt={`${country} flag`} className="w-full h-full object-contain" />
+        <img
+          src={flagUrl}
+          alt={`${country} flag`}
+          className="w-full h-full object-contain"
+        />
       </div>
     );
   }
-  
+
   return null;
 };
 
 const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
   const firstLocation = locations[0];
-  
+
   return (
     <div className="space-y-4 opacity-90">
       {locations.map((office, index) => (
@@ -152,13 +186,15 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
           )}
         </div>
       ))}
-      
+
       {firstLocation && (
         <>
           {firstLocation.phone && (
             <div className="flex items-center gap-2 justify-center sm:justify-start pt-2">
               <Phone className="w-4 h-4 shrink-0" />
-              <a href={`tel:${firstLocation.phone}`} className="hover:text-blue-200 transition-colors">
+              <a
+                href={`tel:${firstLocation.phone}`}
+                className="hover:text-blue-200 transition-colors">
                 {firstLocation.phone}
               </a>
             </div>
@@ -166,7 +202,9 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
           {firstLocation.email && (
             <div className="flex items-center gap-2 justify-center sm:justify-start">
               <Mail className="w-4 h-4 shrink-0" />
-              <a href={`mailto:${firstLocation.email}`} className="hover:text-blue-200 transition-colors">
+              <a
+                href={`mailto:${firstLocation.email}`}
+                className="hover:text-blue-200 transition-colors">
                 {firstLocation.email}
               </a>
             </div>
@@ -174,15 +212,15 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
         </>
       )}
     </div>
-);
+  );
 };
 
 const SocialIconLink = ({ link }: { link: FooterSocialLink }) => {
   const IconComponent = getSocialIcon(link.platform);
   if (!IconComponent) return null;
-  
+
   const bgClass = getSocialIconBg(link.platform);
-  
+
   return (
     <a
       href={link.url}
@@ -201,7 +239,7 @@ const DefaultSocialIcons = () => (
       href="https://instagram.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-10 h-10 rounded-full bg-linear-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="Instagram">
       <FaInstagram className="w-5 h-5 text-white" />
     </a>
@@ -233,7 +271,9 @@ const DefaultSocialIcons = () => (
 );
 
 export default function Footer() {
-  const [footerContent, setFooterContent] = useState<FooterContent | null>(null);
+  const [footerContent, setFooterContent] = useState<FooterContent | null>(
+    null
+  );
   const [offices, setOffices] = useState<FooterOffice[]>([]);
   const [socialLinks, setSocialLinks] = useState<FooterSocialLink[]>([]);
 
@@ -258,7 +298,9 @@ export default function Footer() {
   }, []);
 
   const scrollToSection = useCallback((id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
   const sortedCountries = useMemo(() => {
@@ -286,7 +328,8 @@ export default function Footer() {
 
   const defaultContent = {
     title: "Let's Build Something Great",
-    description: "Ready to transform your ideas into scalable products? Reach out to discuss your project.",
+    description:
+      "Ready to transform your ideas into scalable products? Reach out to discuss your project.",
   };
 
   return (
@@ -308,12 +351,16 @@ export default function Footer() {
           {/* Company Info - Offices grouped by Country */}
           {sortedCountries.length > 0 ? (
             sortedCountries.map((countryGroup) => (
-              <div key={countryGroup.country} className="text-center sm:text-left w-full max-w-full">
-            <div className="mb-4 flex justify-center sm:justify-start">
-                  <h2 className="text-white font-bold text-xl sm:text-2xl">codagam</h2>
-            </div>
-            <div className="space-y-3 text-sm sm:text-base">
-              <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+              <div
+                key={countryGroup.country}
+                className="text-center sm:text-left w-full max-w-full">
+                <div className="mb-4 flex justify-center sm:justify-start">
+                  <h2 className="text-white font-bold text-xl sm:text-2xl">
+                    codagam
+                  </h2>
+                </div>
+                <div className="space-y-3 text-sm sm:text-base">
+                  <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
                     <CountryFlag
                       countryCode={countryGroup.countryCode}
                       flagUrl={countryGroup.flagUrl}
@@ -326,13 +373,19 @@ export default function Footer() {
               </div>
             ))
           ) : (
-            <div className="text-center sm:text-left w-full max-w-full">
-              <div className="mb-4 flex justify-center sm:justify-start">
-                <h2 className="text-white font-bold text-xl sm:text-2xl">codagam</h2>
-              </div>
-              <div className="space-y-3 text-sm sm:text-base">
-                <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
-                  <CountryFlag countryCode="IN" flagUrl={null} country="India" />
+          <div className="text-center sm:text-left w-full max-w-full">
+            <div className="mb-4 flex justify-center sm:justify-start">
+              <h2 className="text-white font-bold text-xl sm:text-2xl">
+                codagam
+              </h2>
+            </div>
+            <div className="space-y-3 text-sm sm:text-base">
+              <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+                  <CountryFlag
+                    countryCode="IN"
+                    flagUrl={null}
+                    country="India"
+                  />
                 India Office
               </h4>
               <div className="space-y-2 opacity-90">
@@ -347,13 +400,17 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-2 justify-center sm:justify-start">
                   <Phone className="w-4 h-4 shrink-0" />
-                    <a href="tel:+917598454546" className="hover:text-blue-200 transition-colors">
+                  <a
+                    href="tel:+917598454546"
+                    className="hover:text-blue-200 transition-colors">
                     +91 75984 54546
                   </a>
                 </div>
                 <div className="flex items-center gap-2 justify-center sm:justify-start">
                   <Mail className="w-4 h-4 shrink-0" />
-                    <a href="mailto:Support@codagam.com" className="hover:text-blue-200 transition-colors">
+                  <a
+                    href="mailto:Support@codagam.com"
+                    className="hover:text-blue-200 transition-colors">
                     Support@codagam.com
                   </a>
                 </div>
@@ -387,10 +444,14 @@ export default function Footer() {
 
           {/* Follow Us */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg mb-4">Follow Us</h3>
-            <div className="flex gap-4 justify-center sm:justify-start">
+            <h3 className="font-semibold text-base sm:text-lg mb-4">
+              Follow Us
+            </h3>
+            <div className="flex flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
               {socialLinks.length > 0 ? (
-                socialLinks.map((link) => <SocialIconLink key={link.id} link={link} />)
+                socialLinks.map((link) => (
+                  <SocialIconLink key={link.id} link={link} />
+                ))
               ) : (
                 <DefaultSocialIcons />
               )}
@@ -399,8 +460,14 @@ export default function Footer() {
 
           {/* Get in Touch - Contact Form */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg mb-2">Get in Touch</h3>
-            <ContactForm asDialog={false} showTitle={false} className="text-white" />
+            <h3 className="font-semibold text-base sm:text-lg mb-2">
+              Get in Touch
+            </h3>
+            <ContactForm
+              asDialog={false}
+              showTitle={false}
+              className="text-white"
+            />
           </div>
         </div>
       </div>
