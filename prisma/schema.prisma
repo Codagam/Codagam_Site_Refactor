@@ -67,19 +67,19 @@ model TechStackItem {
 
 model FooterContent {
   id          String   @id @default("footer_content") @map("_id")
-  title       String
-  description String
+  title       String   // Footer header title
+  description String   // Footer header description
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@map("footer_content")
-}
-
+} 
 model FooterOffice {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   country       String   // Country name (e.g., "India", "USA")
+  countryCode   String? // ISO country code (e.g., "IN", "US") for flag icons
   countryPosition Int    @default(0) // Position for country grouping
-  flagUrl       String?  // Country flag URL
+  flagUrl       String?  // Country flag URL (deprecated, use countryCode instead)
   address       String
   phone         String?
   email         String?
@@ -94,10 +94,10 @@ model FooterOffice {
 
 model FooterSocialLink {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  platform  String   // e.g., "instagram", "facebook", "twitter", "linkedin"
-  url       String
-  iconType  String   @default("") // For custom icon types if needed
-  position  Int      @default(0)
+  platform  String   // Platform name used to get icon component from database (e.g., "instagram", "facebook", "twitter", "linkedin", "youtube", "github", "whatsapp", "telegram")
+  url       String   // Social media profile URL
+  iconType  String   @default("") // Reserved for future custom icon types
+  position  Int      @default(0) // Display order (lower numbers appear first)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

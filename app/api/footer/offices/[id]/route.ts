@@ -47,6 +47,7 @@ export async function PUT(
     const body = await request.json();
     const {
       country,
+      countryCode,
       countryPosition,
       flagUrl,
       address,
@@ -57,6 +58,9 @@ export async function PUT(
 
     const updateData: any = {
       ...(country && { country }),
+      ...(countryCode !== undefined && {
+        countryCode: countryCode ? countryCode.toUpperCase() : null,
+      }),
       ...(countryPosition !== undefined && { countryPosition }),
       ...(address && { address }),
       ...(phone !== undefined && { phone }),

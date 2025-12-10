@@ -17,8 +17,9 @@ interface FooterContent {
 interface FooterOffice {
   id: string;
   country: string;
+  countryCode: string | null;
   countryPosition: number;
-  flagUrl: string | null;
+  flagUrl: string | null; // Deprecated, kept for backward compatibility
   address: string;
   phone: string | null;
   email: string | null;
@@ -110,6 +111,7 @@ export default function FooterAdminPage() {
     const newOffice: FooterOffice = {
       id: `office_${Date.now()}`,
       country: "",
+      countryCode: null,
       countryPosition: maxCountryPosition + 1,
       flagUrl: null,
       address: "",
@@ -446,7 +448,25 @@ export default function FooterAdminPage() {
                               </p>
                             </div>
                             <div>
-                              <Label>Flag URL (optional)</Label>
+                              <Label>Country Code (ISO 2-letter, e.g., IN, US, GB)</Label>
+                              <Input
+                                value={office.countryCode || ""}
+                                onChange={(e) =>
+                                  updateOffice(
+                                    office.id,
+                                    "countryCode",
+                                    e.target.value.toUpperCase() || null
+                                  )
+                                }
+                                placeholder="IN"
+                                maxLength={2}
+                              />
+                              <p className="text-xs text-gray-500 mt-1">
+                                Use ISO 3166-1 alpha-2 code (e.g., IN for India, US for USA)
+                              </p>
+                            </div>
+                            <div>
+                              <Label>Flag URL (optional, fallback if country code not set)</Label>
                               <Input
                                 value={office.flagUrl || ""}
                                 onChange={(e) =>
@@ -549,16 +569,17 @@ export default function FooterAdminPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <Label>Platform</Label>
+                    <Label>Platform *</Label>
                     <Input
                       value={link.platform}
                       onChange={(e) =>
                         updateSocialLink(link.id, "platform", e.target.value)
                       }
-                      placeholder="instagram, facebook, twitter, linkedin"
+                      placeholder="instagram, facebook, twitter, linkedin, youtube, github, whatsapp, telegram"
+                      required
                     />
                     <p className="text-xs text-gray-500 mt-1">
-                      Use: instagram, facebook, twitter/x, linkedin
+                      Supported: instagram, facebook, twitter/x, linkedin, youtube, github, whatsapp, telegram
                     </p>
                   </div>
                   <div>

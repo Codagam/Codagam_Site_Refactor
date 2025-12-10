@@ -13,49 +13,22 @@ import {
   Flag,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import * as Flags from "country-flag-icons/react/3x2";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaYoutube,
+  FaGithub,
+  FaWhatsapp,
+  FaTelegram,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
-// Social Media Icons with original brand colors
-const InstagramIcon = () => (
-  <svg
-    className="w-5 h-5 text-white"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-  </svg>
-);
-
-const FacebookIcon = () => (
-  <svg
-    className="w-5 h-5 text-white"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-  </svg>
-);
-
-const XTwitterIcon = () => (
-  <svg
-    className="w-5 h-5 text-white"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
-
-const LinkedInIcon = () => (
-  <svg
-    className="w-5 h-5 text-white"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg">
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-  </svg>
-);
+// Type for country flag components
+type FlagComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 interface FooterContent {
   id: string;
@@ -66,8 +39,9 @@ interface FooterContent {
 interface FooterOffice {
   id: string;
   country: string;
+  countryCode: string | null;
   countryPosition: number;
-  flagUrl: string | null;
+  flagUrl: string | null; // Deprecated, kept for backward compatibility
   address: string;
   phone: string | null;
   email: string | null;
@@ -82,37 +56,67 @@ interface FooterSocialLink {
   position: number;
 }
 
+// Get country flag component by country code
+const getCountryFlag = (countryCode: string | null): FlagComponent | null => {
+  if (!countryCode) return null;
+  const code = countryCode.toUpperCase();
+  return (Flags as Record<string, FlagComponent>)[code] || null;
+};
+
+// Get social media icon component by platform name
 const getSocialIcon = (platform: string) => {
-  const normalizedPlatform = platform.toLowerCase();
+  const normalizedPlatform = platform.toLowerCase().trim();
+
   if (normalizedPlatform.includes("instagram")) {
-    return <InstagramIcon />;
+    return FaInstagram;
   } else if (normalizedPlatform.includes("facebook")) {
-    return <FacebookIcon />;
+    return FaFacebook;
   } else if (
     normalizedPlatform.includes("twitter") ||
-    normalizedPlatform.includes("x")
+    normalizedPlatform === "x"
   ) {
-    return <XTwitterIcon />;
+    return FaXTwitter;
   } else if (normalizedPlatform.includes("linkedin")) {
-    return <LinkedInIcon />;
+    return FaLinkedin;
+  } else if (normalizedPlatform.includes("youtube")) {
+    return FaYoutube;
+  } else if (normalizedPlatform.includes("github")) {
+    return FaGithub;
+  } else if (normalizedPlatform.includes("whatsapp")) {
+    return FaWhatsapp;
+  } else if (normalizedPlatform.includes("telegram")) {
+    return FaTelegram;
   }
+
+  // Default fallback
   return null;
 };
 
+// Get social media icon background color by platform
 const getSocialIconBg = (platform: string) => {
-  const normalizedPlatform = platform.toLowerCase();
+  const normalizedPlatform = platform.toLowerCase().trim();
+
   if (normalizedPlatform.includes("instagram")) {
-    return "bg-linear-to-br from-purple-600 via-pink-500 to-orange-500";
+    return "bg-gradient-to-br from-purple-600 via-pink-500 to-orange-500";
   } else if (normalizedPlatform.includes("facebook")) {
     return "bg-[#1877F2]";
   } else if (
     normalizedPlatform.includes("twitter") ||
-    normalizedPlatform.includes("x")
+    normalizedPlatform === "x"
   ) {
     return "bg-black";
   } else if (normalizedPlatform.includes("linkedin")) {
     return "bg-[#0077B5]";
+  } else if (normalizedPlatform.includes("youtube")) {
+    return "bg-[#FF0000]";
+  } else if (normalizedPlatform.includes("github")) {
+    return "bg-[#181717]";
+  } else if (normalizedPlatform.includes("whatsapp")) {
+    return "bg-[#25D366]";
+  } else if (normalizedPlatform.includes("telegram")) {
+    return "bg-[#0088cc]";
   }
+
   return "bg-gray-600";
 };
 
@@ -178,13 +182,14 @@ export default function Footer() {
       acc[office.country] = {
         country: office.country,
         countryPosition: office.countryPosition,
-        flagUrl: office.flagUrl,
+        countryCode: office.countryCode,
+        flagUrl: office.flagUrl, // Fallback for backward compatibility
         locations: [],
       };
     }
     acc[office.country].locations.push(office);
     return acc;
-  }, {} as Record<string, { country: string; countryPosition: number; flagUrl: string | null; locations: FooterOffice[] }>);
+  }, {} as Record<string, { country: string; countryPosition: number; countryCode: string | null; flagUrl: string | null; locations: FooterOffice[] }>);
 
   // Sort countries by countryPosition, then sort locations within each country by position
   const sortedCountries = Object.values(groupedOffices)
@@ -224,21 +229,35 @@ export default function Footer() {
                 </div>
                 <div className="space-y-3 text-sm sm:text-base">
                   <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
-                    {countryGroup.flagUrl && (
-                      <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
-                        <Image
-                          src={countryGroup.flagUrl}
-                          alt={`${countryGroup.country} flag`}
-                          fill
-                          className="object-contain"
-                          sizes="(max-width: 640px) 40px, 48px"
-                        />
-                      </div>
-                    )}
+                    {(() => {
+                      const FlagComponent = countryGroup.countryCode
+                        ? getCountryFlag(countryGroup.countryCode)
+                        : null;
+                      if (FlagComponent) {
+                        return (
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
+                            <FlagComponent className="w-full h-full object-contain" />
+                          </div>
+                        );
+                      } else if (countryGroup.flagUrl) {
+                        // Fallback to flagUrl if countryCode is not available
+                        return (
+                          <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
+                            <img
+                              src={countryGroup.flagUrl}
+                              alt={`${countryGroup.country} flag`}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                        );
+                      }
+                      return null;
+                    })()}
                     {countryGroup.country}
                   </h4>
                   <div className="space-y-4 opacity-90">
-                    {countryGroup.locations.map((office) => (
+                    {/* Show all addresses first */}
+                    {countryGroup.locations.map((office, index) => (
                       <div key={office.id} className="space-y-2">
                         <div className="flex items-start gap-2 justify-center sm:justify-start">
                           <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
@@ -248,34 +267,38 @@ export default function Footer() {
                             ))}
                           </div>
                         </div>
-                        {office.phone && (
-                          <div className="flex items-center gap-2 justify-center sm:justify-start">
-                            <Phone className="w-4 h-4 shrink-0" />
-                            <a
-                              href={`tel:${office.phone}`}
-                              className="hover:text-blue-200 transition-colors">
-                              {office.phone}
-                            </a>
-                          </div>
-                        )}
-                        {office.email && (
-                          <div className="flex items-center gap-2 justify-center sm:justify-start">
-                            <Mail className="w-4 h-4 shrink-0" />
-                            <a
-                              href={`mailto:${office.email}`}
-                              className="hover:text-blue-200 transition-colors">
-                              {office.email}
-                            </a>
-                          </div>
-                        )}
-                        {office.id !==
-                          countryGroup.locations[
-                            countryGroup.locations.length - 1
-                          ]?.id && (
+                        {/* Only show separator if not the last address */}
+                        {index < countryGroup.locations.length - 1 && (
                           <div className="border-t border-blue-800 pt-2 mt-2"></div>
                         )}
                       </div>
                     ))}
+                    
+                    {/* Show phone and email from first location only, at the end */}
+                    {countryGroup.locations.length > 0 && (
+                      <>
+                        {countryGroup.locations[0].phone && (
+                          <div className="flex items-center gap-2 justify-center sm:justify-start pt-2">
+                            <Phone className="w-4 h-4 shrink-0" />
+                            <a
+                              href={`tel:${countryGroup.locations[0].phone}`}
+                              className="hover:text-blue-200 transition-colors">
+                              {countryGroup.locations[0].phone}
+                            </a>
+                          </div>
+                        )}
+                        {countryGroup.locations[0].email && (
+                          <div className="flex items-center gap-2 justify-center sm:justify-start">
+                            <Mail className="w-4 h-4 shrink-0" />
+                            <a
+                              href={`mailto:${countryGroup.locations[0].email}`}
+                              className="hover:text-blue-200 transition-colors">
+                              {countryGroup.locations[0].email}
+                            </a>
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -289,15 +312,17 @@ export default function Footer() {
               </div>
               <div className="space-y-3 text-sm sm:text-base">
                 <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
-                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
-                    <Image
-                      src="https://flagcdn.com/w320/in.png"
-                      alt="India flag"
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 640px) 40px, 48px"
-                    />
-                  </div>
+                  {(() => {
+                    const IndiaFlag = Flags.IN;
+                    return (
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
+                        <IndiaFlag
+                          className="w-full h-full object-contain"
+                          title="India"
+                        />
+                      </div>
+                    );
+                  })()}
                   India Office
                 </h4>
                 <div className="space-y-2 opacity-90">
@@ -384,8 +409,13 @@ export default function Footer() {
             <div className="flex gap-4 justify-center sm:justify-start">
               {socialLinks.length > 0 ? (
                 socialLinks.map((link) => {
-                  const icon = getSocialIcon(link.platform);
+                  const IconComponent = getSocialIcon(link.platform);
                   const bgClass = getSocialIconBg(link.platform);
+
+                  if (!IconComponent) {
+                    return null;
+                  }
+
                   return (
                     <a
                       key={link.id}
@@ -394,7 +424,7 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       className={`w-10 h-10 rounded-full ${bgClass} flex items-center justify-center hover:opacity-90 transition-opacity`}
                       aria-label={link.platform}>
-                      {icon}
+                      <IconComponent className="w-5 h-5 text-white" />
                     </a>
                   );
                 })
@@ -406,7 +436,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-linear-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
                     aria-label="Instagram">
-                    <InstagramIcon />
+                    <FaInstagram className="w-5 h-5 text-white" />
                   </a>
                   <a
                     href="https://facebook.com"
@@ -414,7 +444,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-90 transition-opacity"
                     aria-label="Facebook">
-                    <FacebookIcon />
+                    <FaFacebook className="w-5 h-5 text-white" />
                   </a>
                   <a
                     href="https://x.com"
@@ -422,7 +452,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:opacity-90 transition-opacity"
                     aria-label="X (Twitter)">
-                    <XTwitterIcon />
+                    <FaXTwitter className="w-5 h-5 text-white" />
                   </a>
                   <a
                     href="https://linkedin.com"
@@ -430,7 +460,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-[#0077B5] flex items-center justify-center hover:opacity-90 transition-opacity"
                     aria-label="LinkedIn">
-                    <LinkedInIcon />
+                    <FaLinkedin className="w-5 h-5 text-white" />
                   </a>
                 </>
               )}

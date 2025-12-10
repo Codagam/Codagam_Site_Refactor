@@ -114,6 +114,7 @@ export async function POST(request: NextRequest) {
     const {
       id,
       country,
+      countryCode,
       countryPosition,
       flagUrl,
       address,
@@ -166,6 +167,7 @@ export async function POST(request: NextRequest) {
       data: {
         id,
         country,
+        countryCode: countryCode ? countryCode.toUpperCase() : null,
         countryPosition: finalCountryPosition,
         flagUrl: fullFlagUrl,
         address,
