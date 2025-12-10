@@ -373,50 +373,50 @@ export default function Footer() {
               </div>
             ))
           ) : (
-          <div className="text-center sm:text-left w-full max-w-full">
-            <div className="mb-4 flex justify-center sm:justify-start">
-              <h2 className="text-white font-bold text-xl sm:text-2xl">
-                codagam
-              </h2>
-            </div>
-            <div className="space-y-3 text-sm sm:text-base">
-              <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+            <div className="text-center sm:text-left w-full max-w-full">
+              <div className="mb-4 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-xl sm:text-2xl">
+                  codagam
+                </h2>
+              </div>
+              <div className="space-y-3 text-sm sm:text-base">
+                <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
                   <CountryFlag
                     countryCode="IN"
                     flagUrl={null}
                     country="India"
                   />
-                India Office
-              </h4>
-              <div className="space-y-2 opacity-90">
-                <div className="flex items-start gap-2 justify-center sm:justify-start">
-                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                  <div className="text-center sm:text-left">
-                    <p>363/2, Rukmani Nagar,</p>
-                    <p>Nagarpalaya Rd,</p>
-                    <p>Gobichettipalayam,</p>
-                    <p>Tamil Nadu, India, 638452</p>
+                  India Office
+                </h4>
+                <div className="space-y-2 opacity-90">
+                  <div className="flex items-start gap-2 justify-center sm:justify-start">
+                    <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                    <div className="text-center sm:text-left">
+                      <p>363/2, Rukmani Nagar,</p>
+                      <p>Nagarpalaya Rd,</p>
+                      <p>Gobichettipalayam,</p>
+                      <p>Tamil Nadu, India, 638452</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-2 justify-center sm:justify-start">
-                  <Phone className="w-4 h-4 shrink-0" />
-                  <a
-                    href="tel:+917598454546"
-                    className="hover:text-blue-200 transition-colors">
-                    +91 75984 54546
-                  </a>
-                </div>
-                <div className="flex items-center gap-2 justify-center sm:justify-start">
-                  <Mail className="w-4 h-4 shrink-0" />
-                  <a
-                    href="mailto:Support@codagam.com"
-                    className="hover:text-blue-200 transition-colors">
-                    Support@codagam.com
-                  </a>
+                  <div className="flex items-center gap-2 justify-center sm:justify-start">
+                    <Phone className="w-4 h-4 shrink-0" />
+                    <a
+                      href="tel:+917598454546"
+                      className="hover:text-blue-200 transition-colors">
+                      +91 75984 54546
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 justify-center sm:justify-start">
+                    <Mail className="w-4 h-4 shrink-0" />
+                    <a
+                      href="mailto:Support@codagam.com"
+                      className="hover:text-blue-200 transition-colors">
+                      Support@codagam.com
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           )}
 
           {/* Quick Links */}
@@ -427,17 +427,17 @@ export default function Footer() {
             <ul className="space-y-3">
               {QUICK_LINKS.map(({ id, label, icon: Icon }) => (
                 <li key={id}>
-                <a
+                  <a
                     href={`#${id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
+                    onClick={(e) => {
+                      e.preventDefault();
                       scrollToSection(id);
-                  }}
-                  className="flex items-center gap-2 text-sm sm:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start">
+                    }}
+                    className="flex items-center gap-2 text-sm sm:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start">
                     <Icon className="w-4 h-4" />
                     {label}
-                </a>
-              </li>
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
