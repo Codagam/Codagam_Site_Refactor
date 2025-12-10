@@ -24,13 +24,10 @@ model HeroSection {
 
 model Product {
   id                 String   @id @default(auto()) @map("_id") @db.ObjectId
-  label              String
   headline           String
   description        String
   details            String   @default("")
-  features           String   @default("[]") // JSON array stored as string
   imageUrl           String
-  alt                String
   website            String
   backgroundImageUrl String?
   position           Int      @default(0)

@@ -16,6 +16,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Autoplay from "embla-carousel-autoplay";
 import { ExternalLink } from "lucide-react";
 import type { ProductItem, ButtonWithUrlHandler } from "@/models/interfaces";
@@ -37,7 +44,7 @@ export default function Products() {
       try {
         const response = await fetch("/api/products", { cache: "no-store" });
         const data = await response.json();
-        
+
         if (response.ok) {
           const mappedProducts: ProductWithBackground[] = data
             .filter(
@@ -45,24 +52,12 @@ export default function Products() {
                 product?.id && product?.headline && product?.imageUrl
             )
             .map((product: any) => {
-              let features: string[] = [];
-              try {
-                features =
-                  typeof product.features === "string"
-                    ? JSON.parse(product.features)
-                    : product.features || [];
-              } catch {
-                features = [];
-              }
               return {
                 id: product.id,
-                label: product.label,
                 headline: product.headline,
                 description: product.description,
                 details: product.details,
-                features,
                 image: product.imageUrl,
-                alt: product.alt,
                 website: product.website,
                 backgroundImage: product.backgroundImageUrl,
               };
@@ -111,17 +106,17 @@ export default function Products() {
         id="products"
         className="py-6 sm:py-8 md:py-10 lg:py-12 bg-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
-          <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 md:mb-8 text-center font-semibold text-blue-900 wrap-break-word px-2 sm:px-0">
+          <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 md:mb-8 text-center font-semibold text-blue-900  wrap-break-word px-2 sm:px-0">
             Our Products
           </h2>
         </div>
         {loading ? (
           <div className="text-center py-8">
-            <p className="text-gray-600">Loading products...</p>
+            <p className="text-black">Loading products...</p>
           </div>
         ) : products.length === 0 ? (
           <div className="text-center py-8">
-            <p className="text-gray-600">No products available.</p>
+            <p className="text-black">No products available.</p>
           </div>
         ) : (
           <div className="relative w-full max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8">
@@ -133,56 +128,56 @@ export default function Products() {
               plugins={[autoplayPlugin]}
               className="w-full">
               <CarouselContent className="ml-0 w-full -mr-3 min-[375px]:-mr-4 sm:-mr-5 md:-mr-6 lg:-mr-8">
-              {products.map((product) => {
-                const backgroundImage =
-                  product.backgroundImage || "/images/office1.jpg";
-                return (
-                  <CarouselItem
-                    key={product.id}
-                    className="pl-0 pr-3 min-[375px]:pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-8 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/4 w-full max-w-full">
-                    <div
-                      className="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer h-full flex flex-col w-full max-w-full"
-                      onClick={() => handleCardClick(product)}>
-                      {/* Background Image Section with Logo Overlay */}
-                      <div className="relative h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px] xl:h-[220px] 2xl:h-[240px] overflow-hidden">
-                        {/* Background Image */}
-                        <Image
-                          src={backgroundImage}
-                          alt={`${product.headline} background`}
-                          fill
-                          className="object-cover transition-all duration-300"
-                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1536px) 25vw, 25vw"
-                          priority={false}
-                        />
-                        {/* Gradient overlay for better logo visibility */}
-                        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
-                        {/* Logo Overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="relative w-12 h-12 min-[375px]:w-14 min-[375px]:h-14 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-20 xl:h-20 2xl:w-24 2xl:h-24 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
-                            <Image
-                              src={product.image}
-                              alt={product.alt}
-                              fill
-                              className="object-contain drop-shadow-2xl rounded-full"
-                              sizes="(max-width: 375px) 48px, (max-width: 640px) 56px, (max-width: 768px) 64px, (max-width: 1024px) 64px, (max-width: 1280px) 80px, (max-width: 1536px) 80px, 96px"
-                            />
+                {products.map((product) => {
+                  const backgroundImage =
+                    product.backgroundImage || "/images/office1.jpg";
+                  return (
+                    <CarouselItem
+                      key={product.id}
+                      className="pl-0 pr-3 min-[375px]:pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-8 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/4">
+                      <Card
+                        className="group h-[320px] sm:h-[360px] md:h-[380px] lg:h-[400px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col border-0"
+                        onClick={() => handleCardClick(product)}>
+                        {/* Background Image Section with Logo Overlay */}
+                        <div className="relative h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px] overflow-hidden">
+                          {/* Background Image */}
+                          <Image
+                            src={backgroundImage}
+                            alt={`${product.headline} background`}
+                            fill
+                            className="object-cover transition-all duration-300"
+                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1536px) 25vw, 25vw"
+                            priority={false}
+                          />
+                          {/* Gradient overlay for better logo visibility */}
+                          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
+                          {/* Logo Overlay */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="relative w-12 h-12 min-[375px]:w-14 min-[375px]:h-14 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+                              <Image
+                                src={product.image}
+                                alt={product.headline}
+                                fill
+                                className="object-contain drop-shadow-2xl rounded-full"
+                                sizes="(max-width: 375px) 48px, (max-width: 640px) 56px, (max-width: 768px) 64px, (max-width: 1024px) 64px, (max-width: 1280px) 80px, 80px"
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      {/* Text Card Below */}
-                      <div className="bg-white p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 flex-1 flex flex-col transition-colors duration-300 group-hover:bg-slate-50">
-                        <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-1.5 transition-colors duration-300 group-hover:text-blue-900">
-                          {product.headline}
-                        </h3>
-                        <p className="text-slate-600 text-xs min-[375px]:text-sm sm:text-sm md:text-base lg:text-base leading-normal m-0 flex-1 transition-colors duration-300 group-hover:text-slate-700">
-                          {product.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
+                        {/* Text Card Content */}
+                        <CardHeader className="p-3 sm:p-4 flex-1 flex flex-col min-h-0">
+                          <CardTitle className="text-sm sm:text-base md:text-base lg:text-lg font-bold mb-1 sm:mb-1.5 transition-colors duration-300 group-hover:text-black text-black line-clamp-2 leading-tight p-0">
+                            {product.headline}
+                          </CardTitle>
+                          <CardDescription className="text-[10px] min-[375px]:text-xs sm:text-xs md:text-xs lg:text-sm leading-tight line-clamp-3 overflow-hidden m-0 flex-1 text-black font-normal p-0">
+                            {product.description}
+                          </CardDescription>
+                        </CardHeader>
+                      </Card>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
               <CarouselPrevious className="hidden sm:flex absolute left-2 sm:-left-4 md:-left-12 lg:-left-12 xl:-left-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white" />
               <CarouselNext className="hidden sm:flex absolute right-2 sm:-right-4 md:-right-12 lg:-right-12 xl:-right-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white" />
             </Carousel>
@@ -200,7 +195,7 @@ export default function Products() {
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden">
                   <Image
                     src={selectedProduct.image}
-                    alt={selectedProduct.alt}
+                    alt={selectedProduct.headline}
                     fill
                     className="object-contain rounded-full"
                     sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
@@ -222,7 +217,7 @@ export default function Products() {
                   variant="black"
                   onClick={() => handleVisitWebsite(selectedProduct.website)}
                   className="w-full sm:w-auto px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-sm font-medium inline-flex items-center justify-center gap-2"
-                  aria-label={`Visit ${selectedProduct.label} website`}>
+                  aria-label={`Visit ${selectedProduct.headline} website`}>
                   View Site
                   <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </Button>

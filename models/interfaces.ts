@@ -1,13 +1,10 @@
 // Product interfaces
 export interface ProductItem {
   id: string;
-  label: string;
   headline: string;
   description: string;
   details: string;
-  features: string[];
   image: string;
-  alt: string;
   website: string;
 }
 

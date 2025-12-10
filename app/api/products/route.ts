@@ -109,13 +109,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const {
       id,
-      label,
       headline,
       description,
       details,
-      features,
       imageUrl,
-      alt,
       website,
       backgroundImageUrl,
       position,
@@ -123,26 +120,20 @@ export async function POST(request: NextRequest) {
 
     if (
       !id ||
-      !label ||
       !headline ||
       !description ||
       !details ||
       !imageUrl ||
-      !alt ||
       !website
     ) {
       return NextResponse.json(
         {
           error:
-            "Missing required fields: id, label, headline, description, details, imageUrl, alt, website",
+            "Missing required fields: id, headline, description, details, imageUrl, website",
         },
         { status: 400 }
       );
     }
-
-    const featuresJson = Array.isArray(features) 
-      ? JSON.stringify(features) 
-      : (features || "[]");
 
     // Construct full CDN URLs if images are file paths
     const fullImageUrl = imageUrl && !isFullUrl(imageUrl)
@@ -156,13 +147,10 @@ export async function POST(request: NextRequest) {
     const product = await codagamSitePrisma.product.create({
       data: {
         id,
-        label,
         headline,
         description,
         details,
-        features: featuresJson,
         imageUrl: fullImageUrl,
-        alt,
         website,
         backgroundImageUrl: fullBackgroundImageUrl,
         position: position !== undefined ? position : 0,

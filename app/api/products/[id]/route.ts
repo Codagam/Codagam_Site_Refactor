@@ -46,33 +46,22 @@ export async function PUT(
     const { id } = await params;
     const body = await request.json();
     const {
-      label,
       headline,
       description,
       details,
-      features,
       imageUrl,
-      alt,
       website,
       backgroundImageUrl,
       position,
     } = body;
 
     const updateData: any = {
-      ...(label && { label }),
       ...(headline && { headline }),
       ...(description && { description }),
       ...(details && { details }),
-      ...(alt && { alt }),
       ...(website && { website }),
       ...(position !== undefined && { position }),
     };
-
-    if (features !== undefined) {
-      updateData.features = Array.isArray(features) 
-        ? JSON.stringify(features) 
-        : features;
-    }
 
     // Construct full CDN URLs if images are file paths
     if (imageUrl) {
