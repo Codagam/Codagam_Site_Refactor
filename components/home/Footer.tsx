@@ -339,7 +339,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-8 sm:py-10 md:py-12 w-full">
         {/* Contact Section Header */}
         <div className="mb-6 sm:mb-8 md:mb-10 text-center w-full">
-          <h2 className="text-lg min-[375px]:text-xl sm:text-2xl md:text-2xl lg:text-3xl mb-4 sm:mb-6 md:mb-8 font-bold wrap-break-word px-2 sm:px-0">
+          <h2 className="text-3xl mb-4 sm:mb-6 md:mb-8 font-bold wrap-break-word px-2 sm:px-0">
             {footerContent?.title || defaultContent.title}
           </h2>
           <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word">

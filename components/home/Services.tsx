@@ -36,12 +36,12 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="pt-6 sm:pt-8 md:pt-10 lg:pt-8 xl:pt-10 2xl:pt-12 pb-6 sm:pb-8 md:pb-10 lg:pb-10 xl:pb-12 bg-slate-50 scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full">
-        <h2 className="text-lg min-[375px]:text-xl sm:text-2xl md:text-2xl lg:text-3xl mb-4 sm:mb-6 md:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-0">
+      className="pt-6 sm:pt-8 md:pt-10 lg:pt-8 xl:pt-10 2xl:pt-12 pb-6 sm:pb-8 md:pb-10 lg:pb-10 xl:pb-12 bg-slate-50 scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden relative isolate">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full overflow-x-hidden">
+        <h2 className="text-3xl mb-4 sm:mb-6 md:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-0">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full max-w-full">
           {servicesGalleryItems.map((service) => {
             const hoverColor = service.hoverColor || "30 58 138";
             const icon = iconMap[service.id] || "📋";
@@ -74,7 +74,7 @@ export default function Services() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-blue-900 group-hover:text-white transition-colors duration-300">
+                  <h3 className="text-base font-bold mb-2 sm:mb-3 text-blue-900 group-hover:text-white transition-colors duration-300">
                     {service.title}
                   </h3>
 

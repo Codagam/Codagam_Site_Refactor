@@ -110,9 +110,9 @@ export default function Products() {
     <>
       <section
         id="products"
-        className="py-6 sm:py-8 md:py-10 lg:py-12 bg-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
+        className="py-6 sm:py-8 md:py-10 lg:py-12 bg-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden relative isolate">
         <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
-          <h2 className="text-lg min-[375px]:text-xl sm:text-2xl md:text-2xl lg:text-3xl mb-4 sm:mb-6 md:mb-8 text-center font-bold text-blue-900  wrap-break-word px-2 sm:px-0">
+          <h2 className="text-3xl mb-4 sm:mb-6 md:mb-8 text-center font-bold text-blue-900  wrap-break-word px-2 sm:px-0">
             Our Products
           </h2>
         </div>
@@ -125,7 +125,7 @@ export default function Products() {
             <p className="text-black">No products available.</p>
           </div>
         ) : (
-          <div className="relative w-full max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8">
+          <div className="w-full max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 relative overflow-x-hidden">
             <Carousel
               opts={{
                 align: "start",
@@ -133,14 +133,14 @@ export default function Products() {
               }}
               plugins={[autoplayPlugin]}
               className="w-full">
-              <CarouselContent className="ml-0 w-full -mr-3 min-[375px]:-mr-4 sm:-mr-5 md:-mr-6 lg:-mr-8">
+              <CarouselContent className="ml-0 w-full -mr-2 sm:-mr-3 md:-mr-4">
                 {products.map((product) => {
                   const backgroundImage =
                     product.backgroundImage || "/images/office1.jpg";
                   return (
                     <CarouselItem
                       key={product.id}
-                      className="pl-0 pr-3 min-[375px]:pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-8 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/4">
+                      className="pl-2 sm:pl-3 md:pl-4 pr-2 sm:pr-3 md:pr-4 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/4">
                       <Card
                         className="group h-[320px] sm:h-[360px] md:h-[380px] lg:h-[400px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col border-0"
                         onClick={() => handleCardClick(product)}>
@@ -184,8 +184,8 @@ export default function Products() {
                   );
                 })}
               </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex absolute left-2 sm:-left-4 md:-left-12 lg:-left-12 xl:-left-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white" />
-              <CarouselNext className="hidden sm:flex absolute right-2 sm:-right-4 md:-right-12 lg:-right-12 xl:-right-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white" />
+              <CarouselPrevious className="hidden sm:flex left-0 sm:left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200" />
+              <CarouselNext className="hidden sm:flex right-0 sm:right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200" />
             </Carousel>
           </div>
         )}
