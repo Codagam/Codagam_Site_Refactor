@@ -307,6 +307,7 @@ export default function Footer() {
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
+  // Group addresses by country
   const sortedCountries = useMemo(() => {
     const grouped = offices.reduce((acc, office) => {
       if (!acc[office.country]) {
@@ -367,7 +368,7 @@ export default function Footer() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mb-8 w-full">
-          {/* Company Info - Offices grouped by Country */}
+          {/* Company Info - Countries cycling, showing all addresses per country */}
           {sortedCountries.length > 0 ? (
             <div className="text-center sm:text-left w-full max-w-full">
               <div className="mb-4 flex justify-center sm:justify-start">
@@ -383,7 +384,9 @@ export default function Footer() {
                   <>
                     <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
                       <CountryFlag
-                        countryCode={sortedCountries[currentCountryIndex].countryCode}
+                        countryCode={
+                          sortedCountries[currentCountryIndex].countryCode
+                        }
                         flagUrl={sortedCountries[currentCountryIndex].flagUrl}
                         country={sortedCountries[currentCountryIndex].country}
                       />
