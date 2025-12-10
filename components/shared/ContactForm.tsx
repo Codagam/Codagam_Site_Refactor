@@ -108,16 +108,16 @@ export function ContactForm({
   const formContent = (
     <div className={`${className} w-full max-w-full`}>
       {showTitle && (
-        <h4 className="font-semibold mb-3 sm:mb-4 text-foreground flex items-center text-sm sm:text-base wrap-break-word">
+        <h4 className="font-semibold mb-2 sm:mb-3 text-foreground flex items-center text-sm sm:text-base wrap-break-word">
           📩 Get in Touch
         </h4>
       )}
       <form
         key="contact-form"
-        className="flex flex-col space-y-4 w-full max-w-full"
+        className="flex flex-col space-y-3 w-full max-w-full"
         onSubmit={handleSubmit}
         autoComplete="on">
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <Label htmlFor="name" className="text-sm font-medium text-white">
             Name
           </Label>
@@ -133,7 +133,7 @@ export function ContactForm({
             required
           />
         </div>
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <Label htmlFor="email" className="text-sm font-medium text-white">
             Email
           </Label>
@@ -154,7 +154,7 @@ export function ContactForm({
             <p className="text-red-400 text-xs sm:text-sm">{emailError}</p>
           )}
         </div>
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <Label htmlFor="phone" className="text-sm font-medium text-white">
             Phone
           </Label>
@@ -172,7 +172,7 @@ export function ContactForm({
             required
           />
         </div>
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <Label htmlFor="message" className="text-sm font-medium text-white">
             Message
           </Label>

@@ -361,10 +361,10 @@ export default function Footer() {
     <footer
       id="contact"
       className="bg-blue-900 text-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-8 sm:py-10 md:py-12 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-6 sm:py-8 md:py-10 w-full">
         {/* Contact Section Header */}
-        <div className="mb-6 sm:mb-8 md:mb-10 text-center w-full">
-          <h2 className="text-3xl mb-4 sm:mb-6 md:mb-8 font-bold wrap-break-word px-2 sm:px-0">
+        <div className="mb-4 sm:mb-5 md:mb-6 text-center w-full">
+          <h2 className="text-3xl mb-3 sm:mb-4 md:mb-5 font-bold wrap-break-word px-2 sm:px-0">
             {footerContent?.title || defaultContent.title}
           </h2>
           <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word">
@@ -372,22 +372,22 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mb-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mb-8 w-full">
           {/* Company Info - Countries cycling, showing all addresses per country */}
           {mounted && sortedCountries.length > 0 ? (
             <div className="text-center sm:text-left w-full max-w-full">
-              <div className="mb-4 flex justify-center sm:justify-start">
+              <div className="mb-3 flex justify-center sm:justify-start">
                 <h2 className="text-white font-bold text-xl sm:text-2xl">
                   codagam
                 </h2>
               </div>
               <div
-                className={`space-y-3 text-sm sm:text-base transition-opacity duration-500 ease-in-out ${
+                className={`space-y-2 text-sm sm:text-base transition-opacity duration-500 ease-in-out ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}>
                 {sortedCountries[currentCountryIndex] && (
                   <>
-                    <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+                    <h4 className="font-semibold text-base sm:text-lg mb-2 flex items-center gap-2 justify-center sm:justify-start">
                       <CountryFlag
                         countryCode={
                           sortedCountries[currentCountryIndex].countryCode
@@ -406,13 +406,13 @@ export default function Footer() {
             </div>
           ) : (
             <div className="text-center sm:text-left w-full max-w-full">
-              <div className="mb-4 flex justify-center sm:justify-start">
+              <div className="mb-3 flex justify-center sm:justify-start">
                 <h2 className="text-white font-bold text-xl sm:text-2xl">
                   codagam
                 </h2>
               </div>
-              <div className="space-y-3 text-sm sm:text-base">
-                <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+              <div className="space-y-2 text-sm sm:text-base">
+                <h4 className="font-semibold text-base sm:text-lg mb-2 flex items-center gap-2 justify-center sm:justify-start">
                   <CountryFlag
                     countryCode="IN"
                     flagUrl={null}
@@ -453,10 +453,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg mb-4 flex items-center gap-2 justify-center sm:justify-start">
+            <h3 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {QUICK_LINKS.map(({ id, label, icon: Icon }) => (
                 <li key={id}>
                   <a
@@ -476,10 +476,10 @@ export default function Footer() {
 
           {/* Follow Us */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg mb-4">
+            <h3 className="font-semibold text-base sm:text-lg mb-3">
               Follow Us
             </h3>
-            <div className="flex flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center sm:justify-start">
               {socialLinks.length > 0 ? (
                 socialLinks.map((link) => (
                   <SocialIconLink key={link.id} link={link} />
