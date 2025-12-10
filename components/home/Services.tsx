@@ -79,7 +79,7 @@ export default function Services() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-base text-slate-600 group-hover:text-white/90 leading-relaxed mb-4 sm:mb-5 line-clamp-3 transition-colors duration-300 grow">
+                  <p className="text-sm sm:text-base text-slate-600 group-hover:text-white/90 leading-relaxed mb-4 sm:mb-5 line-clamp-4 transition-colors duration-300 grow">
                     {service.description}
                   </p>
 
