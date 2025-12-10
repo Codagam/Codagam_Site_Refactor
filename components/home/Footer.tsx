@@ -378,7 +378,7 @@ export default function Footer() {
             <div className="text-center sm:text-left w-full max-w-full">
               <div className="mb-3 flex justify-center sm:justify-start">
                 <h2 className="text-white font-bold text-xl sm:text-2xl">
-                  codagam
+                  Codagam
                 </h2>
               </div>
               <div
@@ -408,7 +408,7 @@ export default function Footer() {
             <div className="text-center sm:text-left w-full max-w-full">
               <div className="mb-3 flex justify-center sm:justify-start">
                 <h2 className="text-white font-bold text-xl sm:text-2xl">
-                  codagam
+                  Codagam
                 </h2>
               </div>
               <div className="space-y-2 text-sm sm:text-base">
