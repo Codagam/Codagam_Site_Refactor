@@ -16,6 +16,7 @@
   }
 }
 
+/* stylelint-disable-next-line */
 @theme inline {
   --color-background: rgb(var(--background));
   --color-foreground: rgb(var(--foreground));
