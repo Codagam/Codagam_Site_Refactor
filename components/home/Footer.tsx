@@ -10,8 +10,10 @@ import {
   MapPin,
   Phone,
   Mail,
+  Flag,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Social Media Icons with original brand colors
 const InstagramIcon = () => (
@@ -82,10 +84,21 @@ export default function Footer() {
           {/* Company Info */}
           <div className="text-center sm:text-left w-full max-w-full">
             <div className="mb-4 flex justify-center sm:justify-start">
-              <h2 className="text-white font-bold text-xl sm:text-2xl">codagam</h2>
+              <h2 className="text-white font-bold text-xl sm:text-2xl">
+                codagam
+              </h2>
             </div>
             <div className="space-y-3 text-sm sm:text-base">
-              <h4 className="font-semibold text-base sm:text-lg mb-3">
+              <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+                <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
+                  <Image
+                    src="https://flagcdn.com/w320/in.png"
+                    alt="India flag"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 40px, 48px"
+                  />
+                </div>
                 India Office
               </h4>
               <div className="space-y-2 opacity-90">
@@ -169,18 +182,7 @@ export default function Footer() {
                   Tech Stack
                 </a>
               </li>
-              <li>
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection("contact");
-                  }}
-                  className="flex items-center gap-2 text-sm sm:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start">
-                  <User className="w-4 h-4" />
-                  Contact
-                </a>
-              </li>
+              
             </ul>
           </div>
 
