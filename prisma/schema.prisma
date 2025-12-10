@@ -64,3 +64,43 @@ model TechStackItem {
   @@index([position])
   @@map("tech_stack_items")
 }
+
+model FooterContent {
+  id          String   @id @default("footer_content") @map("_id")
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("footer_content")
+}
+
+model FooterOffice {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  country       String   // Country name (e.g., "India", "USA")
+  countryPosition Int    @default(0) // Position for country grouping
+  flagUrl       String?  // Country flag URL
+  address       String
+  phone         String?
+  email         String?
+  position      Int      @default(0) // Position within the country
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([country, position])
+  @@index([countryPosition])
+  @@map("footer_offices")
+}
+
+model FooterSocialLink {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  platform  String   // e.g., "instagram", "facebook", "twitter", "linkedin"
+  url       String
+  iconType  String   @default("") // For custom icon types if needed
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([position])
+  @@map("footer_social_links")
+}

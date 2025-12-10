@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 // Social Media Icons with original brand colors
 const InstagramIcon = () => (
@@ -56,13 +57,142 @@ const LinkedInIcon = () => (
   </svg>
 );
 
+interface FooterContent {
+  id: string;
+  title: string;
+  description: string;
+}
+
+interface FooterOffice {
+  id: string;
+  country: string;
+  countryPosition: number;
+  flagUrl: string | null;
+  address: string;
+  phone: string | null;
+  email: string | null;
+  position: number;
+}
+
+interface FooterSocialLink {
+  id: string;
+  platform: string;
+  url: string;
+  iconType: string;
+  position: number;
+}
+
+const getSocialIcon = (platform: string) => {
+  const normalizedPlatform = platform.toLowerCase();
+  if (normalizedPlatform.includes("instagram")) {
+    return <InstagramIcon />;
+  } else if (normalizedPlatform.includes("facebook")) {
+    return <FacebookIcon />;
+  } else if (
+    normalizedPlatform.includes("twitter") ||
+    normalizedPlatform.includes("x")
+  ) {
+    return <XTwitterIcon />;
+  } else if (normalizedPlatform.includes("linkedin")) {
+    return <LinkedInIcon />;
+  }
+  return null;
+};
+
+const getSocialIconBg = (platform: string) => {
+  const normalizedPlatform = platform.toLowerCase();
+  if (normalizedPlatform.includes("instagram")) {
+    return "bg-linear-to-br from-purple-600 via-pink-500 to-orange-500";
+  } else if (normalizedPlatform.includes("facebook")) {
+    return "bg-[#1877F2]";
+  } else if (
+    normalizedPlatform.includes("twitter") ||
+    normalizedPlatform.includes("x")
+  ) {
+    return "bg-black";
+  } else if (normalizedPlatform.includes("linkedin")) {
+    return "bg-[#0077B5]";
+  }
+  return "bg-gray-600";
+};
+
 export default function Footer() {
+  const [footerContent, setFooterContent] = useState<FooterContent | null>(
+    null
+  );
+  const [offices, setOffices] = useState<FooterOffice[]>([]);
+  const [socialLinks, setSocialLinks] = useState<FooterSocialLink[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchFooterData = async () => {
+      try {
+        const [contentRes, officesRes, socialLinksRes] = await Promise.all([
+          fetch("/api/footer/content"),
+          fetch("/api/footer/offices"),
+          fetch("/api/footer/social-links"),
+        ]);
+
+        if (contentRes.ok) {
+          const content = await contentRes.json();
+          setFooterContent(content);
+        }
+
+        if (officesRes.ok) {
+          const officesData = await officesRes.json();
+          setOffices(officesData);
+        }
+
+        if (socialLinksRes.ok) {
+          const socialLinksData = await socialLinksRes.json();
+          setSocialLinks(socialLinksData);
+        }
+      } catch (error) {
+        console.error("Error fetching footer data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchFooterData();
+  }, []);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+
+  // Format address - split by newlines if they exist, otherwise split by commas
+  const formatAddress = (address: string) => {
+    if (address.includes("\n")) {
+      return address.split("\n").filter((line) => line.trim());
+    }
+    return address.split(",").map((line) => line.trim());
+  };
+
+  // Group offices by country
+  const groupedOffices = offices.reduce((acc, office) => {
+    if (!acc[office.country]) {
+      acc[office.country] = {
+        country: office.country,
+        countryPosition: office.countryPosition,
+        flagUrl: office.flagUrl,
+        locations: [],
+      };
+    }
+    acc[office.country].locations.push(office);
+    return acc;
+  }, {} as Record<string, { country: string; countryPosition: number; flagUrl: string | null; locations: FooterOffice[] }>);
+
+  // Sort countries by countryPosition, then sort locations within each country by position
+  const sortedCountries = Object.values(groupedOffices)
+    .sort((a, b) => a.countryPosition - b.countryPosition)
+    .map((countryGroup) => ({
+      ...countryGroup,
+      locations: countryGroup.locations.sort((a, b) => a.position - b.position),
+    }));
 
   return (
     <footer
@@ -72,73 +202,134 @@ export default function Footer() {
         {/* Contact Section Header */}
         <div className="mb-6 sm:mb-8 md:mb-10 text-center w-full">
           <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 md:mb-8 font-semibold wrap-break-word px-2 sm:px-0">
-            Let&apos;s Build Something Great
+            {footerContent?.title || "Let's Build Something Great"}
           </h2>
           <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word">
-            Ready to transform your ideas into scalable products? Reach out to
-            discuss your project.
+            {footerContent?.description ||
+              "Ready to transform your ideas into scalable products? Reach out to discuss your project."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mb-8 w-full">
-          {/* Company Info */}
-          <div className="text-center sm:text-left w-full max-w-full">
-            <div className="mb-4 flex justify-center sm:justify-start">
-              <h2 className="text-white font-bold text-xl sm:text-2xl">
-                codagam
-              </h2>
-            </div>
-            <div className="space-y-3 text-sm sm:text-base">
-              <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
-                <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
-                  <Image
-                    src="https://flagcdn.com/w320/in.png"
-                    alt="India flag"
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 40px, 48px"
-                  />
+          {/* Company Info - Offices grouped by Country */}
+          {sortedCountries.length > 0 ? (
+            sortedCountries.map((countryGroup) => (
+              <div
+                key={countryGroup.country}
+                className="text-center sm:text-left w-full max-w-full">
+                <div className="mb-4 flex justify-center sm:justify-start">
+                  <h2 className="text-white font-bold text-xl sm:text-2xl">
+                    codagam
+                  </h2>
                 </div>
-                India Office
-              </h4>
-              <div className="space-y-2 opacity-90">
-                <div className="flex items-start gap-2 justify-center sm:justify-start">
-                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                  <div className="text-center sm:text-left">
-                    <p>363/2, Rukmani Nagar,</p>
-                    <p>Nagarpalaya Rd,</p>
-                    <p>Gobichettipalayam,</p>
-                    <p>Tamil Nadu, India, 638452</p>
+                <div className="space-y-3 text-sm sm:text-base">
+                  <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+                    {countryGroup.flagUrl && (
+                      <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
+                        <Image
+                          src={countryGroup.flagUrl}
+                          alt={`${countryGroup.country} flag`}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 640px) 40px, 48px"
+                        />
+                      </div>
+                    )}
+                    {countryGroup.country}
+                  </h4>
+                  <div className="space-y-4 opacity-90">
+                    {countryGroup.locations.map((office) => (
+                      <div key={office.id} className="space-y-2">
+                        <div className="flex items-start gap-2 justify-center sm:justify-start">
+                          <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                          <div className="text-center sm:text-left">
+                            {formatAddress(office.address).map((line, idx) => (
+                              <p key={idx}>{line}</p>
+                            ))}
+                          </div>
+                        </div>
+                        {office.phone && (
+                          <div className="flex items-center gap-2 justify-center sm:justify-start">
+                            <Phone className="w-4 h-4 shrink-0" />
+                            <a
+                              href={`tel:${office.phone}`}
+                              className="hover:text-blue-200 transition-colors">
+                              {office.phone}
+                            </a>
+                          </div>
+                        )}
+                        {office.email && (
+                          <div className="flex items-center gap-2 justify-center sm:justify-start">
+                            <Mail className="w-4 h-4 shrink-0" />
+                            <a
+                              href={`mailto:${office.email}`}
+                              className="hover:text-blue-200 transition-colors">
+                              {office.email}
+                            </a>
+                          </div>
+                        )}
+                        {office.id !==
+                          countryGroup.locations[
+                            countryGroup.locations.length - 1
+                          ]?.id && (
+                          <div className="border-t border-blue-800 pt-2 mt-2"></div>
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="flex items-start gap-2 justify-center sm:justify-start">
-                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                  <div className="text-center sm:text-left">
-                    <p>45j Rukmani Illam,</p>
-                    <p>Ramnagar 3rd Cross St,</p>
-                    <p>Gobichettipalayam-638452,</p>
-                    <p>Tamil Nadu, India</p>
+              </div>
+            ))
+          ) : (
+            <div className="text-center sm:text-left w-full max-w-full">
+              <div className="mb-4 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-xl sm:text-2xl">
+                  codagam
+                </h2>
+              </div>
+              <div className="space-y-3 text-sm sm:text-base">
+                <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
+                    <Image
+                      src="https://flagcdn.com/w320/in.png"
+                      alt="India flag"
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 640px) 40px, 48px"
+                    />
                   </div>
-                </div>
-                <div className="flex items-center gap-2 justify-center sm:justify-start">
-                  <Phone className="w-4 h-4 shrink-0" />
-                  <a
-                    href="tel:+917598454546"
-                    className="hover:text-blue-200 transition-colors">
-                    +91 75984 54546
-                  </a>
-                </div>
-                <div className="flex items-center gap-2 justify-center sm:justify-start">
-                  <Mail className="w-4 h-4 shrink-0" />
-                  <a
-                    href="mailto:Support@codagam.com"
-                    className="hover:text-blue-200 transition-colors">
-                    Support@codagam.com
-                  </a>
+                  India Office
+                </h4>
+                <div className="space-y-2 opacity-90">
+                  <div className="flex items-start gap-2 justify-center sm:justify-start">
+                    <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                    <div className="text-center sm:text-left">
+                      <p>363/2, Rukmani Nagar,</p>
+                      <p>Nagarpalaya Rd,</p>
+                      <p>Gobichettipalayam,</p>
+                      <p>Tamil Nadu, India, 638452</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 justify-center sm:justify-start">
+                    <Phone className="w-4 h-4 shrink-0" />
+                    <a
+                      href="tel:+917598454546"
+                      className="hover:text-blue-200 transition-colors">
+                      +91 75984 54546
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 justify-center sm:justify-start">
+                    <Mail className="w-4 h-4 shrink-0" />
+                    <a
+                      href="mailto:Support@codagam.com"
+                      className="hover:text-blue-200 transition-colors">
+                      Support@codagam.com
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Quick Links */}
           <div className="text-center sm:text-left w-full max-w-full">
@@ -191,38 +382,58 @@ export default function Footer() {
               Follow Us
             </h3>
             <div className="flex gap-4 justify-center sm:justify-start">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-linear-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
-                aria-label="Instagram">
-                <InstagramIcon />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-90 transition-opacity"
-                aria-label="Facebook">
-                <FacebookIcon />
-              </a>
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:opacity-90 transition-opacity"
-                aria-label="X (Twitter)">
-                <XTwitterIcon />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#0077B5] flex items-center justify-center hover:opacity-90 transition-opacity"
-                aria-label="LinkedIn">
-                <LinkedInIcon />
-              </a>
+              {socialLinks.length > 0 ? (
+                socialLinks.map((link) => {
+                  const icon = getSocialIcon(link.platform);
+                  const bgClass = getSocialIconBg(link.platform);
+                  return (
+                    <a
+                      key={link.id}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-10 h-10 rounded-full ${bgClass} flex items-center justify-center hover:opacity-90 transition-opacity`}
+                      aria-label={link.platform}>
+                      {icon}
+                    </a>
+                  );
+                })
+              ) : (
+                <>
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-linear-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
+                    aria-label="Instagram">
+                    <InstagramIcon />
+                  </a>
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-90 transition-opacity"
+                    aria-label="Facebook">
+                    <FacebookIcon />
+                  </a>
+                  <a
+                    href="https://x.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:opacity-90 transition-opacity"
+                    aria-label="X (Twitter)">
+                    <XTwitterIcon />
+                  </a>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-[#0077B5] flex items-center justify-center hover:opacity-90 transition-opacity"
+                    aria-label="LinkedIn">
+                    <LinkedInIcon />
+                  </a>
+                </>
+              )}
             </div>
           </div>
 
