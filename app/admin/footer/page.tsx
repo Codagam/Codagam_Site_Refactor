@@ -95,7 +95,7 @@ export default function FooterAdminPage() {
       } else {
         setMessage({ type: "error", text: "Failed to save footer content" });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: "error", text: "Error saving footer content" });
     } finally {
       setSaving(false);
@@ -122,7 +122,7 @@ export default function FooterAdminPage() {
     setOffices([...offices, newOffice]);
   };
 
-  const updateOffice = (id: string, field: keyof FooterOffice, value: any) => {
+  const updateOffice = (id: string, field: keyof FooterOffice, value: string | number | null) => {
     setOffices(
       offices.map((office) => (office.id === id ? { ...office, [field]: value } : office))
     );
@@ -140,7 +140,7 @@ export default function FooterAdminPage() {
       } else {
         setMessage({ type: "error", text: "Failed to delete office" });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: "error", text: "Error deleting office" });
     }
   };
@@ -183,7 +183,7 @@ export default function FooterAdminPage() {
           text: errorData.error || "Failed to save office",
         });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: "error", text: "Error saving office" });
     } finally {
       setSaving(false);
@@ -201,7 +201,7 @@ export default function FooterAdminPage() {
     setSocialLinks([...socialLinks, newLink]);
   };
 
-  const updateSocialLink = (id: string, field: keyof FooterSocialLink, value: any) => {
+  const updateSocialLink = (id: string, field: keyof FooterSocialLink, value: string | number) => {
     setSocialLinks(
       socialLinks.map((link) => (link.id === id ? { ...link, [field]: value } : link))
     );
@@ -219,7 +219,7 @@ export default function FooterAdminPage() {
       } else {
         setMessage({ type: "error", text: "Failed to delete social link" });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: "error", text: "Error deleting social link" });
     }
   };
@@ -250,7 +250,7 @@ export default function FooterAdminPage() {
       } else {
         setMessage({ type: "error", text: "Failed to save social link" });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: "error", text: "Error saving social link" });
     } finally {
       setSaving(false);
@@ -358,6 +358,7 @@ export default function FooterAdminPage() {
                     <div className="mb-4 pb-2 border-b">
                       <h3 className="text-xl font-bold flex items-center gap-2">
                         {flagUrl && (
+                          /* eslint-disable-next-line @next/next/no-img-element */
                           <img
                             src={flagUrl}
                             alt={`${country} flag`}
@@ -530,7 +531,7 @@ export default function FooterAdminPage() {
             })()}
             {offices.length === 0 && (
               <p className="text-gray-500 text-center py-4">
-                No offices added yet. Click "Add Location" to get started.
+                No offices added yet. Click &quot;Add Location&quot; to get started.
               </p>
             )}
           </div>

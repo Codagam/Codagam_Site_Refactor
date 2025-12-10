@@ -44,7 +44,14 @@ export async function PUT(
     const body = await request.json();
     const { name, logoUrl, alt, width, height, position } = body;
 
-    const updateData: any = {
+    const updateData: Partial<{
+      name: string;
+      logoUrl: string;
+      alt: string | null;
+      width: number;
+      height: number;
+      position: number;
+    }> = {
       ...(name && { name }),
       ...(alt && { alt }),
       ...(width !== undefined && { width }),

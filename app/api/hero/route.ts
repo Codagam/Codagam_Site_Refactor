@@ -3,11 +3,18 @@ import { codagamSitePrisma } from "@/lib/prisma-codagam-site";
 import { constructImageUrl, isFullUrl } from "@/lib/utils/image-url";
 
 // Helper function to validate hero data
-const isValidHero = (hero: any): boolean => {
-  return !!(
-    hero?.id &&
-    hero?.title?.trim() &&
-    hero?.imageUrl?.trim()
+const isValidHero = (hero: unknown): hero is { id: string; title: string; imageUrl: string } => {
+  return (
+    typeof hero === "object" &&
+    hero !== null &&
+    "id" in hero &&
+    "title" in hero &&
+    "imageUrl" in hero &&
+    typeof (hero as { id: unknown }).id === "string" &&
+    typeof (hero as { title: unknown }).title === "string" &&
+    typeof (hero as { imageUrl: unknown }).imageUrl === "string" &&
+    String((hero as { title: string }).title).trim() !== "" &&
+    String((hero as { imageUrl: string }).imageUrl).trim() !== ""
   );
 };
 
@@ -45,17 +52,17 @@ export async function GET() {
         id: hero.id,
         title: hero.title,
         imageUrl: constructImageUrl(hero.imageUrl),
-        position: (hero as any).position ?? 0,
+        position: "position" in hero && typeof hero.position === "number" ? hero.position : 0,
       }));
 
     return NextResponse.json(heroesWithFullUrls);
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching hero section:", error);
     return NextResponse.json(
       {
         error: "Failed to fetch hero section",
         ...(process.env.NODE_ENV === "development" && {
-          details: error.message,
+          details: error instanceof Error ? error.message : "Unknown error",
         }),
       },
       { status: 500 }
@@ -110,7 +117,8 @@ export async function PUT(request: NextRequest) {
     }
 
     // Handle single hero section update
-    let { title, imageUrl, position } = body;
+    const { title } = body;
+    let { imageUrl, position } = body;
 
     if (!title || !imageUrl) {
       return NextResponse.json(

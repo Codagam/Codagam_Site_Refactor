@@ -37,7 +37,12 @@ export async function PUT(
     const body = await request.json();
     const { platform, url, iconType, position } = body;
 
-    const updateData: any = {
+    const updateData: Partial<{
+      platform: string;
+      url: string;
+      iconType: string;
+      position: number;
+    }> = {
       ...(platform && { platform }),
       ...(url && { url }),
       ...(iconType !== undefined && { iconType }),

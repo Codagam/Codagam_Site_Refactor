@@ -28,8 +28,17 @@ export default function Hero() {
         if (response.ok) {
           const heroes = Array.isArray(data) ? data : [data];
           const validHeroes = heroes.filter(
-            (hero: any) =>
-              hero?.id && hero?.title?.trim() && hero?.imageUrl?.trim()
+            (hero: unknown): hero is { id: string; title: string; imageUrl: string } =>
+              typeof hero === "object" &&
+              hero !== null &&
+              "id" in hero &&
+              "title" in hero &&
+              "imageUrl" in hero &&
+              typeof (hero as { id: unknown }).id === "string" &&
+              typeof (hero as { title: unknown }).title === "string" &&
+              typeof (hero as { imageUrl: unknown }).imageUrl === "string" &&
+              String((hero as { title: string }).title).trim() !== "" &&
+              String((hero as { imageUrl: string }).imageUrl).trim() !== ""
           );
           setHeroList(validHeroes);
         } else {

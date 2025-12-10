@@ -56,7 +56,16 @@ export async function PUT(
       position,
     } = body;
 
-    const updateData: any = {
+    const updateData: Partial<{
+      country: string;
+      countryCode: string | null;
+      countryPosition: number;
+      flagUrl: string | null;
+      address: string;
+      phone: string | null;
+      email: string | null;
+      position: number;
+    }> = {
       ...(country && { country }),
       ...(countryCode !== undefined && {
         countryCode: countryCode ? countryCode.toUpperCase() : null,

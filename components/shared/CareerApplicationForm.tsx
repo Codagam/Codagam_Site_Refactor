@@ -24,7 +24,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { User, Mail, FileText } from "lucide-react";
-import { CareerFormData, FormSubmitEvent } from "@/models/interfaces";
+// CareerFormData and FormSubmitEvent are defined in interfaces but not used here
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -177,7 +177,7 @@ export function CareerApplicationForm({
           <FormField
             control={form.control}
             name="resume"
-            render={({ field: { value, onChange, ...fieldProps } }) => (
+            render={({ field: { onChange, ...fieldProps } }) => (
               <FormItem className="space-y-1.5">
                 <FormLabel className="text-xs sm:text-sm font-semibold text-black flex items-center gap-1.5">
                   <FileText className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-600" />

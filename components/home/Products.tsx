@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/carousel";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -48,10 +47,17 @@ export default function Products() {
         if (response.ok) {
           const mappedProducts: ProductWithBackground[] = data
             .filter(
-              (product: any) =>
-                product?.id && product?.headline && product?.imageUrl
+              (product: unknown): product is { id: string; headline: string; imageUrl: string; description?: string; details?: string; website?: string } =>
+                typeof product === "object" &&
+                product !== null &&
+                "id" in product &&
+                "headline" in product &&
+                "imageUrl" in product &&
+                typeof (product as { id: unknown }).id === "string" &&
+                typeof (product as { headline: unknown }).headline === "string" &&
+                typeof (product as { imageUrl: unknown }).imageUrl === "string"
             )
-            .map((product: any) => {
+            .map((product: { id: string; headline: string; imageUrl: string; description?: string; details?: string; website?: string; backgroundImageUrl?: string }) => {
               return {
                 id: product.id,
                 headline: product.headline,

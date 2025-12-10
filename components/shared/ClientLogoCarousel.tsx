@@ -39,20 +39,23 @@ export default function ClientLogoCarousel({
           const seenNames = new Set<string>();
           
           const mappedLogos: ClientLogoWithSize[] = data
-            .filter((logo: any) => {
+            .filter((logo: unknown): logo is { id?: string; name: string; logoUrl: string; alt?: string; width?: number; height?: number } => {
               // Filter out invalid logos
-              if (!logo?.name || !logo?.logoUrl) return false;
+              if (typeof logo !== "object" || logo === null) return false;
+              if (!("name" in logo) || !("logoUrl" in logo)) return false;
+              if (typeof (logo as { name: unknown }).name !== "string" || typeof (logo as { logoUrl: unknown }).logoUrl !== "string") return false;
+              
+              const logoObj = logo as { id?: string; name: string; logoUrl: string };
               
               // Deduplicate by id if available, otherwise by name
-              const uniqueKey = logo.id || logo.name;
-              if (logo.id && seenIds.has(logo.id)) return false;
-              if (!logo.id && seenNames.has(logo.name)) return false;
+              if (logoObj.id && seenIds.has(logoObj.id)) return false;
+              if (!logoObj.id && seenNames.has(logoObj.name)) return false;
               
-              if (logo.id) seenIds.add(logo.id);
-              seenNames.add(logo.name);
+              if (logoObj.id) seenIds.add(logoObj.id);
+              seenNames.add(logoObj.name);
               return true;
             })
-            .map((logo: any) => ({
+            .map((logo: { id?: string; name: string; logoUrl: string; alt?: string; width?: number; height?: number }) => ({
               id: logo.id,
               name: logo.name,
               logo: logo.logoUrl,

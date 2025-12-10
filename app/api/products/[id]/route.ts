@@ -55,7 +55,15 @@ export async function PUT(
       position,
     } = body;
 
-    const updateData: any = {
+    const updateData: Partial<{
+      headline: string;
+      description: string;
+      details: string;
+      imageUrl: string;
+      website: string;
+      backgroundImageUrl: string | null;
+      position: number;
+    }> = {
       ...(headline && { headline }),
       ...(description && { description }),
       ...(details && { details }),

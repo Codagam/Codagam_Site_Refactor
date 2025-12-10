@@ -43,12 +43,13 @@ export default function SectionReveal({
       observer.observe(ref.current);
     }
 
+    const currentRef = ref.current;
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, [delayMs]);
+  }, [delayMs, ref]);
 
   const variantClasses = {
     "fade-in": isVisible ? "opacity-100" : "opacity-0",

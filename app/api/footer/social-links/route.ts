@@ -16,13 +16,13 @@ export async function GET() {
     });
 
     return NextResponse.json(socialLinks);
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching footer social links:", error);
     return NextResponse.json(
       {
         error: "Failed to fetch footer social links",
         ...(process.env.NODE_ENV === "development" && {
-          details: error.message,
+          details: error instanceof Error ? error.message : "Unknown error",
         }),
       },
       { status: 500 }

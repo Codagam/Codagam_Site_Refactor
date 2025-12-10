@@ -27,8 +27,17 @@ export default function TechStack() {
 
         if (response.ok) {
           const mappedItems: TechStackItem[] = data
-            .filter((item: any) => item?.id && item?.name && item?.iconUrl)
-            .map((item: any) => ({
+            .filter((item: unknown): item is { id: string; name: string; iconUrl: string } =>
+              typeof item === "object" &&
+              item !== null &&
+              "id" in item &&
+              "name" in item &&
+              "iconUrl" in item &&
+              typeof (item as { id: unknown }).id === "string" &&
+              typeof (item as { name: unknown }).name === "string" &&
+              typeof (item as { iconUrl: unknown }).iconUrl === "string"
+            )
+            .map((item: { id: string; name: string; iconUrl: string }) => ({
               id: item.id,
               iconUrl: item.iconUrl || "",
               name: item.name,

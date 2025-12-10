@@ -30,13 +30,13 @@ export async function GET() {
     }));
 
     return NextResponse.json(officesWithFullUrls);
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching footer offices:", error);
     return NextResponse.json(
       {
         error: "Failed to fetch footer offices",
         ...(process.env.NODE_ENV === "development" && {
-          details: error.message,
+          details: error instanceof Error ? error.message : "Unknown error",
         }),
       },
       { status: 500 }

@@ -26,13 +26,13 @@ export async function GET() {
     }
 
     return NextResponse.json(content);
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching footer content:", error);
     return NextResponse.json(
       {
         error: "Failed to fetch footer content",
         ...(process.env.NODE_ENV === "development" && {
-          details: error.message,
+          details: error instanceof Error ? error.message : "Unknown error",
         }),
       },
       { status: 500 }
@@ -66,13 +66,13 @@ export async function PUT(request: NextRequest) {
     });
 
     return NextResponse.json(content);
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error updating footer content:", error);
     return NextResponse.json(
       {
         error: "Failed to update footer content",
         ...(process.env.NODE_ENV === "development" && {
-          details: error.message,
+          details: error instanceof Error ? error.message : "Unknown error",
         }),
       },
       { status: 500 }
