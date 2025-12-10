@@ -13,8 +13,13 @@ import {
 } from "@/components/ui/sheet";
 
 export default function Header() {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -100,81 +105,92 @@ export default function Header() {
           </Button>
 
           {/* Mobile Menu Button with Sheet */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-blue-900 hover:bg-slate-100"
-                aria-label="Toggle menu">
-                <Menu className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-[280px] sm:w-[350px] md:w-[400px] bg-white">
-              <SheetHeader>
-                <SheetTitle className="flex items-center space-x-3 text-left">
-                  <Link
-                    href="/"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsOpen(false);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className="text-lg min-[375px]:text-xl sm:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
-                    Codagam
-                  </Link>
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="flex flex-col space-y-2 mt-8">
-                <a
-                  href="#services"
-                  onClick={(e) => handleLinkClick(e, "services")}
-                  className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
-                    shouldAnimate ? "animate-slide-in-right" : ""
-                  }`}
-                  style={{
-                    animationDelay: shouldAnimate ? "0.1s" : "0s",
-                  }}>
-                  Services
-                </a>
-                <a
-                  href="#products"
-                  onClick={(e) => handleLinkClick(e, "products")}
-                  className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
-                    shouldAnimate ? "animate-slide-in-right" : ""
-                  }`}
-                  style={{
-                    animationDelay: shouldAnimate ? "0.2s" : "0s",
-                  }}>
-                  Products
-                </a>
-                <a
-                  href="#stack"
-                  onClick={(e) => handleLinkClick(e, "stack")}
-                  className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
-                    shouldAnimate ? "animate-slide-in-right" : ""
-                  }`}
-                  style={{
-                    animationDelay: shouldAnimate ? "0.3s" : "0s",
-                  }}>
-                  Tech Stack
-                </a>
-                <a
-                  href="#contact"
-                  onClick={(e) => handleLinkClick(e, "contact")}
-                  className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
-                    shouldAnimate ? "animate-slide-in-right" : ""
-                  }`}
-                  style={{
-                    animationDelay: shouldAnimate ? "0.4s" : "0s",
-                  }}>
-                  Contact
-                </a>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          {mounted ? (
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-blue-900 hover:bg-slate-100"
+                  aria-label="Toggle menu">
+                  <Menu className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className="w-[280px] sm:w-[350px] md:w-[400px] bg-white">
+                <SheetHeader>
+                  <SheetTitle className="flex items-center space-x-3 text-left">
+                    <Link
+                      href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsOpen(false);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="text-lg min-[375px]:text-xl sm:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
+                      Codagam
+                    </Link>
+                  </SheetTitle>
+                </SheetHeader>
+                <nav className="flex flex-col space-y-2 mt-8">
+                  <a
+                    href="#services"
+                    onClick={(e) => handleLinkClick(e, "services")}
+                    className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
+                      shouldAnimate ? "animate-slide-in-right" : ""
+                    }`}
+                    style={{
+                      animationDelay: shouldAnimate ? "0.1s" : "0s",
+                    }}>
+                    Services
+                  </a>
+                  <a
+                    href="#products"
+                    onClick={(e) => handleLinkClick(e, "products")}
+                    className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
+                      shouldAnimate ? "animate-slide-in-right" : ""
+                    }`}
+                    style={{
+                      animationDelay: shouldAnimate ? "0.2s" : "0s",
+                    }}>
+                    Products
+                  </a>
+                  <a
+                    href="#stack"
+                    onClick={(e) => handleLinkClick(e, "stack")}
+                    className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
+                      shouldAnimate ? "animate-slide-in-right" : ""
+                    }`}
+                    style={{
+                      animationDelay: shouldAnimate ? "0.3s" : "0s",
+                    }}>
+                    Tech Stack
+                  </a>
+                  <a
+                    href="#contact"
+                    onClick={(e) => handleLinkClick(e, "contact")}
+                    className={`text-sm sm:text-base font-medium text-slate-700 hover:text-blue-900 transition-all duration-300 py-2 px-2 rounded-md hover:bg-slate-50 flex items-center mobile-menu-link ${
+                      shouldAnimate ? "animate-slide-in-right" : ""
+                    }`}
+                    style={{
+                      animationDelay: shouldAnimate ? "0.4s" : "0s",
+                    }}>
+                    Contact
+                  </a>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          ) : (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-blue-900 hover:bg-slate-100"
+              aria-label="Toggle menu"
+              onClick={() => setIsOpen(true)}>
+              <Menu className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
+            </Button>
+          )}
         </div>
       </div>
     </header>

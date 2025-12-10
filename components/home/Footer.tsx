@@ -273,6 +273,7 @@ const DefaultSocialIcons = () => (
 const COUNTRY_SWITCH_INTERVAL = 5000; // 5 seconds
 
 export default function Footer() {
+  const [mounted, setMounted] = useState(false);
   const [footerContent, setFooterContent] = useState<FooterContent | null>(
     null
   );
@@ -280,6 +281,10 @@ export default function Footer() {
   const [socialLinks, setSocialLinks] = useState<FooterSocialLink[]>([]);
   const [currentCountryIndex, setCurrentCountryIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const fetchFooterData = async () => {
@@ -333,7 +338,7 @@ export default function Footer() {
 
   // Auto-switch between countries
   useEffect(() => {
-    if (sortedCountries.length <= 1) return;
+    if (!mounted || sortedCountries.length <= 1) return;
 
     const timer = setInterval(() => {
       setIsTransitioning(true);
@@ -344,7 +349,7 @@ export default function Footer() {
     }, COUNTRY_SWITCH_INTERVAL);
 
     return () => clearInterval(timer);
-  }, [sortedCountries.length]);
+  }, [mounted, sortedCountries.length]);
 
   const defaultContent = {
     title: "Let's Build Something Great",
@@ -369,7 +374,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mb-8 w-full">
           {/* Company Info - Countries cycling, showing all addresses per country */}
-          {sortedCountries.length > 0 ? (
+          {mounted && sortedCountries.length > 0 ? (
             <div className="text-center sm:text-left w-full max-w-full">
               <div className="mb-4 flex justify-center sm:justify-start">
                 <h2 className="text-white font-bold text-xl sm:text-2xl">
