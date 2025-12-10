@@ -270,12 +270,16 @@ const DefaultSocialIcons = () => (
   </>
 );
 
+const COUNTRY_SWITCH_INTERVAL = 5000; // 5 seconds
+
 export default function Footer() {
   const [footerContent, setFooterContent] = useState<FooterContent | null>(
     null
   );
   const [offices, setOffices] = useState<FooterOffice[]>([]);
   const [socialLinks, setSocialLinks] = useState<FooterSocialLink[]>([]);
+  const [currentCountryIndex, setCurrentCountryIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const fetchFooterData = async () => {
@@ -326,6 +330,21 @@ export default function Footer() {
       }));
   }, [offices]);
 
+  // Auto-switch between countries
+  useEffect(() => {
+    if (sortedCountries.length <= 1) return;
+
+    const timer = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentCountryIndex((prev) => (prev + 1) % sortedCountries.length);
+        setIsTransitioning(false);
+      }, 300); // Half of transition duration
+    }, COUNTRY_SWITCH_INTERVAL);
+
+    return () => clearInterval(timer);
+  }, [sortedCountries.length]);
+
   const defaultContent = {
     title: "Let's Build Something Great",
     description:
@@ -350,28 +369,33 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mb-8 w-full">
           {/* Company Info - Offices grouped by Country */}
           {sortedCountries.length > 0 ? (
-            sortedCountries.map((countryGroup) => (
-              <div
-                key={countryGroup.country}
-                className="text-center sm:text-left w-full max-w-full">
-                <div className="mb-4 flex justify-center sm:justify-start">
-                  <h2 className="text-white font-bold text-xl sm:text-2xl">
-                    codagam
-                  </h2>
-                </div>
-                <div className="space-y-3 text-sm sm:text-base">
-                  <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
-                    <CountryFlag
-                      countryCode={countryGroup.countryCode}
-                      flagUrl={countryGroup.flagUrl}
-                      country={countryGroup.country}
-                    />
-                    {countryGroup.country}
-                  </h4>
-                  <OfficeAddresses locations={countryGroup.locations} />
-                </div>
+            <div className="text-center sm:text-left w-full max-w-full">
+              <div className="mb-4 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-xl sm:text-2xl">
+                  codagam
+                </h2>
               </div>
-            ))
+              <div
+                className={`space-y-3 text-sm sm:text-base transition-opacity duration-500 ease-in-out ${
+                  isTransitioning ? "opacity-0" : "opacity-100"
+                }`}>
+                {sortedCountries[currentCountryIndex] && (
+                  <>
+                    <h4 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+                      <CountryFlag
+                        countryCode={sortedCountries[currentCountryIndex].countryCode}
+                        flagUrl={sortedCountries[currentCountryIndex].flagUrl}
+                        country={sortedCountries[currentCountryIndex].country}
+                      />
+                      {sortedCountries[currentCountryIndex].country}
+                    </h4>
+                    <OfficeAddresses
+                      locations={sortedCountries[currentCountryIndex].locations}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
           ) : (
             <div className="text-center sm:text-left w-full max-w-full">
               <div className="mb-4 flex justify-center sm:justify-start">
