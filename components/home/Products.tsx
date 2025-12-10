@@ -172,10 +172,10 @@ export default function Products() {
                         </div>
                         {/* Text Card Content */}
                         <CardHeader className="p-3 sm:p-4 flex-1 flex flex-col min-h-0">
-                          <CardTitle className="text-sm sm:text-base md:text-base lg:text-lg font-bold mb-1 sm:mb-1.5 transition-colors duration-300 group-hover:text-black text-black line-clamp-2 leading-tight p-0">
+                          <CardTitle className="text-base font-bold mb-2 sm:mb-3 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight p-0">
                             {product.headline}
                           </CardTitle>
-                          <CardDescription className="text-[10px] min-[375px]:text-xs sm:text-xs md:text-xs lg:text-sm leading-tight line-clamp-3 overflow-hidden m-0 flex-1 text-black font-normal p-0">
+                          <CardDescription className="text-base sm:text-base leading-relaxed line-clamp-3 overflow-hidden m-0 flex-1 text-slate-600 p-0">
                             {product.description}
                           </CardDescription>
                         </CardHeader>
