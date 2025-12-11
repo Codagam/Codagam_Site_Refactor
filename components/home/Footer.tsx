@@ -367,10 +367,10 @@ export default function Footer() {
       className="bg-blue-900 text-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden"
       style={{ fontFamily: "var(--font-riviera-nights)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-4 sm:py-5 md:py-6 w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 mb-4 sm:mb-6 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3 md:gap-3 lg:gap-5 mb-4 sm:mb-6 w-full items-start">
           {/* Company Info - Countries cycling, showing all addresses per country */}
           {mounted && sortedCountries.length > 0 ? (
-            <div className="text-center sm:text-left w-full max-w-full">
+            <div className="text-center sm:text-left w-full max-w-full sm:order-1 md:order-1 lg:order-1">
               <div className="mb-2 sm:mb-3 flex justify-center sm:justify-start">
                 <h2 className="text-white font-bold text-sm sm:text-base">
                   Codagam
@@ -400,7 +400,7 @@ export default function Footer() {
               </div>
             </div>
           ) : (
-            <div className="text-center sm:text-left w-full max-w-full">
+            <div className="text-center sm:text-left w-full max-w-full sm:order-1 md:order-1 lg:order-1">
               <div className="mb-2 sm:mb-3 flex justify-center sm:justify-start">
                 <h2 className="text-white font-bold text-sm sm:text-base">
                   Codagam
@@ -480,7 +480,7 @@ export default function Footer() {
           )}
 
           {/* Quick Links */}
-          <div className="text-center sm:text-left w-full max-w-full">
+          <div className="text-center sm:text-left w-full max-w-full sm:order-3 md:order-3 lg:order-2">
             <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3 flex items-center gap-1.5 justify-center sm:justify-start">
               Quick Links
             </h3>
@@ -506,7 +506,7 @@ export default function Footer() {
           </div>
 
           {/* Follow Us */}
-          <div className="text-center sm:text-left w-full max-w-full">
+          <div className="text-center sm:text-left w-full max-w-full sm:order-4 md:order-4 lg:order-3">
             <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3">
               Follow Us
             </h3>
@@ -522,7 +522,7 @@ export default function Footer() {
           </div>
 
           {/* Get in Touch - Contact Form */}
-          <div className="text-center sm:text-left w-full max-w-full">
+          <div className="text-center sm:text-left w-full max-w-full sm:order-2 md:order-2 lg:order-4 sm:col-span-2 md:col-span-1 lg:col-span-1 md:mt-0">
             <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3">
               Get in Touch
             </h3>
@@ -537,7 +537,7 @@ export default function Footer() {
         </div>
 
         {/* Contact Section Header - Moved to bottom */}
-        <div className="mt-4 sm:mt-5 text-center w-full">
+        <div className="mt-2 sm:mt-3 text-center w-full">
           <h2 className="text-base sm:text-lg md:text-xl mb-1.5 sm:mb-2 font-bold wrap-break-word px-2 sm:px-0">
             {footerContent?.title || defaultContent.title}
           </h2>
