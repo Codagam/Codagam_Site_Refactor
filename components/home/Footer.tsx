@@ -101,6 +101,34 @@ const QUICK_LINKS = [
   { id: "stack", label: "Tech Stack", icon: Info },
 ] as const;
 
+const PRODUCT_LINKS = [
+  {
+    id: "gobitoday",
+    label: "GobiToday",
+    url: "https://gobitoday.com/",
+    icon: Grid3x3,
+  },
+  { id: "welbuk", label: "Welbuk", url: "https://welbuk.com", icon: Grid3x3 },
+  {
+    id: "wrapper-biz",
+    label: "Wrapper Biz",
+    url: "https://wrapper_biz.com",
+    icon: Grid3x3,
+  },
+  {
+    id: "surveymachi",
+    label: "SurveyMachi",
+    url: "https://surveymachi.com",
+    icon: Grid3x3,
+  },
+  {
+    id: "codagam",
+    label: "codagam",
+    url: "https://codagam.com",
+    icon: Grid3x3,
+  },
+] as const;
+
 // Helper functions
 const getCountryFlag = (countryCode: string | null): FlagComponent | null => {
   if (!countryCode) return null;
@@ -481,10 +509,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="text-center sm:text-left w-full max-w-full sm:order-3 md:order-3 lg:order-2">
-            <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3 flex items-center gap-1.5 justify-center sm:justify-start">
+            <h3 className="font-bold text-xs sm:text-sm md:text-base mb-2 sm:mb-3 md:mb-4 flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
               Quick Links
             </h3>
-            <ul className="space-y-1 sm:space-y-1.5">
+            <ul className="space-y-1 sm:space-y-1.5 md:space-y-2">
               {QUICK_LINKS.map(({ id, label, icon: Icon }) => (
                 <li key={id}>
                   <a
@@ -493,9 +521,31 @@ export default function Footer() {
                       e.preventDefault();
                       scrollToSection(id);
                     }}
-                    className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic"
+                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic"
                     style={{ fontWeight: 400 }}>
-                    <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
+                    <span className="font-normal" style={{ fontWeight: 400 }}>
+                      {label}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Products */}
+            <h3 className="font-bold text-xs sm:text-sm md:text-base mb-2 sm:mb-3 md:mb-4 mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16 flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+              Products
+            </h3>
+            <ul className="space-y-1 sm:space-y-1.5 md:space-y-2">
+              {PRODUCT_LINKS.map(({ id, label, url, icon: Icon }) => (
+                <li key={id}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic"
+                    style={{ fontWeight: 400 }}>
+                    <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
                     <span className="font-normal" style={{ fontWeight: 400 }}>
                       {label}
                     </span>
