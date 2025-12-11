@@ -170,12 +170,12 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
   const firstLocation = locations[0];
 
   return (
-    <div className="space-y-4 opacity-90">
+    <div className="space-y-3 sm:space-y-4 opacity-90">
       {locations.map((office, index) => (
         <div key={office.id} className="space-y-2">
-          <div className="flex items-start gap-2 justify-center sm:justify-start">
-            <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-            <div className="text-center sm:text-left">
+          <div className="flex items-start gap-2 sm:gap-3 justify-center sm:justify-start">
+            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 shrink-0" />
+            <div className="text-center sm:text-left text-sm sm:text-base">
               {formatAddress(office.address).map((line, idx) => (
                 <p key={idx}>{line}</p>
               ))}
@@ -190,21 +190,21 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
       {firstLocation && (
         <>
           {firstLocation.phone && (
-            <div className="flex items-center gap-2 justify-center sm:justify-start pt-2">
-              <Phone className="w-4 h-4 shrink-0" />
+            <div className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start pt-2">
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
               <a
                 href={`tel:${firstLocation.phone}`}
-                className="hover:text-blue-200 transition-colors">
+                className="hover:text-blue-200 transition-colors text-sm sm:text-base">
                 {firstLocation.phone}
               </a>
             </div>
           )}
           {firstLocation.email && (
-            <div className="flex items-center gap-2 justify-center sm:justify-start">
-              <Mail className="w-4 h-4 shrink-0" />
+            <div className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start">
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
               <a
                 href={`mailto:${firstLocation.email}`}
-                className="hover:text-blue-200 transition-colors">
+                className="hover:text-blue-200 transition-colors text-sm sm:text-base break-all">
                 {firstLocation.email}
               </a>
             </div>
@@ -226,9 +226,9 @@ const SocialIconLink = ({ link }: { link: FooterSocialLink }) => {
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`w-10 h-10 rounded-full ${bgClass} flex items-center justify-center hover:opacity-90 transition-opacity`}
+      className={`w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full ${bgClass} flex items-center justify-center hover:opacity-90 transition-opacity`}
       aria-label={link.platform}>
-      {React.createElement(IconComponent, { className: "w-5 h-5 text-white" })}
+      {React.createElement(IconComponent, { className: "w-5 h-5 sm:w-6 sm:h-6 text-white" })}
     </a>
   );
 };
@@ -239,33 +239,33 @@ const DefaultSocialIcons = () => (
       href="https://instagram.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 rounded-full bg-linear-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-linear-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="Instagram">
-      <FaInstagram className="w-5 h-5 text-white" />
+      <FaInstagram className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
     </a>
     <a
       href="https://facebook.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="Facebook">
-      <FaFacebook className="w-5 h-5 text-white" />
+      <FaFacebook className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
     </a>
     <a
       href="https://x.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-black flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="X (Twitter)">
-      <FaXTwitter className="w-5 h-5 text-white" />
+      <FaXTwitter className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
     </a>
     <a
       href="https://linkedin.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 rounded-full bg-[#0077B5] flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#0077B5] flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="LinkedIn">
-      <FaLinkedin className="w-5 h-5 text-white" />
+      <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
     </a>
   </>
 );
@@ -361,23 +361,23 @@ export default function Footer() {
     <footer
       id="contact"
       className="bg-blue-900 text-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-6 sm:py-8 md:py-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16 w-full">
         {/* Contact Section Header */}
-        <div className="mb-4 sm:mb-5 md:mb-6 text-center w-full">
-          <h2 className="text-3xl mb-3 sm:mb-4 md:mb-5 font-bold wrap-break-word px-2 sm:px-0">
+        <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center w-full">
+          <h2 className="text-3xl lg:text-5xl mb-4 sm:mb-5 md:mb-6 font-bold wrap-break-word px-2 sm:px-0">
             {footerContent?.title || defaultContent.title}
           </h2>
-          <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word">
+          <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word">
             {footerContent?.description || defaultContent.description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mb-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 md:gap-8 lg:gap-8 xl:gap-10 mb-8 sm:mb-10 md:mb-12 w-full">
           {/* Company Info - Countries cycling, showing all addresses per country */}
           {mounted && sortedCountries.length > 0 ? (
             <div className="text-center sm:text-left w-full max-w-full">
-              <div className="mb-3 flex justify-center sm:justify-start">
-                <h2 className="text-white font-bold text-xl sm:text-2xl">
+              <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-xl sm:text-2xl lg:text-3xl">
                   Codagam
                 </h2>
               </div>
@@ -387,7 +387,7 @@ export default function Footer() {
                 }`}>
                 {sortedCountries[currentCountryIndex] && (
                   <>
-                    <h4 className="font-semibold text-base sm:text-lg mb-2 flex items-center gap-2 justify-center sm:justify-start">
+                    <h4 className="font-semibold text-base sm:text-lg lg:text-xl mb-3 sm:mb-4 flex items-center gap-2 justify-center sm:justify-start">
                       <CountryFlag
                         countryCode={
                           sortedCountries[currentCountryIndex].countryCode
@@ -406,13 +406,13 @@ export default function Footer() {
             </div>
           ) : (
             <div className="text-center sm:text-left w-full max-w-full">
-              <div className="mb-3 flex justify-center sm:justify-start">
-                <h2 className="text-white font-bold text-xl sm:text-2xl">
+              <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-xl sm:text-2xl lg:text-3xl">
                   Codagam
                 </h2>
               </div>
               <div className="space-y-2 text-sm sm:text-base">
-                <h4 className="font-semibold text-base sm:text-lg mb-2 flex items-center gap-2 justify-center sm:justify-start">
+                <h4 className="font-semibold text-base sm:text-lg lg:text-xl mb-3 sm:mb-4 flex items-center gap-2 justify-center sm:justify-start">
                   <CountryFlag
                     countryCode="IN"
                     flagUrl={null}
@@ -420,29 +420,29 @@ export default function Footer() {
                   />
                   India Office
                 </h4>
-                <div className="space-y-2 opacity-90">
-                  <div className="flex items-start gap-2 justify-center sm:justify-start">
-                    <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                    <div className="text-center sm:text-left">
+                <div className="space-y-3 sm:space-y-4 opacity-90">
+                  <div className="flex items-start gap-2 sm:gap-3 justify-center sm:justify-start">
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 shrink-0" />
+                    <div className="text-center sm:text-left text-sm sm:text-base">
                       <p>363/2, Rukmani Nagar,</p>
                       <p>Nagarpalaya Rd,</p>
                       <p>Gobichettipalayam,</p>
                       <p>Tamil Nadu, India, 638452</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 justify-center sm:justify-start">
-                    <Phone className="w-4 h-4 shrink-0" />
+                  <div className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start">
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                     <a
                       href="tel:+917598454546"
-                      className="hover:text-blue-200 transition-colors">
+                      className="hover:text-blue-200 transition-colors text-sm sm:text-base">
                       +91 75984 54546
                     </a>
                   </div>
-                  <div className="flex items-center gap-2 justify-center sm:justify-start">
-                    <Mail className="w-4 h-4 shrink-0" />
+                  <div className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start">
+                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                     <a
                       href="mailto:Support@codagam.com"
-                      className="hover:text-blue-200 transition-colors">
+                      className="hover:text-blue-200 transition-colors text-sm sm:text-base break-all">
                       Support@codagam.com
                     </a>
                   </div>
@@ -453,10 +453,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2 justify-center sm:justify-start">
+            <h3 className="font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 md:mb-6 flex items-center gap-2 justify-center sm:justify-start">
               Quick Links
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 sm:space-y-3">
               {QUICK_LINKS.map(({ id, label, icon: Icon }) => (
                 <li key={id}>
                   <a
@@ -465,8 +465,8 @@ export default function Footer() {
                       e.preventDefault();
                       scrollToSection(id);
                     }}
-                    className="flex items-center gap-2 text-sm sm:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start">
-                    <Icon className="w-4 h-4" />
+                    className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     {label}
                   </a>
                 </li>
@@ -476,10 +476,10 @@ export default function Footer() {
 
           {/* Follow Us */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg mb-3">
+            <h3 className="font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 md:mb-6">
               Follow Us
             </h3>
-            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center sm:justify-start">
+            <div className="flex flex-wrap gap-3 sm:gap-3 md:gap-4 justify-center sm:justify-start">
               {socialLinks.length > 0 ? (
                 socialLinks.map((link) => (
                   <SocialIconLink key={link.id} link={link} />
@@ -492,23 +492,25 @@ export default function Footer() {
 
           {/* Get in Touch - Contact Form */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg mb-2">
+            <h3 className="font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 md:mb-6">
               Get in Touch
             </h3>
-            <ContactForm
-              asDialog={false}
-              showTitle={false}
-              className="text-white"
-            />
+            <div className="w-full">
+              <ContactForm
+                asDialog={false}
+                showTitle={false}
+                className="text-white"
+              />
+            </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-blue-800 py-2 w-full overflow-x-hidden">
+      <div className="border-t border-blue-800 py-4 sm:py-5 md:py-6 w-full overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full">
           <div className="flex items-center justify-center sm:justify-between">
-            <p className="text-xs sm:text-sm text-center flex-1 mx-4">
+            <p className="text-xs sm:text-sm md:text-base text-center flex-1 mx-4">
               © 2025 Codagam Software Labs Private Limited. All rights reserved.
             </p>
             <div className="hidden sm:block w-8 h-8" />
