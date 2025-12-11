@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useMemo, useCallback } from "react";
+import Image from "next/image";
 import { Info, Wrench, Grid3x3, MapPin, Phone, Mail } from "lucide-react";
 import * as Flags from "country-flag-icons/react/3x2";
 import {
@@ -96,9 +97,14 @@ const SOCIAL_BG_COLORS: Record<string, string> = {
 };
 
 const QUICK_LINKS = [
-  { id: "services", label: "Services", icon: Wrench },
-  { id: "products", label: "Products", icon: Grid3x3 },
-  { id: "stack", label: "Tech Stack", icon: Info },
+  { id: "services", label: "Services", icon: Wrench, color: "text-white" },
+  {
+    id: "products",
+    label: "Products",
+    icon: Grid3x3,
+    color: "text-white",
+  },
+  { id: "stack", label: "Tech Stack", icon: Info, color: "text-white" },
 ] as const;
 
 const PRODUCT_LINKS = [
@@ -106,26 +112,31 @@ const PRODUCT_LINKS = [
     id: "gobitoday",
     label: "GobiToday",
     url: "https://gobitoday.com/",
-    icon: Grid3x3,
+    logo: "/images/gt_logo.png",
   },
-  { id: "welbuk", label: "Welbuk", url: "https://welbuk.com", icon: Grid3x3 },
+  {
+    id: "welbuk",
+    label: "Welbuk",
+    url: "https://welbuk.com",
+    logo: "/images/logo.png",
+  },
   {
     id: "wrapper-biz",
     label: "Wrapper Biz",
     url: "https://wrapper_biz.com",
-    icon: Grid3x3,
+    logo: "/images/wrapper.png",
   },
   {
     id: "surveymachi",
     label: "SurveyMachi",
     url: "https://surveymachi.com",
-    icon: Grid3x3,
+    logo: "/images/surveymachi.jpg",
   },
   {
     id: "codagam",
     label: "codagam",
     url: "https://codagam.com",
-    icon: Grid3x3,
+    logo: null, // No logo for codagam, will use default icon
   },
 ] as const;
 
@@ -202,7 +213,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
       {locations.map((office, index) => (
         <div key={office.id} className="space-y-1">
           <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
-            <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0" />
+            <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
             <div className="text-center sm:text-left text-xs sm:text-sm font-normal">
               {formatAddress(office.address).map((line, idx) => (
                 <p key={idx} className="font-normal">
@@ -221,7 +232,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
         <>
           {firstLocation.phone && (
             <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-1">
-              <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+              <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`tel:${firstLocation.phone}`}
                 className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal">
@@ -231,7 +242,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
           )}
           {firstLocation.email && (
             <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
-              <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+              <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`mailto:${firstLocation.email}`}
                 className="hover:text-blue-200 transition-colors text-xs sm:text-sm break-all font-normal">
@@ -447,7 +458,7 @@ export default function Footer() {
                 </h4>
                 <div className="space-y-1.5 sm:space-y-2 opacity-90">
                   <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
-                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0" />
+                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
                     <div
                       className="text-center sm:text-left text-xs sm:text-sm font-normal"
                       style={{ fontWeight: 400 }}>
@@ -466,7 +477,7 @@ export default function Footer() {
                     </div>
                   </div>
                   <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
-                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0" />
+                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
                     <div
                       className="text-center sm:text-left text-xs sm:text-sm font-normal"
                       style={{ fontWeight: 400 }}>
@@ -485,7 +496,7 @@ export default function Footer() {
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
-                    <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+                    <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
                     <a
                       href="tel:+917598454546"
                       className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal"
@@ -494,7 +505,7 @@ export default function Footer() {
                     </a>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
-                    <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+                    <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
                     <a
                       href="mailto:support@codagam.com"
                       className="hover:text-blue-200 transition-colors text-xs sm:text-sm break-all font-normal"
@@ -513,7 +524,7 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-1 sm:space-y-1.5 md:space-y-2">
-              {QUICK_LINKS.map(({ id, label, icon: Icon }) => (
+              {QUICK_LINKS.map(({ id, label, icon: Icon, color }) => (
                 <li key={id}>
                   <a
                     href={`#${id}`}
@@ -523,7 +534,9 @@ export default function Footer() {
                     }}
                     className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic"
                     style={{ fontWeight: 400 }}>
-                    <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
+                    <Icon
+                      className={`w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 ${color}`}
+                    />
                     <span className="font-normal" style={{ fontWeight: 400 }}>
                       {label}
                     </span>
@@ -537,7 +550,7 @@ export default function Footer() {
               Products
             </h3>
             <ul className="space-y-1 sm:space-y-1.5 md:space-y-2">
-              {PRODUCT_LINKS.map(({ id, label, url, icon: Icon }) => (
+              {PRODUCT_LINKS.map(({ id, label, url, logo }) => (
                 <li key={id}>
                   <a
                     href={url}
@@ -545,7 +558,19 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic"
                     style={{ fontWeight: 400 }}>
-                    <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
+                    {logo ? (
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative shrink-0">
+                        <Image
+                          src={logo}
+                          alt={`${label} logo`}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 640px) 16px, (max-width: 768px) 20px, 24px"
+                        />
+                      </div>
+                    ) : (
+                      <Grid3x3 className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-white" />
+                    )}
                     <span className="font-normal" style={{ fontWeight: 400 }}>
                       {label}
                     </span>
