@@ -108,17 +108,20 @@ export function ContactForm({
   const formContent = (
     <div className={`${className} w-full max-w-full`}>
       {showTitle && (
-        <h4 className="font-semibold mb-2 sm:mb-3 text-foreground flex items-center text-sm sm:text-base wrap-break-word">
+        <h4 className="font-semibold mb-1.5 sm:mb-2 text-foreground flex items-center text-xs sm:text-sm wrap-break-word">
           📩 Get in Touch
         </h4>
       )}
       <form
         key="contact-form"
-        className="flex flex-col space-y-3 w-full max-w-full"
+        className="flex flex-col space-y-2 w-full max-w-full"
         onSubmit={handleSubmit}
         autoComplete="on">
-        <div className="space-y-1.5">
-          <Label htmlFor="name" className="text-sm font-medium text-white">
+        <div className="space-y-1">
+          <Label
+            htmlFor="name"
+            className="text-xs sm:text-sm font-normal text-white"
+            style={{ fontWeight: 400 }}>
             Name
           </Label>
           <Input
@@ -128,13 +131,17 @@ export function ContactForm({
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="h-12 text-black placeholder:text-slate-500"
+            className="h-8 sm:h-9 text-xs sm:text-sm text-black placeholder:text-slate-500"
+            style={{ fontWeight: 400 }}
             autoComplete="name"
             required
           />
         </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="email" className="text-sm font-medium text-white">
+        <div className="space-y-1">
+          <Label
+            htmlFor="email"
+            className="text-xs sm:text-sm font-normal text-white"
+            style={{ fontWeight: 400 }}>
             Email
           </Label>
           <Input
@@ -144,18 +151,24 @@ export function ContactForm({
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className={`h-12 text-black placeholder:text-slate-500 ${
+            className={`h-8 sm:h-9 text-xs sm:text-sm text-black placeholder:text-slate-500 ${
               emailError ? "border-red-500" : ""
             }`}
+            style={{ fontWeight: 400 }}
             autoComplete="email"
             required
           />
           {emailError && (
-            <p className="text-red-400 text-xs sm:text-sm">{emailError}</p>
+            <p className="text-red-400 text-xs" style={{ fontWeight: 400 }}>
+              {emailError}
+            </p>
           )}
         </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="phone" className="text-sm font-medium text-white">
+        <div className="space-y-1">
+          <Label
+            htmlFor="phone"
+            className="text-xs sm:text-sm font-normal text-white"
+            style={{ fontWeight: 400 }}>
             Phone
           </Label>
           <Input
@@ -165,25 +178,30 @@ export function ContactForm({
             placeholder="Your Phone (10 digits)"
             value={formData.phone}
             onChange={handleChange}
-            className="h-12 text-black placeholder:text-slate-500"
+            className="h-8 sm:h-9 text-xs sm:text-sm text-black placeholder:text-slate-500"
+            style={{ fontWeight: 400 }}
             maxLength={10}
             pattern="[0-9]{10}"
             autoComplete="tel"
             required
           />
         </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="message" className="text-sm font-medium text-white">
+        <div className="space-y-1">
+          <Label
+            htmlFor="message"
+            className="text-xs sm:text-sm font-normal text-white"
+            style={{ fontWeight: 400 }}>
             Message
           </Label>
           <Textarea
             id="message"
             name="message"
             placeholder="Your Message"
-            rows={4}
+            rows={3}
             value={formData.message}
             onChange={handleChange}
-            className="resize-none text-black placeholder:text-slate-500"
+            className="resize-none text-xs sm:text-sm text-black placeholder:text-slate-500"
+            style={{ fontWeight: 400 }}
             required
           />
         </div>
@@ -191,11 +209,14 @@ export function ContactForm({
           type="submit"
           disabled={isSubmitting}
           variant="default"
-          className="w-full h-12  font-bold  bg-white text-blue-900 hover:bg-blue-50">
+          className="w-full h-8 sm:h-9 text-xs sm:text-sm font-bold bg-white text-blue-900 hover:bg-blue-50"
+          style={{ fontWeight: 400 }}>
           {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
         {submitMessage && (
-          <p className="text-green-400 text-sm mt-2 text-center">
+          <p
+            className="text-green-400 text-xs sm:text-sm mt-1.5 text-center "
+            style={{ fontWeight: 400 }}>
             {submitMessage}
           </p>
         )}
@@ -212,17 +233,17 @@ export function ContactForm({
             {triggerText}
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg p-4 sm:p-6 w-full">
+        <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg p-3 sm:p-4 w-full">
           <DialogHeader>
-            <DialogTitle className="text-lg sm:text-xl text-foreground wrap-break-word">
+            <DialogTitle className="text-base sm:text-lg text-foreground wrap-break-word">
               Get in Touch
             </DialogTitle>
-            <DialogDescription className="text-sm sm:text-base wrap-break-word">
+            <DialogDescription className="text-xs sm:text-sm wrap-break-word">
               We&apos;d love to hear from you. Send us a message and we&apos;ll
               respond as soon as possible.
             </DialogDescription>
           </DialogHeader>
-          <div className="mt-4 sm:mt-6 w-full max-w-full">{formContent}</div>
+          <div className="mt-3 sm:mt-4 w-full max-w-full">{formContent}</div>
         </DialogContent>
       </Dialog>
     );

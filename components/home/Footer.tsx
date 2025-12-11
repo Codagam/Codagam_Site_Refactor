@@ -141,7 +141,7 @@ const CountryFlag = ({
     const FlagComponent = getCountryFlag(countryCode);
     if (FlagComponent) {
       return (
-        <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
+        <div className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center">
           {React.createElement(FlagComponent, {
             className: "w-full h-full object-contain",
           })}
@@ -152,7 +152,7 @@ const CountryFlag = ({
 
   if (flagUrl) {
     return (
-      <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
+      <div className="relative w-8 h-8 sm:w-9 sm:h-9 shrink-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={flagUrl}
@@ -170,19 +170,21 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
   const firstLocation = locations[0];
 
   return (
-    <div className="space-y-3 sm:space-y-4 opacity-90">
+    <div className="space-y-1.5 sm:space-y-2 opacity-90">
       {locations.map((office, index) => (
-        <div key={office.id} className="space-y-2">
-          <div className="flex items-start gap-2 sm:gap-3 justify-center sm:justify-start">
-            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 shrink-0" />
-            <div className="text-center sm:text-left text-sm sm:text-base">
+        <div key={office.id} className="space-y-1">
+          <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
+            <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0" />
+            <div className="text-center sm:text-left text-xs sm:text-sm font-normal">
               {formatAddress(office.address).map((line, idx) => (
-                <p key={idx}>{line}</p>
+                <p key={idx} className="font-normal">
+                  {line}
+                </p>
               ))}
             </div>
           </div>
           {index < locations.length - 1 && (
-            <div className="border-t border-blue-800 pt-2 mt-2" />
+            <div className="border-t border-blue-800 pt-1 mt-1" />
           )}
         </div>
       ))}
@@ -190,21 +192,21 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
       {firstLocation && (
         <>
           {firstLocation.phone && (
-            <div className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start pt-2">
-              <Phone className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+            <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-1">
+              <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
               <a
                 href={`tel:${firstLocation.phone}`}
-                className="hover:text-blue-200 transition-colors text-sm sm:text-base">
+                className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal">
                 {firstLocation.phone}
               </a>
             </div>
           )}
           {firstLocation.email && (
-            <div className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start">
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+            <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+              <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
               <a
                 href={`mailto:${firstLocation.email}`}
-                className="hover:text-blue-200 transition-colors text-sm sm:text-base break-all">
+                className="hover:text-blue-200 transition-colors text-xs sm:text-sm break-all font-normal">
                 {firstLocation.email}
               </a>
             </div>
@@ -226,9 +228,11 @@ const SocialIconLink = ({ link }: { link: FooterSocialLink }) => {
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full ${bgClass} flex items-center justify-center hover:opacity-90 transition-opacity`}
+      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${bgClass} flex items-center justify-center hover:opacity-90 transition-opacity`}
       aria-label={link.platform}>
-      {React.createElement(IconComponent, { className: "w-5 h-5 sm:w-6 sm:h-6 text-white" })}
+      {React.createElement(IconComponent, {
+        className: "w-4 h-4 sm:w-5 sm:h-5 text-white",
+      })}
     </a>
   );
 };
@@ -239,33 +243,33 @@ const DefaultSocialIcons = () => (
       href="https://instagram.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-linear-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-linear-to-br from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="Instagram">
-      <FaInstagram className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+      <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
     </a>
     <a
       href="https://facebook.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="Facebook">
-      <FaFacebook className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+      <FaFacebook className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
     </a>
     <a
       href="https://x.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-black flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="X (Twitter)">
-      <FaXTwitter className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+      <FaXTwitter className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
     </a>
     <a
       href="https://linkedin.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#0077B5] flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#0077B5] flex items-center justify-center hover:opacity-90 transition-opacity"
       aria-label="LinkedIn">
-      <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+      <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
     </a>
   </>
 );
@@ -360,34 +364,25 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-blue-900 text-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16 w-full">
-        {/* Contact Section Header */}
-        <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center w-full">
-          <h2 className="text-3xl lg:text-5xl mb-4 sm:mb-5 md:mb-6 font-bold wrap-break-word px-2 sm:px-0">
-            {footerContent?.title || defaultContent.title}
-          </h2>
-          <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word">
-            {footerContent?.description || defaultContent.description}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 md:gap-8 lg:gap-8 xl:gap-10 mb-8 sm:mb-10 md:mb-12 w-full">
+      className="bg-blue-900 text-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden"
+      style={{ fontFamily: "var(--font-riviera-nights)" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-4 sm:py-5 md:py-6 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 mb-4 sm:mb-6 w-full">
           {/* Company Info - Countries cycling, showing all addresses per country */}
           {mounted && sortedCountries.length > 0 ? (
             <div className="text-center sm:text-left w-full max-w-full">
-              <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center sm:justify-start">
-                <h2 className="text-white font-bold text-xl sm:text-2xl lg:text-3xl">
+              <div className="mb-2 sm:mb-3 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-sm sm:text-base">
                   Codagam
                 </h2>
               </div>
               <div
-                className={`space-y-2 text-sm sm:text-base transition-opacity duration-500 ease-in-out ${
+                className={`space-y-1 text-xs sm:text-sm transition-opacity duration-500 ease-in-out ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}>
                 {sortedCountries[currentCountryIndex] && (
                   <>
-                    <h4 className="font-semibold text-base sm:text-lg lg:text-xl mb-3 sm:mb-4 flex items-center gap-2 justify-center sm:justify-start">
+                    <h4 className="font-base text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-center sm:justify-start">
                       <CountryFlag
                         countryCode={
                           sortedCountries[currentCountryIndex].countryCode
@@ -406,13 +401,15 @@ export default function Footer() {
             </div>
           ) : (
             <div className="text-center sm:text-left w-full max-w-full">
-              <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center sm:justify-start">
-                <h2 className="text-white font-bold text-xl sm:text-2xl lg:text-3xl">
+              <div className="mb-2 sm:mb-3 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-sm sm:text-base">
                   Codagam
                 </h2>
               </div>
-              <div className="space-y-2 text-sm sm:text-base">
-                <h4 className="font-semibold text-base sm:text-lg lg:text-xl mb-3 sm:mb-4 flex items-center gap-2 justify-center sm:justify-start">
+              <div className="space-y-1 text-xs sm:text-sm">
+                <h4
+                  className="font-normal text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-center sm:justify-start"
+                  style={{ fontWeight: 400 }}>
                   <CountryFlag
                     countryCode="IN"
                     flagUrl={null}
@@ -420,30 +417,61 @@ export default function Footer() {
                   />
                   India Office
                 </h4>
-                <div className="space-y-3 sm:space-y-4 opacity-90">
-                  <div className="flex items-start gap-2 sm:gap-3 justify-center sm:justify-start">
-                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 shrink-0" />
-                    <div className="text-center sm:text-left text-sm sm:text-base">
-                      <p>363/2, Rukmani Nagar,</p>
-                      <p>Nagarpalaya Rd,</p>
-                      <p>Gobichettipalayam,</p>
-                      <p>Tamil Nadu, India, 638452</p>
+                <div className="space-y-1.5 sm:space-y-2 opacity-90">
+                  <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
+                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0" />
+                    <div
+                      className="text-center sm:text-left text-xs sm:text-sm font-normal"
+                      style={{ fontWeight: 400 }}>
+                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                        45J, Rukmani Illa,
+                      </p>
+                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                        Ramnagar 3rd cross St,
+                      </p>
+                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                        Gobichettipalayam - 638452,
+                      </p>
+                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                        Tamilnadu, India
+                      </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start">
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                  <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
+                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0" />
+                    <div
+                      className="text-center sm:text-left text-xs sm:text-sm font-normal"
+                      style={{ fontWeight: 400 }}>
+                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                        363/2, Rukmani Nagar,
+                      </p>
+                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                        Nagarpalayam Rd,
+                      </p>
+                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                        Gobichettipalayam - 638452,
+                      </p>
+                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                        Tamilnadu, India
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+                    <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                     <a
                       href="tel:+917598454546"
-                      className="hover:text-blue-200 transition-colors text-sm sm:text-base">
-                      +91 75984 54546
+                      className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal"
+                      style={{ fontWeight: 400 }}>
+                      +91 7598454546
                     </a>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start">
-                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                  <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+                    <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                     <a
-                      href="mailto:Support@codagam.com"
-                      className="hover:text-blue-200 transition-colors text-sm sm:text-base break-all">
-                      Support@codagam.com
+                      href="mailto:support@codagam.com"
+                      className="hover:text-blue-200 transition-colors text-xs sm:text-sm break-all font-normal"
+                      style={{ fontWeight: 400 }}>
+                      support@codagam.com
                     </a>
                   </div>
                 </div>
@@ -453,10 +481,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 md:mb-6 flex items-center gap-2 justify-center sm:justify-start">
+            <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3 flex items-center gap-1.5 justify-center sm:justify-start">
               Quick Links
             </h3>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-1 sm:space-y-1.5">
               {QUICK_LINKS.map(({ id, label, icon: Icon }) => (
                 <li key={id}>
                   <a
@@ -465,9 +493,12 @@ export default function Footer() {
                       e.preventDefault();
                       scrollToSection(id);
                     }}
-                    className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                    {label}
+                    className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic"
+                    style={{ fontWeight: 400 }}>
+                    <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    <span className="font-normal" style={{ fontWeight: 400 }}>
+                      {label}
+                    </span>
                   </a>
                 </li>
               ))}
@@ -476,10 +507,10 @@ export default function Footer() {
 
           {/* Follow Us */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 md:mb-6">
+            <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3">
               Follow Us
             </h3>
-            <div className="flex flex-wrap gap-3 sm:gap-3 md:gap-4 justify-center sm:justify-start">
+            <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center sm:justify-start">
               {socialLinks.length > 0 ? (
                 socialLinks.map((link) => (
                   <SocialIconLink key={link.id} link={link} />
@@ -492,7 +523,7 @@ export default function Footer() {
 
           {/* Get in Touch - Contact Form */}
           <div className="text-center sm:text-left w-full max-w-full">
-            <h3 className="font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 md:mb-6">
+            <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3">
               Get in Touch
             </h3>
             <div className="w-full">
@@ -504,13 +535,27 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
+        {/* Contact Section Header - Moved to bottom */}
+        <div className="mt-4 sm:mt-5 text-center w-full">
+          <h2 className="text-base sm:text-lg md:text-xl mb-1.5 sm:mb-2 font-bold wrap-break-word px-2 sm:px-0">
+            {footerContent?.title || defaultContent.title}
+          </h2>
+          <p
+            className="text-xs sm:text-sm max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word font-normal"
+            style={{ fontWeight: 400 }}>
+            {footerContent?.description || defaultContent.description}
+          </p>
+        </div>
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-blue-800 py-4 sm:py-5 md:py-6 w-full overflow-x-hidden">
+      <div className="border-t border-blue-800 py-2 sm:py-3 w-full overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full">
           <div className="flex items-center justify-center sm:justify-between">
-            <p className="text-xs sm:text-sm md:text-base text-center flex-1 mx-4">
+            <p
+              className="text-xs sm:text-xs text-center flex-1 mx-4 font-normal"
+              style={{ fontWeight: 400 }}>
               © 2025 Codagam Software Labs Private Limited. All rights reserved.
             </p>
             <div className="hidden sm:block w-8 h-8" />
