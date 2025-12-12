@@ -214,9 +214,9 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
         <div key={office.id} className="space-y-1">
           <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
             <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
-            <div className="text-center sm:text-left text-xs sm:text-sm font-normal">
+            <div className="text-center sm:text-left text-xs sm:text-sm font-normal break-words">
               {formatAddress(office.address).map((line, idx) => (
-                <p key={idx} className="font-normal">
+                <p key={idx} className="font-normal break-words">
                   {line}
                 </p>
               ))}
@@ -235,7 +235,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
               <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`tel:${firstLocation.phone}`}
-                className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal">
+                className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal break-words">
                 {firstLocation.phone}
               </a>
             </div>
@@ -245,7 +245,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
               <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`mailto:${firstLocation.email}`}
-                className="hover:text-blue-200 transition-colors text-xs sm:text-sm break-all font-normal">
+                className="hover:text-blue-200 transition-colors text-xs sm:text-sm break-all font-normal break-words">
                 {firstLocation.email}
               </a>
             </div>
@@ -405,18 +405,18 @@ export default function Footer() {
       id="contact"
       className="bg-blue-900 text-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden"
       style={{ fontFamily: "var(--font-riviera-nights)" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-4 sm:py-5 md:py-6 w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3 md:gap-3 lg:gap-5 mb-4 sm:mb-6 w-full items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 mb-8 sm:mb-10 md:mb-12 lg:mb-14 xl:mb-16 w-full items-start">
           {/* Company Info - Countries cycling, showing all addresses per country */}
           {mounted && sortedCountries.length > 0 ? (
-            <div className="text-center sm:text-left w-full max-w-full sm:order-1 md:order-1 lg:order-1">
-              <div className="mb-2 sm:mb-3 flex justify-center sm:justify-start">
-                <h2 className="text-white font-bold text-sm sm:text-base">
+            <div className="text-center sm:text-left w-full sm:order-1 md:order-1 lg:order-1">
+              <div className="mb-3 sm:mb-4 md:mb-5 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-base sm:text-lg md:text-xl break-words">
                   Codagam
                 </h2>
               </div>
               <div
-                className={`space-y-1 text-xs sm:text-sm transition-opacity duration-500 ease-in-out ${
+                className={`space-y-1 text-xs sm:text-sm transition-opacity duration-500 ease-in-out break-words ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}>
                 {sortedCountries[currentCountryIndex] && (
@@ -439,13 +439,13 @@ export default function Footer() {
               </div>
             </div>
           ) : (
-            <div className="text-center sm:text-left w-full max-w-full sm:order-1 md:order-1 lg:order-1">
-              <div className="mb-2 sm:mb-3 flex justify-center sm:justify-start">
-                <h2 className="text-white font-bold text-sm sm:text-base">
+            <div className="text-center sm:text-left w-full sm:order-1 md:order-1 lg:order-1">
+              <div className="mb-3 sm:mb-4 md:mb-5 flex justify-center sm:justify-start">
+                <h2 className="text-white font-bold text-base sm:text-lg md:text-xl break-words">
                   Codagam
                 </h2>
               </div>
-              <div className="space-y-1 text-xs sm:text-sm">
+              <div className="space-y-1 text-xs sm:text-sm break-words">
                 <h4
                   className="font-normal text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-center sm:justify-start"
                   style={{ fontWeight: 400 }}>
@@ -460,18 +460,26 @@ export default function Footer() {
                   <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
                     <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
                     <div
-                      className="text-center sm:text-left text-xs sm:text-sm font-normal"
+                      className="text-center sm:text-left text-xs sm:text-sm font-normal break-words"
                       style={{ fontWeight: 400 }}>
-                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                      <p
+                        className="font-normal break-words"
+                        style={{ fontWeight: 400 }}>
                         45J, Rukmani Illa,
                       </p>
-                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                      <p
+                        className="font-normal break-words"
+                        style={{ fontWeight: 400 }}>
                         Ramnagar 3rd cross St,
                       </p>
-                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                      <p
+                        className="font-normal break-words"
+                        style={{ fontWeight: 400 }}>
                         Gobichettipalayam - 638452,
                       </p>
-                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                      <p
+                        className="font-normal break-words"
+                        style={{ fontWeight: 400 }}>
                         Tamilnadu, India
                       </p>
                     </div>
@@ -479,18 +487,26 @@ export default function Footer() {
                   <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
                     <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
                     <div
-                      className="text-center sm:text-left text-xs sm:text-sm font-normal"
+                      className="text-center sm:text-left text-xs sm:text-sm font-normal break-words"
                       style={{ fontWeight: 400 }}>
-                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                      <p
+                        className="font-normal break-words"
+                        style={{ fontWeight: 400 }}>
                         363/2, Rukmani Nagar,
                       </p>
-                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                      <p
+                        className="font-normal break-words"
+                        style={{ fontWeight: 400 }}>
                         Nagarpalayam Rd,
                       </p>
-                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                      <p
+                        className="font-normal break-words"
+                        style={{ fontWeight: 400 }}>
                         Gobichettipalayam - 638452,
                       </p>
-                      <p className="font-normal" style={{ fontWeight: 400 }}>
+                      <p
+                        className="font-normal break-words"
+                        style={{ fontWeight: 400 }}>
                         Tamilnadu, India
                       </p>
                     </div>
@@ -519,11 +535,11 @@ export default function Footer() {
           )}
 
           {/* Quick Links */}
-          <div className="text-center sm:text-left w-full max-w-full sm:order-3 md:order-3 lg:order-2">
-            <h3 className="font-bold text-xs sm:text-sm md:text-base mb-2 sm:mb-3 md:mb-4 flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+          <div className="text-center sm:text-left w-full sm:order-3 md:order-3 lg:order-2">
+            <h3 className="font-bold text-sm sm:text-base md:text-lg mb-4 sm:mb-5 md:mb-6 flex items-center gap-2 justify-center sm:justify-start break-words">
               Quick Links
             </h3>
-            <ul className="space-y-1 sm:space-y-1.5 md:space-y-2">
+            <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 w-full">
               {QUICK_LINKS.map(({ id, label, icon: Icon, color }) => (
                 <li key={id}>
                   <a
@@ -532,12 +548,14 @@ export default function Footer() {
                       e.preventDefault();
                       scrollToSection(id);
                     }}
-                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic"
+                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic break-words max-w-full"
                     style={{ fontWeight: 400 }}>
                     <Icon
-                      className={`w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 ${color}`}
+                      className={`w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 ${color} shrink-0`}
                     />
-                    <span className="font-normal" style={{ fontWeight: 400 }}>
+                    <span
+                      className="font-normal break-words"
+                      style={{ fontWeight: 400 }}>
                       {label}
                     </span>
                   </a>
@@ -546,17 +564,17 @@ export default function Footer() {
             </ul>
 
             {/* Products */}
-            <h3 className="font-bold text-xs sm:text-sm md:text-base mb-2 sm:mb-3 md:mb-4 mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16 flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+            <h3 className="font-bold text-sm sm:text-base md:text-lg mb-4 sm:mb-5 md:mb-6 mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16 flex items-center gap-2 justify-center sm:justify-start break-words">
               Products
             </h3>
-            <ul className="space-y-1 sm:space-y-1.5 md:space-y-2">
+            <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 w-full">
               {PRODUCT_LINKS.map(({ id, label, url, logo }) => (
                 <li key={id}>
                   <a
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic"
+                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-center sm:justify-start font-normal not-italic break-words max-w-full"
                     style={{ fontWeight: 400 }}>
                     {logo ? (
                       <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative shrink-0">
@@ -569,9 +587,11 @@ export default function Footer() {
                         />
                       </div>
                     ) : (
-                      <Grid3x3 className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-white" />
+                      <Grid3x3 className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-white shrink-0" />
                     )}
-                    <span className="font-normal" style={{ fontWeight: 400 }}>
+                    <span
+                      className="font-normal break-words"
+                      style={{ fontWeight: 400 }}>
                       {label}
                     </span>
                   </a>
@@ -581,11 +601,11 @@ export default function Footer() {
           </div>
 
           {/* Follow Us */}
-          <div className="text-center sm:text-left w-full max-w-full sm:order-4 md:order-4 lg:order-3">
-            <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3">
+          <div className="text-center sm:text-left w-full sm:order-4 md:order-4 lg:order-3">
+            <h3 className="font-bold text-sm sm:text-base md:text-lg mb-4 sm:mb-5 md:mb-6 break-words">
               Follow Us
             </h3>
-            <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center sm:justify-start">
+            <div className="flex flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start w-full">
               {socialLinks.length > 0 ? (
                 socialLinks.map((link) => (
                   <SocialIconLink key={link.id} link={link} />
@@ -597,8 +617,8 @@ export default function Footer() {
           </div>
 
           {/* Get in Touch - Contact Form */}
-          <div className="text-center sm:text-left w-full max-w-full sm:order-2 md:order-2 lg:order-4 sm:col-span-2 md:col-span-1 lg:col-span-1 md:mt-0">
-            <h3 className="font-bold text-xs sm:text-sm mb-2 sm:mb-3">
+          <div className="text-center sm:text-left w-full sm:order-2 md:order-2 lg:order-4 sm:col-span-2 md:col-span-1 lg:col-span-1">
+            <h3 className="font-bold text-sm sm:text-base md:text-lg mb-4 sm:mb-5 md:mb-6 break-words">
               Get in Touch
             </h3>
             <div className="w-full">
@@ -612,12 +632,12 @@ export default function Footer() {
         </div>
 
         {/* Contact Section Header - Moved to bottom */}
-        <div className="mt-2 sm:mt-3 text-center w-full">
-          <h2 className="text-base sm:text-lg md:text-xl mb-1.5 sm:mb-2 font-bold wrap-break-word px-2 sm:px-0">
+        <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16 text-center w-full border-t border-blue-800 pt-8 sm:pt-10 md:pt-12">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-3 sm:mb-4 md:mb-5 font-bold wrap-break-word px-2 sm:px-4 md:px-6 break-words">
             {footerContent?.title || defaultContent.title}
           </h2>
           <p
-            className="text-xs sm:text-sm max-w-2xl mx-auto opacity-90 px-2 sm:px-4 wrap-break-word font-normal"
+            className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto opacity-90 px-4 sm:px-6 md:px-8 wrap-break-word font-normal break-words"
             style={{ fontWeight: 400 }}>
             {footerContent?.description || defaultContent.description}
           </p>
@@ -625,11 +645,11 @@ export default function Footer() {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-blue-800 py-2 sm:py-3 w-full overflow-x-hidden">
+      <div className="border-t border-blue-800 py-4 sm:py-5 md:py-6 w-full overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full">
           <div className="flex items-center justify-center sm:justify-between">
             <p
-              className="text-xs sm:text-xs text-center flex-1 mx-4 font-normal"
+              className="text-xs sm:text-sm md:text-base text-center flex-1 font-normal"
               style={{ fontWeight: 400 }}>
               © 2025 Codagam Software Labs Private Limited. All rights reserved.
             </p>

@@ -57,50 +57,50 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full">
-      <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
-        <div className="flex justify-between items-center h-[48px] min-[375px]:h-[52px] sm:h-[56px] lg:h-[64px] xl:h-[68px] w-full">
+    <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full overflow-x-hidden">
+        <div className="flex justify-between items-center h-[48px] min-[375px]:h-[52px] sm:h-[56px] lg:h-[64px] xl:h-[68px] w-full max-w-full">
           <Link
             href="/"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl xl:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
+            className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl xl:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer break-words shrink-0">
             Codagam
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-3 md:gap-4 xl:gap-5 items-center">
+          <nav className="hidden lg:flex gap-3 md:gap-4 xl:gap-5 items-center shrink-0 max-w-full overflow-hidden">
             <a
               href="#services"
               onClick={(e) => handleLinkClick(e, "services")}
-              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
+              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors whitespace-nowrap break-words">
               Services
             </a>
             <a
               href="#products"
               onClick={(e) => handleLinkClick(e, "products")}
-              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
+              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors whitespace-nowrap break-words">
               Products
             </a>
             <a
               href="#stack"
               onClick={(e) => handleLinkClick(e, "stack")}
-              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
+              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors whitespace-nowrap break-words">
               Tech Stack
             </a>
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, "contact")}
-              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors">
+              className="text-xs min-[375px]:text-xs lg:text-sm xl:text-sm font-medium text-slate-700 hover:text-blue-900 transition-colors whitespace-nowrap break-words">
               Contact
             </a>
           </nav>
 
           <Button
             onClick={() => scrollToSection("contact")}
-            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs min-[375px]:text-xs lg:text-sm xl:text-sm px-2 md:px-3 lg:px-4 xl:px-5 py-1.5">
+            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs min-[375px]:text-xs lg:text-sm xl:text-sm px-2 md:px-3 lg:px-4 xl:px-5 py-1.5 shrink-0 whitespace-nowrap">
             Get Started
           </Button>
 

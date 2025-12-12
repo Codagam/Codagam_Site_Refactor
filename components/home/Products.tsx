@@ -47,27 +47,47 @@ export default function Products() {
         if (response.ok) {
           const mappedProducts: ProductWithBackground[] = data
             .filter(
-              (product: unknown): product is { id: string; headline: string; imageUrl: string; description?: string; details?: string; website?: string } =>
+              (
+                product: unknown
+              ): product is {
+                id: string;
+                headline: string;
+                imageUrl: string;
+                description?: string;
+                details?: string;
+                website?: string;
+              } =>
                 typeof product === "object" &&
                 product !== null &&
                 "id" in product &&
                 "headline" in product &&
                 "imageUrl" in product &&
                 typeof (product as { id: unknown }).id === "string" &&
-                typeof (product as { headline: unknown }).headline === "string" &&
+                typeof (product as { headline: unknown }).headline ===
+                  "string" &&
                 typeof (product as { imageUrl: unknown }).imageUrl === "string"
             )
-            .map((product: { id: string; headline: string; imageUrl: string; description?: string; details?: string; website?: string; backgroundImageUrl?: string }) => {
-              return {
-                id: product.id,
-                headline: product.headline,
-                description: product.description,
-                details: product.details,
-                image: product.imageUrl,
-                website: product.website,
-                backgroundImage: product.backgroundImageUrl,
-              };
-            });
+            .map(
+              (product: {
+                id: string;
+                headline: string;
+                imageUrl: string;
+                description?: string;
+                details?: string;
+                website?: string;
+                backgroundImageUrl?: string;
+              }) => {
+                return {
+                  id: product.id,
+                  headline: product.headline,
+                  description: product.description,
+                  details: product.details,
+                  image: product.imageUrl,
+                  website: product.website,
+                  backgroundImage: product.backgroundImageUrl,
+                };
+              }
+            );
           setProducts(mappedProducts);
         } else {
           console.error("API error:", data.error);
@@ -110,85 +130,85 @@ export default function Products() {
     <>
       <section
         id="products"
-        className="py-6 sm:py-8 md:py-10 lg:py-12 bg-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden relative isolate">
-        <div className="max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 w-full">
-          <h2 className="text-3xl mb-4 sm:mb-6 md:mb-8 text-center font-bold text-blue-900  wrap-break-word px-2 sm:px-0">
+        className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] flex flex-col justify-center py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 bg-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden relative isolate">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full h-full flex flex-col justify-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14 text-center font-bold text-blue-900 break-words px-2 sm:px-0">
             Our Products
           </h2>
-        </div>
-        {loading ? (
-          <div className="text-center py-8">
-            <p className="text-black">Loading products...</p>
-          </div>
-        ) : products.length === 0 ? (
-          <div className="text-center py-8">
-            <p className="text-black">No products available.</p>
-          </div>
-        ) : (
-          <div className="w-full max-w-7xl mx-auto px-3 min-[375px]:px-4 sm:px-5 md:px-6 lg:px-8 relative overflow-x-hidden">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              plugins={[autoplayPlugin]}
-              className="w-full">
-              <CarouselContent className="ml-0 w-full -mr-2 sm:-mr-3 md:-mr-4">
-                {products.map((product) => {
-                  const backgroundImage =
-                    product.backgroundImage || "/images/office1.jpg";
-                  return (
-                    <CarouselItem
-                      key={product.id}
-                      className="pl-2 sm:pl-3 md:pl-4 pr-2 sm:pr-3 md:pr-4 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/4">
-                      <Card
-                        className="group h-[320px] sm:h-[360px] md:h-[380px] lg:h-[400px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col border-0"
-                        onClick={() => handleCardClick(product)}>
-                        {/* Background Image Section with Logo Overlay */}
-                        <div className="relative h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px] overflow-hidden">
-                          {/* Background Image */}
-                          <Image
-                            src={backgroundImage}
-                            alt={`${product.headline} background`}
-                            fill
-                            className="object-cover transition-all duration-300"
-                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1536px) 25vw, 25vw"
-                            priority={false}
-                          />
-                          {/* Gradient overlay for better logo visibility */}
-                          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
-                          {/* Logo Overlay */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="relative w-12 h-12 min-[375px]:w-14 min-[375px]:h-14 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
-                              <Image
-                                src={product.image}
-                                alt={product.headline}
-                                fill
-                                className="object-contain drop-shadow-2xl rounded-full"
-                                sizes="(max-width: 375px) 48px, (max-width: 640px) 56px, (max-width: 768px) 64px, (max-width: 1024px) 64px, (max-width: 1280px) 80px, 80px"
-                              />
+          {loading ? (
+            <div className="flex-1 flex flex-col justify-center items-center">
+              <p className="text-black">Loading products...</p>
+            </div>
+          ) : products.length === 0 ? (
+            <div className="flex-1 flex flex-col justify-center items-center">
+              <p className="text-black">No products available.</p>
+            </div>
+          ) : (
+            <div className="w-full max-w-7xl mx-auto relative flex-1 flex flex-col justify-center">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                plugins={[autoplayPlugin]}
+                className="w-full max-w-full">
+                <CarouselContent className="ml-0 w-full">
+                  {products.map((product) => {
+                    const backgroundImage =
+                      product.backgroundImage || "/images/office1.jpg";
+                    return (
+                      <CarouselItem
+                        key={product.id}
+                        className="pl-2 sm:pl-3 md:pl-4 lg:pl-4 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/3">
+                        <Card
+                          className="group h-[300px] sm:h-[320px] md:h-[340px] lg:h-[360px] xl:h-[380px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col border-0"
+                          onClick={() => handleCardClick(product)}>
+                          {/* Background Image Section with Logo Overlay */}
+                          <div className="relative h-[120px] sm:h-[140px] md:h-[150px] lg:h-[160px] xl:h-[180px] overflow-hidden">
+                            {/* Background Image */}
+                            <Image
+                              src={backgroundImage}
+                              alt={`${product.headline} background`}
+                              fill
+                              className="object-cover transition-all duration-300"
+                              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1536px) 25vw, 25vw"
+                              priority={false}
+                            />
+                            {/* Gradient overlay for better logo visibility */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
+                            {/* Logo Overlay */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="relative w-12 h-12 min-[375px]:w-14 min-[375px]:h-14 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+                                <Image
+                                  src={product.image}
+                                  alt={product.headline}
+                                  fill
+                                  className="object-contain drop-shadow-2xl rounded-full"
+                                  sizes="(max-width: 375px) 48px, (max-width: 640px) 56px, (max-width: 768px) 64px, (max-width: 1024px) 64px, (max-width: 1280px) 80px, 80px"
+                                />
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        {/* Text Card Content */}
-                        <CardHeader className="p-3 sm:p-4 flex-1 flex flex-col min-h-0">
-                          <CardTitle className="text-base font-bold mb-2 sm:mb-3 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight p-0">
-                            {product.headline}
-                          </CardTitle>
-                          <p className="text-base sm:text-base leading-relaxed line-clamp-5 overflow-hidden text-ellipsis m-0 text-slate-600 p-0">
-                            {product.description}
-                          </p>
-                        </CardHeader>
-                      </Card>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex left-0 sm:left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200" />
-              <CarouselNext className="hidden sm:flex right-0 sm:right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200" />
-            </Carousel>
-          </div>
-        )}
+                          {/* Text Card Content */}
+                          <CardHeader className="p-4 sm:p-5 md:p-6 flex-1 flex flex-col min-h-0">
+                            <CardTitle className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight break-words">
+                              {product.headline}
+                            </CardTitle>
+                            <p className="text-xs sm:text-sm md:text-base leading-relaxed line-clamp-4 text-slate-600 break-words">
+                              {product.description}
+                            </p>
+                          </CardHeader>
+                        </Card>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+                <CarouselPrevious className="hidden sm:flex left-0 sm:left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200" />
+                <CarouselNext className="hidden sm:flex right-0 sm:right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200" />
+              </Carousel>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Product Details Dialog */}
