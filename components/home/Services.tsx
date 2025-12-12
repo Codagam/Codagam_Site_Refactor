@@ -36,12 +36,12 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] flex flex-col justify-center py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 bg-slate-50 scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden relative isolate">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full h-full flex flex-col justify-center">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14 text-center font-bold text-blue-900 break-words px-2 sm:px-0">
+      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-8 sm:py-10 md:py-12 lg:py-12 xl:py-14 2xl:py-16 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full relative isolate">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 w-full max-w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-7 2xl:gap-8 w-full">
           {servicesGalleryItems.map((service) => {
             const hoverColor = service.hoverColor || "30 58 138";
             const icon = iconMap[service.id] || "📋";
@@ -50,7 +50,7 @@ export default function Services() {
             return (
               <div
                 key={service.id}
-                className="service-card-group group relative bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl cursor-pointer h-full flex flex-col w-full max-w-full break-words"
+                className="service-card-group group relative bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word"
                 onClick={() => handleButtonClick(service.id)}>
                 {/* Diagonal color fill from bottom-left */}
                 <div
@@ -61,11 +61,11 @@ export default function Services() {
                 />
 
                 {/* Content */}
-                <div className="relative z-10 p-4 sm:p-5 md:p-6 lg:p-7 flex flex-col grow">
+                <div className="relative z-10 p-4 sm:p-5 md:p-5 lg:p-6 xl:p-6 2xl:p-7 flex flex-col grow">
                   {/* Icon */}
-                  <div className="mb-3 sm:mb-4 md:mb-5">
+                  <div className="mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5">
                     <div
-                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center text-xl sm:text-2xl md:text-3xl transition-transform duration-300 group-hover:scale-110"
+                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 xl:w-18 xl:h-18 rounded-xl flex items-center justify-center text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl transition-transform duration-300 group-hover:scale-110"
                       style={{
                         backgroundColor: `rgba(${rgbValues}, 0.1)`,
                       }}>
@@ -74,12 +74,12 @@ export default function Services() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 md:mb-5 text-blue-900 group-hover:text-white transition-colors duration-300 break-words">
+                  <h3 className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl font-bold mb-3 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-5 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm md:text-base text-slate-600 group-hover:text-white/90 leading-relaxed mb-4 sm:mb-5 md:mb-6 line-clamp-4 transition-colors duration-300 grow break-words">
+                  <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base text-slate-600 group-hover:text-white/90 leading-relaxed mb-4 sm:mb-5 md:mb-6 lg:mb-7 line-clamp-4 transition-colors duration-300 grow wrap-break-word">
                     {service.description}
                   </p>
 

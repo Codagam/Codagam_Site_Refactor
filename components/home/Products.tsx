@@ -130,18 +130,22 @@ export default function Products() {
     <>
       <section
         id="products"
-        className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] flex flex-col justify-center py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 bg-white scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden relative isolate">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full h-full flex flex-col justify-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14 text-center font-bold text-blue-900 break-words px-2 sm:px-0">
+        className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-8 sm:py-10 md:py-12 lg:py-12 xl:py-14 2xl:py-16 bg-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full relative isolate">
+        <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-6 sm:mb-8 md:mb-8 lg:mb-8 xl:mb-10 2xl:mb-10 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
             Our Products
           </h2>
           {loading ? (
-            <div className="flex-1 flex flex-col justify-center items-center">
-              <p className="text-black">Loading products...</p>
+            <div className="flex-1 flex flex-col justify-center items-center py-12 sm:py-16 md:py-20">
+              <p className="text-black text-sm sm:text-base md:text-lg">
+                Loading products...
+              </p>
             </div>
           ) : products.length === 0 ? (
-            <div className="flex-1 flex flex-col justify-center items-center">
-              <p className="text-black">No products available.</p>
+            <div className="flex-1 flex flex-col justify-center items-center py-12 sm:py-16 md:py-20">
+              <p className="text-black text-sm sm:text-base md:text-lg">
+                No products available.
+              </p>
             </div>
           ) : (
             <div className="w-full max-w-7xl mx-auto relative flex-1 flex flex-col justify-center">
@@ -151,7 +155,7 @@ export default function Products() {
                   loop: true,
                 }}
                 plugins={[autoplayPlugin]}
-                className="w-full max-w-full">
+                className="w-full">
                 <CarouselContent className="ml-0 w-full">
                   {products.map((product) => {
                     const backgroundImage =
@@ -159,12 +163,12 @@ export default function Products() {
                     return (
                       <CarouselItem
                         key={product.id}
-                        className="pl-2 sm:pl-3 md:pl-4 lg:pl-4 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/3">
+                        className="pl-2 sm:pl-3 md:pl-4 lg:pl-5 xl:pl-6 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/3">
                         <Card
-                          className="group h-[300px] sm:h-[320px] md:h-[340px] lg:h-[360px] xl:h-[380px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col border-0"
+                          className="group h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] xl:h-[400px] 2xl:h-[420px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col border-0"
                           onClick={() => handleCardClick(product)}>
                           {/* Background Image Section with Logo Overlay */}
-                          <div className="relative h-[120px] sm:h-[140px] md:h-[150px] lg:h-[160px] xl:h-[180px] overflow-hidden">
+                          <div className="relative h-[140px] sm:h-[160px] md:h-[170px] lg:h-[180px] xl:h-[200px] 2xl:h-[220px] overflow-hidden">
                             {/* Background Image */}
                             <Image
                               src={backgroundImage}
@@ -175,26 +179,26 @@ export default function Products() {
                               priority={false}
                             />
                             {/* Gradient overlay for better logo visibility */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
+                            <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
                             {/* Logo Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="relative w-12 h-12 min-[375px]:w-14 min-[375px]:h-14 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+                              <div className="relative w-14 h-14 min-[375px]:w-16 min-[375px]:h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
                                 <Image
                                   src={product.image}
                                   alt={product.headline}
                                   fill
                                   className="object-contain drop-shadow-2xl rounded-full"
-                                  sizes="(max-width: 375px) 48px, (max-width: 640px) 56px, (max-width: 768px) 64px, (max-width: 1024px) 64px, (max-width: 1280px) 80px, 80px"
+                                  sizes="(max-width: 375px) 56px, (max-width: 640px) 72px, (max-width: 768px) 80px, (max-width: 1024px) 96px, (max-width: 1280px) 112px, (max-width: 1536px) 128px"
                                 />
                               </div>
                             </div>
                           </div>
                           {/* Text Card Content */}
-                          <CardHeader className="p-4 sm:p-5 md:p-6 flex-1 flex flex-col min-h-0">
-                            <CardTitle className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight break-words">
+                          <CardHeader className="p-4 sm:p-5 md:p-5 lg:p-6 xl:p-6 flex-1 flex flex-col min-h-0">
+                            <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-3 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-4 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight wrap-break-word">
                               {product.headline}
                             </CardTitle>
-                            <p className="text-xs sm:text-sm md:text-base leading-relaxed line-clamp-4 text-slate-600 break-words">
+                            <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base leading-relaxed line-clamp-4 text-slate-600 wrap-break-word">
                               {product.description}
                             </p>
                           </CardHeader>

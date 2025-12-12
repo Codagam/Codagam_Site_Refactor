@@ -85,52 +85,56 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] flex flex-col justify-center py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 bg-slate-50 scroll-mt-[48px] min-[375px]:scroll-mt-[52px] sm:scroll-mt-[56px] lg:scroll-mt-[64px] xl:scroll-mt-[68px] w-full overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full h-full flex flex-col justify-center">
+      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-8 sm:py-10 md:py-12 lg:py-12 xl:py-14 2xl:py-16 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
         <div className="flex flex-col w-full">
           {/* Tech Stack Section */}
-          <div className="w-full mb-8 sm:mb-10 md:mb-12 lg:mb-14 xl:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14 text-center font-bold text-blue-900 break-words px-2 sm:px-0">
+          <div className="w-full mb-8 sm:mb-10 md:mb-12 lg:mb-12 xl:mb-14 2xl:mb-14">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-6 sm:mb-8 md:mb-8 lg:mb-8 xl:mb-10 2xl:mb-10 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
               Our Tech Stack
             </h2>
             {loading ? (
-              <div className="flex-1 flex flex-col justify-center items-center">
-                <p className="text-black">Loading tech stack...</p>
+              <div className="flex-1 flex flex-col justify-center items-center py-12 sm:py-16 md:py-20">
+                <p className="text-black text-sm sm:text-base md:text-lg">
+                  Loading tech stack...
+                </p>
               </div>
             ) : techStack.length === 0 ? (
-              <div className="flex-1 flex flex-col justify-center items-center">
-                <p className="text-black">No tech stack items available.</p>
+              <div className="flex-1 flex flex-col justify-center items-center py-12 sm:py-16 md:py-20">
+                <p className="text-black text-sm sm:text-base md:text-lg">
+                  No tech stack items available.
+                </p>
               </div>
             ) : (
-              <div className="relative min-h-[180px] sm:min-h-[200px] md:min-h-[220px] lg:min-h-[240px] flex flex-col justify-center">
+              <div className="relative min-h-[200px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px] xl:min-h-[280px] flex flex-col justify-center">
                 <div
-                  className={`grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-7 w-full transition-opacity duration-500 ease-in-out ${
+                  className={`grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-7 2xl:gap-8 w-full transition-opacity duration-500 ease-in-out ${
                     isTransitioning ? "opacity-0" : "opacity-100"
                   }`}>
                   {currentItems.map((tech) => (
                     <div
                       key={tech.id}
-                      className="bg-white p-3 sm:p-4 md:p-5 lg:p-6 rounded-lg sm:rounded-xl text-center border border-slate-200 transition-all hover:border-blue-900 hover:shadow-lg hover:scale-105 w-full flex flex-col items-center justify-center">
-                      <div className="mb-2 sm:mb-2.5 md:mb-3 flex items-center justify-center min-h-[40px] sm:min-h-[48px] md:min-h-[56px] lg:min-h-[64px] xl:min-h-[72px] w-full">
+                      className="bg-white p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 2xl:p-10 rounded-lg sm:rounded-xl md:rounded-2xl text-center border border-slate-200 transition-all hover:border-blue-900 hover:shadow-lg hover:scale-105 w-full flex flex-col items-center justify-center">
+                      <div className="mb-3 sm:mb-4 md:mb-5 flex items-center justify-center min-h-[48px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px] xl:min-h-[80px] 2xl:min-h-[88px] w-full">
                         {tech.iconUrl &&
                           (isFullUrl(tech.iconUrl) ||
                           tech.iconUrl.startsWith("/") ? (
-                            <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16">
+                            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-18 xl:h-18 2xl:w-20 2xl:h-20">
                               <Image
                                 src={tech.iconUrl}
                                 alt={`${tech.name} icon`}
                                 fill
                                 className="object-contain"
-                                sizes="(max-width: 375px) 32px, (max-width: 640px) 40px, (max-width: 768px) 48px, (max-width: 1024px) 56px, 64px"
+                                sizes="(max-width: 375px) 40px, (max-width: 640px) 48px, (max-width: 768px) 56px, (max-width: 1024px) 64px, (max-width: 1280px) 72px, (max-width: 1536px) 80px"
                               />
                             </div>
                           ) : (
-                            <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+                            <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
                               {tech.iconUrl}
                             </div>
                           ))}
                       </div>
-                      <p className="text-[10px] sm:text-xs md:text-sm lg:text-base font-medium m-0 text-black break-words w-full leading-tight">
+                      <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-base font-medium m-0 text-black wrap-break-word w-full leading-tight">
                         {tech.name}
                       </p>
                     </div>
@@ -148,7 +152,7 @@ export default function TechStack() {
                 </div>
                 {/* Page indicators */}
                 {totalPages > 1 && (
-                  <div className="flex justify-center gap-2 sm:gap-2.5 md:gap-3 mt-4 sm:mt-5 md:mt-6 lg:mt-8">
+                  <div className="flex justify-center gap-2 sm:gap-2.5 md:gap-3 mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-14">
                     {Array.from({ length: totalPages }).map((_, index) => (
                       <button
                         key={index}
@@ -176,12 +180,12 @@ export default function TechStack() {
           {/* Career Section - Shows below Tech Stack on all devices */}
           <div
             id="career-section"
-            className="w-full flex flex-col justify-center pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 border-t border-slate-200">
-            <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 w-full">
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 font-bold text-blue-900 break-words px-2 sm:px-0">
+            className="w-full flex flex-col justify-center pt-8 sm:pt-10 md:pt-12 lg:pt-12 xl:pt-14 2xl:pt-14 border-t border-slate-200">
+            <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 w-full">
+              <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl mb-4 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-6 font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
                 Join our team
               </h2>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed px-4 sm:px-6 md:px-8 break-words mb-6 sm:mb-8 md:mb-10">
+              <p className="text-sm sm:text-base md:text-base lg:text-base xl:text-lg 2xl:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6 md:px-8 lg:px-8 wrap-break-word mb-6 sm:mb-8 md:mb-8 lg:mb-8 xl:mb-10 2xl:mb-10">
                 We&apos;re looking for passionate individuals who want to build
                 the future of technology. Join us in creating innovative
                 solutions that make a real impact.

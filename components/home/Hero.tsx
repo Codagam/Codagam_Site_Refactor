@@ -78,7 +78,22 @@ export default function Hero() {
   const scrollToSection = useCallback((id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      const headerHeight =
+        window.innerWidth >= 1280
+          ? 68
+          : window.innerWidth >= 1024
+          ? 64
+          : window.innerWidth >= 640
+          ? 56
+          : 48;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight - 8; // 8px extra spacing
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   }, []);
 
@@ -90,16 +105,18 @@ export default function Hero() {
 
   if (loading && heroList.length === 0) {
     return (
-      <div className="flex flex-col min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] bg-white">
-        <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full h-full flex flex-col justify-between flex-1">
+      <div className="flex flex-col min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] bg-white">
+        <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] py-6 sm:py-8 md:py-10 lg:py-10 xl:py-12 2xl:py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-between flex-1">
             <div className="flex-1 flex flex-col justify-center w-full">
               <div className="text-center py-8 w-full">
-                <p className="text-gray-600">Loading hero section...</p>
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg">
+                  Loading hero section...
+                </p>
               </div>
             </div>
           </div>
-          <div className="hero-carousel-section w-full pt-4 sm:pt-5 md:pt-6 lg:pt-8 xl:pt-10 overflow-x-hidden">
+          <div className="hero-carousel-section w-full pt-6 sm:pt-8 md:pt-8 lg:pt-10 xl:pt-10 2xl:pt-12">
             <ClientLogoCarousel pauseOnHover={true} duration="60s" />
           </div>
         </section>
@@ -108,25 +125,25 @@ export default function Hero() {
   }
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] bg-white">
-      <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 w-full h-full flex flex-col justify-between flex-1">
+    <div className="flex flex-col min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] bg-white">
+      <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] py-6 sm:py-8 md:py-10 lg:py-10 xl:py-12 2xl:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-between flex-1">
           {/* Main Content Grid */}
-          <div className="flex-1 flex flex-col justify-center items-center w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 items-center w-full max-w-full">
+          <div className="flex-1 flex flex-col justify-center items-center w-full py-4 sm:py-6 md:py-6 lg:py-6 xl:py-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-8 lg:gap-10 xl:gap-12 2xl:gap-12 items-center w-full">
               {/* Content Section */}
-              <div className="text-center md:text-left order-1 flex flex-col justify-center items-center md:items-start w-full md:w-auto md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl min-w-0">
+              <div className="text-center md:text-left order-1 flex flex-col justify-center items-center md:items-start w-full md:w-auto">
                 <div
                   className={`transition-opacity duration-500 ease-in-out w-full ${
                     isTransitioning ? "opacity-0" : "opacity-100"
                   }`}>
-                  <p className="text-xs min-[375px]:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-black leading-tight w-full mx-auto md:mx-0 px-2 sm:px-3 md:px-0 break-words mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-7">
+                  <p className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold text-black leading-tight w-full mx-auto md:mx-0 px-2 sm:px-4 md:px-0 wrap-break-word mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8">
                     {title}
                   </p>
                   <div className="flex justify-center md:justify-start items-center w-full">
                     <Button
                       onClick={() => scrollToSection("services")}
-                      className="bg-blue-900 hover:bg-blue-800 text-white px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 py-2 sm:py-2.5 md:py-3 lg:py-3.5 xl:py-4 text-xs sm:text-sm md:text-base lg:text-lg font-medium shrink-0 whitespace-nowrap">
+                      className="bg-blue-900 hover:bg-blue-800 text-white px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10 2xl:px-12 py-2.5 sm:py-3 md:py-3.5 lg:py-4 xl:py-5 text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl font-medium shrink-0 whitespace-nowrap">
                       Learn More
                     </Button>
                   </div>
@@ -134,7 +151,7 @@ export default function Hero() {
               </div>
 
               {/* Image Section */}
-              <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden order-2 w-full aspect-[4/3] min-h-[200px] sm:min-h-[220px] md:min-h-[280px] lg:min-h-[320px] xl:min-h-[380px] 2xl:min-h-[420px] bg-slate-50 mx-auto md:mx-0">
+              <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden order-2 w-full aspect-[4/3] min-h-[200px] sm:min-h-[240px] md:min-h-[300px] lg:min-h-[360px] xl:min-h-[420px] 2xl:min-h-[480px] bg-slate-50 mx-auto md:mx-0">
                 {imageUrl && imageUrl.trim() !== "" ? (
                   <Image
                     key={`${currentHero?.id || currentIndex}-${imageUrl}`}
@@ -161,7 +178,7 @@ export default function Hero() {
         </div>
 
         {/* Client Logo Carousel - Full Width on All Screens */}
-        <div className="hero-carousel-section w-full pt-4 sm:pt-5 md:pt-6 lg:pt-8 xl:pt-10 overflow-x-hidden">
+        <div className="hero-carousel-section w-full pt-6 sm:pt-8 md:pt-8 lg:pt-10 xl:pt-10 2xl:pt-12">
           <ClientLogoCarousel pauseOnHover={true} duration="60s" />
         </div>
       </section>
