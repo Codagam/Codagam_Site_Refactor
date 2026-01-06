@@ -25,12 +25,12 @@ export default function Services() {
   );
 
   const iconMap: Record<string, string> = {
-    "healthcare-tech": "🏥",
-    "hyperlocal-solutions": "🌍",
-    "ai-automation": "🤖",
-    "fullstack-dev": "🛠️",
-    "api-integration": "🔌",
-    consulting: "📊",
+    "custom-software-development": "💻",
+    "healthcare-technology": "🏥",
+    "cloud-architecture-devops": "☁️",
+    "data-analytics-bi": "📊",
+    "ai-ml-integration": "🤖",
+    "secondary-services": "🎯",
   };
 
   return (
@@ -52,7 +52,7 @@ export default function Services() {
                 key={service.id}
                 className="service-card-group group relative bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word"
                 onClick={() => handleButtonClick(service.id)}>
-                {/* Diagonal color fill from bottom-left */}
+                {/* Diagonal color fill from bottom-left on hover */}
                 <div
                   className="service-card-hover"
                   style={{
@@ -62,31 +62,41 @@ export default function Services() {
 
                 {/* Content */}
                 <div className="relative z-10 p-4 sm:p-5 md:p-5 lg:p-6 xl:p-6 2xl:p-7 flex flex-col grow">
-                  {/* Icon */}
-                  <div className="mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5">
-                    <div
-                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 xl:w-18 xl:h-18 rounded-xl flex items-center justify-center text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        backgroundColor: `rgba(${rgbValues}, 0.1)`,
-                      }}>
+                  {/* Title with Icon */}
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    <h3 className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-3 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-5 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word flex-1">
+                      {service.title}
+                    </h3>
+                    <div className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl flex-shrink-0 ml-3">
                       {icon}
                     </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl font-bold mb-3 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-5 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word">
-                    {service.title}
-                  </h3>
-
                   {/* Description */}
-                  <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base text-slate-600 group-hover:text-white/90 leading-relaxed mb-4 sm:mb-5 md:mb-6 lg:mb-7 line-clamp-4 transition-colors duration-300 grow wrap-break-word">
+                  <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base text-slate-600 group-hover:text-white/90 leading-relaxed mb-4 sm:mb-4 md:mb-5 lg:mb-5 line-clamp-4 transition-colors duration-300 wrap-break-word">
                     {service.description}
                   </p>
 
+                  {/* Offerings/Bullet Points */}
+                  {service.offerings && service.offerings.length > 0 && (
+                    <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 flex-1 mb-4 sm:mb-5">
+                      {service.offerings.map((offering, index) => (
+                        <li
+                          key={index}
+                          className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm text-slate-700 group-hover:text-white/90 leading-relaxed flex items-start transition-colors duration-300">
+                          <span className="text-slate-900 group-hover:text-white mr-2 mt-1.5 flex-shrink-0 text-[8px] sm:text-[10px] transition-colors duration-300">
+                            •
+                          </span>
+                          <span className="flex-1 wrap-break-word">{offering}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
                   {/* CTA */}
-                  <div className="flex items-center gap-2 text-sm sm:text-base font-semibold text-blue-900 group-hover:text-white transition-all duration-300 mt-auto">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm md:text-sm font-semibold text-blue-900 group-hover:text-white transition-all duration-300 mt-auto">
                     <span>Learn more</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-2" />
                   </div>
                 </div>
               </div>
@@ -98,24 +108,92 @@ export default function Services() {
       {/* Service Details Dialog */}
       {selectedServiceData && (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-y-auto w-full">
-            <DialogHeader className="space-y-2 sm:space-y-3">
-              <DialogTitle className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight wrap-break-word text-black">
-                {selectedServiceData.title}
-              </DialogTitle>
-              <DialogDescription className="text-xs sm:text-sm md:text-base wrap-break-word text-slate-600">
-                Learn more about our {selectedServiceData.title.toLowerCase()}{" "}
-                services
+          <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl max-h-[90vh] overflow-y-auto w-full">
+            <DialogHeader className="space-y-1.5 sm:space-y-2 border-b border-slate-200 pb-2 sm:pb-3">
+              <div className="flex items-center justify-between">
+                <DialogTitle
+                  className="text-base sm:text-lg md:text-xl font-bold leading-tight wrap-break-word"
+                  style={{
+                    color: `rgb(${selectedServiceData.hoverColor?.split(" ").join(", ") || "59, 130, 246"})`,
+                  }}>
+                  {selectedServiceData.title}
+                </DialogTitle>
+                <div className="text-xl sm:text-2xl md:text-2xl flex-shrink-0 ml-2 sm:ml-3">
+                  {iconMap[selectedServiceData.id] || "📋"}
+                </div>
+              </div>
+              <DialogDescription className="text-xs sm:text-sm wrap-break-word text-slate-600">
+                Comprehensive {selectedServiceData.title.toLowerCase()} solutions tailored to your business needs
               </DialogDescription>
             </DialogHeader>
-            <div className="space-y-4 sm:space-y-6 md:space-y-8 mt-4 sm:mt-6 w-full max-w-full">
-              <p className="text-black leading-relaxed text-sm sm:text-base md:text-lg wrap-break-word">
-                {selectedServiceData.description}
-              </p>
-              <div className="pt-2 sm:pt-4">
-                <p className="text-xs sm:text-sm md:text-base text-slate-600 wrap-break-word">
-                  For more information about this service, please contact us
-                  using the contact form in the footer.
+            <div className="space-y-3 sm:space-y-4 mt-3 sm:mt-4 w-full max-w-full">
+              {/* Main Description */}
+              <div className="bg-slate-50 rounded-lg p-2.5 sm:p-3">
+                <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-1.5 sm:mb-2">
+                  Overview
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-snug wrap-break-word">
+                  {selectedServiceData.description}
+                </p>
+              </div>
+
+              {/* Key Offerings */}
+              {selectedServiceData.offerings && selectedServiceData.offerings.length > 0 && (
+                <div>
+                  <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-2 sm:mb-2.5">
+                    Key Offerings
+                  </h3>
+                  <ul className="space-y-1.5 sm:space-y-2">
+                    {selectedServiceData.offerings.map((offering, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start text-xs sm:text-sm text-slate-700 leading-snug">
+                        <span
+                          className="mr-1.5 sm:mr-2 mt-1 flex-shrink-0 text-sm"
+                          style={{
+                            color: `rgb(${selectedServiceData.hoverColor?.split(" ").join(", ") || "59, 130, 246"})`,
+                          }}>
+                          •
+                        </span>
+                        <span className="flex-1 wrap-break-word">{offering}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Additional Details Section */}
+              <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-2.5 sm:p-3 border border-slate-200">
+                <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-1.5 sm:mb-2">
+                  Why Choose Us?
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-snug wrap-break-word mb-2 sm:mb-2.5">
+                  Our team brings years of experience and expertise in delivering high-quality solutions that drive business growth. We combine cutting-edge technology with proven methodologies to ensure your project's success.
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2">
+                  <div className="flex items-start">
+                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">✓</span>
+                    <span className="text-xs sm:text-sm text-slate-700">Proven track record</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">✓</span>
+                    <span className="text-xs sm:text-sm text-slate-700">Scalable solutions</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">✓</span>
+                    <span className="text-xs sm:text-sm text-slate-700">Expert team</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">✓</span>
+                    <span className="text-xs sm:text-sm text-slate-700">24/7 support</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact CTA */}
+              <div className="pt-2 sm:pt-3 border-t border-slate-200">
+                <p className="text-xs sm:text-sm text-slate-600 wrap-break-word text-center">
+                  Ready to get started? Contact us using the contact form in the footer to discuss your project requirements and receive a customized quote.
                 </p>
               </div>
             </div>

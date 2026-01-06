@@ -29,6 +29,7 @@ export interface GalleryItem {
   id: string;
   title: string;
   description: string;
+  offerings?: string[]; // Bullet points for offerings
   image: string;
   alt: string;
   hoverColor?: string; // RGB color for hover effect (e.g., "30 58 138" for blue-900)

@@ -2,57 +2,89 @@ import { GalleryItem } from "@/models/interfaces";
 
 export const servicesGalleryItems: GalleryItem[] = [
   {
-    id: "healthcare-tech",
-    title: "Healthcare Tech",
+    id: "custom-software-development",
+    title: "Custom Software Development",
     description:
-      "EMR/ABDM integration, patient management systems, and healthcare automation for clinics and hospitals. We build compliant healthcare solutions that improve patient care and streamline operations.",
+      "Enterprise-grade applications built for scale, reliability, and performance.",
+    offerings: [
+      "Full-stack web applications (React/Next.js + Node.js/.NET)",
+      "Real-time data systems and analytics",
+      "Healthcare and compliance-heavy systems",
+      "Microservices and distributed systems",
+    ],
     image: "/images/Codagam_Img (1).jpg",
-    alt: "Healthcare Technology Solutions",
-    hoverColor: "239 68 68", // Magma Red - Rolls-Royce premium deep red
+    alt: "Custom Software Development",
+    hoverColor: "59 130 246", // Deep blue
   },
   {
-    id: "hyperlocal-solutions",
-    title: "Hyperlocal Solutions",
+    id: "healthcare-technology",
+    title: "Healthcare Technology",
     description:
-      "Classifieds, job marketplaces, and community platforms for Tier-2 Indian towns and cities. We create platforms that connect local communities and drive local economic growth.",
+      "Specialized expertise in clinical and patient-facing platforms.",
+    offerings: [
+      "EMR systems design and implementation",
+      "Telemedicine platforms",
+      "FHIR-compliant integrations",
+      "Healthcare data analytics",
+    ],
     image: "/images/gobi_today_splash.png",
-    alt: "Hyperlocal Platform Solutions",
-    hoverColor: "59 130 246", // Salamanca Blue - Rolls-Royce premium vibrant blue
+    alt: "Healthcare Technology Services",
+    hoverColor: "34 197 94", // Green
   },
   {
-    id: "ai-automation",
-    title: "AI & Automation",
-    description:
-      "Voice transcription, RAG pipelines, LLM integration, and workflow automation with n8n/Make. We leverage AI to automate processes and enhance user experiences.",
-    image: "/images/AI & Machine Learning.png",
-    alt: "AI and Automation Services",
-    hoverColor: "168 85 247", // Belladonna Purple - Rolls-Royce premium striking purple
-  },
-  {
-    id: "fullstack-dev",
-    title: "Full-Stack Development",
-    description:
-      "Next.js, React Native, Node.js, MongoDB—modern tech stacks for web and mobile apps. We build scalable, performant applications using cutting-edge technologies.",
-    image: "/images/Web Development & Design.png",
-    alt: "Full-Stack Development Services",
-    hoverColor: "132 204 22", // Chartreuse - Rolls-Royce premium vivid green-yellow
-  },
-  {
-    id: "api-integration",
-    title: "API Integration",
-    description:
-      "Third-party integrations, payment gateways, and microservices architecture design. We connect your systems seamlessly and securely with robust API solutions.",
+    id: "cloud-architecture-devops",
+    title: "Cloud Architecture & DevOps",
+    description: "Robust infrastructure for global-scale applications.",
+    offerings: [
+      "Multi-cloud strategy (Azure, AWS, GCP)",
+      "Kubernetes & containerization",
+      "CI/CD pipeline design",
+      "Global infrastructure for US, UK, emerging markets",
+    ],
     image: "/images/Cloud & DevOps Solutions.png",
-    alt: "API Integration Services",
-    hoverColor: "236 72 153", // Morganite - Rolls-Royce premium rose pink
+    alt: "Cloud Architecture & DevOps Services",
+    hoverColor: "132 204 22", // Light green
   },
   {
-    id: "consulting",
-    title: "Consulting & Strategy",
-    description:
-      "Product roadmapping, GTM strategy, and technical architecture for startups and SMEs. We help you make informed decisions and build products that succeed.",
+    id: "data-analytics-bi",
+    title: "Data Analytics & BI",
+    description: "Turning raw data into actionable insights.",
+    offerings: [
+      "Custom analytics platforms and dashboards",
+      "Data pipeline architecture (ETL/ELT)",
+      "Real-time data visualization",
+      "Predictive analytics and ML integration",
+    ],
+    image: "/images/AI & Machine Learning.png",
+    alt: "Data Analytics & BI Services",
+    hoverColor: "168 85 247", // Purple
+  },
+  {
+    id: "ai-ml-integration",
+    title: "AI/ML Integration",
+    description: "Embedding intelligence into your products.",
+    offerings: [
+      "LLM integration and prompt engineering",
+      "Medical NLP and clinical transcription",
+      "Python-based predictive models",
+      "GenAI tools and automation",
+    ],
+    image: "/images/AI & Machine Learning.png",
+    alt: "AI/ML Integration Services",
+    hoverColor: "249 115 22", // Orange
+  },
+  {
+    id: "secondary-services",
+    title: "Secondary Services",
+    description: "Strategic and technical expertise beyond core development.",
+    offerings: [
+      "Product strategy consulting",
+      "Technical due diligence",
+      "Mentorship & technical leadership",
+      "Architecture reviews",
+    ],
     image: "/images/Custom Software Development.png",
-    alt: "Consulting and Strategy Services",
-    hoverColor: "20 184 166", // Imperial Jade - Rolls-Royce premium rich emerald
+    alt: "Secondary Services",
+    hoverColor: "236 72 153", // Pink
   },
 ];
