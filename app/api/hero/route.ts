@@ -5,34 +5,66 @@ import { constructImageUrl, isFullUrl } from "@/lib/utils/image-url";
 // Helper function to validate hero data
 const isValidHero = (
   hero: unknown
-): hero is { id: string; title: string; imageUrl: string } => {
+): hero is {
+  id: string;
+  number?: string;
+  heading?: string;
+  description?: string;
+  imageUrl?: string;
+} => {
   return (
     typeof hero === "object" &&
     hero !== null &&
     "id" in hero &&
-    "title" in hero &&
-    "imageUrl" in hero &&
-    typeof (hero as { id: unknown }).id === "string" &&
-    typeof (hero as { title: unknown }).title === "string" &&
-    typeof (hero as { imageUrl: unknown }).imageUrl === "string" &&
-    String((hero as { title: string }).title).trim() !== "" &&
-    String((hero as { imageUrl: string }).imageUrl).trim() !== ""
+    typeof (hero as { id: unknown }).id === "string"
   );
 };
 
 // Helper function to fetch heroes with fallback ordering
+// Using select to only fetch fields defined in the schema (ignoring any old fields in DB)
 const fetchHeroes = async () => {
   try {
     return await codagamSitePrisma.heroSection.findMany({
+      select: {
+        id: true,
+        number: true,
+        heading: true,
+        description: true,
+        imageUrl: true,
+        position: true,
+        createdAt: true,
+        updatedAt: true,
+      },
       orderBy: [{ position: "asc" }, { updatedAt: "asc" }],
     });
   } catch {
     try {
       return await codagamSitePrisma.heroSection.findMany({
+        select: {
+          id: true,
+          number: true,
+          heading: true,
+          description: true,
+          imageUrl: true,
+          position: true,
+          createdAt: true,
+          updatedAt: true,
+        },
         orderBy: { updatedAt: "asc" },
       });
     } catch {
-      return await codagamSitePrisma.heroSection.findMany();
+      return await codagamSitePrisma.heroSection.findMany({
+        select: {
+          id: true,
+          number: true,
+          heading: true,
+          description: true,
+          imageUrl: true,
+          position: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
     }
   }
 };
@@ -48,22 +80,41 @@ export async function GET() {
 
     const heroes = await fetchHeroes();
 
-    const heroesWithFullUrls = heroes.filter(isValidHero).map((hero) => ({
-      id: hero.id,
-      title: hero.title,
-      imageUrl: constructImageUrl(hero.imageUrl),
-      position:
-        "position" in hero && typeof hero.position === "number"
-          ? hero.position
-          : 0,
-    }));
+    // Map heroes to response format, handling imageUrl correctly
+    // Admin API may save imageUrl as full URL or file path, so we handle both
+    const heroesWithFullUrls = heroes.filter(isValidHero).map((hero) => {
+      const heroAny = hero as any;
+      
+      // Handle imageUrl: construct full URL if it's a file path
+      // Admin API uses constructImageUrl before saving, so it might already be a full URL
+      let imageUrl = null;
+      if (heroAny.imageUrl) {
+        // If already a full URL (http/https/blob), use as-is
+        // Otherwise, construct CDN URL from file path
+        imageUrl = isFullUrl(heroAny.imageUrl)
+          ? heroAny.imageUrl
+          : constructImageUrl(heroAny.imageUrl);
+      }
+      
+      return {
+        id: hero.id,
+        number: heroAny.number || null,
+        heading: heroAny.heading || null,
+        description: heroAny.description || null,
+        imageUrl: imageUrl,
+        position:
+          "position" in hero && typeof hero.position === "number"
+            ? hero.position
+            : 0,
+      };
+    });
 
     return NextResponse.json(heroesWithFullUrls);
   } catch (error) {
-    console.error("Error fetching hero section:", error);
+    console.error("Error fetching hero sections:", error);
     return NextResponse.json(
       {
-        error: "Failed to fetch hero section",
+        error: "Failed to fetch hero sections",
         ...(process.env.NODE_ENV === "development" && {
           details: error instanceof Error ? error.message : "Unknown error",
         }),
@@ -120,15 +171,8 @@ export async function PUT(request: NextRequest) {
     }
 
     // Handle single hero section update
-    const { title } = body;
+    const { number, heading, description } = body;
     let { imageUrl, position } = body;
-
-    if (!title || !imageUrl) {
-      return NextResponse.json(
-        { error: "Title and imageUrl are required" },
-        { status: 400 }
-      );
-    }
 
     // Construct full CDN URL if imageUrl is a file path
     if (imageUrl && !isFullUrl(imageUrl)) {
@@ -147,16 +191,20 @@ export async function PUT(request: NextRequest) {
     const hero = await codagamSitePrisma.heroSection.upsert({
       where: { id: heroId },
       update: {
-        title,
-        imageUrl,
+        ...(number !== undefined && { number }),
+        ...(heading !== undefined && { heading }),
+        ...(description !== undefined && { description }),
+        ...(imageUrl !== undefined && { imageUrl }),
         position: position !== undefined ? position : undefined,
-      },
+      } as any,
       create: {
         id: heroId,
-        title,
-        imageUrl,
+        number: number || null,
+        heading: heading || null,
+        description: description || null,
+        imageUrl: imageUrl || null,
         position: position || 0,
-      },
+      } as any,
     });
 
     return NextResponse.json(hero);

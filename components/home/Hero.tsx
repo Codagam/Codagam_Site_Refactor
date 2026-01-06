@@ -7,8 +7,10 @@ import ClientLogoCarousel from "@/components/shared/ClientLogoCarousel";
 
 interface HeroData {
   id: string;
-  title: string;
-  imageUrl: string;
+  number?: string | null;
+  heading?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
 }
 
 const HERO_SWITCH_INTERVAL = 5000; // 5 seconds
@@ -28,24 +30,35 @@ export default function Hero() {
         if (response.ok) {
           const heroes = Array.isArray(data) ? data : [data];
           const validHeroes = heroes.filter(
-            (
-              hero: unknown
-            ): hero is { id: string; title: string; imageUrl: string } =>
+            (hero: unknown): hero is HeroData =>
               typeof hero === "object" &&
               hero !== null &&
               "id" in hero &&
-              "title" in hero &&
-              "imageUrl" in hero &&
-              typeof (hero as { id: unknown }).id === "string" &&
-              typeof (hero as { title: unknown }).title === "string" &&
-              typeof (hero as { imageUrl: unknown }).imageUrl === "string" &&
-              String((hero as { title: string }).title).trim() !== "" &&
-              String((hero as { imageUrl: string }).imageUrl).trim() !== ""
+              typeof (hero as { id: unknown }).id === "string"
           );
-          setHeroList(validHeroes);
+          // Sort by position if available
+          const sortedHeroes = validHeroes.sort((a, b) => {
+            const aPos = (a as any).position ?? 999;
+            const bPos = (b as any).position ?? 999;
+            return aPos - bPos;
+          });
+
+          // Debug log in development
+          if (process.env.NODE_ENV === "development") {
+            console.log(
+              "Hero sections loaded:",
+              sortedHeroes.length,
+              sortedHeroes
+            );
+          }
+
+          setHeroList(sortedHeroes);
+          // Reset to first hero when new data is loaded
+          setCurrentIndex(0);
         } else {
           console.error("API error:", data.error);
           setHeroList([]);
+          setCurrentIndex(0);
         }
       } catch (error) {
         console.error("Error fetching hero data:", error);
@@ -75,6 +88,37 @@ export default function Hero() {
 
   const currentHero = heroList[currentIndex] || heroList[0];
 
+  // Manual navigation functions
+  const goToNext = useCallback(() => {
+    if (heroList.length <= 1) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroList.length);
+      setIsTransitioning(false);
+    }, 300);
+  }, [heroList.length]);
+
+  const goToPrevious = useCallback(() => {
+    if (heroList.length <= 1) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + heroList.length) % heroList.length);
+      setIsTransitioning(false);
+    }, 300);
+  }, [heroList.length]);
+
+  const goToIndex = useCallback(
+    (index: number) => {
+      if (heroList.length <= 1 || index < 0 || index >= heroList.length) return;
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex(index);
+        setIsTransitioning(false);
+      }, 300);
+    },
+    [heroList.length]
+  );
+
   const scrollToSection = useCallback((id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -98,10 +142,12 @@ export default function Hero() {
   }, []);
 
   // Default values if data is not loaded yet
-  const title =
-    currentHero?.title ||
-    "We build modern, AI-powered software solutions for healthcare, hyperlocal markets, and enterprise clients across India and globally.";
-  const imageUrl = currentHero?.imageUrl || "/images/web-design-studio.jpg";
+  const number = currentHero?.number || "99.9%+";
+  const heading = currentHero?.heading || "Technical Depth That Scales";
+  const description =
+    currentHero?.description ||
+    "Full-stack architecture across modern and enterprise stacks (Next.js, .NET, Python, PostgreSQL, Azure, AWS, GCP). Built for reliability from day one. Infrastructure that impresses investors.";
+  const imageUrl = currentHero?.imageUrl || null;
 
   if (loading && heroList.length === 0) {
     return (
@@ -129,51 +175,121 @@ export default function Hero() {
       <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] py-6 sm:py-8 md:py-10 lg:py-10 xl:py-12 2xl:py-12 bg-white">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-between flex-1">
           {/* Main Content Grid */}
-          <div className="flex-1 flex flex-col justify-center items-center w-full py-4 sm:py-6 md:py-6 lg:py-6 xl:py-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-8 lg:gap-10 xl:gap-12 2xl:gap-12 items-center w-full">
-              {/* Content Section */}
-              <div className="text-center md:text-left order-1 flex flex-col justify-center items-center md:items-start w-full md:w-auto">
+          <div className="flex-1 flex flex-col justify-center items-center w-full py-4 sm:py-6 md:py-6 lg:py-6 xl:py-8 relative">
+            {/* Navigation Arrows - Only show if more than one hero */}
+            {heroList.length > 1 && (
+              <>
+                <button
+                  onClick={goToPrevious}
+                  className="absolute left-2 sm:left-4 md:left-6 lg:left-8 xl:left-10 2xl:left-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 sm:p-3 shadow-lg transition-all hover:scale-110"
+                  aria-label="Previous hero">
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-blue-900"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+                <button
+                  onClick={goToNext}
+                  className="absolute right-2 sm:right-4 md:right-6 lg:right-8 xl:right-10 2xl:right-12 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 sm:p-3 shadow-lg transition-all hover:scale-110"
+                  aria-label="Next hero">
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-blue-900"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </>
+            )}
+
+            {/* Two Column Layout: Text First on Mobile, Side-by-Side on Desktop */}
+            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 2xl:gap-12 items-center">
+              {/* Text Content - First on Mobile, Left on Desktop */}
+              <div className="text-left flex flex-col justify-center w-full order-1">
                 <div
                   className={`transition-opacity duration-500 ease-in-out w-full ${
                     isTransitioning ? "opacity-0" : "opacity-100"
                   }`}>
-                  <p className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold text-black leading-tight w-full mx-auto md:mx-0 px-2 sm:px-4 md:px-0 wrap-break-word mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8">
-                    {title}
-                  </p>
-                  <div className="flex justify-center md:justify-start items-center w-full">
-                    <Button
-                      onClick={() => scrollToSection("services")}
-                      className="bg-blue-900 hover:bg-blue-800 text-white px-4 sm:px-5 md:px-5 lg:px-6 xl:px-6 2xl:px-7 py-2 sm:py-2 md:py-2.5 lg:py-2.5 xl:py-2.5 text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base font-medium shrink-0 whitespace-nowrap">
-                      Learn More
-                    </Button>
-                  </div>
+                  {/* Large Number */}
+                  {number && (
+                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-orange-500 leading-none mb-2 sm:mb-3 md:mb-3 lg:mb-4 xl:mb-4 2xl:mb-5 wrap-break-word">
+                      {number}
+                    </p>
+                  )}
+                  {/* Heading */}
+                  {heading && (
+                    <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-blue-900 leading-tight mb-2 sm:mb-3 md:mb-4 lg:mb-5 xl:mb-5 2xl:mb-6 wrap-break-word">
+                      {heading}
+                    </h1>
+                  )}
+                  {/* Description */}
+                  {description && (
+                    <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-base 2xl:text-lg text-slate-700 leading-relaxed wrap-break-word">
+                      {description}
+                    </p>
+                  )}
                 </div>
               </div>
 
-              {/* Image Section */}
-              <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden order-2 w-full aspect-[4/3] min-h-[200px] sm:min-h-[240px] md:min-h-[300px] lg:min-h-[360px] xl:min-h-[420px] 2xl:min-h-[480px] bg-slate-50 mx-auto md:mx-0">
-                {imageUrl && imageUrl.trim() !== "" ? (
-                  <Image
-                    key={`${currentHero?.id || currentIndex}-${imageUrl}`}
-                    src={imageUrl}
-                    alt={currentHero?.title || "Codagam - Software Development"}
-                    fill
-                    className={`object-contain object-center transition-opacity duration-500 ease-in-out ${
-                      isTransitioning ? "opacity-0" : "opacity-100"
-                    }`}
-                    priority={currentIndex === 0}
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
-                    onError={() => {
-                      console.error("Image load error:", imageUrl);
-                    }}
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
-                    <p className="text-gray-400 text-sm">No image available</p>
-                  </div>
-                )}
+              {/* Image - Second on Mobile, Right on Desktop */}
+              <div className="relative w-full order-2 flex items-center justify-center">
+                <div
+                  className={`transition-opacity duration-500 ease-in-out w-full ${
+                    isTransitioning ? "opacity-0" : "opacity-100"
+                  }`}>
+                  {imageUrl ? (
+                    <div className="relative w-full aspect-4/3 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg">
+                      <Image
+                        src={imageUrl}
+                        alt={heading || "Hero image"}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                        priority={currentIndex === 0}
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative w-full aspect-4/3 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden bg-gray-200 flex items-center justify-center">
+                      <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+                        No image available
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
+
+            {/* Navigation Dots - Only show if more than one hero */}
+            {heroList.length > 1 && (
+              <div className="flex justify-center items-center gap-2 sm:gap-3 mt-6 sm:mt-8 md:mt-10">
+                {heroList.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToIndex(index)}
+                    className={`transition-all duration-300 rounded-full ${
+                      index === currentIndex
+                        ? "bg-blue-900 w-8 sm:w-10 md:w-12 h-2 sm:h-3 md:h-3"
+                        : "bg-gray-300 hover:bg-gray-400 w-2 sm:w-3 md:w-3 h-2 sm:h-3 md:h-3"
+                    }`}
+                    aria-label={`Go to hero ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

@@ -105,6 +105,7 @@ const SOCIAL_BG_COLORS: Record<string, string> = {
 };
 
 const QUICK_LINKS = [
+  { id: "about", label: "About", icon: Users, color: "text-white" },
   { id: "services", label: "Services", icon: Wrench, color: "text-white" },
   {
     id: "products",
@@ -113,7 +114,7 @@ const QUICK_LINKS = [
     color: "text-white",
   },
   { id: "stack", label: "Tech Stack", icon: Info, color: "text-white" },
-  { id: "about", label: "About", icon: Users, color: "text-white" },
+  
 ] as const;
 
 const PRODUCT_LINKS = [

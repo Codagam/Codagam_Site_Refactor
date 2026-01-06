@@ -11,12 +11,14 @@ datasource db {
 
 
 model HeroSection {
-  id         String   @id @default("hero") @map("_id")
-  title      String
-  imageUrl   String
-  position   Int      @default(0)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id                  String   @id @default("hero") @map("_id")
+  number              String?  // Large number/stat (e.g., "99.9%+")
+  heading             String?  // Main heading (e.g., "Technical Depth That Scales")
+  description         String?  // Description text
+  imageUrl            String?  // Optional image URL
+  position            Int      @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 
   @@index([position])
   @@map("hero_section")
