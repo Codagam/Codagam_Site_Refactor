@@ -12,18 +12,56 @@ export async function GET() {
       );
     }
 
-    const items = await codagamSitePrisma.techStackItem.findMany({
+    // Fetch all categories with their capabilities
+    const categories = await codagamSitePrisma.techStackCategory.findMany({
+      include: {
+        capabilities: {
+          orderBy: { position: "asc" },
+        },
+      },
       orderBy: { position: "asc" },
     });
 
-    const itemsWithFullUrls = items
-      .filter((item) => item?.id && item?.name && item?.iconUrl)
-      .map((item) => ({
-        ...item,
-        iconUrl: constructImageUrl(item.iconUrl),
-      }));
+    // Map categories with capabilities to the format expected by the component
+    const categoriesWithCapabilities = categories
+      .filter((category) => category?.id && category?.title)
+      .map((category) => {
+        const capabilities = category.capabilities
+          .filter((capability) => capability?.id && capability?.text)
+          .map((capability) => {
+            // Use image if available, otherwise use icon
+            // If icon is an emoji (not a URL), use it directly; otherwise construct URL
+            let imageUrl = "";
+            if (capability.image) {
+              imageUrl = constructImageUrl(capability.image);
+            } else if (capability.icon) {
+              // Check if icon is a URL (starts with http/https/blob) or an emoji
+              if (isFullUrl(capability.icon) || capability.icon.startsWith("/")) {
+                imageUrl = constructImageUrl(capability.icon);
+              } else {
+                // It's likely an emoji or text icon, use it directly
+                imageUrl = capability.icon;
+              }
+            }
 
-    return NextResponse.json(itemsWithFullUrls);
+            return {
+              id: capability.id,
+              text: capability.text,
+              image: imageUrl,
+              icon: capability.icon || "",
+              alt: capability.alt || capability.text,
+            };
+          });
+
+        return {
+          id: category.id,
+          title: category.title,
+          position: category.position,
+          capabilities,
+        };
+      });
+
+    return NextResponse.json(categoriesWithCapabilities);
   } catch (error) {
     console.error("Error fetching tech stack items:", error);
     return NextResponse.json(

@@ -53,16 +53,33 @@ model ClientLogo {
   @@map("client_logos")
 }
 
-model TechStackItem {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  iconUrl   String
-  name      String
-  position  Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model TechStackCategory {
+  id          String              @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  position    Int                 @default(0)
+  capabilities TechStackCapability[]
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
 
   @@index([position])
-  @@map("tech_stack_items")
+  @@map("tech_stack_categories")
+}
+
+model TechStackCapability {
+  id         String            @id @default(auto()) @map("_id") @db.ObjectId
+  text       String
+  image      String?
+  icon       String?
+  alt        String
+  categoryId String            @db.ObjectId
+  category   TechStackCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  position   Int               @default(0)
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  @@index([categoryId, position])
+  @@index([position])
+  @@map("tech_stack_capabilities")
 }
 
 model FooterContent {

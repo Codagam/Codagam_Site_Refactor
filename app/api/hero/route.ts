@@ -3,7 +3,9 @@ import { codagamSitePrisma } from "@/lib/prisma-codagam-site";
 import { constructImageUrl, isFullUrl } from "@/lib/utils/image-url";
 
 // Helper function to validate hero data
-const isValidHero = (hero: unknown): hero is { id: string; title: string; imageUrl: string } => {
+const isValidHero = (
+  hero: unknown
+): hero is { id: string; title: string; imageUrl: string } => {
   return (
     typeof hero === "object" &&
     hero !== null &&
@@ -46,14 +48,15 @@ export async function GET() {
 
     const heroes = await fetchHeroes();
 
-    const heroesWithFullUrls = heroes
-      .filter(isValidHero)
-      .map((hero) => ({
-        id: hero.id,
-        title: hero.title,
-        imageUrl: constructImageUrl(hero.imageUrl),
-        position: "position" in hero && typeof hero.position === "number" ? hero.position : 0,
-      }));
+    const heroesWithFullUrls = heroes.filter(isValidHero).map((hero) => ({
+      id: hero.id,
+      title: hero.title,
+      imageUrl: constructImageUrl(hero.imageUrl),
+      position:
+        "position" in hero && typeof hero.position === "number"
+          ? hero.position
+          : 0,
+    }));
 
     return NextResponse.json(heroesWithFullUrls);
   } catch (error) {
@@ -73,7 +76,7 @@ export async function GET() {
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
-    
+
     // Handle bulk position updates (like drag and drop reordering)
     if (body.order && Array.isArray(body.order)) {
       const { order } = body;
@@ -169,4 +172,3 @@ export async function PUT(request: NextRequest) {
 export async function POST(request: NextRequest) {
   return PUT(request);
 }
-

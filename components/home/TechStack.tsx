@@ -5,20 +5,24 @@ import Image from "next/image";
 import { isFullUrl } from "@/lib/utils/image-url";
 import { CareerApplicationForm } from "@/components/shared/CareerApplicationForm";
 
-interface TechStackItem {
+interface Capability {
   id: string;
-  iconUrl: string;
-  name: string;
+  text: string;
+  image: string;
+  icon: string;
+  alt: string;
 }
 
-const ITEMS_PER_PAGE = 6;
-const SWITCH_INTERVAL = 5000; // 5 seconds
+interface TechStackCategory {
+  id: string;
+  title: string;
+  position: number;
+  capabilities: Capability[];
+}
 
 export default function TechStack() {
-  const [techStack, setTechStack] = useState<TechStackItem[]>([]);
+  const [categories, setCategories] = useState<TechStackCategory[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const fetchTechStack = async () => {
@@ -27,26 +31,39 @@ export default function TechStack() {
         const data = await response.json();
 
         if (response.ok) {
-          const mappedItems: TechStackItem[] = data
+          const mappedCategories: TechStackCategory[] = data
             .filter(
               (
                 item: unknown
-              ): item is { id: string; name: string; iconUrl: string } =>
+              ): item is {
+                id: string;
+                title: string;
+                position: number;
+                capabilities: Capability[];
+              } =>
                 typeof item === "object" &&
                 item !== null &&
                 "id" in item &&
-                "name" in item &&
-                "iconUrl" in item &&
+                "title" in item &&
+                "capabilities" in item &&
                 typeof (item as { id: unknown }).id === "string" &&
-                typeof (item as { name: unknown }).name === "string" &&
-                typeof (item as { iconUrl: unknown }).iconUrl === "string"
+                typeof (item as { title: unknown }).title === "string" &&
+                Array.isArray((item as { capabilities: unknown }).capabilities)
             )
-            .map((item: { id: string; name: string; iconUrl: string }) => ({
-              id: item.id,
-              iconUrl: item.iconUrl || "",
-              name: item.name,
-            }));
-          setTechStack(mappedItems);
+            .map(
+              (item: {
+                id: string;
+                title: string;
+                position: number;
+                capabilities: Capability[];
+              }) => ({
+                id: item.id,
+                title: item.title,
+                position: item.position || 0,
+                capabilities: item.capabilities || [],
+              })
+            );
+          setCategories(mappedCategories);
         } else {
           console.error("API error:", data.error);
         }
@@ -59,28 +76,6 @@ export default function TechStack() {
 
     fetchTechStack();
   }, []);
-
-  // Group items into pages of 6
-  const totalPages = Math.ceil(techStack.length / ITEMS_PER_PAGE);
-  const currentItems = techStack.slice(
-    currentPage * ITEMS_PER_PAGE,
-    (currentPage + 1) * ITEMS_PER_PAGE
-  );
-
-  // Auto-switch between pages
-  useEffect(() => {
-    if (totalPages <= 1) return;
-
-    const timer = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentPage((prev) => (prev + 1) % totalPages);
-        setIsTransitioning(false);
-      }, 300); // Half of transition duration
-    }, SWITCH_INTERVAL);
-
-    return () => clearInterval(timer);
-  }, [totalPages]);
 
   return (
     <section
@@ -99,80 +94,74 @@ export default function TechStack() {
                   Loading tech stack...
                 </p>
               </div>
-            ) : techStack.length === 0 ? (
+            ) : categories.length === 0 ? (
               <div className="flex-1 flex flex-col justify-center items-center py-12 sm:py-16 md:py-20">
                 <p className="text-black text-sm sm:text-base md:text-lg">
                   No tech stack items available.
                 </p>
               </div>
             ) : (
-              <div className="relative min-h-[200px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px] xl:min-h-[280px] flex flex-col justify-center">
-                <div
-                  className={`grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-7 2xl:gap-8 w-full transition-opacity duration-500 ease-in-out ${
-                    isTransitioning ? "opacity-0" : "opacity-100"
-                  }`}>
-                  {currentItems.map((tech) => (
-                    <div
-                      key={tech.id}
-                      className="bg-white p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 2xl:p-10 rounded-lg sm:rounded-xl md:rounded-2xl text-center border border-slate-200 transition-all hover:border-blue-900 hover:shadow-lg hover:scale-105 w-full flex flex-col items-center justify-center">
-                      <div className="mb-3 sm:mb-4 md:mb-5 flex items-center justify-center min-h-[48px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px] xl:min-h-[80px] 2xl:min-h-[88px] w-full">
-                        {tech.iconUrl &&
-                          (isFullUrl(tech.iconUrl) ||
-                          tech.iconUrl.startsWith("/") ? (
-                            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-18 xl:h-18 2xl:w-20 2xl:h-20">
-                              <Image
-                                src={tech.iconUrl}
-                                alt={`${tech.name} icon`}
-                                fill
-                                className="object-contain"
-                                sizes="(max-width: 375px) 40px, (max-width: 640px) 48px, (max-width: 768px) 56px, (max-width: 1024px) 64px, (max-width: 1280px) 72px, (max-width: 1536px) 80px"
-                              />
-                            </div>
-                          ) : (
-                            <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
-                              {tech.iconUrl}
-                            </div>
-                          ))}
-                      </div>
-                      <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-base font-medium m-0 text-black wrap-break-word w-full leading-tight">
-                        {tech.name}
-                      </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 lg:gap-3 xl:gap-3 2xl:gap-3.5 w-full">
+                {categories.map((category) => (
+                  <div
+                    key={category.id}
+                    className="bg-white rounded-md sm:rounded-lg md:rounded-lg border border-slate-200 transition-all hover:border-blue-900 hover:shadow-md overflow-hidden w-full flex flex-col">
+                    {/* Category Title */}
+                    <div className="px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-3 2xl:px-3.5 pt-2 sm:pt-2.5 md:pt-3 lg:pt-3 xl:pt-3 2xl:pt-3.5 pb-1.5 sm:pb-2 md:pb-2 lg:pb-2 xl:pb-2 2xl:pb-2 border-b border-slate-200">
+                      <h3 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-blue-900 wrap-break-word">
+                        {category.title}
+                      </h3>
                     </div>
-                  ))}
-                  {/* Fill empty slots to maintain grid layout */}
-                  {Array.from({
-                    length: ITEMS_PER_PAGE - currentItems.length,
-                  }).map((_, index) => (
-                    <div
-                      key={`empty-${index}`}
-                      className="hidden"
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-                {/* Page indicators */}
-                {totalPages > 1 && (
-                  <div className="flex justify-center gap-2 sm:gap-2.5 md:gap-3 mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-14">
-                    {Array.from({ length: totalPages }).map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => {
-                          setIsTransitioning(true);
-                          setTimeout(() => {
-                            setCurrentPage(index);
-                            setIsTransitioning(false);
-                          }, 300);
-                        }}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          currentPage === index
-                            ? "w-8 bg-blue-900"
-                            : "w-2 bg-slate-300 hover:bg-slate-400"
-                        }`}
-                        aria-label={`Go to page ${index + 1}`}
-                      />
-                    ))}
+                    {/* Capabilities List */}
+                    <div className="flex flex-col p-2 sm:p-2.5 md:p-2.5 lg:p-3 xl:p-3 2xl:p-3 gap-1.5 sm:gap-2 md:gap-2 lg:gap-2.5 xl:gap-2.5 2xl:gap-2.5">
+                      {category.capabilities.map((capability, index) => {
+                        return (
+                          <div
+                            key={capability.id}
+                            className={`flex flex-row items-center justify-between gap-2 sm:gap-2.5 md:gap-2.5 lg:gap-3 xl:gap-3 2xl:gap-3 ${
+                              index < category.capabilities.length - 1
+                                ? "pb-1.5 sm:pb-2 md:pb-2 lg:pb-2.5 xl:pb-2.5 2xl:pb-2.5 border-b border-slate-100"
+                                : ""
+                            }`}>
+                            {/* Text Section - Always Left */}
+                            <div className="flex-1 flex flex-col justify-center min-w-0">
+                              <h4 className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm font-medium text-black wrap-break-word leading-snug">
+                                {capability.text}
+                              </h4>
+                            </div>
+                            {/* Image Section - Always Right */}
+                            <div className="shrink-0 flex items-center justify-center w-[20px] sm:w-[22px] md:w-[24px] lg:w-[24px] xl:w-[26px] 2xl:w-[28px] h-[20px] sm:h-[22px] md:h-[24px] lg:h-[24px] xl:h-[26px] 2xl:h-[28px]">
+                              {capability.image ? (
+                                isFullUrl(capability.image) ||
+                                capability.image.startsWith("/") ? (
+                                  <div className="relative w-full h-full">
+                                    <Image
+                                      src={capability.image}
+                                      alt={capability.alt || capability.text}
+                                      fill
+                                      className="object-contain"
+                                      sizes="(max-width: 640px) 20px, (max-width: 768px) 22px, (max-width: 1024px) 24px, (max-width: 1280px) 24px, (max-width: 1536px) 26px, 28px"
+                                    />
+                                  </div>
+                                ) : (
+                                  <div className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-base 2xl:text-base">
+                                    {capability.image}
+                                  </div>
+                                )
+                              ) : (
+                                <div className="w-full h-full bg-slate-100 rounded flex items-center justify-center">
+                                  <span className="text-[8px] text-slate-400">
+                                    No image
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                )}
+                ))}
               </div>
             )}
           </div>
