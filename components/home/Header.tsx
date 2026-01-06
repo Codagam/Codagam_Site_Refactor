@@ -289,7 +289,7 @@ export default function Header() {
           {/* Get Started Button */}
           <Button
             onClick={() => scrollToSection("contact")}
-            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-sm lg:text-base xl:text-base 2xl:text-lg px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 shrink-0 whitespace-nowrap">
+            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs lg:text-sm xl:text-sm 2xl:text-sm px-3 lg:px-4 xl:px-4 2xl:px-5 py-1.5 lg:py-2 xl:py-2 shrink-0 whitespace-nowrap">
             Get Started
           </Button>
 
