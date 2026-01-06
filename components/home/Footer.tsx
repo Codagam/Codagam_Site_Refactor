@@ -653,7 +653,7 @@ export default function Footer() {
             {footerContent?.title || defaultContent.title}
           </h2>
           <p
-            className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg max-w-3xl mx-auto opacity-90 px-4 sm:px-6 md:px-8 lg:px-8 font-normal wrap-break-word"
+            className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg max-w-6xl mx-auto opacity-90 px-4 sm:px-6 md:px-8 lg:px-8 font-normal wrap-break-word"
             style={{ fontWeight: 400 }}>
             {footerContent?.description || defaultContent.description}
           </p>
