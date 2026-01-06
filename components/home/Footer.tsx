@@ -112,13 +112,13 @@ const PRODUCT_LINKS = [
     id: "gobitoday",
     label: "GobiToday",
     url: "https://gobitoday.com/",
-    logo: "/images/gt_logo.png",
+    logo: "/images/gobitoday.png",
   },
   {
     id: "welbuk",
     label: "Welbuk",
     url: "https://welbuk.com",
-    logo: "/images/logo.png",
+    logo: "/images/welbuk.png",
   },
   {
     id: "wrapper-biz",
