@@ -648,7 +648,7 @@ export default function Footer() {
         </div>
 
         {/* Contact Section Header - Moved to bottom */}
-        <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-10 xl:mt-12 2xl:mt-12 text-center w-full border-t border-blue-800 pt-6 sm:pt-8 md:pt-10 lg:pt-10 xl:pt-12 2xl:pt-12">
+        <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-10 xl:mt-12 2xl:mt-12 text-center w-full border-t border-blue-900 pt-6 sm:pt-8 md:pt-10 lg:pt-10 xl:pt-12 2xl:pt-12">
           <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-6 2xl:mb-6 font-bold wrap-break-word px-4 sm:px-6 md:px-8 lg:px-8">
             {footerContent?.title || defaultContent.title}
           </h2>
@@ -661,7 +661,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-blue-800 py-4 sm:py-4 md:py-5 lg:py-5 xl:py-6 w-full">
+      <div className="border-t border-blue-900 py-4 sm:py-4 md:py-5 lg:py-5 xl:py-6 w-full">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full">
           <div className="flex items-center justify-center sm:justify-between">
             <p
