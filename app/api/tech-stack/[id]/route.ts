@@ -7,22 +7,25 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const item = await codagamSitePrisma.techStackItem.findUnique({
+    const item = await codagamSitePrisma.techStackCapability.findUnique({
       where: { id },
+      include: {
+        category: true,
+      },
     });
 
     if (!item) {
       return NextResponse.json(
-        { error: "Tech stack item not found" },
+        { error: "Tech stack capability not found" },
         { status: 404 }
       );
     }
 
     return NextResponse.json(item);
   } catch (error) {
-    console.error("Error fetching tech stack item:", error);
+    console.error("Error fetching tech stack capability:", error);
     return NextResponse.json(
-      { error: "Failed to fetch tech stack item" },
+      { error: "Failed to fetch tech stack capability" },
       { status: 500 }
     );
   }
@@ -35,22 +38,25 @@ export async function PUT(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { iconUrl, name, position } = body;
+    const { text, image, icon, alt, categoryId, position } = body;
 
-    const item = await codagamSitePrisma.techStackItem.update({
+    const item = await codagamSitePrisma.techStackCapability.update({
       where: { id },
       data: {
-        ...(iconUrl && { iconUrl }),
-        ...(name && { name }),
+        ...(text !== undefined && { text }),
+        ...(image !== undefined && { image }),
+        ...(icon !== undefined && { icon }),
+        ...(alt !== undefined && { alt }),
+        ...(categoryId !== undefined && { categoryId }),
         ...(position !== undefined && { position }),
       },
     });
 
     return NextResponse.json(item);
   } catch (error) {
-    console.error("Error updating tech stack item:", error);
+    console.error("Error updating tech stack capability:", error);
     return NextResponse.json(
-      { error: "Failed to update tech stack item" },
+      { error: "Failed to update tech stack capability" },
       { status: 500 }
     );
   }
@@ -62,17 +68,17 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    await codagamSitePrisma.techStackItem.delete({
+    await codagamSitePrisma.techStackCapability.delete({
       where: { id },
     });
 
     return NextResponse.json({
-      message: "Tech stack item deleted successfully",
+      message: "Tech stack capability deleted successfully",
     });
   } catch (error) {
-    console.error("Error deleting tech stack item:", error);
+    console.error("Error deleting tech stack capability:", error);
     return NextResponse.json(
-      { error: "Failed to delete tech stack item" },
+      { error: "Failed to delete tech stack capability" },
       { status: 500 }
     );
   }

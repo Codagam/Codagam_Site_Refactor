@@ -91,7 +91,7 @@ export async function PUT(request: NextRequest) {
         );
       }
 
-      const existingItems = await codagamSitePrisma.techStackItem.findMany({
+      const existingItems = await codagamSitePrisma.techStackCapability.findMany({
         where: { id: { in: order } },
       });
 
@@ -100,7 +100,7 @@ export async function PUT(request: NextRequest) {
           (id: string) => !existingItems.some((item) => item.id === id)
         );
         return NextResponse.json(
-          { error: "Some tech stack item IDs are invalid", missingIds },
+          { error: "Some tech stack capability IDs are invalid", missingIds },
           { status: 400 }
         );
       }
@@ -108,7 +108,7 @@ export async function PUT(request: NextRequest) {
       // Update positions based on order array
       await Promise.all(
         order.map((itemId: string, index: number) =>
-          codagamSitePrisma.techStackItem.update({
+          codagamSitePrisma.techStackCapability.update({
             where: { id: itemId },
             data: {
               position: index,
@@ -119,7 +119,7 @@ export async function PUT(request: NextRequest) {
 
       return NextResponse.json({
         success: true,
-        message: "Tech stack items order updated successfully",
+        message: "Tech stack capabilities order updated successfully",
         count: order.length,
       });
     }
@@ -129,9 +129,9 @@ export async function PUT(request: NextRequest) {
       { status: 400 }
     );
   } catch (error) {
-    console.error("Error updating tech stack items order:", error);
+    console.error("Error updating tech stack capabilities order:", error);
     return NextResponse.json(
-      { error: "Failed to update tech stack items order" },
+      { error: "Failed to update tech stack capabilities order" },
       { status: 500 }
     );
   }
@@ -140,34 +140,48 @@ export async function PUT(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { id, iconUrl, name, position } = body;
+    const { text, image, icon, alt, categoryId, position } = body;
 
-    if (!id || !iconUrl || !name) {
+    if (!text || !alt || !categoryId) {
       return NextResponse.json(
-        { error: "Missing required fields: id, iconUrl, name" },
+        { error: "Missing required fields: text, alt, categoryId" },
         { status: 400 }
       );
     }
 
-    // Construct full CDN URL if iconUrl is a file path
-    const fullIconUrl = iconUrl && !isFullUrl(iconUrl)
-      ? constructImageUrl(iconUrl)
-      : iconUrl;
+    // Construct full CDN URL if image is a file path
+    let fullImageUrl = null;
+    if (image) {
+      fullImageUrl = isFullUrl(image) ? image : constructImageUrl(image);
+    }
 
-    const item = await codagamSitePrisma.techStackItem.create({
+    // Construct full CDN URL if icon is a file path (and not an emoji)
+    let fullIconUrl = null;
+    if (icon) {
+      if (isFullUrl(icon) || icon.startsWith("/")) {
+        fullIconUrl = constructImageUrl(icon);
+      } else {
+        // It's likely an emoji or text icon, use it directly
+        fullIconUrl = icon;
+      }
+    }
+
+    const item = await codagamSitePrisma.techStackCapability.create({
       data: {
-        id,
-        iconUrl: fullIconUrl,
-        name,
+        text,
+        image: fullImageUrl,
+        icon: fullIconUrl,
+        alt,
+        categoryId,
         position: position || 0,
       },
     });
 
     return NextResponse.json(item, { status: 201 });
   } catch (error) {
-    console.error("Error creating tech stack item:", error);
+    console.error("Error creating tech stack capability:", error);
     return NextResponse.json(
-      { error: "Failed to create tech stack item" },
+      { error: "Failed to create tech stack capability" },
       { status: 500 }
     );
   }
