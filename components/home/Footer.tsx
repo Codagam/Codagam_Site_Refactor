@@ -2,7 +2,15 @@
 
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Image from "next/image";
-import { Info, Wrench, Grid3x3, MapPin, Phone, Mail } from "lucide-react";
+import {
+  Info,
+  Wrench,
+  Grid3x3,
+  MapPin,
+  Phone,
+  Mail,
+  Users,
+} from "lucide-react";
 import * as Flags from "country-flag-icons/react/3x2";
 import {
   FaInstagram,
@@ -105,6 +113,7 @@ const QUICK_LINKS = [
     color: "text-white",
   },
   { id: "stack", label: "Tech Stack", icon: Info, color: "text-white" },
+  { id: "about", label: "About", icon: Users, color: "text-white" },
 ] as const;
 
 const PRODUCT_LINKS = [
