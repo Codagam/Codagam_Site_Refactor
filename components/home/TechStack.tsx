@@ -101,19 +101,19 @@ export default function TechStack() {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 lg:gap-3 xl:gap-3 2xl:gap-3.5 w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-7 2xl:gap-8 w-full">
                 {categories.map((category) => (
                   <div
                     key={category.id}
-                    className="bg-white rounded-md sm:rounded-lg md:rounded-lg border border-slate-200 transition-all hover:border-blue-900 hover:shadow-md overflow-hidden w-full flex flex-col">
+                    className="bg-white rounded-xl border border-slate-200 transition-all hover:border-blue-900 hover:shadow-lg overflow-hidden w-full flex flex-col">
                     {/* Category Title */}
-                    <div className="px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-3 2xl:px-3.5 pt-2 sm:pt-2.5 md:pt-3 lg:pt-3 xl:pt-3 2xl:pt-3.5 pb-1.5 sm:pb-2 md:pb-2 lg:pb-2 xl:pb-2 2xl:pb-2 border-b border-slate-200">
-                      <h3 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-blue-900 wrap-break-word">
+                    <div className="px-3 sm:px-4 md:px-4 lg:px-5 xl:px-5 2xl:px-6 pt-3 sm:pt-4 md:pt-4 lg:pt-5 xl:pt-5 2xl:pt-6 pb-2 sm:pb-3 md:pb-3 lg:pb-3 xl:pb-3 2xl:pb-4 border-b border-slate-200">
+                      <h3 className="text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl font-semibold text-blue-900 wrap-break-word text-center">
                         {category.title}
                       </h3>
                     </div>
                     {/* Capabilities List */}
-                    <div className="flex flex-col p-2 sm:p-2.5 md:p-2.5 lg:p-3 xl:p-3 2xl:p-3 gap-1.5 sm:gap-2 md:gap-2 lg:gap-2.5 xl:gap-2.5 2xl:gap-2.5">
+                    <div className="flex flex-col p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 2xl:p-6 gap-2 sm:gap-2.5 md:gap-2.5 lg:gap-3 xl:gap-3 2xl:gap-3">
                       {category.capabilities.map((capability, index) => {
                         return (
                           <div
