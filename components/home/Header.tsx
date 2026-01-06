@@ -125,9 +125,9 @@ export default function Header() {
   useEffect(() => {
     if (!mounted) return;
 
-    const sectionElements = SECTION_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => el !== null
-    );
+    const sectionElements = SECTION_IDS.map((id) =>
+      document.getElementById(id)
+    ).filter((el): el is HTMLElement => el !== null);
 
     if (sectionElements.length === 0) return;
 
@@ -175,7 +175,10 @@ export default function Header() {
       }
     };
 
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerOptions
+    );
     sectionElements.forEach((section) => observer.observe(section));
 
     // Initial section check
@@ -318,7 +321,9 @@ export default function Header() {
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col space-y-2 mt-8">{mobileNavItems}</nav>
+                <nav className="flex flex-col space-y-2 mt-8">
+                  {mobileNavItems}
+                </nav>
               </SheetContent>
             </Sheet>
           ) : (
