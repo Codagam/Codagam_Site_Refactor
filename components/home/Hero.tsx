@@ -144,9 +144,9 @@ export default function Hero() {
       <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] py-6 sm:py-8 md:py-10 lg:py-10 xl:py-12 2xl:py-12 bg-white">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-between flex-1">
           {/* Main Content Grid */}
-          <div className="flex-1 flex flex-col justify-center items-center w-full py-4 sm:py-6 md:py-6 lg:py-6 xl:py-8 relative">
+          <div className="flex-1 flex flex-col justify-center items-center w-full py-2 sm:py-4 md:py-4 lg:py-4 xl:py-6 2xl:py-6 relative">
             {/* Two Column Layout: Text First on Mobile, Side-by-Side on Desktop */}
-            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 2xl:gap-12 items-center">
+            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-10 items-center">
               {/* Text Content - First on Mobile, Left on Desktop */}
               <div className="text-left flex flex-col justify-center w-full order-1">
                 <div

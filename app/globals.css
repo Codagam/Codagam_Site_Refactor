@@ -23,9 +23,9 @@
   --font-sans: var(--font-open-sans), -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
-  --font-riviera-nights: "Riviera Nights", var(--font-open-sans), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-riviera-nights: "Riviera Nights", var(--font-open-sans), -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 html {
@@ -83,11 +83,6 @@ iframe {
   height: auto;
 }
 
-/* Hero section - responsive and zoom support */
-.hero-section {
-  overflow-x: hidden;
-}
-
 /* Hero Section - Mobile & Tablet Portrait/Landscape Responsive */
 /* Very Small Mobile Screens (max-width: 375px) - Portrait - iPhone SE */
 @media (max-width: 375px) and (orientation: portrait) {
@@ -97,7 +92,12 @@ iframe {
   }
 
   /* Number text - smaller for small screens */
-  .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] > div > p:first-child {
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child {
     font-size: clamp(1.125rem, 4.5vw, 1.375rem) !important;
     margin-bottom: 0.5rem !important;
     line-height: 1.1 !important;
@@ -127,23 +127,6 @@ iframe {
 
   .hero-carousel-section {
     padding-top: 0.5rem !important;
-  }
-
-  /* Smaller navigation dots for very small screens */
-  .hero-main-section button[aria-label*="hero"] {
-    width: 6px !important;
-    height: 6px !important;
-    min-width: 6px !important;
-  }
-
-  .hero-main-section button[aria-label*="hero"][class*="bg-blue-900"] {
-    width: 20px !important;
-    height: 6px !important;
-  }
-
-  .hero-main-section > div > div[class*="flex"]:last-child {
-    margin-top: 0.5rem !important;
-    gap: 0.5rem !important;
   }
 }
 
@@ -183,7 +166,12 @@ iframe {
   }
 
   /* Number text - smaller for small screens */
-  .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] > div > p:first-child {
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child {
     font-size: clamp(0.9375rem, 3.5vw, 1.125rem) !important;
     margin-bottom: 0.375rem !important;
     line-height: 1.1 !important;
@@ -217,23 +205,6 @@ iframe {
 
   .hero-carousel-section {
     padding-top: 0.375rem !important;
-  }
-
-  /* Smaller navigation dots for very small screens in landscape */
-  .hero-main-section button[aria-label*="hero"] {
-    width: 5px !important;
-    height: 5px !important;
-    min-width: 5px !important;
-  }
-
-  .hero-main-section button[aria-label*="hero"][class*="bg-blue-900"] {
-    width: 18px !important;
-    height: 5px !important;
-  }
-
-  .hero-main-section > div > div[class*="flex"]:last-child {
-    margin-top: 0.375rem !important;
-    gap: 0.375rem !important;
   }
 }
 
@@ -414,267 +385,526 @@ h6 {
  */
 
 /* Desktop at 150% zoom: 1920px screen reports as 1280px viewport */
-/* Remove min-height restriction to catch more cases */
 @media (max-width: 1280px) {
-  /* Section padding: Added top padding at arrow-marked location for 150% zoom */
+  /* Parent container min-height: Match 100% zoom exactly */
+  /* At 150% zoom, viewport is scaled, so we divide the entire calc by 1.5 */
+  /* min-h-[calc(100vh-48px)] → calc((100vh - 48px) / 1.5) */
+  div.flex.flex-col[class*="min-h"],
+  .hero-main-section[class*="min-h"] {
+    min-height: calc((100vh - 48px) / 1.5) !important;
+  }
+
+  @media (min-width: 375px) {
+    div.flex.flex-col[class*="min-h"],
+    .hero-main-section[class*="min-h"] {
+      min-height: calc((100vh - 52px) / 1.5) !important;
+    }
+  }
+
+  @media (min-width: 640px) {
+    div.flex.flex-col[class*="min-h"],
+    .hero-main-section[class*="min-h"] {
+      min-height: calc((100vh - 56px) / 1.5) !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    div.flex.flex-col[class*="min-h"],
+    .hero-main-section[class*="min-h"] {
+      min-height: calc((100vh - 60px) / 1.5) !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    div.flex.flex-col[class*="min-h"],
+    .hero-main-section[class*="min-h"] {
+      min-height: calc((100vh - 64px) / 1.5) !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    div.flex.flex-col[class*="min-h"],
+    .hero-main-section[class*="min-h"] {
+      min-height: calc((100vh - 68px) / 1.5) !important;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    div.flex.flex-col[class*="min-h"],
+    .hero-main-section[class*="min-h"] {
+      min-height: calc((100vh - 72px) / 1.5) !important;
+    }
+  }
+
+  /* Section padding: Match 100% zoom exactly */
+  /* py-6(1.5rem) → 1rem, py-8(2rem) → 1.33rem, py-10(2.5rem) → 1.67rem, py-12(3rem) → 2rem */
   section.hero-main-section,
   .hero-main-section {
-    padding-top: 1.2rem !important; /* Added top padding at arrow-marked place */
-    padding-bottom: 0.8rem !important; /* Reduced to fit maximum size content */
+    padding-top: 1rem !important; /* py-6 / 1.5 = 1rem */
+    padding-bottom: 1rem !important; /* py-6 / 1.5 = 1rem */
+  }
+
+  @media (min-width: 640px) {
+    section.hero-main-section,
+    .hero-main-section {
+      padding-top: 1.33rem !important; /* py-8 / 1.5 = 1.33rem */
+      padding-bottom: 1.33rem !important; /* py-8 / 1.5 = 1.33rem */
+    }
+  }
+
+  @media (min-width: 768px) {
+    section.hero-main-section,
+    .hero-main-section {
+      padding-top: 1.67rem !important; /* py-10 / 1.5 = 1.67rem */
+      padding-bottom: 1.67rem !important; /* py-10 / 1.5 = 1.67rem */
+    }
   }
 
   @media (min-width: 1024px) and (max-width: 1280px) {
     section.hero-main-section,
     .hero-main-section {
-      padding-top: 1.5rem !important; /* Reduced top padding to show more content */
-      padding-bottom: 0 !important; /* No bottom padding to ensure carousel and Services are visible */
+      padding-top: 1.67rem !important; /* py-10 / 1.5 = 1.67rem */
+      padding-bottom: 0 !important; /* Match 100% zoom - no bottom padding */
     }
   }
 
-  @media (min-width: 1281px) {
+  @media (min-width: 1280px) {
     section.hero-main-section,
     .hero-main-section {
-      padding-top: 2rem !important; /* Added top padding at arrow-marked place */
-      padding-bottom: 2rem !important; /* Reduced to fit maximum size content */
+      padding-top: 2rem !important; /* py-12(3rem) / 1.5 = 2rem (xl) */
+      padding-bottom: 2rem !important;
     }
   }
 
-  /* Container padding: px-4(1rem)→0.67rem, px-8(2rem)→1.33rem */
+  @media (min-width: 1536px) {
+    section.hero-main-section,
+    .hero-main-section {
+      padding-top: 2rem !important; /* py-12(3rem) / 1.5 = 2rem (2xl) */
+      padding-bottom: 2rem !important;
+    }
+  }
+
+  /* Container padding: Match 100% zoom exactly */
+  /* px-3(0.75rem) → 0.5rem, px-4(1rem) → 0.67rem, px-5(1.25rem) → 0.83rem, px-6(1.5rem) → 1rem, px-8(2rem) → 1.33rem, px-10(2.5rem) → 1.67rem */
   .hero-main-section > div,
   section.hero-main-section > div {
-    padding-left: 0.67rem !important; /* 1rem / 1.5 - override px-4 */
-    padding-right: 0.67rem !important;
-    max-width: 53.33rem !important; /* 80rem / 1.5 - override max-w-7xl */
+    padding-left: 0.5rem !important; /* px-3(0.75rem) / 1.5 = 0.5rem */
+    padding-right: 0.5rem !important;
+    max-width: 53.33rem !important; /* max-w-7xl(80rem) / 1.5 = 53.33rem */
+  }
+
+  @media (min-width: 375px) {
+    .hero-main-section > div {
+      padding-left: 0.67rem !important; /* px-4(1rem) / 1.5 = 0.67rem */
+      padding-right: 0.67rem !important;
+    }
   }
 
   @media (min-width: 640px) {
     .hero-main-section > div {
-      padding-left: 0.83rem !important; /* 1.25rem / 1.5 */
+      padding-left: 0.83rem !important; /* px-5(1.25rem) / 1.5 = 0.83rem */
       padding-right: 0.83rem !important;
     }
   }
 
   @media (min-width: 768px) {
     .hero-main-section > div {
-      padding-left: 1rem !important; /* 1.5rem / 1.5 */
+      padding-left: 1rem !important; /* px-6(1.5rem) / 1.5 = 1rem */
       padding-right: 1rem !important;
     }
   }
 
   @media (min-width: 1024px) {
     .hero-main-section > div {
-      padding-left: 1.33rem !important; /* 2rem / 1.5 */
+      padding-left: 1.33rem !important; /* px-8(2rem) / 1.5 = 1.33rem */
       padding-right: 1.33rem !important;
     }
   }
 
-  /* Heading: Make text appear MAXIMUM SIZE at 150% zoom */
-  /* To appear as 8.5rem at 150%, set CSS to 5.67rem (8.5/1.5=5.67) */
-  .hero-main-section h1,
-  section.hero-main-section h1 {
-    font-size: 1.9rem !important; /* Will appear as ~2.85rem - maximum size */
-    margin-bottom: 0.5rem !important;
-    line-height: 1.2 !important;
-  }
-
-  @media (min-width: 375px) {
-    .hero-main-section h1 {
-      font-size: 2.5rem !important; /* Will appear as ~3.75rem - maximum size */
+  @media (min-width: 1280px) {
+    .hero-main-section > div {
+      padding-left: 1.33rem !important; /* px-8(2rem) / 1.5 = 1.33rem (xl) */
+      padding-right: 1.33rem !important;
     }
   }
 
+  @media (min-width: 1536px) {
+    .hero-main-section > div {
+      padding-left: 1.67rem !important; /* px-10(2.5rem) / 1.5 = 1.67rem (2xl) */
+      padding-right: 1.67rem !important;
+    }
+  }
+
+  /* Number (Orange text): Make bigger at 150% zoom */
+  /* Increase sizes by ~20% to make text more prominent */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child,
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child {
+    font-size: 1rem !important; /* Increased from 0.83rem */
+    margin-bottom: 0.4rem !important;
+    line-height: 1 !important;
+  }
+
   @media (min-width: 640px) {
-    .hero-main-section h1 {
-      font-size: 3.1rem !important; /* Will appear as ~4.65rem - maximum size */
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:first-child {
+      font-size: 1.2rem !important; /* Increased from 1rem */
+      margin-bottom: 0.5rem !important;
     }
   }
 
   @media (min-width: 768px) {
-    .hero-main-section h1 {
-      font-size: 3.9rem !important; /* Will appear as ~5.85rem - maximum size */
-      margin-bottom: 0.6rem !important;
-    }
-  }
-
-  @media (min-width: 1024px) and (max-width: 1280px) {
-    .hero-main-section p {
-      font-size: 1.8rem !important; /* Bigger text for laptop at 150% zoom - will appear as ~2.7rem */
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:first-child {
+      font-size: 1.8rem !important; /* Increased from 1.5rem */
       margin-bottom: 0.8rem !important;
     }
   }
 
   @media (min-width: 1024px) {
-    .hero-main-section h1 {
-      font-size: 5rem !important; /* Will appear as ~7.5rem - maximum size */
-      margin-bottom: 0.7rem !important;
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:first-child {
+      font-size: 2rem !important; /* Increased from 1.67rem */
+      margin-bottom: 1rem !important;
     }
   }
 
   @media (min-width: 1280px) {
-    .hero-main-section h1 {
-      font-size: 5.7rem !important; /* Will appear as ~8.55rem - maximum size */
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:first-child {
+      font-size: 2.4rem !important; /* Increased from 2rem */
+      margin-bottom: 1rem !important;
     }
   }
 
-  /* Paragraph: Make text appear MAXIMUM SIZE at 150% zoom */
-  .hero-main-section p,
-  section.hero-main-section p {
-    font-size: 1.05rem !important; /* Will appear as ~1.575rem - maximum size */
-    margin-bottom: 0.7rem !important;
-    line-height: 1.5 !important;
+  @media (min-width: 1536px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:first-child {
+      font-size: 2.8rem !important; /* Increased from 2.33rem */
+      margin-bottom: 1.2rem !important;
+    }
   }
 
-  @media (min-width: 375px) {
-    .hero-main-section p,
-    section.hero-main-section p {
-      font-size: 1.2rem !important; /* Will appear as ~1.8rem - maximum size */
-    }
+  /* Heading: Make bigger at 150% zoom - increase by ~25% - Override all conflicting rules */
+  .hero-main-section h1,
+  section.hero-main-section h1,
+  .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+    font-size: 0.83rem !important; /* Increased from 0.67rem */
+    margin-bottom: 0.4rem !important;
+    line-height: 1.25 !important;
   }
 
   @media (min-width: 640px) {
-    .hero-main-section p,
-    section.hero-main-section p {
-      font-size: 1.35rem !important; /* Will appear as ~2.025rem - maximum size */
-      margin-bottom: 0.9rem !important;
+    .hero-main-section h1,
+    section.hero-main-section h1,
+    .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+      font-size: 0.94rem !important; /* Increased from 0.75rem */
+      margin-bottom: 0.55rem !important;
     }
   }
 
   @media (min-width: 768px) {
-    .hero-main-section p,
-    section.hero-main-section p {
-      font-size: 1.5rem !important; /* Will appear as ~2.25rem - maximum size */
+    .hero-main-section h1,
+    section.hero-main-section h1,
+    .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+      font-size: 1.25rem !important; /* Increased from 1rem */
       margin-bottom: 1.1rem !important;
     }
   }
 
-  @media (min-width: 1024px) and (max-width: 1280px) {
-    .hero-main-section p,
-    section.hero-main-section p {
-      font-size: 1.8rem !important; /* Bigger text for laptop at 150% zoom - will appear as ~2.7rem */
-      margin-bottom: 0.8rem !important;
-    }
-  }
-
-  /* Image heights: Make image appear MAXIMUM SIZE at 150% zoom */
-  /* To appear as 800px at 150%, set CSS to 533px (800/1.5=533) */
-  .hero-main-section > div > div[class*="grid"] > div[class*="relative"],
-  section.hero-main-section > div > div[class*="grid"] > div[class*="relative"],
-  .hero-main-section div[class*="relative"][class*="rounded"] {
-    height: 300px !important; /* Will appear as ~450px - maximum size */
-    max-height: 520px !important; /* Will appear as ~780px - maximum size */
-    min-height: 300px !important;
-    aspect-ratio: auto !important; /* Override aspect-* classes */
-  }
-
-  @media (min-width: 375px) {
-    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
-      height: 350px !important; /* Will appear as ~525px - maximum size */
-      min-height: 350px !important;
-    }
-  }
-
-  @media (min-width: 640px) {
-    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
-      height: 400px !important; /* Will appear as ~600px - maximum size */
-      min-height: 400px !important;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
-      height: 450px !important; /* Will appear as ~675px - maximum size */
-      min-height: 450px !important;
-    }
-  }
-
-  @media (min-width: 1024px) and (max-width: 1280px) {
-    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
-      height: 520px !important; /* Bigger image for laptop at 150% zoom - will appear as ~780px */
-      max-height: 560px !important; /* Will appear as ~840px */
-      min-height: 520px !important;
-    }
-  }
-
+  /* Override conflicting rules at 1024-1280px (150% zoom on laptop) */
   @media (min-width: 1024px) {
-    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
-      height: 500px !important; /* Will appear as ~750px - maximum size */
-      max-height: 550px !important; /* Will appear as ~825px - maximum size */
-      min-height: 500px !important;
+    .hero-main-section h1,
+    section.hero-main-section h1,
+    .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+      font-size: 1.67rem !important; /* Increased from 1.33rem - OVERRIDE conflicting rules */
+      margin-bottom: 1.4rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    .hero-main-section h1,
+    section.hero-main-section h1,
+    .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+      font-size: 1.67rem !important; /* Ensure it's applied at 150% zoom */
+      margin-bottom: 1.4rem !important;
     }
   }
 
   @media (min-width: 1280px) {
-    .hero-main-section > div > div[class*="grid"] > div[class*="relative"] {
-      height: 530px !important; /* Will appear as ~795px - maximum size */
-      max-height: 580px !important; /* Will appear as ~870px - maximum size */
-      min-height: 530px !important;
+    .hero-main-section h1,
+    section.hero-main-section h1,
+    .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+      font-size: 2.08rem !important; /* Increased from 1.67rem */
+      margin-bottom: 1.4rem !important;
     }
   }
 
-  /* Grid gaps: Reduced to fit maximum size content */
+  @media (min-width: 1536px) {
+    .hero-main-section h1,
+    section.hero-main-section h1,
+    .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+      font-size: 2.5rem !important; /* Increased from 2rem */
+      margin-bottom: 1.67rem !important;
+    }
+  }
+
+  /* Description Paragraph: Make bigger at 150% zoom - increase by ~25% */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  .hero-main-section p:not(:first-child),
+  section.hero-main-section p:not(:first-child) {
+    font-size: 0.59rem !important; /* Increased from 0.47rem */
+    line-height: 1.625 !important;
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    section.hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    .hero-main-section p:not(:first-child),
+    section.hero-main-section p:not(:first-child) {
+      font-size: 0.63rem !important; /* Increased from 0.5rem */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    section.hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    .hero-main-section p:not(:first-child),
+    section.hero-main-section p:not(:first-child) {
+      font-size: 0.73rem !important; /* Increased from 0.58rem */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    section.hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    .hero-main-section p:not(:first-child),
+    section.hero-main-section p:not(:first-child) {
+      font-size: 0.84rem !important; /* Increased from 0.67rem */
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    section.hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    .hero-main-section p:not(:first-child),
+    section.hero-main-section p:not(:first-child) {
+      font-size: 0.84rem !important; /* Increased from 0.67rem */
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    section.hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    .hero-main-section p:not(:first-child),
+    section.hero-main-section p:not(:first-child) {
+      font-size: 0.94rem !important; /* Increased from 0.75rem */
+    }
+  }
+
+  /* Image container: Match 100% zoom exactly - maintain aspect-4/3 */
+  /* At 100% zoom, image uses aspect-4/3 which creates natural height based on width */
+  /* At 150% zoom, we need to ensure the visual appearance matches 100% zoom */
+  .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div,
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="relative"]
+    > div {
+    aspect-ratio: 4 / 3 !important; /* Maintain aspect ratio */
+    height: auto !important; /* Let aspect-ratio control height */
+    min-height: auto !important;
+    max-height: none !important;
+  }
+
+  /* Content padding: Match 100% zoom exactly */
+  /* py-2(0.5rem) → 0.33rem, py-4(1rem) → 0.67rem, py-6(1.5rem) → 1rem */
+  .hero-main-section
+    > div
+    > div[class*="flex"][class*="flex-col"][class*="justify-center"],
+  section.hero-main-section
+    > div
+    > div[class*="flex"][class*="flex-col"][class*="justify-center"] {
+    padding-top: 0.33rem !important; /* py-2 / 1.5 = 0.33rem */
+    padding-bottom: 0.33rem !important;
+  }
+
+  @media (min-width: 640px) {
+    .hero-main-section
+      > div
+      > div[class*="flex"][class*="flex-col"][class*="justify-center"] {
+      padding-top: 0.67rem !important; /* py-4 / 1.5 = 0.67rem */
+      padding-bottom: 0.67rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-main-section
+      > div
+      > div[class*="flex"][class*="flex-col"][class*="justify-center"] {
+      padding-top: 0.67rem !important; /* py-4 / 1.5 = 0.67rem */
+      padding-bottom: 0.67rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-main-section
+      > div
+      > div[class*="flex"][class*="flex-col"][class*="justify-center"] {
+      padding-top: 0.67rem !important; /* py-4 / 1.5 = 0.67rem */
+      padding-bottom: 0.67rem !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-main-section
+      > div
+      > div[class*="flex"][class*="flex-col"][class*="justify-center"] {
+      padding-top: 1rem !important; /* py-6 / 1.5 = 1rem */
+      padding-bottom: 1rem !important;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .hero-main-section
+      > div
+      > div[class*="flex"][class*="flex-col"][class*="justify-center"] {
+      padding-top: 1rem !important; /* py-6 / 1.5 = 1rem */
+      padding-bottom: 1rem !important;
+    }
+  }
+
+  /* Grid gaps: Match 100% zoom exactly */
+  /* gap-3(0.75rem) → 0.5rem, gap-4(1rem) → 0.67rem, gap-5(1.25rem) → 0.83rem, gap-6(1.5rem) → 1rem, gap-8(2rem) → 1.33rem, gap-10(2.5rem) → 1.67rem */
   .hero-main-section [class*="grid"],
   .hero-main-section > div > div[class*="grid"],
   section.hero-main-section [class*="grid"],
   section.hero-main-section > div > div[class*="grid"] {
-    gap: 0.6rem !important;
+    gap: 0.5rem !important; /* gap-3 / 1.5 = 0.5rem */
   }
 
   @media (min-width: 640px) {
     .hero-main-section [class*="grid"],
     .hero-main-section > div > div[class*="grid"] {
-      gap: 0.8rem !important;
+      gap: 0.67rem !important; /* gap-4 / 1.5 = 0.67rem */
     }
   }
 
   @media (min-width: 768px) {
     .hero-main-section [class*="grid"],
     .hero-main-section > div > div[class*="grid"] {
-      gap: 1rem !important;
+      gap: 0.83rem !important; /* gap-5 / 1.5 = 0.83rem */
     }
   }
 
   @media (min-width: 1024px) {
     .hero-main-section [class*="grid"],
     .hero-main-section > div > div[class*="grid"] {
-      gap: 1.3rem !important;
+      gap: 1rem !important; /* gap-6 / 1.5 = 1rem */
     }
   }
 
   @media (min-width: 1280px) {
     .hero-main-section [class*="grid"],
     .hero-main-section > div > div[class*="grid"] {
-      gap: 1.6rem !important;
+      gap: 1.33rem !important; /* gap-8 / 1.5 = 1.33rem */
     }
   }
 
-  /* Buttons: Make buttons appear EXTREMELY BIG at 150% zoom */
-  .hero-main-section button,
-  section.hero-main-section button,
-  .hero-main-section [role="button"] {
-    padding: 0.7rem 1.2rem !important; /* Will appear extremely big */
-    font-size: 0.85rem !important; /* Will appear as ~1.275rem - extremely big */
-  }
-
-  @media (min-width: 375px) {
-    .hero-main-section button,
-    section.hero-main-section button {
-      padding: 0.7rem 1.4rem !important; /* Will appear extremely big */
-      font-size: 1rem !important; /* Will appear as ~1.5rem - extremely big */
-    }
-  }
-
-  @media (min-width: 640px) {
-    .hero-main-section button,
-    section.hero-main-section button {
-      padding: 0.8rem 1.8rem !important; /* Will appear extremely big */
-      font-size: 1.15rem !important; /* Will appear as ~1.725rem - extremely big */
-    }
-  }
-
-  @media (min-width: 768px) {
-    .hero-main-section button,
-    section.hero-main-section button {
-      padding: 0.9rem 1.8rem !important; /* Will appear extremely big */
+  @media (min-width: 1536px) {
+    .hero-main-section [class*="grid"],
+    .hero-main-section > div > div[class*="grid"] {
+      gap: 1.67rem !important; /* gap-10 / 1.5 = 1.67rem */
     }
   }
 
@@ -691,53 +921,178 @@ h6 {
     }
   }
 
-  /* Carousel: Increased top padding for better spacing at 150% zoom */
+  /* Carousel: Fix alignment and add more spacing - Override all conflicting rules */
   .hero-carousel-section,
   section.hero-main-section + div,
-  .hero-main-section ~ div.hero-carousel-section {
-    margin-top: 0 !important; /* Remove margin since it's outside section now */
-    padding-top: 1.5rem !important; /* Increased top padding */
-    padding-bottom: 0.4rem !important; /* Further reduced to fit extremely large content */
-    width: 100% !important; /* Ensure full width */
-    max-width: 100% !important; /* Remove any max-width constraints */
-    margin-left: 0 !important; /* Remove any left margin */
-    margin-right: 0 !important; /* Remove any right margin */
-    padding-left: 0 !important; /* Remove any left padding */
-    padding-right: 0 !important; /* Remove any right padding */
+  .hero-main-section ~ div.hero-carousel-section,
+  .hero-main-section + .hero-carousel-section,
+  section.hero-main-section ~ .hero-carousel-section {
+    margin-top: 0 !important;
+    padding-top: 1.5rem !important; /* Increased spacing - was 1rem */
+    padding-bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important; /* Ensure full viewport width */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: block !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
   }
 
-  /* At 150% zoom, ensure carousel matches 100% zoom spacing for laptop screens */
-  @media (min-width: 1024px) and (max-width: 1280px) {
-    .hero-carousel-section,
-    section.hero-main-section + div,
-    .hero-main-section ~ div.hero-carousel-section {
-      padding-top: 0.33rem !important; /* Small padding to match 100% zoom visual spacing (0.5rem / 1.5) */
-      padding-bottom: 0 !important; /* No bottom padding */
-    }
+  /* Ensure carousel container is full width - all levels */
+  .hero-carousel-section,
+  .hero-carousel-section > div,
+  .hero-carousel-section > div[class*="relative"],
+  .hero-carousel-section > div[class*="overflow"],
+  .hero-carousel-section > div[class*="w-full"],
+  .hero-carousel-section div[class*="relative"][class*="w-full"] {
+    width: 100% !important;
+    max-width: 100vw !important; /* Full viewport width */
+    min-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure marquee is full width */
+  .hero-carousel-section [class*="Marquee"],
+  .hero-carousel-section [class*="marquee"],
+  .hero-carousel-section [class*="smooth-marquee"],
+  .hero-carousel-section div[class*="Marquee"],
+  .hero-carousel-section div[class*="marquee"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure carousel inner content containers are full width */
+  .hero-carousel-section > div > div,
+  .hero-carousel-section div[class*="relative"] > div {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   @media (min-width: 640px) {
-    .hero-carousel-section {
-      padding-top: 2rem !important; /* Increased top padding */
+    .hero-carousel-section,
+    section.hero-main-section + div,
+    .hero-main-section ~ div.hero-carousel-section,
+    .hero-main-section + .hero-carousel-section,
+    section.hero-main-section ~ .hero-carousel-section {
+      padding-top: 2rem !important; /* Increased spacing - was 1.33rem */
     }
   }
 
   @media (min-width: 768px) {
-    .hero-carousel-section {
-      padding-top: 2.5rem !important; /* Increased top padding */
+    .hero-carousel-section,
+    section.hero-main-section + div,
+    .hero-main-section ~ div.hero-carousel-section,
+    .hero-main-section + .hero-carousel-section,
+    section.hero-main-section ~ .hero-carousel-section {
+      padding-top: 2rem !important; /* Increased spacing - was 1.33rem */
     }
   }
 
+  /* Override conflicting rules at 1024-1280px (150% zoom on laptop) */
   @media (min-width: 1024px) and (max-width: 1280px) {
-    .hero-carousel-section {
-      padding-top: 0 !important; /* No padding to maximize space */
-      padding-bottom: 0.67rem !important; /* Small padding to ensure Services section is visible (1rem / 1.5) */
+    /* Override ALL conflicting carousel rules - ensure full width */
+    .hero-carousel-section,
+    section.hero-main-section + div,
+    .hero-main-section ~ div.hero-carousel-section,
+    .hero-main-section + .hero-carousel-section,
+    section.hero-main-section ~ .hero-carousel-section,
+    .hero-main-section ~ div.hero-carousel-section {
+      padding-top: 2.5rem !important; /* Increased spacing - was 1.67rem - OVERRIDE conflicting rules */
+      padding-bottom: 0 !important;
+      margin-top: 0 !important;
+      width: 100% !important;
+      max-width: 100vw !important; /* Ensure full viewport width at 150% zoom */
+      min-width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    /* Ensure all carousel containers are full width at 150% zoom */
+    .hero-carousel-section > div,
+    .hero-carousel-section > div[class*="relative"],
+    .hero-carousel-section > div[class*="w-full"],
+    .hero-carousel-section div[class*="relative"][class*="w-full"] {
+      width: 100% !important;
+      max-width: 100vw !important;
+      min-width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    /* Ensure marquee is full width at 150% zoom */
+    .hero-carousel-section [class*="Marquee"],
+    .hero-carousel-section [class*="marquee"],
+    .hero-carousel-section [class*="smooth-marquee"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* Override heading rules at this breakpoint */
+    .hero-main-section h1,
+    section.hero-main-section h1,
+    .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+      font-size: 1.67rem !important; /* Ensure it's applied at 150% zoom */
+      margin-bottom: 1.4rem !important;
+    }
+
+    /* Override description rules at this breakpoint */
+    .hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    section.hero-main-section
+      > div
+      > div[class*="grid"]
+      > div[class*="order-1"]
+      > div
+      > p:not(:first-child),
+    .hero-main-section p:not(:first-child),
+    section.hero-main-section p:not(:first-child) {
+      font-size: 0.84rem !important; /* Ensure it's applied at 150% zoom */
     }
   }
 
-  @media (min-width: 1281px) {
-    .hero-carousel-section {
-      padding-top: 3rem !important; /* Increased top padding */
+  @media (min-width: 1280px) {
+    .hero-carousel-section,
+    section.hero-main-section + div,
+    .hero-main-section ~ div.hero-carousel-section,
+    .hero-main-section + .hero-carousel-section,
+    section.hero-main-section ~ .hero-carousel-section {
+      padding-top: 3rem !important; /* Increased spacing - was 2rem */
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .hero-carousel-section,
+    section.hero-main-section + div,
+    .hero-main-section ~ div.hero-carousel-section,
+    .hero-main-section + .hero-carousel-section,
+    section.hero-main-section ~ .hero-carousel-section {
+      padding-top: 3rem !important; /* Increased spacing - was 2rem */
     }
   }
 
@@ -1501,11 +1856,6 @@ h6 {
     height: 120px !important;
     min-height: 120px !important;
   }
-
-  .hero-main-section button {
-    padding: 0.5rem 1rem !important;
-    font-size: 0.75rem !important;
-  }
 }
 
 @media (orientation: landscape) and (min-height: 500px) and (max-height: 700px) {
@@ -1775,11 +2125,6 @@ h6 {
   .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
     max-width: 180px !important;
   }
-
-  .hero-main-section button {
-    padding: 0.5rem 1rem !important;
-    font-size: 0.75rem !important;
-  }
 }
 
 /* Small Screen Landscape (640px - 768px) */
@@ -1806,11 +2151,6 @@ h6 {
 
   .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
     max-width: 160px !important;
-  }
-
-  .hero-main-section button {
-    padding: 0.4rem 0.875rem !important;
-    font-size: 0.7rem !important;
   }
 }
 
@@ -1839,11 +2179,6 @@ h6 {
   .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
     max-width: 220px !important;
   }
-
-  .hero-main-section button {
-    padding: 0.625rem 1.25rem !important;
-    font-size: 0.875rem !important;
-  }
 }
 
 /* Medium Screen Landscape (768px - 1024px) */
@@ -1871,11 +2206,6 @@ h6 {
   .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
     max-width: 200px !important;
   }
-
-  .hero-main-section button {
-    padding: 0.5rem 1.125rem !important;
-    font-size: 0.8rem !important;
-  }
 }
 
 /* Mobile Portrait (<640px) */
@@ -1898,11 +2228,6 @@ h6 {
 
   .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
     max-width: 160px !important;
-  }
-
-  .hero-main-section button {
-    padding: 0.5rem 0.875rem !important;
-    font-size: 0.7rem !important;
   }
 }
 
@@ -1930,11 +2255,6 @@ h6 {
 
   .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
     max-width: 140px !important;
-  }
-
-  .hero-main-section button {
-    padding: 0.4rem 0.75rem !important;
-    font-size: 0.65rem !important;
   }
 }
 
@@ -1990,11 +2310,6 @@ h6 {
     aspect-ratio: 4 / 3 !important;
     height: auto !important;
     min-height: 140px !important;
-  }
-
-  .hero-main-section button {
-    padding: 0.375rem 0.75rem !important;
-    font-size: 0.75rem !important;
   }
 }
 
