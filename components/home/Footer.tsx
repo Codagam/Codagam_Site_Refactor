@@ -658,12 +658,12 @@ export default function Footer() {
         </div>
 
         {/* Contact Section Header - Moved to bottom */}
-        <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-10 xl:mt-12 2xl:mt-12 text-center w-full border-t border-blue-900 pt-6 sm:pt-8 md:pt-10 lg:pt-10 xl:pt-12 2xl:pt-12">
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-6 2xl:mb-6 font-bold wrap-break-word px-4 sm:px-6 md:px-8 lg:px-8">
+        <div className="mt-3 sm:mt-4 md:mt-5 lg:mt-5 xl:mt-6 2xl:mt-7 text-center w-full border-t border-blue-900 pt-3 sm:pt-4 md:pt-5 lg:pt-5 xl:pt-6 2xl:pt-7">
+          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 xl:mb-3.5 2xl:mb-4 font-bold wrap-break-word px-4 sm:px-6 md:px-8 lg:px-8">
             {footerContent?.title || defaultContent.title}
           </h2>
           <p
-            className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg max-w-6xl mx-auto opacity-90 px-4 sm:px-6 md:px-8 lg:px-8 font-normal wrap-break-word"
+            className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-base max-w-6xl mx-auto opacity-90 px-4 sm:px-6 md:px-8 lg:px-8 font-normal wrap-break-word"
             style={{ fontWeight: 400 }}>
             {footerContent?.description || defaultContent.description}
           </p>
@@ -671,11 +671,11 @@ export default function Footer() {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-blue-900 py-4 sm:py-4 md:py-5 lg:py-5 xl:py-6 w-full">
+      <div className="border-t border-blue-900 py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-3.5 w-full">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full">
           <div className="flex items-center justify-center sm:justify-between">
             <p
-              className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base text-center flex-1 font-normal"
+              className="text-[0.65rem] sm:text-xs md:text-xs lg:text-xs xl:text-sm text-center flex-1 font-normal"
               style={{ fontWeight: 400 }}>
               © 2025 Codagam Software Labs Private Limited. All rights reserved.
             </p>
