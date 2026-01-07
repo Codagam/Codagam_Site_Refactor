@@ -317,7 +317,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full">
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10 2xl:px-12 w-full">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full">
         <div className="flex justify-between items-center h-[48px] min-[375px]:h-[52px] sm:h-[56px] md:h-[60px] lg:h-[64px] xl:h-[68px] 2xl:h-[72px] w-full">
           {/* Logo */}
           <Link
