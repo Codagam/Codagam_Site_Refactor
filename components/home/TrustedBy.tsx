@@ -1,0 +1,104 @@
+"use client";
+
+import { Check } from "lucide-react";
+
+interface CaseStudy {
+  id: string;
+  title: string;
+  challenge: string;
+  results: string[];
+}
+
+const caseStudies: CaseStudy[] = [
+  {
+    id: "healthcare",
+    title: "Healthcare Startup - EMR Platform",
+    challenge:
+      "Early-stage health tech startup needed patient-facing EMR app and clinic management system for India's competitive market.",
+    results: [
+      "Launched in 4 months (vs 8 typical)",
+      "5,000+ users across 20 clinics",
+      "99.7% uptime, sub-second response",
+      "Series A raised in 6 months",
+    ],
+  },
+  {
+    id: "analytics",
+    title: "Analytics Startup - Data Platform",
+    challenge:
+      "B2B SaaS analytics company needed to scale from 10K to 100M events/day with improved latency.",
+    results: [
+      "10x throughput increase",
+      "60% cost per query reduction",
+      "Dashboard load: 8s → <500ms",
+      "PostgreSQL sharding implemented",
+    ],
+  },
+  {
+    id: "enterprise",
+    title: "Enterprise - Cloud Migration",
+    challenge:
+      "Legacy enterprise system on-premise with MS SQL Server, needed zero-downtime cloud migration.",
+    results: [
+      "Zero downtime migration",
+      "40% infrastructure cost reduction",
+      "99.9%+ uptime achieved",
+      "Global multi-region failover",
+    ],
+  },
+];
+
+export default function TrustedBy() {
+  return (
+    <section
+      id="case-studies"
+      className="py-6 sm:py-7 md:py-8 lg:py-8 xl:py-9 2xl:py-10 bg-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full">
+        <div className="w-full">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+            Trusted by Innovative Companies
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 md:gap-4 lg:gap-4 xl:gap-4.5 2xl:gap-5 w-full">
+            {caseStudies.map((caseStudy) => (
+              <div
+                key={caseStudy.id}
+                className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg sm:rounded-xl border-2 p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <h3 className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold text-white mb-1.5 sm:mb-2 md:mb-2 lg:mb-2.5 xl:mb-3 2xl:mb-3 wrap-break-word">
+                  {caseStudy.title}
+                </h3>
+
+                <div className="mb-2.5 sm:mb-3 md:mb-3 lg:mb-3.5 xl:mb-3.5 2xl:mb-4">
+                  <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2">
+                    Challenge:
+                  </p>
+                  <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-white/90 leading-relaxed wrap-break-word">
+                    {caseStudy.challenge}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2">
+                    Results:
+                  </p>
+                  <ul className="space-y-1 sm:space-y-1 md:space-y-1.5 lg:space-y-1.5 xl:space-y-1.5 2xl:space-y-2">
+                    {caseStudy.results.map((result, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2">
+                        <Check className="w-3.5 h-3.5 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 lg:w-4 lg:h-4 xl:w-4 xl:h-4 2xl:w-4.5 2xl:h-4.5 text-green-400 shrink-0 mt-0.5" />
+                        <span className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-white/90 leading-relaxed wrap-break-word">
+                          {result}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

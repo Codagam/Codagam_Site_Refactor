@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { isFullUrl } from "@/lib/utils/image-url";
-import { CareerApplicationForm } from "@/components/shared/CareerApplicationForm";
 
 interface Capability {
   id: string;
@@ -164,30 +163,6 @@ export default function TechStack() {
                 ))}
               </div>
             )}
-          </div>
-
-          {/* Career Section - Shows below Tech Stack on all devices */}
-          <div
-            id="career-section"
-            className="w-full flex flex-col justify-center pt-4 sm:pt-5 md:pt-6 lg:pt-6 xl:pt-7 2xl:pt-8 border-t border-slate-200">
-            <div className="text-center mb-4 sm:mb-4.5 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-7 w-full">
-              <h2 className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 xl:mb-3.5 2xl:mb-4 font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
-                Join our team
-              </h2>
-              <p className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-base text-slate-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6 md:px-8 lg:px-8 wrap-break-word mb-4 sm:mb-4.5 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-7">
-                We&apos;re looking for passionate individuals who want to build
-                the future of technology. Join us in creating innovative
-                solutions that make a real impact.
-              </p>
-            </div>
-            <div className="flex justify-center w-full">
-              <CareerApplicationForm
-                asDialog={true}
-                triggerText="Apply Now"
-                triggerVariant="black"
-                triggerSize="lg"
-              />
-            </div>
           </div>
         </div>
       </div>

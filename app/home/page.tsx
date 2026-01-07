@@ -3,6 +3,8 @@ import Hero from "@/components/home/Hero";
 import Services from "@/components/home/Services";
 import Products from "@/components/home/Products";
 import TechStack from "@/components/home/TechStack";
+import CareerSection from "@/components/home/CareerSection";
+import TrustedBy from "@/components/home/TrustedBy";
 import About from "@/components/home/About";
 import Footer from "@/components/home/Footer";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
@@ -17,6 +19,8 @@ export default function Home() {
         <Services />
         <Products />
         <TechStack />
+        <TrustedBy />
+        <CareerSection />
       </main>
       <Footer />
       <ScrollToTopButton />

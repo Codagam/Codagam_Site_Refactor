@@ -18,7 +18,7 @@ const NAV_ITEMS = [
   { id: "services", label: "Services" },
   { id: "products", label: "Products" },
   { id: "stack", label: "Tech Stack" },
-  { id: "contact", label: "Contact" },
+  { id: "case-studies", label: "Case Studies" },
 ] as const;
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
@@ -134,38 +134,80 @@ export default function Header() {
 
     const observerOptions: IntersectionObserverInit = {
       root: null,
-      rootMargin: "-20% 0px -60% 0px",
-      threshold: [0, 0.25, 0.5, 0.75, 1],
+      rootMargin: "-10% 0px -70% 0px",
+      threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
     };
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      let maxRatio = 0;
-      let activeId = "";
+      const headerHeight = getHeaderHeight();
+      let bestSection = "";
+      let bestScore = -1;
+
+      // First, check which sections are intersecting
+      const intersectingSections: Array<{
+        id: string;
+        ratio: number;
+        top: number;
+        bottom: number;
+      }> = [];
 
       entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-          maxRatio = entry.intersectionRatio;
-          activeId = entry.target.id;
+        if (entry.isIntersecting) {
+          const rect = entry.boundingClientRect;
+          const top = rect.top;
+          const bottom = rect.bottom;
+          const viewportHeight = window.innerHeight;
+
+          // Calculate how much of the section is visible in the viewport
+          const visibleTop = Math.max(0, top);
+          const visibleBottom = Math.min(viewportHeight, bottom);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const sectionHeight = rect.height;
+          const visibleRatio =
+            sectionHeight > 0 ? visibleHeight / sectionHeight : 0;
+
+          // Calculate score: prioritize sections that are:
+          // 1. Close to the top of the viewport (after header)
+          // 2. Have significant visibility
+          const distanceFromTop = Math.max(0, top - headerHeight);
+          const score = visibleRatio * 100 - distanceFromTop * 0.1;
+
+          intersectingSections.push({
+            id: entry.target.id,
+            ratio: visibleRatio,
+            top: top,
+            bottom: bottom,
+          });
+
+          if (score > bestScore && visibleRatio > 0.1) {
+            bestScore = score;
+            bestSection = entry.target.id;
+          }
         }
       });
 
-      if (maxRatio > 0.1) {
-        setActiveSection(activeId);
+      // If we found a good intersecting section, use it
+      if (bestSection) {
+        setActiveSection(bestSection);
         return;
       }
 
-      // Fallback: find closest section to viewport top
-      const headerHeight = getHeaderHeight();
+      // Fallback: find the section whose top is closest to the header
       let closestSection = "";
       let minDistance = Infinity;
 
       sectionElements.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - headerHeight - 50);
+        const top = rect.top;
+        const bottom = rect.bottom;
 
-        if (rect.top <= headerHeight + 100 && distance < minDistance) {
-          minDistance = distance;
-          closestSection = section.id;
+        // Check if section is in viewport
+        if (top < window.innerHeight && bottom > headerHeight) {
+          const distance = Math.abs(top - headerHeight - 20);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestSection = section.id;
+          }
         }
       });
 
@@ -294,7 +336,7 @@ export default function Header() {
           <Button
             onClick={() => scrollToSection("contact")}
             className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs lg:text-sm xl:text-sm 2xl:text-sm px-3 lg:px-4 xl:px-4 2xl:px-5 py-1.5 lg:py-2 xl:py-2 shrink-0 whitespace-nowrap">
-            Get Started
+            Contact
           </Button>
 
           {/* Mobile Menu */}

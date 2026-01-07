@@ -10,6 +10,7 @@ import {
   Phone,
   Mail,
   Users,
+  FileText,
 } from "lucide-react";
 import * as Flags from "country-flag-icons/react/3x2";
 import {
@@ -114,7 +115,12 @@ const QUICK_LINKS = [
     color: "text-white",
   },
   { id: "stack", label: "Tech Stack", icon: Info, color: "text-white" },
-  
+  {
+    id: "case-studies",
+    label: "Case Studies",
+    icon: FileText,
+    color: "text-white",
+  },
 ] as const;
 
 const PRODUCT_LINKS = [
@@ -226,7 +232,9 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
             <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
             <div className="text-center sm:text-left text-xs sm:text-sm font-normal wrap-break-word leading-relaxed">
               {formatAddress(office.address).map((line, idx) => (
-                <p key={idx} className="font-normal wrap-break-word leading-relaxed mb-0.5">
+                <p
+                  key={idx}
+                  className="font-normal wrap-break-word leading-relaxed mb-0.5">
                   {line}
                 </p>
               ))}
@@ -429,7 +437,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-blue-800 text-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full"
+      className="bg-blue-900 text-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full"
       style={{ fontFamily: "var(--font-riviera-nights)" }}>
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 py-6 sm:py-8 md:py-10 lg:py-10 xl:py-12 2xl:py-12 w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-10 mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 w-full items-start">
@@ -658,7 +666,7 @@ export default function Footer() {
         </div>
 
         {/* Contact Section Header - Moved to bottom */}
-        <div className="mt-3 sm:mt-4 md:mt-5 lg:mt-5 xl:mt-6 2xl:mt-7 text-center w-full border-t border-blue-900 pt-3 sm:pt-4 md:pt-5 lg:pt-5 xl:pt-6 2xl:pt-7">
+        <div className="mt-3 sm:mt-4 md:mt-5 lg:mt-5 xl:mt-6 2xl:mt-7 text-center w-full border-t border-blue-800 pt-3 sm:pt-4 md:pt-5 lg:pt-5 xl:pt-6 2xl:pt-7">
           <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 xl:mb-3.5 2xl:mb-4 font-bold wrap-break-word px-4 sm:px-6 md:px-8 lg:px-8">
             {footerContent?.title || defaultContent.title}
           </h2>
@@ -671,7 +679,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-blue-900 py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-3.5 w-full">
+      <div className="border-t border-blue-800 py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-3.5 w-full">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full">
           <div className="flex items-center justify-center sm:justify-between">
             <p
