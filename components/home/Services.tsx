@@ -67,7 +67,7 @@ export default function Services() {
                     <h3 className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word flex-1">
                       {service.title}
                     </h3>
-                    <div className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl flex-shrink-0 ml-2 sm:ml-2.5">
+                    <div className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl shrink-0 ml-2 sm:ml-2.5">
                       {icon}
                     </div>
                   </div>
@@ -84,10 +84,12 @@ export default function Services() {
                         <li
                           key={index}
                           className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm text-slate-700 group-hover:text-white/90 leading-snug flex items-start transition-colors duration-300">
-                          <span className="text-slate-900 group-hover:text-white mr-1.5 mt-1 flex-shrink-0 text-[8px] sm:text-[10px] transition-colors duration-300">
+                          <span className="text-slate-900 group-hover:text-white mr-1.5 mt-1 shrink-0 text-[8px] sm:text-[10px] transition-colors duration-300">
                             •
                           </span>
-                          <span className="flex-1 wrap-break-word">{offering}</span>
+                          <span className="flex-1 wrap-break-word">
+                            {offering}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -114,16 +116,20 @@ export default function Services() {
                 <DialogTitle
                   className="text-base sm:text-lg md:text-xl font-bold leading-tight wrap-break-word"
                   style={{
-                    color: `rgb(${selectedServiceData.hoverColor?.split(" ").join(", ") || "59, 130, 246"})`,
+                    color: `rgb(${
+                      selectedServiceData.hoverColor?.split(" ").join(", ") ||
+                      "59, 130, 246"
+                    })`,
                   }}>
                   {selectedServiceData.title}
                 </DialogTitle>
-                <div className="text-xl sm:text-2xl md:text-2xl flex-shrink-0 ml-2 sm:ml-3">
+                <div className="text-xl sm:text-2xl md:text-2xl shrink-0 ml-2 sm:ml-3">
                   {iconMap[selectedServiceData.id] || "📋"}
                 </div>
               </div>
               <DialogDescription className="text-xs sm:text-sm wrap-break-word text-slate-600">
-                Comprehensive {selectedServiceData.title.toLowerCase()} solutions tailored to your business needs
+                Comprehensive {selectedServiceData.title.toLowerCase()}{" "}
+                solutions tailored to your business needs
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-3 sm:space-y-4 mt-3 sm:mt-4 w-full max-w-full">
@@ -138,54 +144,80 @@ export default function Services() {
               </div>
 
               {/* Key Offerings */}
-              {selectedServiceData.offerings && selectedServiceData.offerings.length > 0 && (
-                <div>
-                  <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-2 sm:mb-2.5">
-                    Key Offerings
-                  </h3>
-                  <ul className="space-y-1.5 sm:space-y-2">
-                    {selectedServiceData.offerings.map((offering, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start text-xs sm:text-sm text-slate-700 leading-snug">
-                        <span
-                          className="mr-1.5 sm:mr-2 mt-1 flex-shrink-0 text-sm"
-                          style={{
-                            color: `rgb(${selectedServiceData.hoverColor?.split(" ").join(", ") || "59, 130, 246"})`,
-                          }}>
-                          •
-                        </span>
-                        <span className="flex-1 wrap-break-word">{offering}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              {selectedServiceData.offerings &&
+                selectedServiceData.offerings.length > 0 && (
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-2 sm:mb-2.5">
+                      Key Offerings
+                    </h3>
+                    <ul className="space-y-1.5 sm:space-y-2">
+                      {selectedServiceData.offerings.map((offering, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start text-xs sm:text-sm text-slate-700 leading-snug">
+                          <span
+                            className="mr-1.5 sm:mr-2 mt-1 shrink-0 text-sm"
+                            style={{
+                              color: `rgb(${
+                                selectedServiceData.hoverColor
+                                  ?.split(" ")
+                                  .join(", ") || "59, 130, 246"
+                              })`,
+                            }}>
+                            •
+                          </span>
+                          <span className="flex-1 wrap-break-word">
+                            {offering}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
               {/* Additional Details Section */}
-              <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-2.5 sm:p-3 border border-slate-200">
+              <div className="bg-linear-to-br from-slate-50 to-slate-100 rounded-lg p-2.5 sm:p-3 border border-slate-200">
                 <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-1.5 sm:mb-2">
                   Why Choose Us?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-700 leading-snug wrap-break-word mb-2 sm:mb-2.5">
-                  Our team brings years of experience and expertise in delivering high-quality solutions that drive business growth. We combine cutting-edge technology with proven methodologies to ensure your project's success.
+                  Our team brings years of experience and expertise in
+                  delivering high-quality solutions that drive business growth.
+                  We combine cutting-edge technology with proven methodologies
+                  to ensure your project's success.
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2">
                   <div className="flex items-start">
-                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">✓</span>
-                    <span className="text-xs sm:text-sm text-slate-700">Proven track record</span>
+                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
+                      ✓
+                    </span>
+                    <span className="text-xs sm:text-sm text-slate-700">
+                      Proven track record
+                    </span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">✓</span>
-                    <span className="text-xs sm:text-sm text-slate-700">Scalable solutions</span>
+                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
+                      ✓
+                    </span>
+                    <span className="text-xs sm:text-sm text-slate-700">
+                      Scalable solutions
+                    </span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">✓</span>
-                    <span className="text-xs sm:text-sm text-slate-700">Expert team</span>
+                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
+                      ✓
+                    </span>
+                    <span className="text-xs sm:text-sm text-slate-700">
+                      Expert team
+                    </span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">✓</span>
-                    <span className="text-xs sm:text-sm text-slate-700">24/7 support</span>
+                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
+                      ✓
+                    </span>
+                    <span className="text-xs sm:text-sm text-slate-700">
+                      24/7 support
+                    </span>
                   </div>
                 </div>
               </div>
@@ -193,7 +225,9 @@ export default function Services() {
               {/* Contact CTA */}
               <div className="pt-2 sm:pt-3 border-t border-slate-200">
                 <p className="text-xs sm:text-sm text-slate-600 wrap-break-word text-center">
-                  Ready to get started? Contact us using the contact form in the footer to discuss your project requirements and receive a customized quote.
+                  Ready to get started? Contact us using the contact form in the
+                  footer to discuss your project requirements and receive a
+                  customized quote.
                 </p>
               </div>
             </div>

@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { Upload, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -23,8 +24,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { User, Mail, FileText } from "lucide-react";
-// CareerFormData and FormSubmitEvent are defined in interfaces but not used here
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -75,6 +74,7 @@ export function CareerApplicationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -124,30 +124,34 @@ export function CareerApplicationForm({
     }
   };
 
+  // Get file name for display
+  const fileName = form.watch("resume")?.name;
+
   // Form content component
   const formContent = (
     <div className={`${className} w-full max-w-full`}>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-3 sm:space-y-3.5 md:space-y-4 w-full max-w-full">
+          className="flex flex-col space-y-3 sm:space-y-4 w-full max-w-full"
+          autoComplete="on">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem className="space-y-1.5">
-                <FormLabel className="text-xs sm:text-sm font-semibold text-black flex items-center gap-1.5">
-                  <User className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-600" />
-                  <span>Full Name</span>
+              <FormItem>
+                <FormLabel className="text-xs sm:text-sm font-bold">
+                  Full Name
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your full name"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-black border-0! ring-0! outline-none! focus-visible:ring-0! focus-visible:outline-none! rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm"
+                    placeholder="Your Full Name"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500"
+                    autoComplete="name"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-red-600 mt-0.5" />
+                <FormMessage className="text-xs text-red-600 dark:text-red-400 font-medium" />
               </FormItem>
             )}
           />
@@ -156,20 +160,20 @@ export function CareerApplicationForm({
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="space-y-1.5">
-                <FormLabel className="text-xs sm:text-sm font-semibold text-black flex items-center gap-1.5">
-                  <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-600" />
-                  <span>Email Address</span>
+              <FormItem>
+                <FormLabel className="text-xs sm:text-sm font-bold">
+                  Email
                 </FormLabel>
                 <FormControl>
                   <Input
                     type="email"
-                    placeholder="Enter your email address"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-black border-0! ring-0! outline-none! focus-visible:ring-0! focus-visible:outline-none! rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm"
+                    placeholder="Your Email"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500"
+                    autoComplete="email"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-red-600 mt-0.5" />
+                <FormMessage className="text-xs text-red-600 dark:text-red-400 font-medium" />
               </FormItem>
             )}
           />
@@ -177,49 +181,85 @@ export function CareerApplicationForm({
           <FormField
             control={form.control}
             name="resume"
-            render={({ field: { onChange, ...fieldProps } }) => (
-              <FormItem className="space-y-1.5">
-                <FormLabel className="text-xs sm:text-sm font-semibold text-black flex items-center gap-1.5">
-                  <FileText className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-600" />
-                  <span>Resume</span>
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-black border-0! ring-0! outline-none! focus-visible:ring-0! focus-visible:outline-none! rounded-lg bg-slate-100 hover:bg-slate-200 focus:bg-white transition-colors shadow-sm file:mr-2 sm:file:mr-3 file:py-1.5 sm:file:py-2 file:px-2 sm:file:px-3 file:border-0 file:text-xs file:font-medium file:bg-white file:text-black hover:file:bg-slate-50 file:rounded-md file:cursor-pointer"
-                    {...fieldProps}
-                    onChange={(event) => {
-                      const file = event.target.files?.[0];
-                      onChange(file);
-                    }}
-                  />
-                </FormControl>
-                <FormDescription className="text-xs text-slate-500 mt-0.5">
-                  PDF, DOC, or DOCX files up to 10MB
-                </FormDescription>
-                <FormMessage className="text-xs text-red-600 mt-0.5" />
-              </FormItem>
-            )}
+            render={({ field: { onChange, value, ...fieldProps } }) => {
+              const { ref, ...restFieldProps } = fieldProps;
+              return (
+                <FormItem>
+                  <FormLabel className="text-xs sm:text-sm font-bold">
+                    Resume / CV
+                  </FormLabel>
+                  <FormControl>
+                    <div className="flex flex-col sm:flex-row gap-1.5 sm:gap-2">
+                      {/* Hidden file input */}
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        className="hidden"
+                        {...restFieldProps}
+                        onChange={(event) => {
+                          const file = event.target.files?.[0];
+                          onChange(file);
+                        }}
+                      />
+                      {/* Choose file button */}
+                      <Button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        variant="black"
+                        className="h-9 sm:h-10 px-3 sm:px-4 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0">
+                        Choose file
+                      </Button>
+                      {/* File display area */}
+                      <div className="flex-1 min-w-0 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 px-2 sm:px-3 py-2 sm:py-2.5 flex items-center">
+                        <span
+                          className={`text-xs sm:text-sm truncate ${
+                            fileName
+                              ? "text-gray-900 dark:text-gray-100 font-medium"
+                              : "text-gray-500 dark:text-gray-400"
+                          }`}>
+                          {fileName || "No file chosen"}
+                        </span>
+                      </div>
+                    </div>
+                  </FormControl>
+                  <FormDescription className="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-1 mt-1.5">
+                    <Upload className="h-3 w-3 text-gray-500 dark:text-gray-400" />
+                    <span>PDF, DOC, or DOCX files up to 10MB</span>
+                  </FormDescription>
+                  <FormMessage className="text-xs text-red-600 dark:text-red-400 font-medium" />
+                </FormItem>
+              );
+            }}
           />
 
           <div className="pt-1">
             <Button
-              className="w-full h-9 sm:h-10 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-300 hover:scale-[1.01] shadow-md hover:shadow-lg bg-blue-900 hover:bg-blue-800 text-white"
               type="submit"
-              disabled={isSubmitting}>
-              {isSubmitting ? "Submitting..." : "Submit Application"}
+              disabled={isSubmitting}
+              variant="black"
+              className="w-full h-10 sm:h-11 text-xs sm:text-sm font-semibold">
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                "Submit Application"
+              )}
             </Button>
           </div>
 
           {submitMessage && (
             <div
-              className={`p-3 rounded-lg text-xs sm:text-sm mt-3 ${
+              className={`p-3 rounded-md border ${
                 submitMessage.includes("error")
-                  ? "bg-red-50 text-red-700 border border-red-200"
-                  : "bg-green-50 text-green-700 border border-green-200"
+                  ? "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-300"
+                  : "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-300"
               }`}>
-              {submitMessage}
+              <p className="text-xs sm:text-sm font-semibold leading-relaxed">
+                {submitMessage}
+              </p>
             </div>
           )}
         </form>
@@ -236,17 +276,17 @@ export function CareerApplicationForm({
             {triggerText}
           </Button>
         </DialogTrigger>
-        <DialogContent className="career-application-dialog max-w-[90vw] sm:max-w-sm md:max-w-md lg:max-w-lg p-3 sm:p-4 md:p-4 lg:p-5 rounded-xl sm:rounded-2xl max-h-[95vh] overflow-y-auto w-full">
-          <DialogHeader className="space-y-1.5 sm:space-y-2">
-            <DialogTitle className="text-sm sm:text-base md:text-lg lg:text-xl font-bold leading-tight text-black wrap-break-word px-1 sm:px-0">
+        <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl p-4 sm:p-5 md:p-6 w-full max-h-[90vh] overflow-y-auto">
+          <DialogHeader className="space-y-1.5 sm:space-y-2 text-left">
+            <DialogTitle className="text-lg sm:text-xl md:text-2xl font-bold leading-tight">
               Apply for a Position
             </DialogTitle>
-            <DialogDescription className="text-xs sm:text-xs md:text-sm text-slate-600 wrap-break-word px-1 sm:px-0">
+            <DialogDescription className="text-xs sm:text-sm leading-relaxed">
               Fill out the form below to submit your application. We&apos;ll
               review your resume and get back to you soon.
             </DialogDescription>
           </DialogHeader>
-          <div className="mt-2 sm:mt-3 md:mt-3 w-full max-w-full">
+          <div className="mt-3 sm:mt-4 md:mt-5 w-full max-w-full">
             {formContent}
           </div>
         </DialogContent>

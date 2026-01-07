@@ -104,10 +104,10 @@ export default function TechStack() {
                 {categories.map((category) => (
                   <div
                     key={category.id}
-                    className="bg-white rounded-lg sm:rounded-xl border border-slate-200 transition-all hover:border-blue-900 hover:shadow-md overflow-hidden w-full flex flex-col">
+                    className="bg-white rounded-lg sm:rounded-xl border-2 border-blue-900 overflow-hidden w-full flex flex-col">
                     {/* Category Title */}
-                    <div className="px-2 sm:px-2.5 md:px-2.5 lg:px-3 xl:px-3 2xl:px-3.5 pt-1.5 sm:pt-2 md:pt-2 lg:pt-2.5 xl:pt-2.5 2xl:pt-3 pb-1 sm:pb-1.5 md:pb-1.5 lg:pb-1.5 xl:pb-2 2xl:pb-2 border-b border-slate-200">
-                      <h3 className="text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl font-semibold text-blue-900 wrap-break-word text-center">
+                    <div className="px-2 sm:px-2.5 md:px-2.5 lg:px-3 xl:px-3 2xl:px-3.5 pt-1.5 sm:pt-2 md:pt-2 lg:pt-2.5 xl:pt-2.5 2xl:pt-3 pb-1 sm:pb-1.5 md:pb-1.5 lg:pb-1.5 xl:pb-2 2xl:pb-2 bg-blue-900 border-b border-blue-900">
+                      <h3 className="text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl font-semibold text-white wrap-break-word text-center">
                         {category.title}
                       </h3>
                     </div>
