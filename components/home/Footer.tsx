@@ -455,7 +455,7 @@ export default function Footer() {
                 }`}>
                 {sortedCountries[currentCountryIndex] && (
                   <>
-                    <h4 className="font-base text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-center sm:justify-start">
+                    <h4 className="font-bold text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-center sm:justify-start">
                       <CountryFlag
                         countryCode={
                           sortedCountries[currentCountryIndex].countryCode
@@ -481,8 +481,7 @@ export default function Footer() {
               </div>
               <div className="space-y-1 text-xs sm:text-sm wrap-break-word">
                 <h4
-                  className="font-normal text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-center sm:justify-start"
-                  style={{ fontWeight: 400 }}>
+                  className="font-bold text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-center sm:justify-start">
                   <CountryFlag
                     countryCode="IN"
                     flagUrl={null}

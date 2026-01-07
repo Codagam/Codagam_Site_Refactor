@@ -108,7 +108,7 @@ export function ContactForm({
   const formContent = (
     <div className={`${className} w-full max-w-full`}>
       {showTitle && (
-        <h4 className="font-semibold mb-1.5 sm:mb-2 text-foreground flex items-center text-xs sm:text-sm wrap-break-word">
+        <h4 className="font-bold mb-1.5 sm:mb-2 text-foreground flex items-center text-xs sm:text-sm wrap-break-word">
           📩 Get in Touch
         </h4>
       )}
@@ -235,7 +235,7 @@ export function ContactForm({
         </DialogTrigger>
         <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg p-3 sm:p-4 w-full">
           <DialogHeader>
-            <DialogTitle className="text-base sm:text-lg text-foreground wrap-break-word">
+            <DialogTitle className="text-base sm:text-lg font-bold text-foreground wrap-break-word">
               Get in Touch
             </DialogTitle>
             <DialogDescription className="text-xs sm:text-sm wrap-break-word">

@@ -135,7 +135,7 @@ export default function Services() {
             <div className="space-y-3 sm:space-y-4 mt-3 sm:mt-4 w-full max-w-full">
               {/* Main Description */}
               <div className="bg-slate-50 rounded-lg p-2.5 sm:p-3">
-                <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-1.5 sm:mb-2">
+                <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-1.5 sm:mb-2">
                   Overview
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-700 leading-snug wrap-break-word">
@@ -147,7 +147,7 @@ export default function Services() {
               {selectedServiceData.offerings &&
                 selectedServiceData.offerings.length > 0 && (
                   <div>
-                    <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-2 sm:mb-2.5">
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-2 sm:mb-2.5">
                       Key Offerings
                     </h3>
                     <ul className="space-y-1.5 sm:space-y-2">
@@ -177,7 +177,7 @@ export default function Services() {
 
               {/* Additional Details Section */}
               <div className="bg-linear-to-br from-slate-50 to-slate-100 rounded-lg p-2.5 sm:p-3 border border-slate-200">
-                <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-1.5 sm:mb-2">
+                <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-1.5 sm:mb-2">
                   Why Choose Us?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-700 leading-snug wrap-break-word mb-2 sm:mb-2.5">

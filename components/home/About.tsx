@@ -114,8 +114,8 @@ export default function About() {
               <div className="space-y-3 sm:space-y-3.5 md:space-y-4 lg:space-y-4 xl:space-y-4.5 2xl:space-y-5">
                 <p className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-base text-slate-700 leading-relaxed wrap-break-word">
                   Codagam Software Labs is a boutique software consulting firm
-                  headquartered in Gobichettipalayam, Tamil Nadu, specializing in
-                  enterprise-grade solutions for healthcare, analytics, and
+                  headquartered in Gobichettipalayam, Tamil Nadu, specializing
+                  in enterprise-grade solutions for healthcare, analytics, and
                   business intelligence platforms.
                 </p>
                 <p className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-base text-slate-700 leading-relaxed wrap-break-word">
@@ -161,4 +161,3 @@ export default function About() {
     </section>
   );
 }
-
