@@ -8,36 +8,40 @@ const capabilities = [
     title: "Polyglot Expertise",
     description:
       "Full-stack architecture spanning modern stacks (JavaScript, Python) and enterprise platforms (.NET, MS SQL Server) at global scale",
-    bgColor: "bg-blue-50",
-    borderColor: "border-blue-200",
-    textColor: "text-blue-900",
+    bgColor: "bg-blue-900",
+    borderColor: "border-blue-900",
+    textColor: "text-white",
+    hoverBgColor: "hover:bg-blue-800",
   },
   {
     id: "healthcare",
     title: "Healthcare Mastery",
     description:
       "2+ years building EMR systems, clinical workflows, and health tech compliance frameworks",
-    bgColor: "bg-green-50",
-    borderColor: "border-green-200",
-    textColor: "text-green-900",
+    bgColor: "bg-blue-900",
+    borderColor: "border-blue-900",
+    textColor: "text-white",
+    hoverBgColor: "hover:bg-blue-800",
   },
   {
     id: "emerging",
     title: "Emerging Markets",
     description:
       "Deep understanding of India's digital transformation, tier-2/3 dynamics, and localized solutions",
-    bgColor: "bg-emerald-50",
-    borderColor: "border-emerald-200",
-    textColor: "text-emerald-900",
+    bgColor: "bg-blue-900",
+    borderColor: "border-blue-900",
+    textColor: "text-white",
+    hoverBgColor: "hover:bg-blue-800",
   },
   {
     id: "global",
     title: "Global Delivery",
     description:
       "Proven execution across US, UK, and Indian markets with 24/7 timezone coverage",
-    bgColor: "bg-orange-50",
-    borderColor: "border-orange-200",
-    textColor: "text-orange-900",
+    bgColor: "bg-blue-900",
+    borderColor: "border-blue-900",
+    textColor: "text-white",
+    hoverBgColor: "hover:bg-blue-800",
   },
 ];
 
@@ -84,11 +88,11 @@ export default function About() {
             {capabilities.map((capability) => (
               <div
                 key={capability.id}
-                className={`${capability.bgColor} ${capability.borderColor} ${capability.textColor} rounded-lg sm:rounded-xl border-2 p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 flex flex-col transition-all hover:shadow-md`}>
-                <h3 className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold mb-1.5 sm:mb-2 md:mb-2 lg:mb-2.5 xl:mb-3 2xl:mb-3 wrap-break-word">
+                className={`${capability.bgColor} ${capability.borderColor} ${capability.textColor} ${capability.hoverBgColor} rounded-lg sm:rounded-xl border-2 p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-105`}>
+                <h3 className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold mb-1.5 sm:mb-2 md:mb-2 lg:mb-2.5 xl:mb-3 2xl:mb-3 wrap-break-word text-white">
                   {capability.title}
                 </h3>
-                <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base leading-relaxed wrap-break-word">
+                <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base leading-relaxed wrap-break-word text-white/90">
                   {capability.description}
                 </p>
               </div>
@@ -128,22 +132,22 @@ export default function About() {
 
             {/* Why We're Different */}
             <div className="w-full">
-              <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl mb-3 sm:mb-3.5 md:mb-4 lg:mb-4 xl:mb-4.5 2xl:mb-5 font-bold text-blue-900 wrap-break-word">
+              <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 xl:mb-3.5 2xl:mb-4 font-bold text-blue-900 wrap-break-word">
                 Why We&apos;re Different
               </h3>
-              <div className="space-y-3 sm:space-y-3.5 md:space-y-4 lg:space-y-4 xl:space-y-4.5 2xl:space-y-5">
+              <div className="space-y-1.5 sm:space-y-1.5 md:space-y-2 lg:space-y-2 xl:space-y-2 2xl:space-y-2.5">
                 {whyDifferent.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-start gap-2 sm:gap-2.5 md:gap-3 lg:gap-3 xl:gap-3.5 2xl:gap-4">
-                    <div className="shrink-0 mt-0.5 sm:mt-1">
-                      <Check className="w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 2xl:w-6 2xl:h-6 text-green-600" />
+                    className="flex items-start gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2.5">
+                    <div className="shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-4 lg:h-4 xl:w-4 xl:h-4 2xl:w-4.5 2xl:h-4.5 text-green-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-base 2xl:text-lg font-semibold text-blue-900 mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2 wrap-break-word">
+                      <h4 className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-base 2xl:text-lg font-semibold text-blue-900 mb-0 sm:mb-0 md:mb-0.5 lg:mb-0.5 xl:mb-0.5 2xl:mb-0.5 wrap-break-word leading-tight">
                         {item.title}
                       </h4>
-                      <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-slate-700 leading-relaxed wrap-break-word">
+                      <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-slate-700 leading-snug wrap-break-word">
                         {item.description}
                       </p>
                     </div>
