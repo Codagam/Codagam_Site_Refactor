@@ -61,30 +61,30 @@ export default function Services() {
                 />
 
                 {/* Content */}
-                <div className="relative z-10 p-4 sm:p-5 md:p-5 lg:p-6 xl:p-6 2xl:p-7 flex flex-col grow">
+                <div className="relative z-10 p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 2xl:p-6 flex flex-col grow">
                   {/* Title with Icon */}
-                  <div className="flex items-center justify-between mb-3 sm:mb-4">
-                    <h3 className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-3 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-5 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word flex-1">
+                  <div className="flex items-center justify-between mb-2 sm:mb-2.5">
+                    <h3 className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word flex-1">
                       {service.title}
                     </h3>
-                    <div className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl flex-shrink-0 ml-3">
+                    <div className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl flex-shrink-0 ml-2 sm:ml-2.5">
                       {icon}
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base text-slate-600 group-hover:text-white/90 leading-relaxed mb-4 sm:mb-4 md:mb-5 lg:mb-5 line-clamp-4 transition-colors duration-300 wrap-break-word">
+                  <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base text-slate-600 group-hover:text-white/90 leading-snug mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 line-clamp-4 transition-colors duration-300 wrap-break-word">
                     {service.description}
                   </p>
 
                   {/* Offerings/Bullet Points */}
                   {service.offerings && service.offerings.length > 0 && (
-                    <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 flex-1 mb-4 sm:mb-5">
+                    <ul className="space-y-1.5 sm:space-y-1.5 md:space-y-2 flex-1 mb-3 sm:mb-3.5">
                       {service.offerings.map((offering, index) => (
                         <li
                           key={index}
-                          className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm text-slate-700 group-hover:text-white/90 leading-relaxed flex items-start transition-colors duration-300">
-                          <span className="text-slate-900 group-hover:text-white mr-2 mt-1.5 flex-shrink-0 text-[8px] sm:text-[10px] transition-colors duration-300">
+                          className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm text-slate-700 group-hover:text-white/90 leading-snug flex items-start transition-colors duration-300">
+                          <span className="text-slate-900 group-hover:text-white mr-1.5 mt-1 flex-shrink-0 text-[8px] sm:text-[10px] transition-colors duration-300">
                             •
                           </span>
                           <span className="flex-1 wrap-break-word">{offering}</span>
