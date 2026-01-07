@@ -49,7 +49,7 @@ export function Marquee({
     <div
       {...props}
       className={cn(
-        "group flex overflow-hidden [--duration:var(--speed)] [--gap:1rem] [gap:var(--gap)] w-full max-w-full",
+        "group flex overflow-hidden [--duration:var(--speed)] [--gap:1rem] gap-(--gap) w-full max-w-full",
         className
       )}
       style={
@@ -59,7 +59,7 @@ export function Marquee({
       }>
       <div
         className={cn(
-          "flex shrink-0 justify-around [gap:var(--gap)]",
+          "flex shrink-0 flex-nowrap items-center gap-(--gap)",
           direction === "left" && "animate-marquee-left",
           direction === "right" && "animate-marquee-right",
           reverse && "direction-reverse",
@@ -70,7 +70,7 @@ export function Marquee({
       {duplicate && (
         <div
           className={cn(
-            "flex shrink-0 justify-around [gap:var(--gap)]",
+            "flex shrink-0 flex-nowrap items-center gap-(--gap)",
             direction === "left" && "animate-marquee-left",
             direction === "right" && "animate-marquee-right",
             reverse && "direction-reverse",
