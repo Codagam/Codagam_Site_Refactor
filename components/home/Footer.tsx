@@ -219,21 +219,21 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
   const firstLocation = locations[0];
 
   return (
-    <div className="space-y-1.5 sm:space-y-2 opacity-90">
+    <div className="space-y-2.5 sm:space-y-3 opacity-90">
       {locations.map((office, index) => (
-        <div key={office.id} className="space-y-1">
+        <div key={office.id} className="space-y-1.5">
           <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
             <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
-            <div className="text-center sm:text-left text-xs sm:text-sm font-normal wrap-break-word">
+            <div className="text-center sm:text-left text-xs sm:text-sm font-normal wrap-break-word leading-relaxed">
               {formatAddress(office.address).map((line, idx) => (
-                <p key={idx} className="font-normal wrap-break-word">
+                <p key={idx} className="font-normal wrap-break-word leading-relaxed mb-0.5">
                   {line}
                 </p>
               ))}
             </div>
           </div>
           {index < locations.length - 1 && (
-            <div className="border-t border-blue-800 pt-1 mt-1" />
+            <div className="border-t border-blue-800 pt-2 mt-2" />
           )}
         </div>
       ))}
@@ -241,7 +241,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
       {firstLocation && (
         <>
           {firstLocation.phone && (
-            <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-1">
+            <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-1.5">
               <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`tel:${firstLocation.phone}`}
@@ -251,7 +251,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
             </div>
           )}
           {firstLocation.email && (
-            <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+            <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-1">
               <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`mailto:${firstLocation.email}`}
@@ -482,24 +482,24 @@ export default function Footer() {
                   />
                   India Office
                 </h4>
-                <div className="space-y-1.5 sm:space-y-2 opacity-90">
+                <div className="space-y-2.5 sm:space-y-3 opacity-90">
                   <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
                     <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
                     <div
-                      className="text-center sm:text-left text-xs sm:text-sm font-normal wrap-break-word"
+                      className="text-center sm:text-left text-xs sm:text-sm font-normal wrap-break-word leading-relaxed"
                       style={{ fontWeight: 400 }}>
                       <p
-                        className="font-normal wrap-break-word"
+                        className="font-normal wrap-break-word mb-0.5"
                         style={{ fontWeight: 400 }}>
                         45J, Rukmani Illa,
                       </p>
                       <p
-                        className="font-normal wrap-break-word"
+                        className="font-normal wrap-break-word mb-0.5"
                         style={{ fontWeight: 400 }}>
                         Ramnagar 3rd cross St,
                       </p>
                       <p
-                        className="font-normal wrap-break-word"
+                        className="font-normal wrap-break-word mb-0.5"
                         style={{ fontWeight: 400 }}>
                         Gobichettipalayam - 638452,
                       </p>
@@ -513,20 +513,20 @@ export default function Footer() {
                   <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
                     <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
                     <div
-                      className="text-center sm:text-left text-xs sm:text-sm font-normal wrap-break-word"
+                      className="text-center sm:text-left text-xs sm:text-sm font-normal wrap-break-word leading-relaxed"
                       style={{ fontWeight: 400 }}>
                       <p
-                        className="font-normal wrap-break-word"
+                        className="font-normal wrap-break-word mb-0.5"
                         style={{ fontWeight: 400 }}>
                         363/2, Rukmani Nagar,
                       </p>
                       <p
-                        className="font-normal wrap-break-word"
+                        className="font-normal wrap-break-word mb-0.5"
                         style={{ fontWeight: 400 }}>
                         Nagarpalayam Rd,
                       </p>
                       <p
-                        className="font-normal wrap-break-word"
+                        className="font-normal wrap-break-word mb-0.5"
                         style={{ fontWeight: 400 }}>
                         Gobichettipalayam - 638452,
                       </p>
@@ -537,7 +537,7 @@ export default function Footer() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+                  <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-1">
                     <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
                     <a
                       href="tel:+917598454546"
@@ -546,7 +546,7 @@ export default function Footer() {
                       +91 7598454546
                     </a>
                   </div>
-                  <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+                  <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-0.5">
                     <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
                     <a
                       href="mailto:support@codagam.com"
