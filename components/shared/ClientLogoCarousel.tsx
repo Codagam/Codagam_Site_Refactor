@@ -119,12 +119,12 @@ export default function ClientLogoCarousel({
   const shouldDuplicate = logos.length >= 4;
 
   return (
-    <div className="relative w-full min-h-[50px] sm:min-h-[60px] md:min-h-[70px] lg:min-h-[80px] xl:min-h-[100px] 2xl:min-h-[120px]">
+    <div className="relative w-full overflow-hidden min-h-[50px] sm:min-h-[60px] md:min-h-[70px] lg:min-h-[80px] xl:min-h-[100px] 2xl:min-h-[120px]">
       <Marquee
         pauseOnHover={pauseOnHover}
         speed={speed}
         duplicate={shouldDuplicate}
-        className="smooth-marquee w-full">
+        className="w-full">
         {logos.map((client, index) => (
           <div
             key={

@@ -973,6 +973,13 @@ h6 {
     padding-left: 0 !important;
     padding-right: 0 !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Ensure marquee inner wrapper doesn't overflow */
+  .hero-carousel-section [class*="Marquee"] > div,
+  .hero-carousel-section [class*="marquee"] > div {
+    overflow: visible !important;
   }
 
   /* Ensure carousel inner content containers are full width */
@@ -1047,6 +1054,13 @@ h6 {
       min-width: 100% !important;
       margin-left: 0 !important;
       margin-right: 0 !important;
+      overflow: hidden !important;
+    }
+
+    /* Ensure marquee inner wrapper doesn't overflow at 150% zoom */
+    .hero-carousel-section [class*="Marquee"] > div,
+    .hero-carousel-section [class*="marquee"] > div {
+      overflow: visible !important;
     }
 
     /* Override heading rules at this breakpoint */

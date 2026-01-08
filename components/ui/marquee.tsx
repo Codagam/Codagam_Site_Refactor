@@ -49,37 +49,40 @@ export function Marquee({
     <div
       {...props}
       className={cn(
-        "group flex overflow-hidden [--duration:var(--speed)] [--gap:1rem] gap-(--gap) w-full max-w-full",
+        "group relative w-full overflow-hidden",
         className
       )}
       style={
         {
           "--speed": `${speed}s`,
+          "--gap": "1rem",
         } as React.CSSProperties
       }>
-      <div
-        className={cn(
-          "flex shrink-0 flex-nowrap items-center gap-(--gap)",
-          direction === "left" && "animate-marquee-left",
-          direction === "right" && "animate-marquee-right",
-          reverse && "direction-reverse",
-          pauseOnHover && "group-hover:[animation-play-state:paused]"
-        )}>
-        {children}
-      </div>
-      {duplicate && (
+      <div className="flex w-max">
         <div
           className={cn(
-            "flex shrink-0 flex-nowrap items-center gap-(--gap)",
+            "flex shrink-0 flex-nowrap items-center gap-[var(--gap)]",
             direction === "left" && "animate-marquee-left",
             direction === "right" && "animate-marquee-right",
             reverse && "direction-reverse",
             pauseOnHover && "group-hover:[animation-play-state:paused]"
-          )}
-          aria-hidden="true">
+          )}>
           {children}
         </div>
-      )}
+        {duplicate && (
+          <div
+            className={cn(
+              "flex shrink-0 flex-nowrap items-center gap-[var(--gap)]",
+              direction === "left" && "animate-marquee-left",
+              direction === "right" && "animate-marquee-right",
+              reverse && "direction-reverse",
+              pauseOnHover && "group-hover:[animation-play-state:paused]"
+            )}
+            aria-hidden="true">
+            {children}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
