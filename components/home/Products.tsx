@@ -156,7 +156,7 @@ export default function Products() {
                 }}
                 plugins={[autoplayPlugin]}
                 className="w-full">
-                <CarouselContent className="ml-0 w-full">
+                <CarouselContent className="ml-0 w-full py-4 sm:py-5 md:py-6 lg:py-8">
                   {products.map((product) => {
                     const backgroundImage =
                       product.backgroundImage || "/images/office1.jpg";
