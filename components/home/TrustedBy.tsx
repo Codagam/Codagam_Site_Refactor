@@ -1,6 +1,12 @@
 "use client";
 
 import { Check } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface CaseStudy {
   id: string;
@@ -61,40 +67,44 @@ export default function TrustedBy() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 md:gap-4 lg:gap-4 xl:gap-4.5 2xl:gap-5 w-full">
             {caseStudies.map((caseStudy) => (
-              <div
+              <Card
                 key={caseStudy.id}
-                className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg sm:rounded-xl border-2 p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <h3 className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold text-white mb-1.5 sm:mb-2 md:mb-2 lg:mb-2.5 xl:mb-3 2xl:mb-3 wrap-break-word">
-                  {caseStudy.title}
-                </h3>
+                className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg sm:rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <CardHeader className="p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 pb-2 sm:pb-2 md:pb-2.5 lg:pb-2.5 xl:pb-3 2xl:pb-3">
+                  <CardTitle className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold text-white wrap-break-word">
+                    {caseStudy.title}
+                  </CardTitle>
+                </CardHeader>
 
-                <div className="mb-2.5 sm:mb-3 md:mb-3 lg:mb-3.5 xl:mb-3.5 2xl:mb-4">
-                  <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2">
-                    Challenge:
-                  </p>
-                  <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-white/90 leading-relaxed wrap-break-word">
-                    {caseStudy.challenge}
-                  </p>
-                </div>
+                <CardContent className="p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 pt-0">
+                  <div className="mb-2.5 sm:mb-3 md:mb-3 lg:mb-3.5 xl:mb-3.5 2xl:mb-4">
+                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2">
+                      Challenge:
+                    </p>
+                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-white/90 leading-relaxed wrap-break-word">
+                      {caseStudy.challenge}
+                    </p>
+                  </div>
 
-                <div>
-                  <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2">
-                    Results:
-                  </p>
-                  <ul className="space-y-1 sm:space-y-1 md:space-y-1.5 lg:space-y-1.5 xl:space-y-1.5 2xl:space-y-2">
-                    {caseStudy.results.map((result, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2">
-                        <Check className="w-3.5 h-3.5 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 lg:w-4 lg:h-4 xl:w-4 xl:h-4 2xl:w-4.5 2xl:h-4.5 text-green-400 shrink-0 mt-0.5" />
-                        <span className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-white/90 leading-relaxed wrap-break-word">
-                          {result}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                  <div>
+                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2">
+                      Results:
+                    </p>
+                    <ul className="space-y-1 sm:space-y-1 md:space-y-1.5 lg:space-y-1.5 xl:space-y-1.5 2xl:space-y-2">
+                      {caseStudy.results.map((result, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2">
+                          <Check className="w-3.5 h-3.5 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 lg:w-4 lg:h-4 xl:w-4 xl:h-4 2xl:w-4.5 2xl:h-4.5 text-green-400 shrink-0 mt-0.5" />
+                          <span className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-white/90 leading-relaxed wrap-break-word">
+                            {result}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

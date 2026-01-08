@@ -10,6 +10,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -48,9 +54,9 @@ export default function Services() {
             const rgbValues = hoverColor.split(" ").join(", ");
 
             return (
-              <div
+              <Card
                 key={service.id}
-                className="service-card-group group relative bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word"
+                className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word rounded-xl"
                 onClick={() => handleButtonClick(service.id)}>
                 {/* Diagonal color fill from bottom-left on hover */}
                 <div
@@ -61,16 +67,18 @@ export default function Services() {
                 />
 
                 {/* Content */}
-                <div className="relative z-10 p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 2xl:p-6 flex flex-col grow">
+                <CardContent className="relative z-10 p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 2xl:p-6 flex flex-col grow">
                   {/* Title with Icon */}
-                  <div className="flex items-center justify-between mb-2 sm:mb-2.5">
-                    <h3 className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word flex-1">
-                      {service.title}
-                    </h3>
-                    <div className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl shrink-0 ml-2 sm:ml-2.5">
-                      {icon}
+                  <CardHeader className="p-0 mb-2 sm:mb-2.5">
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word flex-1">
+                        {service.title}
+                      </CardTitle>
+                      <div className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl shrink-0 ml-2 sm:ml-2.5">
+                        {icon}
+                      </div>
                     </div>
-                  </div>
+                  </CardHeader>
 
                   {/* Description */}
                   <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base text-slate-600 group-hover:text-white/90 leading-snug mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 line-clamp-4 transition-colors duration-300 wrap-break-word">
@@ -100,8 +108,8 @@ export default function Services() {
                     <span>Learn more</span>
                     <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-2" />
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             );
           })}
         </div>
