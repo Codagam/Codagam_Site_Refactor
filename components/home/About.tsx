@@ -74,9 +74,10 @@ const whyDifferent = [
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-6 sm:py-7 md:py-8 lg:py-8 xl:py-9 2xl:py-10 bg-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
+    <div className="relative w-full bg-white z-20 -mt-[2px]">
+      <section
+        id="about"
+        className="min-h-screen flex flex-col justify-center py-6 sm:py-7 md:py-8 lg:py-8 xl:py-9 2xl:py-10 bg-white scroll-mt-[45px] min-[375px]:scroll-mt-[49px] sm:scroll-mt-[53px] md:scroll-mt-[55px] lg:scroll-mt-[57px] xl:scroll-mt-[61px] 2xl:scroll-mt-[65px] w-full relative">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
         {/* Top Section - Capabilities */}
         <div className="w-full mb-8 sm:mb-9 md:mb-10 lg:mb-10 xl:mb-11 2xl:mb-12">
@@ -159,5 +160,6 @@ export default function About() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
