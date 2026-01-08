@@ -148,12 +148,7 @@ const PRODUCT_LINKS = [
     url: "https://surveymachi.com",
     logo: "/images/surveymachi.jpg",
   },
-  {
-    id: "codagam",
-    label: "codagam",
-    url: "https://codagam.com",
-    logo: null, // No logo for codagam, will use default icon
-  },
+  
 ] as const;
 
 // Helper functions
