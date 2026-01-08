@@ -91,26 +91,26 @@ iframe {
     padding-bottom: 0.5rem !important;
   }
 
-  /* Number text - smaller for small screens */
+  /* Number text - larger for mobile screens */
   .hero-main-section
     > div
     > div[class*="grid"]
     > div[class*="order-1"]
     > div
     > p:first-child {
-    font-size: clamp(1.125rem, 4.5vw, 1.375rem) !important;
+    font-size: clamp(1.5rem, 5.5vw, 1.75rem) !important;
     margin-bottom: 0.5rem !important;
     line-height: 1.1 !important;
   }
 
   .hero-main-section h1 {
-    font-size: clamp(1rem, 4vw, 1.25rem) !important;
+    font-size: clamp(1.25rem, 5vw, 1.5rem) !important;
     margin-bottom: 0.5rem !important;
     line-height: 1.2 !important;
   }
 
   .hero-main-section p:not(:first-child) {
-    font-size: clamp(0.65rem, 2.8vw, 0.75rem) !important;
+    font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
     margin-bottom: 0.75rem !important;
     line-height: 1.4 !important;
   }
@@ -138,13 +138,13 @@ iframe {
   }
 
   .hero-main-section h1 {
-    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+    font-size: clamp(1.5rem, 5.5vw, 2rem) !important;
     margin-bottom: 0.75rem !important;
     line-height: 1.2 !important;
   }
 
   .hero-main-section p {
-    font-size: clamp(0.75rem, 3.5vw, 0.875rem) !important;
+    font-size: clamp(0.875rem, 4vw, 1rem) !important;
     margin-bottom: 1rem !important;
   }
 
@@ -165,26 +165,26 @@ iframe {
     padding-bottom: 0.25rem !important;
   }
 
-  /* Number text - smaller for small screens */
+  /* Number text - larger for mobile landscape */
   .hero-main-section
     > div
     > div[class*="grid"]
     > div[class*="order-1"]
     > div
     > p:first-child {
-    font-size: clamp(0.9375rem, 3.5vw, 1.125rem) !important;
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem) !important;
     margin-bottom: 0.375rem !important;
     line-height: 1.1 !important;
   }
 
   .hero-main-section h1 {
-    font-size: clamp(0.875rem, 3.2vw, 1rem) !important;
+    font-size: clamp(1rem, 4vw, 1.25rem) !important;
     margin-bottom: 0.375rem !important;
     line-height: 1.15 !important;
   }
 
   .hero-main-section p:not(:first-child) {
-    font-size: clamp(0.6rem, 2.4vw, 0.6875rem) !important;
+    font-size: clamp(0.8rem, 3vw, 0.875rem) !important;
     margin-bottom: 0.5rem !important;
     line-height: 1.3 !important;
   }
@@ -382,10 +382,12 @@ h6 {
  * - Example: 3rem / 1.5 = 2rem → browser scales 2rem by 1.5x → appears as 3rem (matches 100%)
  * 
  * This ensures the hero section looks identical at 150% zoom compared to 100% zoom.
+ * NOTE: Excludes mobile screens (below 768px) to allow mobile-specific text sizing
  */
 
 /* Desktop at 150% zoom: 1920px screen reports as 1280px viewport */
-@media (max-width: 1280px) {
+/* Exclude mobile screens - only apply to desktop/tablet screens at 150% zoom */
+@media (min-width: 768px) and (max-width: 1280px) {
   /* Parent container min-height: Match 100% zoom exactly */
   /* At 150% zoom, viewport is scaled, so we divide the entire calc by 1.5 */
   /* min-h-[calc(100vh-48px)] → calc((100vh - 48px) / 1.5) */
@@ -1847,6 +1849,107 @@ h6 {
   }
 }
 
+/* Mobile Screen Overrides - Must come after 150% zoom rules to ensure proper sizing */
+/* Mobile Portrait (<640px) - Explicit overrides with high specificity */
+@media (max-width: 639px) and (orientation: portrait) {
+  /* Number text - larger on mobile */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child,
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Heading - larger on mobile */
+  .hero-main-section h1,
+  section.hero-main-section h1,
+  .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Description - larger on mobile */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  .hero-main-section p:not(:first-child),
+  section.hero-main-section p:not(:first-child) {
+    font-size: clamp(0.875rem, 4.5vw, 1.125rem) !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* Mobile Landscape (<640px) - Explicit overrides */
+@media (max-width: 639px) and (orientation: landscape) {
+  /* Number text */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child,
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child {
+    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+    margin-bottom: 0.375rem !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Heading */
+  .hero-main-section h1,
+  section.hero-main-section h1,
+  .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+    margin-bottom: 0.375rem !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Description */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  .hero-main-section p:not(:first-child),
+  section.hero-main-section p:not(:first-child) {
+    font-size: clamp(0.875rem, 4vw, 1rem) !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
 @keyframes marquee-left {
   from {
     transform: translateX(0);
@@ -1896,12 +1999,12 @@ h6 {
   }
 
   .hero-main-section h1 {
-    font-size: 1rem !important;
+    font-size: 1.25rem !important;
     margin-bottom: 0.5rem !important;
   }
 
   .hero-main-section p {
-    font-size: 0.75rem !important;
+    font-size: 0.875rem !important;
     margin-bottom: 0.75rem !important;
   }
 
@@ -1919,12 +2022,12 @@ h6 {
   }
 
   .hero-main-section h1 {
-    font-size: 1.25rem !important;
+    font-size: 1.5rem !important;
     margin-bottom: 0.75rem !important;
   }
 
   .hero-main-section p {
-    font-size: 0.875rem !important;
+    font-size: 1rem !important;
     margin-bottom: 1rem !important;
   }
 
@@ -2261,22 +2364,58 @@ h6 {
   }
 }
 
-/* Mobile Portrait (<640px) */
+/* Mobile Portrait (<640px) - High specificity overrides */
 @media (max-width: 639px) and (orientation: portrait) {
   .hero-main-section {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
   }
 
-  .hero-main-section h1 {
-    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+  /* Number text - larger on mobile */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child,
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.1 !important;
   }
 
-  .hero-main-section p {
-    font-size: clamp(0.7rem, 3vw, 0.875rem) !important;
-    margin-bottom: 0.75rem;
+  /* Heading - larger on mobile */
+  .hero-main-section h1,
+  section.hero-main-section h1,
+  .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Description - larger on mobile */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  .hero-main-section p:not(:first-child),
+  section.hero-main-section p:not(:first-child) {
+    font-size: clamp(0.875rem, 4.5vw, 1.125rem) !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.4 !important;
   }
 
   .hero-main-section > div > div[class*="grid"] > div[class*="relative"] > div {
@@ -2284,22 +2423,58 @@ h6 {
   }
 }
 
-/* Mobile Landscape (<640px) */
+/* Mobile Landscape (<640px) - High specificity overrides */
 @media (max-width: 639px) and (orientation: landscape) {
   .hero-main-section {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
 
-  .hero-main-section h1 {
-    font-size: clamp(1rem, 4vw, 1.5rem) !important;
-    line-height: 1.15;
-    margin-bottom: 0.375rem;
+  /* Number text - larger on mobile landscape */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child,
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:first-child {
+    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+    margin-bottom: 0.375rem !important;
+    line-height: 1.1 !important;
   }
 
-  .hero-main-section p {
-    font-size: clamp(0.65rem, 2.5vw, 0.75rem) !important;
-    margin-bottom: 0.5rem;
+  /* Heading - larger on mobile landscape */
+  .hero-main-section h1,
+  section.hero-main-section h1,
+  .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] h1 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.375rem !important;
+  }
+
+  /* Description - larger on mobile landscape */
+  .hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  section.hero-main-section
+    > div
+    > div[class*="grid"]
+    > div[class*="order-1"]
+    > div
+    > p:not(:first-child),
+  .hero-main-section p:not(:first-child),
+  section.hero-main-section p:not(:first-child) {
+    font-size: clamp(0.875rem, 4vw, 1rem) !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.3 !important;
   }
 
   .hero-main-section > div > div[class*="grid"] {
@@ -2351,7 +2526,7 @@ h6 {
   }
 
   .hero-main-section > div > div[class*="grid"] > div[class*="order-1"] > p {
-    font-size: clamp(0.75rem, 2.5vw, 1rem) !important;
+    font-size: clamp(1rem, 3.5vw, 1.25rem) !important;
     margin-bottom: 0.5rem !important;
   }
 

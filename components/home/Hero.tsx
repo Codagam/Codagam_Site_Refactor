@@ -155,19 +155,19 @@ export default function Hero() {
                   }`}>
                   {/* Large Number */}
                   {number && (
-                    <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-orange-500 leading-none mb-1.5 sm:mb-2 md:mb-3 lg:mb-4 xl:mb-4 2xl:mb-5 wrap-break-word">
+                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-orange-500 leading-none mb-1.5 sm:mb-2 md:mb-3 lg:mb-4 xl:mb-4 2xl:mb-5 wrap-break-word">
                       {number}
                     </p>
                   )}
                   {/* Heading */}
                   {heading && (
-                    <h1 className="text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-blue-900 leading-tight mb-1.5 sm:mb-2 md:mb-4 lg:mb-5 xl:mb-5 2xl:mb-6 wrap-break-word">
+                    <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-blue-900 leading-tight mb-1.5 sm:mb-2 md:mb-4 lg:mb-5 xl:mb-5 2xl:mb-6 wrap-break-word">
                       {heading}
                     </h1>
                   )}
                   {/* Description */}
                   {description && (
-                    <p className="text-[0.7rem] sm:text-xs md:text-sm lg:text-base xl:text-base 2xl:text-lg text-slate-700 leading-relaxed wrap-break-word">
+                    <p className="text-sm sm:text-base md:text-sm lg:text-base xl:text-base 2xl:text-lg text-slate-700 leading-relaxed wrap-break-word">
                       {description}
                     </p>
                   )}
