@@ -181,7 +181,7 @@ export default function Hero() {
                     isTransitioning ? "opacity-0" : "opacity-100"
                   }`}>
                   {imageUrl ? (
-                    <div className="relative w-full aspect-4/3 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg">
+                    <div className="relative w-full aspect-4/3 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden ">
                       <Image
                         src={imageUrl}
                         alt={heading || "Hero image"}

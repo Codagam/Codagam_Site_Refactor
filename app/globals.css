@@ -2065,13 +2065,12 @@ h6 {
 
 /* Icon with colored background - always visible */
 .service-icon-bg {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card-group:hover .service-icon-bg {
   transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(var(--service-hover-color, 30, 58, 138), 0.3);
+  /* box-shadow removed */
 }
 
 /* Smooth text color transitions */

@@ -69,7 +69,7 @@ export default function TrustedBy() {
             {caseStudies.map((caseStudy) => (
               <Card
                 key={caseStudy.id}
-                className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg sm:rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg sm:rounded-xl border-2 transition-all duration-300  hover:scale-105">
                 <CardHeader className="p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 pb-2 sm:pb-2 md:pb-2.5 lg:pb-2.5 xl:pb-3 2xl:pb-3">
                   <CardTitle className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold text-white wrap-break-word">
                     {caseStudy.title}

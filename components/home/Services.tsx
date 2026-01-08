@@ -34,7 +34,7 @@ export default function Services() {
     (s) => s.id === selectedService
   );
 
-  const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
     "custom-software-development": Code,
     "healthcare-technology": HeartPulse,
     "cloud-architecture-devops": Cloud,
@@ -60,7 +60,7 @@ export default function Services() {
             return (
               <Card
                 key={service.id}
-                className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word rounded-xl"
+                className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300  cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word rounded-xl"
                 onClick={() => handleButtonClick(service.id)}
                 style={{
                   "--service-hover-color": rgbValues,
@@ -116,7 +116,7 @@ export default function Services() {
 
                   {/* CTA */}
                   <Button
-                    className="flex items-center gap-2 text-xs sm:text-sm md:text-sm font-semibold text-white px-3 sm:px-4 py-1.5 sm:py-2 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:shadow-lg hover:scale-105 hover:opacity-90"
+                    className="flex items-center gap-2 text-xs sm:text-sm md:text-sm font-semibold text-white px-3 sm:px-4 py-1.5 sm:py-2 h-auto rounded-lg transition-all duration-300 mt-auto w-fit  hover:scale-105 hover:opacity-90"
                     style={{
                       backgroundColor: `rgb(${rgbValues})`,
                       '--btn-color': `rgb(${rgbValues})`,

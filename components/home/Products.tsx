@@ -165,7 +165,7 @@ export default function Products() {
                         key={product.id}
                         className="pl-2 sm:pl-3 md:pl-4 lg:pl-5 xl:pl-6 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/3">
                         <Card
-                          className="group h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] xl:h-[400px] 2xl:h-[420px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col border-0"
+                          className="group h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] xl:h-[400px] 2xl:h-[420px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1  cursor-pointer flex flex-col border-0"
                           onClick={() => handleCardClick(product)}>
                           {/* Background Image Section with Logo Overlay */}
                           <div className="relative h-[140px] sm:h-[160px] md:h-[170px] lg:h-[180px] xl:h-[200px] 2xl:h-[220px] overflow-hidden w-full bg-gray-100">

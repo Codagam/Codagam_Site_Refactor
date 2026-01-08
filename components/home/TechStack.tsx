@@ -110,12 +110,12 @@ export default function TechStack() {
                 {categories.map((category) => (
                   <Card
                     key={category.id}
-                    className="group overflow-hidden w-full flex flex-col shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg sm:rounded-xl">
+                    className="group overflow-hidden w-full flex flex-col  transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg sm:rounded-xl">
                     {/* Category Title with Gradient */}
                     <CardHeader className="relative p-0">
-                      <div className="relative px-3 sm:px-3.5 md:px-4 lg:px-4 xl:px-4 2xl:px-5 pt-2 sm:pt-2.5 md:pt-2.5 lg:pt-3 xl:pt-3 2xl:pt-3.5 pb-2 sm:pb-2 md:pb-2 lg:pb-2.5 xl:pb-2.5 2xl:pb-3 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
-                        <CardTitle className="relative text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl font-bold text-white wrap-break-word text-center drop-shadow-sm">
+                      <div className="relative px-3 sm:px-3.5 md:px-4 lg:px-4 xl:px-4 2xl:px-5 pt-2 sm:pt-2.5 md:pt-2.5 lg:pt-3 xl:pt-3 2xl:pt-3.5 pb-2 sm:pb-2 md:pb-2 lg:pb-2.5 xl:pb-2.5 2xl:pb-3 bg-linear-to-br from-blue-900 via-blue-800 to-blue-900">
+                        <div className="absolute inset-0 bg-linear-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
+                        <CardTitle className="relative text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl font-bold text-white wrap-break-word text-center ">
                           {category.title}
                         </CardTitle>
                       </div>
