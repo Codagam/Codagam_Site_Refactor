@@ -181,10 +181,10 @@ export default function Products() {
                               unoptimized={false}
                             />
                             {/* Gradient overlay for better logo visibility */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90 z-10"></div>
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 z-10"></div>
                             {/* Logo Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center z-20">
-                              <div className="relative w-14 h-14 min-[375px]:w-16 min-[375px]:h-16 sm:w-[72px] sm:h-[72px] md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+                              <div className="relative w-14 h-14 min-[375px]:w-16 min-[375px]:h-16 sm:w-[72px] sm:h-[72px] md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
                                 <Image
                                   src={product.image}
                                   alt={product.headline}
