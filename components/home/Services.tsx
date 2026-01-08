@@ -120,19 +120,21 @@ export default function Services() {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl max-h-[90vh] overflow-y-auto w-full">
             <DialogHeader className="space-y-1.5 sm:space-y-2 border-b border-slate-200 pb-2 sm:pb-3">
-              <div className="flex items-center justify-between">
-                <DialogTitle
-                  className="text-base sm:text-lg md:text-xl font-bold leading-tight wrap-break-word"
-                  style={{
-                    color: `rgb(${
-                      selectedServiceData.hoverColor?.split(" ").join(", ") ||
-                      "59, 130, 246"
-                    })`,
-                  }}>
-                  {selectedServiceData.title}
-                </DialogTitle>
-                <div className="text-xl sm:text-2xl md:text-2xl shrink-0 ml-2 sm:ml-3">
-                  {iconMap[selectedServiceData.id] || "📋"}
+              <div className="flex items-start gap-2 pr-10 sm:pr-12">
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <DialogTitle
+                    className="text-base sm:text-lg md:text-xl font-bold leading-tight wrap-break-word"
+                    style={{
+                      color: `rgb(${
+                        selectedServiceData.hoverColor?.split(" ").join(", ") ||
+                        "59, 130, 246"
+                      })`,
+                    }}>
+                    {selectedServiceData.title}
+                  </DialogTitle>
+                  <div className="text-xl sm:text-2xl md:text-2xl shrink-0 ml-1 sm:ml-2">
+                    {iconMap[selectedServiceData.id] || "📋"}
+                  </div>
                 </div>
               </div>
               <DialogDescription className="text-xs sm:text-sm wrap-break-word text-slate-600">
