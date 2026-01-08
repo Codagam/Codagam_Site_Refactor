@@ -168,7 +168,7 @@ export default function Products() {
                           className="group h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] xl:h-[400px] 2xl:h-[420px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col border-0"
                           onClick={() => handleCardClick(product)}>
                           {/* Background Image Section with Logo Overlay */}
-                          <div className="relative h-[140px] sm:h-[160px] md:h-[170px] lg:h-[180px] xl:h-[200px] 2xl:h-[220px] overflow-hidden">
+                          <div className="relative h-[140px] sm:h-[160px] md:h-[170px] lg:h-[180px] xl:h-[200px] 2xl:h-[220px] overflow-hidden w-full bg-gray-100">
                             {/* Background Image */}
                             <Image
                               src={backgroundImage}
@@ -177,18 +177,22 @@ export default function Products() {
                               className="object-cover transition-all duration-300"
                               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1536px) 25vw, 25vw"
                               priority={false}
+                              loading="lazy"
+                              unoptimized={false}
                             />
                             {/* Gradient overlay for better logo visibility */}
-                            <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90"></div>
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 transition-opacity duration-300 group-hover:opacity-90 z-10"></div>
                             {/* Logo Overlay */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="relative w-14 h-14 min-[375px]:w-16 min-[375px]:h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+                            <div className="absolute inset-0 flex items-center justify-center z-20">
+                              <div className="relative w-14 h-14 min-[375px]:w-16 min-[375px]:h-16 sm:w-[72px] sm:h-[72px] md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
                                 <Image
                                   src={product.image}
                                   alt={product.headline}
                                   fill
-                                  className="object-contain drop-shadow-2xl rounded-full"
+                                  className="object-contain drop-shadow-2xl rounded-full p-1"
                                   sizes="(max-width: 375px) 56px, (max-width: 640px) 72px, (max-width: 768px) 80px, (max-width: 1024px) 96px, (max-width: 1280px) 112px, (max-width: 1536px) 128px"
+                                  loading="lazy"
+                                  unoptimized={false}
                                 />
                               </div>
                             </div>
