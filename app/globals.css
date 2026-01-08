@@ -393,48 +393,62 @@ h6 {
   /* min-h-[calc(100vh-48px)] → calc((100vh - 48px) / 1.5) - reduced further */
   div.flex.flex-col[class*="min-h"],
   .hero-main-section[class*="min-h"] {
-    min-height: calc((100vh - 48px) / 1.8) !important; /* Reduced from /1.5 to /1.8 for better fit */
+    min-height: calc(
+      (100vh - 48px) / 1.8
+    ) !important; /* Reduced from /1.5 to /1.8 for better fit */
   }
 
   @media (min-width: 375px) {
     div.flex.flex-col[class*="min-h"],
     .hero-main-section[class*="min-h"] {
-      min-height: calc((100vh - 52px) / 1.8) !important; /* Reduced for better fit */
+      min-height: calc(
+        (100vh - 52px) / 1.8
+      ) !important; /* Reduced for better fit */
     }
   }
 
   @media (min-width: 640px) {
     div.flex.flex-col[class*="min-h"],
     .hero-main-section[class*="min-h"] {
-      min-height: calc((100vh - 56px) / 1.8) !important; /* Reduced for better fit */
+      min-height: calc(
+        (100vh - 56px) / 1.8
+      ) !important; /* Reduced for better fit */
     }
   }
 
   @media (min-width: 768px) {
     div.flex.flex-col[class*="min-h"],
     .hero-main-section[class*="min-h"] {
-      min-height: calc((100vh - 60px) / 1.8) !important; /* Reduced for better fit */
+      min-height: calc(
+        (100vh - 60px) / 1.8
+      ) !important; /* Reduced for better fit */
     }
   }
 
   @media (min-width: 1024px) {
     div.flex.flex-col[class*="min-h"],
     .hero-main-section[class*="min-h"] {
-      min-height: calc((100vh - 64px) / 1.8) !important; /* Reduced for better fit */
+      min-height: calc(
+        (100vh - 64px) / 1.8
+      ) !important; /* Reduced for better fit */
     }
   }
 
   @media (min-width: 1280px) {
     div.flex.flex-col[class*="min-h"],
     .hero-main-section[class*="min-h"] {
-      min-height: calc((100vh - 68px) / 1.8) !important; /* Reduced for better fit */
+      min-height: calc(
+        (100vh - 68px) / 1.8
+      ) !important; /* Reduced for better fit */
     }
   }
 
   @media (min-width: 1536px) {
     div.flex.flex-col[class*="min-h"],
     .hero-main-section[class*="min-h"] {
-      min-height: calc((100vh - 72px) / 1.8) !important; /* Reduced for better fit */
+      min-height: calc(
+        (100vh - 72px) / 1.8
+      ) !important; /* Reduced for better fit */
     }
   }
 
@@ -446,7 +460,7 @@ h6 {
     padding-bottom: 1rem !important; /* py-6 / 1.5 = 1rem */
     margin-bottom: 2rem !important; /* Add gap before About section */
   }
-  
+
   /* Hero container - add margin-bottom to create gap before About section */
   div.flex.flex-col[class*="min-h"] {
     margin-bottom: 2rem !important; /* Add gap before About section */
@@ -475,7 +489,7 @@ h6 {
       padding-bottom: 0 !important; /* Match 100% zoom - no bottom padding */
       margin-bottom: 2.5rem !important; /* Add gap before About section at 150% zoom */
     }
-    
+
     /* Hero container - add margin-bottom to create gap before About section */
     div.flex.flex-col[class*="min-h"] {
       margin-bottom: 2.5rem !important; /* Add gap before About section at 150% zoom */
@@ -935,14 +949,23 @@ h6 {
     }
   }
 
-  /* Carousel: Fix alignment and add more spacing - Override all conflicting rules */
+  /* Carousel: Fix alignment and add more spacing - Override all conflicting rules including Tailwind classes */
   .hero-carousel-section,
   section.hero-main-section + div,
   .hero-main-section ~ div.hero-carousel-section,
   .hero-main-section + .hero-carousel-section,
-  section.hero-main-section ~ .hero-carousel-section {
+  section.hero-main-section ~ .hero-carousel-section,
+  div.hero-carousel-section[class*="pt-"],
+  div.hero-carousel-section.pt-4,
+  div.hero-carousel-section[class*="sm:pt-"],
+  div.hero-carousel-section[class*="md:pt-"],
+  div.hero-carousel-section[class*="lg:pt-"],
+  div.hero-carousel-section[class*="xl:pt-"],
+  div.hero-carousel-section[class*="2xl:pt-"],
+  .hero-main-section div.hero-carousel-section,
+  section.hero-main-section div.hero-carousel-section {
     margin-top: 0 !important;
-    padding-top: 2rem !important; /* Increased spacing - push carousel down more */
+    padding-top: 2rem !important; /* Increased significantly - position at green line - OVERRIDE Tailwind */
     padding-bottom: 0 !important;
     width: 100% !important;
     max-width: 100vw !important; /* Ensure full viewport width */
@@ -1009,8 +1032,15 @@ h6 {
     section.hero-main-section + div,
     .hero-main-section ~ div.hero-carousel-section,
     .hero-main-section + .hero-carousel-section,
-    section.hero-main-section ~ .hero-carousel-section {
-      padding-top: 2.5rem !important; /* Increased spacing - push carousel down more */
+    section.hero-main-section ~ .hero-carousel-section,
+    div.hero-carousel-section[class*="pt-"],
+    div.hero-carousel-section.pt-4,
+    div.hero-carousel-section[class*="sm:pt-"],
+    div.hero-carousel-section[class*="md:pt-"],
+    div.hero-carousel-section[class*="lg:pt-"],
+    div.hero-carousel-section[class*="xl:pt-"],
+    div.hero-carousel-section[class*="2xl:pt-"] {
+      padding-top: 2.25rem !important; /* Just a little down - OVERRIDE Tailwind sm:pt-6 */
     }
   }
 
@@ -1019,23 +1049,40 @@ h6 {
     section.hero-main-section + div,
     .hero-main-section ~ div.hero-carousel-section,
     .hero-main-section + .hero-carousel-section,
-    section.hero-main-section ~ .hero-carousel-section {
-      padding-top: 3rem !important; /* Increased spacing - push carousel down more */
+    section.hero-main-section ~ .hero-carousel-section,
+    div.hero-carousel-section[class*="pt-"],
+    div.hero-carousel-section.pt-4,
+    div.hero-carousel-section[class*="sm:pt-"],
+    div.hero-carousel-section[class*="md:pt-"],
+    div.hero-carousel-section[class*="lg:pt-"],
+    div.hero-carousel-section[class*="xl:pt-"],
+    div.hero-carousel-section[class*="2xl:pt-"] {
+      padding-top: 2.5rem !important; /* Just a little down - OVERRIDE Tailwind md:pt-8 */
     }
   }
 
   /* Override conflicting rules at 1024-1280px (150% zoom on laptop) */
   @media (min-width: 1024px) and (max-width: 1280px) {
-    /* Override ALL conflicting carousel rules - ensure full width */
+    /* Override ALL conflicting carousel rules - ensure full width - OVERRIDE Tailwind lg:pt-10 */
     .hero-carousel-section,
     section.hero-main-section + div,
     .hero-main-section ~ div.hero-carousel-section,
     .hero-main-section + .hero-carousel-section,
     section.hero-main-section ~ .hero-carousel-section,
-    .hero-main-section ~ div.hero-carousel-section {
-      padding-top: 3.5rem !important; /* Increased spacing - push carousel down more at 150% zoom */
+    .hero-main-section ~ div.hero-carousel-section,
+    div.hero-carousel-section[class*="pt-"],
+    div.hero-carousel-section.pt-4,
+    div.hero-carousel-section[class*="sm:pt-"],
+    div.hero-carousel-section[class*="md:pt-"],
+    div.hero-carousel-section[class*="lg:pt-"],
+    div.hero-carousel-section[class*="xl:pt-"],
+    div.hero-carousel-section[class*="2xl:pt-"],
+    .hero-main-section div.hero-carousel-section,
+    section.hero-main-section div.hero-carousel-section,
+    .hero-main-section > div.hero-carousel-section {
+      padding-top: 2.5rem !important; /* Just a little down at 150% zoom - OVERRIDE Tailwind */
       padding-bottom: 0 !important;
-      margin-top: 0 !important;
+      margin-top: 0 !important; /* Remove margin-top */
       width: 100% !important;
       max-width: 100vw !important; /* Ensure full viewport width at 150% zoom */
       min-width: 100% !important;
@@ -1109,8 +1156,15 @@ h6 {
     section.hero-main-section + div,
     .hero-main-section ~ div.hero-carousel-section,
     .hero-main-section + .hero-carousel-section,
-    section.hero-main-section ~ .hero-carousel-section {
-      padding-top: 3.5rem !important; /* Increased spacing - push carousel down more */
+    section.hero-main-section ~ .hero-carousel-section,
+    div.hero-carousel-section[class*="pt-"],
+    div.hero-carousel-section.pt-4,
+    div.hero-carousel-section[class*="sm:pt-"],
+    div.hero-carousel-section[class*="md:pt-"],
+    div.hero-carousel-section[class*="lg:pt-"],
+    div.hero-carousel-section[class*="xl:pt-"],
+    div.hero-carousel-section[class*="2xl:pt-"] {
+      padding-top: 2.75rem !important; /* Just a little down - OVERRIDE Tailwind xl:pt-10 */
     }
   }
 
@@ -1119,8 +1173,15 @@ h6 {
     section.hero-main-section + div,
     .hero-main-section ~ div.hero-carousel-section,
     .hero-main-section + .hero-carousel-section,
-    section.hero-main-section ~ .hero-carousel-section {
-      padding-top: 4rem !important; /* Increased spacing - push carousel down more */
+    section.hero-main-section ~ .hero-carousel-section,
+    div.hero-carousel-section[class*="pt-"],
+    div.hero-carousel-section.pt-4,
+    div.hero-carousel-section[class*="sm:pt-"],
+    div.hero-carousel-section[class*="md:pt-"],
+    div.hero-carousel-section[class*="lg:pt-"],
+    div.hero-carousel-section[class*="xl:pt-"],
+    div.hero-carousel-section[class*="2xl:pt-"] {
+      padding-top: 3rem !important; /* Just a little down - OVERRIDE Tailwind 2xl:pt-12 */
     }
   }
 
@@ -2005,7 +2066,7 @@ h6 {
 /* Icon with colored background - always visible */
 .service-icon-bg {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card-group:hover .service-icon-bg {
