@@ -25,11 +25,11 @@ const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
 
 // Helper function to get header height based on viewport width
 const getHeaderHeight = (): number => {
-  if (typeof window === "undefined") return 48;
-  if (window.innerWidth >= 1280) return 68;
-  if (window.innerWidth >= 1024) return 64;
-  if (window.innerWidth >= 640) return 56;
-  return 48;
+  if (typeof window === "undefined") return 44;
+  if (window.innerWidth >= 1280) return 60;
+  if (window.innerWidth >= 1024) return 56;
+  if (window.innerWidth >= 640) return 52;
+  return 44;
 };
 
 // Desktop Nav Link Component
@@ -47,7 +47,7 @@ const DesktopNavLink = ({
   <a
     href={`#${id}`}
     onClick={onClick}
-    className={`relative text-sm lg:text-base xl:text-base 2xl:text-lg font-medium transition-all duration-300 whitespace-nowrap group ${
+    className={`relative text-sm lg:text-sm xl:text-base 2xl:text-base font-medium transition-all duration-300 whitespace-nowrap group ${
       isActive
         ? "text-blue-900 font-semibold"
         : "text-slate-700 hover:text-blue-900"
@@ -318,17 +318,17 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 shadow-sm w-full">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full">
-        <div className="flex justify-between items-center h-[48px] min-[375px]:h-[52px] sm:h-[56px] md:h-[60px] lg:h-[64px] xl:h-[68px] 2xl:h-[72px] w-full">
+        <div className="flex justify-between items-center h-[44px] min-[375px]:h-[48px] sm:h-[52px] md:h-[54px] lg:h-[56px] xl:h-[60px] 2xl:h-[64px] w-full">
           {/* Logo */}
           <Link
             href="/"
             onClick={handleScrollToTop}
-            className="text-sm min-[375px]:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer shrink-0">
+            className="text-sm min-[375px]:text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer shrink-0">
             Codagam
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-4 xl:gap-5 2xl:gap-6 items-center shrink-0">
+          <nav className="hidden lg:flex gap-3 xl:gap-4 2xl:gap-5 items-center shrink-0">
             {desktopNavItems}
           </nav>
 

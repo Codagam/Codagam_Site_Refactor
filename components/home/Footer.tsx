@@ -661,11 +661,11 @@ export default function Footer() {
 
         {/* Contact Section Header - Moved to bottom */}
         <div className="mt-3 sm:mt-4 md:mt-5 lg:mt-5 xl:mt-6 2xl:mt-7 text-center w-full border-t border-blue-800 pt-3 sm:pt-4 md:pt-5 lg:pt-5 xl:pt-6 2xl:pt-7">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 xl:mb-3.5 2xl:mb-4 font-bold wrap-break-word px-4 sm:px-6 md:px-8 lg:px-8">
+          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 xl:mb-3.5 2xl:mb-4 font-bold wrap-break-word px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10">
             {footerContent?.title || defaultContent.title}
           </h2>
           <p
-            className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-base max-w-6xl mx-auto opacity-90 px-4 sm:px-6 md:px-8 lg:px-8 font-normal wrap-break-word"
+            className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-base max-w-6xl mx-auto opacity-90 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 font-normal wrap-break-word"
             style={{ fontWeight: 400 }}>
             {footerContent?.description || defaultContent.description}
           </p>
