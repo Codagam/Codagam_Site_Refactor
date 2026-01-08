@@ -1990,6 +1990,26 @@ h6 {
   clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
 }
 
+/* Icon with colored background - always visible */
+.service-icon-bg {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card-group:hover .service-icon-bg {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(var(--service-hover-color, 30, 58, 138), 0.3);
+}
+
+/* Smooth text color transitions */
+.service-card-group h3,
+.service-card-group h4,
+.service-card-group p,
+.service-card-group li,
+.service-card-group span {
+  transition: color 0.3s ease;
+}
+
 /* Hero Section - Landscape Orientation Responsive Fixes */
 @media (orientation: landscape) and (max-height: 500px) {
   /* Mobile landscape - very short height */

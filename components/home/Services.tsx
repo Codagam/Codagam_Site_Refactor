@@ -10,12 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -57,7 +52,10 @@ export default function Services() {
               <Card
                 key={service.id}
                 className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word rounded-xl"
-                onClick={() => handleButtonClick(service.id)}>
+                onClick={() => handleButtonClick(service.id)}
+                style={{
+                  "--service-hover-color": rgbValues,
+                } as React.CSSProperties & { "--service-hover-color": string }}>
                 {/* Diagonal color fill from bottom-left on hover */}
                 <div
                   className="service-card-hover"
@@ -66,18 +64,24 @@ export default function Services() {
                   }}
                 />
 
+                {/* Icon with colored background - positioned at top-right */}
+                <div 
+                  className="service-icon-bg absolute top-0 right-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center rounded-tr-xl rounded-bl-xl z-30"
+                  style={{
+                    backgroundColor: `rgb(${rgbValues})`,
+                  }}>
+                  <span className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl text-white">
+                    {icon}
+                  </span>
+                </div>
+
                 {/* Content */}
                 <CardContent className="relative z-10 p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 2xl:p-6 flex flex-col grow">
-                  {/* Title with Icon */}
-                  <CardHeader className="p-0 mb-2 sm:mb-2.5">
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word flex-1">
-                        {service.title}
-                      </CardTitle>
-                      <div className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl shrink-0 ml-2 sm:ml-2.5">
-                        {icon}
-                      </div>
-                    </div>
+                  {/* Title */}
+                  <CardHeader className="p-0 mb-2 sm:mb-2.5 pr-10 sm:pr-12 md:pr-14 lg:pr-16">
+                    <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word">
+                      {service.title}
+                    </CardTitle>
                   </CardHeader>
 
                   {/* Description */}
