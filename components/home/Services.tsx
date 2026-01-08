@@ -1,7 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { 
+  ArrowRight, 
+  Code, 
+  HeartPulse, 
+  Cloud, 
+  BarChart3, 
+  Brain,
+  Target
+} from "lucide-react";
 import { servicesGalleryItems } from "@/lib/content/services";
 import {
   Dialog,
@@ -11,6 +19,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -25,13 +34,13 @@ export default function Services() {
     (s) => s.id === selectedService
   );
 
-  const iconMap: Record<string, string> = {
-    "custom-software-development": "💻",
-    "healthcare-technology": "🏥",
-    "cloud-architecture-devops": "☁️",
-    "data-analytics-bi": "📊",
-    "ai-ml-integration": "🤖",
-    "secondary-services": "🎯",
+  const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    "custom-software-development": Code,
+    "healthcare-technology": HeartPulse,
+    "cloud-architecture-devops": Cloud,
+    "data-analytics-bi": BarChart3,
+    "ai-ml-integration": Brain,
+    "secondary-services": Target,
   };
 
   return (
@@ -45,7 +54,7 @@ export default function Services() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-7 2xl:gap-8 w-full">
           {servicesGalleryItems.map((service) => {
             const hoverColor = service.hoverColor || "30 58 138";
-            const icon = iconMap[service.id] || "📋";
+            const IconComponent = iconMap[service.id] || Target;
             const rgbValues = hoverColor.split(" ").join(", ");
 
             return (
@@ -70,22 +79,20 @@ export default function Services() {
                   style={{
                     backgroundColor: `rgb(${rgbValues})`,
                   }}>
-                  <span className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl text-white">
-                    {icon}
-                  </span>
+                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-8 xl:h-8 text-white" />
                 </div>
 
                 {/* Content */}
                 <CardContent className="relative z-10 p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 2xl:p-6 flex flex-col grow">
                   {/* Title */}
                   <CardHeader className="p-0 mb-2 sm:mb-2.5 pr-10 sm:pr-12 md:pr-14 lg:pr-16">
-                    <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word">
+                    <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word leading-tight">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base text-slate-600 group-hover:text-white/90 leading-snug mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 line-clamp-4 transition-colors duration-300 wrap-break-word">
+                  <p className="text-sm sm:text-sm md:text-base lg:text-base xl:text-base text-slate-700 group-hover:text-white/95 leading-relaxed mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 line-clamp-4 transition-colors duration-300 wrap-break-word font-medium">
                     {service.description}
                   </p>
 
@@ -95,8 +102,8 @@ export default function Services() {
                       {service.offerings.map((offering, index) => (
                         <li
                           key={index}
-                          className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm text-slate-700 group-hover:text-white/90 leading-snug flex items-start transition-colors duration-300">
-                          <span className="text-slate-900 group-hover:text-white mr-1.5 mt-1 shrink-0 text-[8px] sm:text-[10px] transition-colors duration-300">
+                          className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm text-slate-700 group-hover:text-white/95 leading-relaxed flex items-start transition-colors duration-300">
+                          <span className="text-slate-900 group-hover:text-white mr-2 mt-1 shrink-0 text-[10px] sm:text-xs font-bold transition-colors duration-300">
                             •
                           </span>
                           <span className="flex-1 wrap-break-word">
@@ -108,10 +115,22 @@ export default function Services() {
                   )}
 
                   {/* CTA */}
-                  <div className="flex items-center gap-2 text-xs sm:text-sm md:text-sm font-semibold text-blue-900 group-hover:text-white transition-all duration-300 mt-auto">
-                    <span>Learn more</span>
-                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-2" />
-                  </div>
+                  <Button
+                    className="flex items-center gap-2 text-xs sm:text-sm md:text-sm font-semibold text-white px-3 sm:px-4 py-1.5 sm:py-2 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:shadow-lg hover:scale-105 hover:opacity-90"
+                    style={{
+                      backgroundColor: `rgb(${rgbValues})`,
+                      '--btn-color': `rgb(${rgbValues})`,
+                    } as React.CSSProperties & { '--btn-color': string }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = `rgb(${rgbValues})`;
+                    }}
+                    variant="ghost"
+                    size="sm">
+                    <span className="font-semibold">Learn more</span>
+                    <ArrowRight 
+                      className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-2 text-white" 
+                    />
+                  </Button>
                 </CardContent>
               </Card>
             );
@@ -136,12 +155,23 @@ export default function Services() {
                     }}>
                     {selectedServiceData.title}
                   </DialogTitle>
-                  <div className="text-xl sm:text-2xl md:text-2xl shrink-0 ml-1 sm:ml-2">
-                    {iconMap[selectedServiceData.id] || "📋"}
-                  </div>
+                  {(() => {
+                    const DialogIcon = iconMap[selectedServiceData.id] || Target;
+                    return (
+                      <DialogIcon
+                        className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 shrink-0 ml-1 sm:ml-2"
+                        style={{
+                          color: `rgb(${
+                            selectedServiceData.hoverColor?.split(" ").join(", ") ||
+                            "59, 130, 246"
+                          })`,
+                        }}
+                      />
+                    );
+                  })()}
                 </div>
               </div>
-              <DialogDescription className="text-xs sm:text-sm wrap-break-word text-slate-600">
+              <DialogDescription className="text-xs sm:text-sm wrap-break-word text-slate-700 leading-relaxed">
                 Comprehensive {selectedServiceData.title.toLowerCase()}{" "}
                 solutions tailored to your business needs
               </DialogDescription>
@@ -152,7 +182,7 @@ export default function Services() {
                 <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-1.5 sm:mb-2">
                   Overview
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-700 leading-snug wrap-break-word">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed wrap-break-word font-medium">
                   {selectedServiceData.description}
                 </p>
               </div>
@@ -168,9 +198,9 @@ export default function Services() {
                       {selectedServiceData.offerings.map((offering, index) => (
                         <li
                           key={index}
-                          className="flex items-start text-xs sm:text-sm text-slate-700 leading-snug">
+                          className="flex items-start text-xs sm:text-sm text-slate-700 leading-relaxed">
                           <span
-                            className="mr-1.5 sm:mr-2 mt-1 shrink-0 text-sm"
+                            className="mr-2 mt-1 shrink-0 text-sm font-bold"
                             style={{
                               color: `rgb(${
                                 selectedServiceData.hoverColor
@@ -180,7 +210,7 @@ export default function Services() {
                             }}>
                             •
                           </span>
-                          <span className="flex-1 wrap-break-word">
+                          <span className="flex-1 wrap-break-word font-medium">
                             {offering}
                           </span>
                         </li>
@@ -194,7 +224,7 @@ export default function Services() {
                 <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-1.5 sm:mb-2">
                   Why Choose Us?
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-700 leading-snug wrap-break-word mb-2 sm:mb-2.5">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed wrap-break-word mb-2 sm:mb-2.5 font-medium">
                   Our team brings years of experience and expertise in
                   delivering high-quality solutions that drive business growth.
                   We combine cutting-edge technology with proven methodologies
@@ -205,7 +235,7 @@ export default function Services() {
                     <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
                       ✓
                     </span>
-                    <span className="text-xs sm:text-sm text-slate-700">
+                    <span className="text-xs sm:text-sm text-slate-700 font-medium">
                       Proven track record
                     </span>
                   </div>
@@ -213,7 +243,7 @@ export default function Services() {
                     <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
                       ✓
                     </span>
-                    <span className="text-xs sm:text-sm text-slate-700">
+                    <span className="text-xs sm:text-sm text-slate-700 font-medium">
                       Scalable solutions
                     </span>
                   </div>
@@ -221,7 +251,7 @@ export default function Services() {
                     <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
                       ✓
                     </span>
-                    <span className="text-xs sm:text-sm text-slate-700">
+                    <span className="text-xs sm:text-sm text-slate-700 font-medium">
                       Expert team
                     </span>
                   </div>
@@ -229,7 +259,7 @@ export default function Services() {
                     <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
                       ✓
                     </span>
-                    <span className="text-xs sm:text-sm text-slate-700">
+                    <span className="text-xs sm:text-sm text-slate-700 font-medium">
                       24/7 support
                     </span>
                   </div>
@@ -238,7 +268,7 @@ export default function Services() {
 
               {/* Contact CTA */}
               <div className="pt-2 sm:pt-3 border-t border-slate-200">
-                <p className="text-xs sm:text-sm text-slate-600 wrap-break-word text-center">
+                <p className="text-xs sm:text-sm text-slate-700 wrap-break-word text-center leading-relaxed font-medium">
                   Ready to get started? Contact us using the contact form in the
                   footer to discuss your project requirements and receive a
                   customized quote.
