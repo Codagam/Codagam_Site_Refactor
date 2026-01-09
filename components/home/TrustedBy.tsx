@@ -70,15 +70,15 @@ export default function TrustedBy() {
               <Card
                 key={caseStudy.id}
                 className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg sm:rounded-xl border-2 transition-all duration-300  hover:scale-105">
-                <CardHeader className="p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 pb-2 sm:pb-2 md:pb-2.5 lg:pb-2.5 xl:pb-3 2xl:pb-3">
+                <CardHeader className="p-2 sm:p-2.5 md:p-3 lg:p-3 xl:p-3.5 2xl:p-4 pb-0.5 sm:pb-0.5 md:pb-1 lg:pb-1 xl:pb-1 2xl:pb-1">
                   <CardTitle className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold text-white wrap-break-word">
                     {caseStudy.title}
                   </CardTitle>
                 </CardHeader>
 
-                <CardContent className="p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 pt-0">
-                  <div className="mb-2.5 sm:mb-3 md:mb-3 lg:mb-3.5 xl:mb-3.5 2xl:mb-4">
-                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2">
+                <CardContent className="p-2 sm:p-2.5 md:p-3 lg:p-3 xl:p-3.5 2xl:p-4 pt-0">
+                  <div className="mb-2 sm:mb-2 md:mb-2.5 lg:mb-2.5 xl:mb-2.5 2xl:mb-3 -mt-0.5 sm:-mt-0.5 md:-mt-1 lg:-mt-1 xl:-mt-1 2xl:-mt-1">
+                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-0.5 sm:mb-0.5 md:mb-1 lg:mb-1 xl:mb-1 2xl:mb-1.5">
                       Challenge:
                     </p>
                     <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-white/90 leading-relaxed wrap-break-word">
@@ -87,10 +87,10 @@ export default function TrustedBy() {
                   </div>
 
                   <div>
-                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-1 sm:mb-1 md:mb-1.5 lg:mb-1.5 xl:mb-1.5 2xl:mb-2">
+                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-0.5 sm:mb-0.5 md:mb-1 lg:mb-1 xl:mb-1 2xl:mb-1.5">
                       Results:
                     </p>
-                    <ul className="space-y-1 sm:space-y-1 md:space-y-1.5 lg:space-y-1.5 xl:space-y-1.5 2xl:space-y-2">
+                    <ul className="space-y-0.5 sm:space-y-0.5 md:space-y-1 lg:space-y-1 xl:space-y-1 2xl:space-y-1.5">
                       {caseStudy.results.map((result, index) => (
                         <li
                           key={index}
