@@ -77,14 +77,19 @@ export default function About() {
     <div className="relative w-full bg-white z-20 -mt-[2px]">
       <section
         id="about"
-        className="min-h-screen flex flex-col justify-center py-4 sm:py-5 md:py-6 lg:py-6 xl:py-7 2xl:py-8 bg-white scroll-mt-[45px] min-[375px]:scroll-mt-[49px] sm:scroll-mt-[53px] md:scroll-mt-[55px] lg:scroll-mt-[57px] xl:scroll-mt-[61px] 2xl:scroll-mt-[65px] w-full relative">
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
+        className="min-h-screen flex flex-col pt-8 sm:pt-10 md:pt-12 lg:pt-12 xl:pt-14 2xl:pt-16 pb-4 sm:pb-5 md:pb-6 lg:pb-6 xl:pb-7 2xl:pb-8 bg-white scroll-mt-[45px] min-[375px]:scroll-mt-[49px] sm:scroll-mt-[53px] md:scroll-mt-[55px] lg:scroll-mt-[57px] xl:scroll-mt-[61px] 2xl:scroll-mt-[65px] w-full relative">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col">
+        {/* Main Heading - About Codagam */}
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+          About Codagam
+        </h2>
+
         {/* Top Section - Capabilities */}
-        <div className="w-full mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-6">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-2 sm:mb-3 md:mb-3 lg:mb-4 xl:mb-4 2xl:mb-5 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6 leading-tight">
+        <div className="w-full mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8">
+          <h3 className="text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5 2xl:mb-6 text-center font-semibold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6 leading-tight">
             We build mission-critical software that bridges the gap between
             enterprise reliability and startup innovation.
-          </h2>
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4 xl:gap-4 2xl:gap-4.5 w-full">
             {capabilities.map((capability) => (
               <div
@@ -103,9 +108,9 @@ export default function About() {
 
         {/* Bottom Section - Who We Are & Why We're Different */}
         <div className="w-full">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-6 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6 leading-tight">
+          <h3 className="text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5 2xl:mb-6 text-center font-semibold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6 leading-tight">
             Built by Engineers. Trusted by Enterprises.
-          </h2>
+          </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-5 xl:gap-6 2xl:gap-7 w-full">
             {/* Who We Are */}
             <div className="w-full">
@@ -133,7 +138,7 @@ export default function About() {
 
             {/* Why We're Different */}
             <div className="w-full">
-              <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl mb-1.5 sm:mb-2 md:mb-2.5 lg:mb-2.5 xl:mb-3 2xl:mb-3 font-bold text-blue-900 wrap-break-word">
+              <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl mb-1 sm:mb-1.5 md:mb-2 lg:mb-2 xl:mb-2 2xl:mb-2.5 font-bold text-blue-900 wrap-break-word">
                 Why We&apos;re Different
               </h3>
               <div className="space-y-1 sm:space-y-1 md:space-y-1.5 lg:space-y-1.5 xl:space-y-1.5 2xl:space-y-2">

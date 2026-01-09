@@ -85,12 +85,12 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-4 sm:py-5 md:py-6 lg:py-6 xl:py-8 2xl:py-10 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
+      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col pt-8 sm:pt-10 md:pt-12 lg:pt-12 xl:pt-14 2xl:pt-16 pb-4 sm:pb-5 md:pb-6 lg:pb-6 xl:pb-8 2xl:pb-10 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col">
         <div className="flex flex-col w-full">
           {/* Tech Stack Section */}
-          <div className="w-full mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-6">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-3xl mb-2 sm:mb-3 md:mb-3 lg:mb-3 xl:mb-4 2xl:mb-4 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+          <div className="w-full">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-3xl mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
               Our Tech Stack
             </h2>
             {loading ? (
