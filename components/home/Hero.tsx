@@ -140,7 +140,7 @@ export default function Hero() {
   }
 
   return (
-      <div className="bg-blue-300 flex flex-col min-h-[calc(100vh-45px)] min-[375px]:min-h-[calc(100vh-49px)] sm:min-h-[calc(100vh-53px)] md:min-h-[calc(100vh-55px)] lg:min-h-[calc(100vh-57px)] xl:min-h-[calc(100vh-61px)] 2xl:min-h-[calc(100vh-65px)] relative z-0">
+      <div className="bg-blue-300 flex flex-col min-h-[calc(100vh-45px)] min-[375px]:min-h-[calc(100vh-49px)] sm:min-h-[calc(100vh-53px)] md:min-h-[calc(100vh-55px)] lg:min-h-[calc(100vh-57px)] xl:min-h-[calc(100vh-61px)] 2xl:min-h-[calc(100vh-65px)] relative z-0 overflow-visible">
         <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-45px)] min-[375px]:min-h-[calc(100vh-49px)] sm:min-h-[calc(100vh-53px)] md:min-h-[calc(100vh-55px)] lg:min-h-[calc(100vh-57px)] xl:min-h-[calc(100vh-61px)] 2xl:min-h-[calc(100vh-65px)] py-3 sm:py-4 md:py-6 lg:py-7 xl:py-8 2xl:py-10">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-between flex-1">
           {/* Main Content Grid */}
