@@ -120,9 +120,9 @@ export default function Hero() {
 
   if (loading && heroList.length === 0) {
     return (
-      <div className="bg-blue-50 flex flex-col min-h-[calc(100vh-45px)] min-[375px]:min-h-[calc(100vh-49px)] sm:min-h-[calc(100vh-53px)] md:min-h-[calc(100vh-55px)] lg:min-h-[calc(100vh-57px)] xl:min-h-[calc(100vh-61px)] 2xl:min-h-[calc(100vh-65px)] relative z-0">
-        <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-45px)] min-[375px]:min-h-[calc(100vh-49px)] sm:min-h-[calc(100vh-53px)] md:min-h-[calc(100vh-55px)] lg:min-h-[calc(100vh-57px)] xl:min-h-[calc(100vh-61px)] 2xl:min-h-[calc(100vh-65px)] py-3 sm:py-4 md:py-6 lg:py-7 xl:py-8 2xl:py-10">
-          <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-between flex-1">
+      <div className="bg-blue-50 flex flex-col min-h-screen relative z-0">
+        <section className="hero-main-section flex flex-col justify-between min-h-screen py-4 md:py-6 lg:py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-between flex-1">
             <div className="flex-1 flex flex-col justify-center w-full">
               <div className="text-center py-8 w-full">
                 <p className="text-gray-600 text-sm sm:text-base md:text-lg">
@@ -131,7 +131,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div className="hero-carousel-section w-full pt-3 sm:pt-4 md:pt-5 lg:pt-6 xl:pt-6 2xl:pt-8 pb-2 sm:pb-0">
+          <div className="hero-carousel-section w-full pt-4 md:pt-6 lg:pt-8 pb-2">
             <ClientLogoCarousel pauseOnHover={true} duration="60s" />
           </div>
         </section>
@@ -140,13 +140,13 @@ export default function Hero() {
   }
 
   return (
-      <div className="bg-blue-300 flex flex-col min-h-[calc(100vh-45px)] min-[375px]:min-h-[calc(100vh-49px)] sm:min-h-[calc(100vh-53px)] md:min-h-[calc(100vh-55px)] lg:min-h-[calc(100vh-57px)] xl:min-h-[calc(100vh-61px)] 2xl:min-h-[calc(100vh-65px)] relative z-0 overflow-visible">
-        <section className="hero-main-section flex flex-col justify-between min-h-[calc(100vh-45px)] min-[375px]:min-h-[calc(100vh-49px)] sm:min-h-[calc(100vh-53px)] md:min-h-[calc(100vh-55px)] lg:min-h-[calc(100vh-57px)] xl:min-h-[calc(100vh-61px)] 2xl:min-h-[calc(100vh-65px)] py-3 sm:py-4 md:py-6 lg:py-7 xl:py-8 2xl:py-10">
-        <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-between flex-1">
+    <div className="bg-blue-300 flex flex-col min-h-screen relative z-0 overflow-visible">
+      <section className="hero-main-section flex flex-col justify-between min-h-screen py-4 md:py-6 lg:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-between flex-1">
           {/* Main Content Grid */}
-          <div className="flex-1 flex flex-col justify-center items-center w-full py-1 sm:py-2 md:py-4 lg:py-4 xl:py-6 2xl:py-6 relative">
+          <div className="flex-1 flex flex-col justify-center items-center w-full py-2 md:py-4 lg:py-6 relative">
             {/* Two Column Layout: Text First on Mobile, Side-by-Side on Desktop */}
-            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-4 lg:gap-5 xl:gap-6 2xl:gap-8 items-center">
+            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center">
               {/* Text Content - First on Mobile, Left on Desktop */}
               <div className="text-left flex flex-col justify-center w-full order-1">
                 <div
@@ -155,19 +155,19 @@ export default function Hero() {
                   }`}>
                   {/* Large Number */}
                   {number && (
-                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-orange-500 leading-none mb-1.5 sm:mb-2 md:mb-3 lg:mb-4 xl:mb-4 2xl:mb-5 wrap-break-word">
+                    <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-orange-500 leading-none mb-2 md:mb-3 lg:mb-4 break-words">
                       {number}
                     </p>
                   )}
                   {/* Heading */}
                   {heading && (
-                    <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-blue-900 leading-tight mb-1.5 sm:mb-2 md:mb-4 lg:mb-5 xl:mb-5 2xl:mb-6 wrap-break-word">
+                    <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-blue-900 leading-tight mb-2 md:mb-4 lg:mb-5 break-words">
                       {heading}
                     </h1>
                   )}
                   {/* Description */}
                   {description && (
-                    <p className="text-sm sm:text-base md:text-sm lg:text-base xl:text-base 2xl:text-lg text-slate-700 leading-relaxed wrap-break-word">
+                    <p className="text-sm sm:text-base md:text-base lg:text-lg text-slate-700 leading-relaxed break-words">
                       {description}
                     </p>
                   )}
@@ -181,7 +181,7 @@ export default function Hero() {
                     isTransitioning ? "opacity-0" : "opacity-100"
                   }`}>
                   {imageUrl ? (
-                    <div className="relative w-full aspect-4/3 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden ">
+                    <div className="relative w-full aspect-[4/3] rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden">
                       <Image
                         src={imageUrl}
                         alt={heading || "Hero image"}
@@ -192,8 +192,8 @@ export default function Hero() {
                       />
                     </div>
                   ) : (
-                    <div className="relative w-full aspect-4/3 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden bg-gray-200 flex items-center justify-center">
-                      <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+                    <div className="relative w-full aspect-[4/3] rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-gray-200 flex items-center justify-center">
+                      <p className="text-gray-400 text-sm md:text-base">
                         No image available
                       </p>
                     </div>
@@ -205,7 +205,7 @@ export default function Hero() {
         </div>
 
         {/* Client Logo Carousel - Full Width on All Screens */}
-        <div className="hero-carousel-section w-full pt-3 sm:pt-4 md:pt-5 lg:pt-6 xl:pt-6 2xl:pt-8 pb-2 sm:pb-0">
+        <div className="hero-carousel-section w-full pt-4 md:pt-6 lg:pt-8 pb-2">
           <ClientLogoCarousel pauseOnHover={true} duration="60s" />
         </div>
       </section>

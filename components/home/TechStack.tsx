@@ -85,60 +85,60 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col pt-8 sm:pt-10 md:pt-12 lg:pt-12 xl:pt-14 2xl:pt-16 pb-4 sm:pb-5 md:pb-6 lg:pb-6 xl:pb-8 2xl:pb-10 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col">
+      className="min-h-screen flex flex-col pt-8 md:pt-12 lg:pt-16 pb-6 md:pb-8 lg:pb-10 bg-slate-50 scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col">
         <div className="flex flex-col w-full">
           {/* Tech Stack Section */}
           <div className="w-full">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-3xl mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+            <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl mb-6 md:mb-8 text-center font-bold text-blue-900 break-words px-4">
               Our Tech Stack
             </h2>
             {loading ? (
-              <div className="flex-1 flex flex-col justify-center items-center py-12 sm:py-16 md:py-20">
-                <p className="text-black text-sm sm:text-base md:text-lg">
+              <div className="flex-1 flex flex-col justify-center items-center py-12 md:py-20">
+                <p className="text-black text-sm md:text-base lg:text-lg">
                   Loading tech stack...
                 </p>
               </div>
             ) : categories.length === 0 ? (
-              <div className="flex-1 flex flex-col justify-center items-center py-12 sm:py-16 md:py-20">
-                <p className="text-black text-sm sm:text-base md:text-lg">
+              <div className="flex-1 flex flex-col justify-center items-center py-12 md:py-20">
+                <p className="text-black text-sm md:text-base lg:text-lg">
                   No tech stack items available.
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4 xl:gap-4 2xl:gap-4.5 w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 w-full">
                 {categories.map((category) => (
                   <Card
                     key={category.id}
-                    className="group overflow-hidden w-full flex flex-col  transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg sm:rounded-xl">
+                    className="group overflow-hidden w-full flex flex-col transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg md:rounded-xl">
                     {/* Category Title with Gradient */}
                     <CardHeader className="relative p-0">
-                      <div className="relative px-2.5 sm:px-3 md:px-3.5 lg:px-3.5 xl:px-3.5 2xl:px-4 pt-1.5 sm:pt-2 md:pt-2 lg:pt-2.5 xl:pt-2.5 2xl:pt-3 pb-1.5 sm:pb-1.5 md:pb-1.5 lg:pb-2 xl:pb-2 2xl:pb-2.5 bg-linear-to-br from-blue-900 via-blue-800 to-blue-900">
-                        <div className="absolute inset-0 bg-linear-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
-                        <CardTitle className="relative text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl font-bold text-white wrap-break-word text-center ">
+                      <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
+                        <CardTitle className="relative text-sm md:text-base lg:text-lg font-bold text-white break-words text-center">
                           {category.title}
                         </CardTitle>
                       </div>
                     </CardHeader>
                     {/* Capabilities List */}
-                    <CardContent className="flex flex-col p-1 sm:p-1.5 md:p-1.5 lg:p-2 xl:p-2 2xl:p-2 gap-0.5 sm:gap-0.5 md:gap-1 lg:gap-1 xl:gap-1 2xl:gap-1">
+                    <CardContent className="flex flex-col p-1.5 md:p-2 gap-1 md:gap-1.5">
                       {category.capabilities.map((capability, index) => {
                         return (
                           <div
                             key={capability.id}
-                            className={`flex flex-row items-center justify-between gap-1.5 sm:gap-2 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2 transition-colors duration-200 hover:bg-slate-50 rounded-md p-0.5 sm:p-1 md:p-1 lg:p-1 xl:p-1 2xl:p-1 ${
+                            className={`flex flex-row items-center justify-between gap-2 md:gap-3 transition-colors duration-200 hover:bg-slate-50 rounded-md p-1 ${
                               index < category.capabilities.length - 1
-                                ? "border-b border-slate-100 pb-1 sm:pb-1 md:pb-1 lg:pb-1 xl:pb-1 2xl:pb-1"
+                                ? "border-b border-slate-100 pb-1"
                                 : ""
                             }`}>
                             {/* Text Section - Always Left */}
                             <div className="flex-1 flex flex-col justify-center min-w-0">
-                              <h4 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-slate-800 wrap-break-word leading-relaxed group-hover:text-blue-900 transition-colors duration-200">
+                              <h4 className="text-xs md:text-sm lg:text-base font-semibold text-slate-800 break-words leading-relaxed group-hover:text-blue-900 transition-colors duration-200">
                                 {capability.text}
                               </h4>
                             </div>
                             {/* Image Section - Always Right with Badge Style */}
-                            <div className="shrink-0 flex items-center justify-center w-[20px] sm:w-[22px] md:w-[24px] lg:w-[24px] xl:w-[26px] 2xl:w-[28px] h-[20px] sm:h-[22px] md:h-[24px] lg:h-[24px] xl:h-[26px] 2xl:h-[28px] rounded-md bg-slate-50 border border-slate-100 p-1 group-hover:bg-blue-50 group-hover:border-blue-200 transition-all duration-200">
+                            <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md bg-slate-50 border border-slate-100 p-1 group-hover:bg-blue-50 group-hover:border-blue-200 transition-all duration-200">
                               {capability.image ? (
                                 isFullUrl(capability.image) ||
                                 capability.image.startsWith("/") ? (
@@ -148,11 +148,11 @@ export default function TechStack() {
                                       alt={capability.alt || capability.text}
                                       fill
                                       className="object-contain transition-transform duration-200 group-hover:scale-110"
-                                      sizes="(max-width: 640px) 20px, (max-width: 768px) 22px, (max-width: 1024px) 24px, (max-width: 1280px) 24px, (max-width: 1536px) 26px, 28px"
+                                      sizes="(max-width: 640px) 24px, (max-width: 768px) 28px, 32px"
                                     />
                                   </div>
                                 ) : (
-                                  <div className="text-[10px] sm:text-xs md:text-xs lg:text-sm xl:text-sm 2xl:text-sm font-semibold text-blue-900">
+                                  <div className="text-xs md:text-sm font-semibold text-blue-900">
                                     {capability.image}
                                   </div>
                                 )

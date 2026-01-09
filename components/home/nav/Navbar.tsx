@@ -223,18 +223,18 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 w-full">
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full bg-white">
-        <div className="flex justify-between items-center h-[44px] min-[375px]:h-[48px] sm:h-[52px] md:h-[54px] lg:h-[56px] xl:h-[60px] 2xl:h-[64px] w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full bg-white">
+        <div className="flex justify-between items-center h-12 sm:h-14 md:h-16 lg:h-16 w-full">
           {/* Logo */}
           <Link
             href="/"
             onClick={handleScrollToTop}
-            className="text-sm min-[375px]:text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer shrink-0">
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer shrink-0">
             Codagam
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-3 xl:gap-4 2xl:gap-5 items-center shrink-0">
+          <nav className="hidden lg:flex gap-4 items-center shrink-0">
             <NavLinks variant="desktop" isActive={isActive} />
           </nav>
 
@@ -253,7 +253,7 @@ export default function Navbar() {
                 });
               }
             }}
-            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs lg:text-sm xl:text-sm 2xl:text-sm px-3 lg:px-4 xl:px-4 2xl:px-5 py-1.5 lg:py-2 xl:py-2 shrink-0 whitespace-nowrap">
+            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-sm px-4 py-2 shrink-0 whitespace-nowrap">
             Contact
           </Button>
 
@@ -271,13 +271,13 @@ export default function Navbar() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[280px] min-[375px]:w-[320px] sm:w-[350px] md:w-[400px] bg-white">
+                className="w-[280px] sm:w-[350px] md:w-[400px] bg-white">
                 <SheetHeader>
                   <SheetTitle className="flex items-center space-x-3 text-left">
                     <Link
                       href="/"
                       onClick={handleScrollToTop}
-                      className="text-lg min-[375px]:text-xl sm:text-2xl md:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
+                      className="text-xl sm:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
                       Codagam
                     </Link>
                   </SheetTitle>

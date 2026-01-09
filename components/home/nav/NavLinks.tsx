@@ -69,7 +69,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => handleLinkClick(e, item.id)}
-              className={`relative text-base sm:text-lg md:text-lg font-medium transition-all duration-300 py-3 px-4 rounded-lg flex items-center mobile-menu-link ${
+              className={`relative text-base md:text-lg font-medium transition-all duration-300 py-3 px-4 rounded-lg flex items-center mobile-menu-link ${
                 shouldAnimate ? "animate-slide-in-right" : ""
               } ${
                 active
@@ -99,7 +99,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
             key={item.id}
             href={`#${item.id}`}
             onClick={(e) => handleLinkClick(e, item.id)}
-            className={`relative text-sm lg:text-sm xl:text-base 2xl:text-base font-medium transition-all duration-300 whitespace-nowrap group ${
+            className={`relative text-sm lg:text-base font-medium transition-all duration-300 whitespace-nowrap group ${
               active
                 ? "text-blue-900 font-semibold"
                 : "text-slate-700 hover:text-blue-900"

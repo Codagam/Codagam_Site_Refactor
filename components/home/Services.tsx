@@ -46,12 +46,12 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col pt-8 sm:pt-10 md:pt-12 lg:pt-12 xl:pt-14 2xl:pt-16 pb-4 sm:pb-6 md:pb-8 lg:pb-8 xl:pb-10 2xl:pb-12 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full relative isolate">
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+      className="min-h-screen flex flex-col pt-8 md:pt-12 lg:pt-16 pb-6 md:pb-8 lg:pb-12 bg-slate-50 scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full relative isolate">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl mb-6 md:mb-8 text-center font-bold text-blue-900 break-words px-4">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-5 xl:gap-6 2xl:gap-6 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
           {servicesGalleryItems.map((service) => {
             const hoverColor = service.hoverColor || "30 58 138";
             const IconComponent = iconMap[service.id] || Target;
@@ -60,7 +60,7 @@ export default function Services() {
             return (
               <Card
                 key={service.id}
-                className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300  cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word rounded-xl"
+                className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300 cursor-pointer h-full flex flex-col w-full max-w-full break-words rounded-xl"
                 onClick={() => handleButtonClick(service.id)}
                 style={{
                   "--service-hover-color": rgbValues,
@@ -75,38 +75,38 @@ export default function Services() {
 
                 {/* Icon with colored background - positioned at top-right */}
                 <div 
-                  className="service-icon-bg absolute top-0 right-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center rounded-tr-xl rounded-bl-xl z-30"
+                  className="service-icon-bg absolute top-0 right-0 w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center rounded-tr-xl rounded-bl-xl z-30"
                   style={{
                     backgroundColor: `rgb(${rgbValues})`,
                   }}>
-                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-8 xl:h-8 text-white" />
+                  <IconComponent className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
                 </div>
 
                 {/* Content */}
-                <CardContent className="relative z-10 p-2.5 sm:p-3 md:p-3.5 lg:p-4 xl:p-4 2xl:p-5 flex flex-col grow">
+                <CardContent className="relative z-10 p-3 md:p-4 lg:p-5 flex flex-col grow">
                   {/* Title */}
-                  <CardHeader className="p-0 mb-1.5 sm:mb-2 pr-10 sm:pr-12 md:pr-14 lg:pr-16">
-                    <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word leading-tight">
+                  <CardHeader className="p-0 mb-2 pr-12 md:pr-16">
+                    <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 break-words leading-tight">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-sm md:text-base lg:text-base xl:text-base text-slate-700 group-hover:text-white/95 leading-relaxed mb-1.5 sm:mb-2 md:mb-2.5 lg:mb-2.5 line-clamp-4 transition-colors duration-300 wrap-break-word font-medium">
+                  <p className="text-sm md:text-base text-slate-700 group-hover:text-white/95 leading-relaxed mb-2 md:mb-2.5 line-clamp-4 transition-colors duration-300 break-words font-medium">
                     {service.description}
                   </p>
 
                   {/* Offerings/Bullet Points */}
                   {service.offerings && service.offerings.length > 0 && (
-                    <ul className="space-y-1 sm:space-y-1 md:space-y-1.5 flex-1 mb-2 sm:mb-2.5">
+                    <ul className="space-y-1.5 md:space-y-2 flex-1 mb-2 md:mb-2.5">
                       {service.offerings.map((offering, index) => (
                         <li
                           key={index}
-                          className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm text-slate-700 group-hover:text-white/95 leading-relaxed flex items-start transition-colors duration-300">
-                          <span className="text-slate-900 group-hover:text-white mr-2 mt-1 shrink-0 text-[10px] sm:text-xs font-bold transition-colors duration-300">
+                          className="text-xs md:text-sm text-slate-700 group-hover:text-white/95 leading-relaxed flex items-start transition-colors duration-300">
+                          <span className="text-slate-900 group-hover:text-white mr-2 mt-1 shrink-0 text-xs font-bold transition-colors duration-300">
                             •
                           </span>
-                          <span className="flex-1 wrap-break-word">
+                          <span className="flex-1 break-words">
                             {offering}
                           </span>
                         </li>
@@ -116,7 +116,7 @@ export default function Services() {
 
                   {/* CTA */}
                   <Button
-                    className="flex items-center gap-2 text-xs sm:text-sm md:text-sm font-semibold text-white px-3 sm:px-4 py-1.5 sm:py-2 h-auto rounded-lg transition-all duration-300 mt-auto w-fit  hover:scale-105 hover:opacity-90"
+                    className="flex items-center gap-2 text-sm md:text-base font-semibold text-white px-4 py-2 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:scale-105 hover:opacity-90"
                     style={{
                       backgroundColor: `rgb(${rgbValues})`,
                       '--btn-color': `rgb(${rgbValues})`,
@@ -128,7 +128,7 @@ export default function Services() {
                     size="sm">
                     <span className="font-semibold">Learn more</span>
                     <ArrowRight 
-                      className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-2 text-white" 
+                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2 text-white" 
                     />
                   </Button>
                 </CardContent>
@@ -141,12 +141,12 @@ export default function Services() {
       {/* Service Details Dialog */}
       {selectedServiceData && (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl max-h-[90vh] overflow-y-auto w-full">
-            <DialogHeader className="space-y-1.5 sm:space-y-2 border-b border-slate-200 pb-2 sm:pb-3">
-              <div className="flex items-start gap-2 pr-10 sm:pr-12">
+          <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 md:p-5 rounded-xl md:rounded-2xl max-h-[90vh] overflow-y-auto w-full">
+            <DialogHeader className="space-y-2 border-b border-slate-200 pb-3">
+              <div className="flex items-start gap-2 pr-12">
                 <div className="flex items-center gap-2 flex-1 min-w-0">
                   <DialogTitle
-                    className="text-base sm:text-lg md:text-xl font-bold leading-tight wrap-break-word"
+                    className="text-lg md:text-xl font-bold leading-tight break-words"
                     style={{
                       color: `rgb(${
                         selectedServiceData.hoverColor?.split(" ").join(", ") ||
@@ -159,7 +159,7 @@ export default function Services() {
                     const DialogIcon = iconMap[selectedServiceData.id] || Target;
                     return (
                       <DialogIcon
-                        className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 shrink-0 ml-1 sm:ml-2"
+                        className="w-6 h-6 md:w-7 md:h-7 shrink-0 ml-2"
                         style={{
                           color: `rgb(${
                             selectedServiceData.hoverColor?.split(" ").join(", ") ||
@@ -171,18 +171,18 @@ export default function Services() {
                   })()}
                 </div>
               </div>
-              <DialogDescription className="text-xs sm:text-sm wrap-break-word text-slate-700 leading-relaxed">
+              <DialogDescription className="text-sm break-words text-slate-700 leading-relaxed">
                 Comprehensive {selectedServiceData.title.toLowerCase()}{" "}
                 solutions tailored to your business needs
               </DialogDescription>
             </DialogHeader>
-            <div className="space-y-3 sm:space-y-4 mt-3 sm:mt-4 w-full max-w-full">
+            <div className="space-y-4 mt-4 w-full max-w-full">
               {/* Main Description */}
-              <div className="bg-slate-50 rounded-lg p-2.5 sm:p-3">
-                <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-1.5 sm:mb-2">
+              <div className="bg-slate-50 rounded-lg p-3">
+                <h3 className="text-sm font-bold text-slate-900 mb-2">
                   Overview
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed wrap-break-word font-medium">
+                <p className="text-sm text-slate-700 leading-relaxed break-words font-medium">
                   {selectedServiceData.description}
                 </p>
               </div>
@@ -191,14 +191,14 @@ export default function Services() {
               {selectedServiceData.offerings &&
                 selectedServiceData.offerings.length > 0 && (
                   <div>
-                    <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-2 sm:mb-2.5">
+                    <h3 className="text-sm font-bold text-slate-900 mb-2.5">
                       Key Offerings
                     </h3>
-                    <ul className="space-y-1.5 sm:space-y-2">
+                    <ul className="space-y-2">
                       {selectedServiceData.offerings.map((offering, index) => (
                         <li
                           key={index}
-                          className="flex items-start text-xs sm:text-sm text-slate-700 leading-relaxed">
+                          className="flex items-start text-sm text-slate-700 leading-relaxed">
                           <span
                             className="mr-2 mt-1 shrink-0 text-sm font-bold"
                             style={{
@@ -210,7 +210,7 @@ export default function Services() {
                             }}>
                             •
                           </span>
-                          <span className="flex-1 wrap-break-word font-medium">
+                          <span className="flex-1 break-words font-medium">
                             {offering}
                           </span>
                         </li>
@@ -220,46 +220,46 @@ export default function Services() {
                 )}
 
               {/* Additional Details Section */}
-              <div className="bg-linear-to-br from-slate-50 to-slate-100 rounded-lg p-2.5 sm:p-3 border border-slate-200">
-                <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-1.5 sm:mb-2">
+              <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-3 border border-slate-200">
+                <h3 className="text-sm font-bold text-slate-900 mb-2">
                   Why Choose Us?
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed wrap-break-word mb-2 sm:mb-2.5 font-medium">
+                <p className="text-sm text-slate-700 leading-relaxed break-words mb-2.5 font-medium">
                   Our team brings years of experience and expertise in
                   delivering high-quality solutions that drive business growth.
                   We combine cutting-edge technology with proven methodologies
                   to ensure your project's success.
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   <div className="flex items-start">
-                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
+                    <span className="text-green-600 mr-1 mt-0.5 text-sm">
                       ✓
                     </span>
-                    <span className="text-xs sm:text-sm text-slate-700 font-medium">
+                    <span className="text-sm text-slate-700 font-medium">
                       Proven track record
                     </span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
+                    <span className="text-green-600 mr-1 mt-0.5 text-sm">
                       ✓
                     </span>
-                    <span className="text-xs sm:text-sm text-slate-700 font-medium">
+                    <span className="text-sm text-slate-700 font-medium">
                       Scalable solutions
                     </span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
+                    <span className="text-green-600 mr-1 mt-0.5 text-sm">
                       ✓
                     </span>
-                    <span className="text-xs sm:text-sm text-slate-700 font-medium">
+                    <span className="text-sm text-slate-700 font-medium">
                       Expert team
                     </span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-green-600 mr-1 mt-0.5 text-xs sm:text-sm">
+                    <span className="text-green-600 mr-1 mt-0.5 text-sm">
                       ✓
                     </span>
-                    <span className="text-xs sm:text-sm text-slate-700 font-medium">
+                    <span className="text-sm text-slate-700 font-medium">
                       24/7 support
                     </span>
                   </div>
@@ -267,8 +267,8 @@ export default function Services() {
               </div>
 
               {/* Contact CTA */}
-              <div className="pt-2 sm:pt-3 border-t border-slate-200">
-                <p className="text-xs sm:text-sm text-slate-700 wrap-break-word text-center leading-relaxed font-medium">
+              <div className="pt-3 border-t border-slate-200">
+                <p className="text-sm text-slate-700 break-words text-center leading-relaxed font-medium">
                   Ready to get started? Contact us using the contact form in the
                   footer to discuss your project requirements and receive a
                   customized quote.
