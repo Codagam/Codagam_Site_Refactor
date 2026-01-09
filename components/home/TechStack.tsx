@@ -85,12 +85,12 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-6 sm:py-7 md:py-8 lg:py-8 xl:py-10 2xl:py-12 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
+      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-4 sm:py-5 md:py-6 lg:py-6 xl:py-8 2xl:py-10 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
         <div className="flex flex-col w-full">
           {/* Tech Stack Section */}
-          <div className="w-full mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-7 2xl:mb-8">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-3xl mb-3 sm:mb-3.5 md:mb-4 lg:mb-4 xl:mb-4.5 2xl:mb-5 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+          <div className="w-full mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-3xl mb-2 sm:mb-3 md:mb-3 lg:mb-3 xl:mb-4 2xl:mb-4 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
               Our Tech Stack
             </h2>
             {loading ? (
@@ -106,14 +106,14 @@ export default function TechStack() {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-3 sm:gap-3 md:gap-4 lg:gap-4 xl:gap-4 2xl:gap-5 w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4 xl:gap-4 2xl:gap-4.5 w-full">
                 {categories.map((category) => (
                   <Card
                     key={category.id}
                     className="group overflow-hidden w-full flex flex-col  transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg sm:rounded-xl">
                     {/* Category Title with Gradient */}
                     <CardHeader className="relative p-0">
-                      <div className="relative px-3 sm:px-3.5 md:px-4 lg:px-4 xl:px-4 2xl:px-5 pt-2 sm:pt-2.5 md:pt-2.5 lg:pt-3 xl:pt-3 2xl:pt-3.5 pb-2 sm:pb-2 md:pb-2 lg:pb-2.5 xl:pb-2.5 2xl:pb-3 bg-linear-to-br from-blue-900 via-blue-800 to-blue-900">
+                      <div className="relative px-2.5 sm:px-3 md:px-3.5 lg:px-3.5 xl:px-3.5 2xl:px-4 pt-1.5 sm:pt-2 md:pt-2 lg:pt-2.5 xl:pt-2.5 2xl:pt-3 pb-1.5 sm:pb-1.5 md:pb-1.5 lg:pb-2 xl:pb-2 2xl:pb-2.5 bg-linear-to-br from-blue-900 via-blue-800 to-blue-900">
                         <div className="absolute inset-0 bg-linear-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
                         <CardTitle className="relative text-sm sm:text-base md:text-base lg:text-lg xl:text-lg 2xl:text-xl font-bold text-white wrap-break-word text-center ">
                           {category.title}
@@ -121,7 +121,7 @@ export default function TechStack() {
                       </div>
                     </CardHeader>
                     {/* Capabilities List */}
-                    <CardContent className="flex flex-col p-1.5 sm:p-2 md:p-2 lg:p-2.5 xl:p-2.5 2xl:p-2.5 gap-1 sm:gap-1 md:gap-1.5 lg:gap-1.5 xl:gap-1.5 2xl:gap-1.5">
+                    <CardContent className="flex flex-col p-1 sm:p-1.5 md:p-1.5 lg:p-2 xl:p-2 2xl:p-2 gap-0.5 sm:gap-0.5 md:gap-1 lg:gap-1 xl:gap-1 2xl:gap-1">
                       {category.capabilities.map((capability, index) => {
                         return (
                           <div

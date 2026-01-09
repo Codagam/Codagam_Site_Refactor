@@ -77,20 +77,20 @@ export default function About() {
     <div className="relative w-full bg-white z-20 -mt-[2px]">
       <section
         id="about"
-        className="min-h-screen flex flex-col justify-center py-6 sm:py-7 md:py-8 lg:py-8 xl:py-9 2xl:py-10 bg-white scroll-mt-[45px] min-[375px]:scroll-mt-[49px] sm:scroll-mt-[53px] md:scroll-mt-[55px] lg:scroll-mt-[57px] xl:scroll-mt-[61px] 2xl:scroll-mt-[65px] w-full relative">
+        className="min-h-screen flex flex-col justify-center py-4 sm:py-5 md:py-6 lg:py-6 xl:py-7 2xl:py-8 bg-white scroll-mt-[45px] min-[375px]:scroll-mt-[49px] sm:scroll-mt-[53px] md:scroll-mt-[55px] lg:scroll-mt-[57px] xl:scroll-mt-[61px] 2xl:scroll-mt-[65px] w-full relative">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
         {/* Top Section - Capabilities */}
-        <div className="w-full mb-8 sm:mb-9 md:mb-10 lg:mb-10 xl:mb-11 2xl:mb-12">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-7 2xl:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6 leading-tight">
+        <div className="w-full mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-6">
+          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-2 sm:mb-3 md:mb-3 lg:mb-4 xl:mb-4 2xl:mb-5 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6 leading-tight">
             We build mission-critical software that bridges the gap between
             enterprise reliability and startup innovation.
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5 md:gap-4 lg:gap-4 xl:gap-4.5 2xl:gap-5 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4 xl:gap-4 2xl:gap-4.5 w-full">
             {capabilities.map((capability) => (
               <div
                 key={capability.id}
-                className={`${capability.bgColor} ${capability.borderColor} ${capability.textColor} ${capability.hoverBgColor} rounded-lg sm:rounded-xl border-2 p-3 sm:p-3.5 md:p-4 lg:p-4 xl:p-4.5 2xl:p-5 flex flex-col transition-all duration-300  hover:scale-105`}>
-                <h3 className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold mb-1.5 sm:mb-2 md:mb-2 lg:mb-2.5 xl:mb-3 2xl:mb-3 wrap-break-word text-white">
+                className={`${capability.bgColor} ${capability.borderColor} ${capability.textColor} ${capability.hoverBgColor} rounded-lg sm:rounded-xl border-2 p-2.5 sm:p-3 md:p-3.5 lg:p-3.5 xl:p-4 2xl:p-4 flex flex-col transition-all duration-300  hover:scale-105`}>
+                <h3 className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold mb-1 sm:mb-1.5 md:mb-1.5 lg:mb-2 xl:mb-2 2xl:mb-2.5 wrap-break-word text-white">
                   {capability.title}
                 </h3>
                 <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base leading-relaxed wrap-break-word text-white/90">
@@ -103,16 +103,16 @@ export default function About() {
 
         {/* Bottom Section - Who We Are & Why We're Different */}
         <div className="w-full">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-6 sm:mb-7 md:mb-8 lg:mb-8 xl:mb-9 2xl:mb-10 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6 leading-tight">
+          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-6 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6 leading-tight">
             Built by Engineers. Trusted by Enterprises.
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-7 lg:gap-8 xl:gap-9 2xl:gap-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-5 xl:gap-6 2xl:gap-7 w-full">
             {/* Who We Are */}
             <div className="w-full">
-              <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl mb-3 sm:mb-3.5 md:mb-4 lg:mb-4 xl:mb-4.5 2xl:mb-5 font-bold text-blue-900 wrap-break-word">
+              <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 xl:mb-3.5 2xl:mb-4 font-bold text-blue-900 wrap-break-word">
                 Who We Are
               </h3>
-              <div className="space-y-3 sm:space-y-3.5 md:space-y-4 lg:space-y-4 xl:space-y-4.5 2xl:space-y-5">
+              <div className="space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-3 xl:space-y-3.5 2xl:space-y-4">
                 <p className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-base text-slate-700 leading-relaxed wrap-break-word">
                   Codagam Software Labs is a boutique software consulting firm
                   headquartered in Gobichettipalayam, Tamil Nadu, specializing
@@ -133,10 +133,10 @@ export default function About() {
 
             {/* Why We're Different */}
             <div className="w-full">
-              <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 xl:mb-3.5 2xl:mb-4 font-bold text-blue-900 wrap-break-word">
+              <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl mb-1.5 sm:mb-2 md:mb-2.5 lg:mb-2.5 xl:mb-3 2xl:mb-3 font-bold text-blue-900 wrap-break-word">
                 Why We&apos;re Different
               </h3>
-              <div className="space-y-1.5 sm:space-y-1.5 md:space-y-2 lg:space-y-2 xl:space-y-2 2xl:space-y-2.5">
+              <div className="space-y-1 sm:space-y-1 md:space-y-1.5 lg:space-y-1.5 xl:space-y-1.5 2xl:space-y-2">
                 {whyDifferent.map((item) => (
                   <div
                     key={item.id}

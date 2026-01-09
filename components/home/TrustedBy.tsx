@@ -1,12 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface CaseStudy {
   id: string;
@@ -58,27 +53,27 @@ export default function TrustedBy() {
   return (
     <section
       id="case-studies"
-      className="py-6 sm:py-7 md:py-8 lg:py-8 xl:py-9 2xl:py-10 bg-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
+      className="py-4 sm:py-5 md:py-6 lg:py-6 xl:py-7 2xl:py-8 bg-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full">
         <div className="w-full">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
             Trusted by Innovative Companies
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 md:gap-4 lg:gap-4 xl:gap-4.5 2xl:gap-5 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4 xl:gap-4 2xl:gap-4.5 w-full">
             {caseStudies.map((caseStudy) => (
               <Card
                 key={caseStudy.id}
                 className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg sm:rounded-xl border-2 transition-all duration-300  hover:scale-105">
-                <CardHeader className="p-2 sm:p-2.5 md:p-3 lg:p-3 xl:p-3.5 2xl:p-4 pb-0.5 sm:pb-0.5 md:pb-1 lg:pb-1 xl:pb-1 2xl:pb-1">
+                <CardHeader className="p-1.5 sm:p-2 md:p-2.5 lg:p-2.5 xl:p-3 2xl:p-3.5 pb-0.5 sm:pb-0.5 md:pb-0.5 lg:pb-0.5 xl:pb-0.5 2xl:pb-0.5">
                   <CardTitle className="text-sm sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-lg font-bold text-white wrap-break-word">
                     {caseStudy.title}
                   </CardTitle>
                 </CardHeader>
 
-                <CardContent className="p-2 sm:p-2.5 md:p-3 lg:p-3 xl:p-3.5 2xl:p-4 pt-0">
-                  <div className="mb-2 sm:mb-2 md:mb-2.5 lg:mb-2.5 xl:mb-2.5 2xl:mb-3 -mt-0.5 sm:-mt-0.5 md:-mt-1 lg:-mt-1 xl:-mt-1 2xl:-mt-1">
-                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-0.5 sm:mb-0.5 md:mb-1 lg:mb-1 xl:mb-1 2xl:mb-1.5">
+                <CardContent className="p-1.5 sm:p-2 md:p-2.5 lg:p-2.5 xl:p-3 2xl:p-3.5 pt-0 flex flex-col gap-3 sm:gap-3 md:gap-3.5 lg:gap-4 xl:gap-4 2xl:gap-5">
+                  <div className="flex flex-col gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2.5 2xl:gap-3">
+                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white">
                       Challenge:
                     </p>
                     <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base text-white/90 leading-relaxed wrap-break-word">
@@ -86,11 +81,11 @@ export default function TrustedBy() {
                     </p>
                   </div>
 
-                  <div>
-                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white mb-0.5 sm:mb-0.5 md:mb-1 lg:mb-1 xl:mb-1 2xl:mb-1.5">
+                  <div className="flex flex-col gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2.5 2xl:gap-3">
+                    <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-semibold text-white">
                       Results:
                     </p>
-                    <ul className="space-y-0.5 sm:space-y-0.5 md:space-y-1 lg:space-y-1 xl:space-y-1 2xl:space-y-1.5">
+                    <ul className="flex flex-col gap-1 sm:gap-1 md:gap-1 lg:gap-1.5 xl:gap-1.5 2xl:gap-2">
                       {caseStudy.results.map((result, index) => (
                         <li
                           key={index}

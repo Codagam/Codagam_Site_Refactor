@@ -46,12 +46,12 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-8 sm:py-10 md:py-12 lg:py-12 xl:py-14 2xl:py-16 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full relative isolate">
+      className="min-h-[calc(100vh-48px)] min-[375px]:min-h-[calc(100vh-52px)] sm:min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-64px)] xl:min-h-[calc(100vh-68px)] 2xl:min-h-[calc(100vh-72px)] flex flex-col justify-center py-4 sm:py-6 md:py-8 lg:py-8 xl:py-10 2xl:py-12 bg-slate-50 scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full relative isolate">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col justify-center">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-4 sm:mb-5 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-7 2xl:gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-5 xl:gap-6 2xl:gap-6 w-full">
           {servicesGalleryItems.map((service) => {
             const hoverColor = service.hoverColor || "30 58 138";
             const IconComponent = iconMap[service.id] || Target;
@@ -83,22 +83,22 @@ export default function Services() {
                 </div>
 
                 {/* Content */}
-                <CardContent className="relative z-10 p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 2xl:p-6 flex flex-col grow">
+                <CardContent className="relative z-10 p-2.5 sm:p-3 md:p-3.5 lg:p-4 xl:p-4 2xl:p-5 flex flex-col grow">
                   {/* Title */}
-                  <CardHeader className="p-0 mb-2 sm:mb-2.5 pr-10 sm:pr-12 md:pr-14 lg:pr-16">
+                  <CardHeader className="p-0 mb-1.5 sm:mb-2 pr-10 sm:pr-12 md:pr-14 lg:pr-16">
                     <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word leading-tight">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-sm md:text-base lg:text-base xl:text-base text-slate-700 group-hover:text-white/95 leading-relaxed mb-2 sm:mb-2.5 md:mb-3 lg:mb-3 line-clamp-4 transition-colors duration-300 wrap-break-word font-medium">
+                  <p className="text-sm sm:text-sm md:text-base lg:text-base xl:text-base text-slate-700 group-hover:text-white/95 leading-relaxed mb-1.5 sm:mb-2 md:mb-2.5 lg:mb-2.5 line-clamp-4 transition-colors duration-300 wrap-break-word font-medium">
                     {service.description}
                   </p>
 
                   {/* Offerings/Bullet Points */}
                   {service.offerings && service.offerings.length > 0 && (
-                    <ul className="space-y-1.5 sm:space-y-1.5 md:space-y-2 flex-1 mb-3 sm:mb-3.5">
+                    <ul className="space-y-1 sm:space-y-1 md:space-y-1.5 flex-1 mb-2 sm:mb-2.5">
                       {service.offerings.map((offering, index) => (
                         <li
                           key={index}

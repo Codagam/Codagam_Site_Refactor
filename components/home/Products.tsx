@@ -130,9 +130,9 @@ export default function Products() {
     <>
       <section
         id="products"
-        className="flex flex-col py-6 sm:py-6 md:py-8 lg:py-10 xl:py-12 2xl:py-14 bg-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full relative isolate">
+        className="flex flex-col py-4 sm:py-5 md:py-6 lg:py-7 xl:py-8 2xl:py-10 bg-white scroll-mt-[56px] min-[375px]:scroll-mt-[60px] sm:scroll-mt-[64px] md:scroll-mt-[68px] lg:scroll-mt-[72px] xl:scroll-mt-[76px] 2xl:scroll-mt-[80px] w-full relative isolate">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full h-full flex flex-col">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-4 sm:mb-4 md:mb-6 lg:mb-6 xl:mb-8 2xl:mb-8 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-6 2xl:mb-6 text-center font-bold text-blue-900 wrap-break-word px-2 sm:px-4 md:px-6">
             Our Products
           </h2>
           {loading ? (
@@ -156,14 +156,14 @@ export default function Products() {
                 }}
                 plugins={[autoplayPlugin]}
                 className="w-full">
-                <CarouselContent className="ml-0 w-full py-4 sm:py-5 md:py-6 lg:py-8">
+                <CarouselContent className="ml-0 w-full py-3 sm:py-4 md:py-4 lg:py-5">
                   {products.map((product) => {
                     const backgroundImage =
                       product.backgroundImage || "/images/office1.jpg";
                     return (
                       <CarouselItem
                         key={product.id}
-                        className="pl-2 sm:pl-3 md:pl-4 lg:pl-5 xl:pl-6 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/3">
+                        className="pl-2 sm:pl-2.5 md:pl-3 lg:pl-4 xl:pl-4 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/3">
                         <Card
                           className="group h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] xl:h-[400px] 2xl:h-[420px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1  cursor-pointer flex flex-col border-0"
                           onClick={() => handleCardClick(product)}>
@@ -198,8 +198,8 @@ export default function Products() {
                             </div>
                           </div>
                           {/* Text Card Content */}
-                          <CardHeader className="p-4 sm:p-5 md:p-5 lg:p-6 xl:p-6 flex-1 flex flex-col min-h-0">
-                            <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-3 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-4 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight wrap-break-word">
+                          <CardHeader className="p-3 sm:p-4 md:p-4 lg:p-5 xl:p-5 flex-1 flex flex-col min-h-0">
+                            <CardTitle className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl font-bold mb-2 sm:mb-2 md:mb-3 lg:mb-3 xl:mb-3 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight wrap-break-word">
                               {product.headline}
                             </CardTitle>
                             <p className="text-sm sm:text-sm md:text-base lg:text-sm xl:text-base leading-relaxed line-clamp-4 text-slate-600 wrap-break-word">
