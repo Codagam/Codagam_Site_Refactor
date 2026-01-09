@@ -11,6 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import NavLinks from "./NavLinks";
 
 // Constants
 const NAV_ITEMS = [
@@ -32,72 +33,7 @@ const getHeaderHeight = (): number => {
   return 44;
 };
 
-// Desktop Nav Link Component
-const DesktopNavLink = ({
-  id,
-  label,
-  isActive,
-  onClick,
-}: {
-  id: string;
-  label: string;
-  isActive: boolean;
-  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-}) => (
-  <a
-    href={`#${id}`}
-    onClick={onClick}
-    className={`relative text-sm lg:text-sm xl:text-base 2xl:text-base font-medium transition-all duration-300 whitespace-nowrap group ${
-      isActive
-        ? "text-blue-900 font-semibold"
-        : "text-slate-700 hover:text-blue-900"
-    }`}>
-    {label}
-    <span
-      className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-900 transition-all duration-300 ${
-        isActive
-          ? "opacity-100 scale-x-100"
-          : "opacity-0 scale-x-0 group-hover:opacity-50 group-hover:scale-x-100"
-      }`}
-    />
-  </a>
-);
-
-// Mobile Nav Link Component
-const MobileNavLink = ({
-  id,
-  label,
-  isActive,
-  onClick,
-  animationDelay,
-  shouldAnimate,
-}: {
-  id: string;
-  label: string;
-  isActive: boolean;
-  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-  animationDelay: string;
-  shouldAnimate: boolean;
-}) => (
-  <a
-    href={`#${id}`}
-    onClick={onClick}
-    className={`relative text-base sm:text-lg md:text-lg font-medium transition-all duration-300 py-3 px-4 rounded-lg flex items-center mobile-menu-link ${
-      shouldAnimate ? "animate-slide-in-right" : ""
-    } ${
-      isActive
-        ? "text-blue-900 font-semibold bg-blue-50  scale-[1.02]"
-        : "text-slate-700 hover:text-blue-900 hover:bg-slate-50"
-    }`}
-    style={{ animationDelay: shouldAnimate ? animationDelay : "0s" }}>
-    {isActive && (
-      <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-900 rounded-r-full" />
-    )}
-    {label}
-  </a>
-);
-
-export default function Header() {
+export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
@@ -251,32 +187,6 @@ export default function Header() {
     };
   }, [mounted]);
 
-  // Scroll to section handler
-  const scrollToSection = useCallback((id: string) => {
-    const element = document.getElementById(id);
-    if (!element) return;
-
-    const headerHeight = getHeaderHeight();
-    const elementPosition =
-      element.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - headerHeight - 8;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-    setIsOpen(false);
-  }, []);
-
-  // Link click handler
-  const handleLinkClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-      e.preventDefault();
-      scrollToSection(id);
-    },
-    [scrollToSection]
-  );
-
   // Scroll to top handler
   const handleScrollToTop = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -284,39 +194,35 @@ export default function Header() {
     setIsOpen(false);
   }, []);
 
-  // Memoized navigation items
-  const desktopNavItems = useMemo(
-    () =>
-      NAV_ITEMS.map((item) => (
-        <DesktopNavLink
-          key={item.id}
-          id={item.id}
-          label={item.label}
-          isActive={activeSection === item.id}
-          onClick={(e) => handleLinkClick(e, item.id)}
-        />
-      )),
-    [activeSection, handleLinkClick]
-  );
+  // Handler to close mobile menu when navigating
+  const handleMobileNavigate = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
-  const mobileNavItems = useMemo(
-    () =>
-      NAV_ITEMS.map((item, index) => (
-        <MobileNavLink
-          key={item.id}
-          id={item.id}
-          label={item.label}
-          isActive={activeSection === item.id}
-          onClick={(e) => handleLinkClick(e, item.id)}
-          animationDelay={`${(index + 1) * 0.1}s`}
-          shouldAnimate={shouldAnimate}
-        />
-      )),
-    [activeSection, handleLinkClick, shouldAnimate]
+  // Handler to scroll to contact section
+  const handleContactClick = useCallback(() => {
+    const element = document.getElementById("contact");
+    if (element) {
+      const headerHeight = getHeaderHeight();
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight - 8;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+    setIsOpen(false);
+  }, []);
+
+  // Check if section is active
+  const isActive = useCallback(
+    (id: string) => activeSection === id,
+    [activeSection]
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50  w-full">
+    <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 w-full">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-8 2xl:px-10 w-full bg-white">
         <div className="flex justify-between items-center h-[44px] min-[375px]:h-[48px] sm:h-[52px] md:h-[54px] lg:h-[56px] xl:h-[60px] 2xl:h-[64px] w-full">
           {/* Logo */}
@@ -329,12 +235,24 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex gap-3 xl:gap-4 2xl:gap-5 items-center shrink-0">
-            {desktopNavItems}
+            <NavLinks variant="desktop" isActive={isActive} />
           </nav>
 
           {/* Get Started Button */}
           <Button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => {
+              const element = document.getElementById("contact");
+              if (element) {
+                const headerHeight = getHeaderHeight();
+                const elementPosition =
+                  element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 8;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth",
+                });
+              }
+            }}
             className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-xs lg:text-sm xl:text-sm 2xl:text-sm px-3 lg:px-4 xl:px-4 2xl:px-5 py-1.5 lg:py-2 xl:py-2 shrink-0 whitespace-nowrap">
             Contact
           </Button>
@@ -365,7 +283,24 @@ export default function Header() {
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col space-y-2 mt-8">
-                  {mobileNavItems}
+                  <NavLinks
+                    variant="mobile"
+                    isActive={isActive}
+                    onNavigate={handleMobileNavigate}
+                    shouldAnimate={shouldAnimate}
+                  />
+                  <Button
+                    onClick={handleContactClick}
+                    className={`mt-4 w-full bg-blue-900 hover:bg-blue-800 text-white text-base font-medium py-3 px-4 rounded-lg mobile-menu-link ${
+                      shouldAnimate ? "animate-slide-in-right" : ""
+                    }`}
+                    style={{
+                      animationDelay: shouldAnimate
+                        ? `${(NAV_ITEMS.length + 1) * 0.1}s`
+                        : "0s",
+                    }}>
+                    Contact
+                  </Button>
                 </nav>
               </SheetContent>
             </Sheet>
