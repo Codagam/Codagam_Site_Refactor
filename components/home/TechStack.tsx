@@ -3,12 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { isFullUrl } from "@/lib/utils/image-url";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Capability {
   id: string;
@@ -85,95 +80,90 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="min-h-screen flex flex-col pt-8 md:pt-12 lg:pt-16 pb-6 md:pb-8 lg:pb-10 bg-slate-50 scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col">
-        <div className="flex flex-col w-full">
-          {/* Tech Stack Section */}
-          <div className="w-full">
-            <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl mb-6 md:mb-8 text-center font-bold text-blue-900 break-words px-4">
-              Our Tech Stack
-            </h2>
-            {loading ? (
-              <div className="flex-1 flex flex-col justify-center items-center py-12 md:py-20">
-                <p className="text-black text-sm md:text-base lg:text-lg">
-                  Loading tech stack...
-                </p>
-              </div>
-            ) : categories.length === 0 ? (
-              <div className="flex-1 flex flex-col justify-center items-center py-12 md:py-20">
-                <p className="text-black text-sm md:text-base lg:text-lg">
-                  No tech stack items available.
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 w-full">
-                {categories.map((category) => (
-                  <Card
-                    key={category.id}
-                    className="group overflow-hidden w-full flex flex-col transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg md:rounded-xl">
-                    {/* Category Title with Gradient */}
-                    <CardHeader className="relative p-0">
-                      <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
-                        <CardTitle className="relative text-sm md:text-base lg:text-lg font-bold text-white break-words text-center">
-                          {category.title}
-                        </CardTitle>
-                      </div>
-                    </CardHeader>
-                    {/* Capabilities List */}
-                    <CardContent className="flex flex-col p-1.5 md:p-2 gap-1 md:gap-1.5">
-                      {category.capabilities.map((capability, index) => {
-                        return (
-                          <div
-                            key={capability.id}
-                            className={`flex flex-row items-center justify-between gap-2 md:gap-3 transition-colors duration-200 hover:bg-slate-50 rounded-md p-1 ${
-                              index < category.capabilities.length - 1
-                                ? "border-b border-slate-100 pb-1"
-                                : ""
-                            }`}>
-                            {/* Text Section - Always Left */}
-                            <div className="flex-1 flex flex-col justify-center min-w-0">
-                              <h4 className="text-xs md:text-sm lg:text-base font-semibold text-slate-800 break-words leading-relaxed group-hover:text-blue-900 transition-colors duration-200">
-                                {capability.text}
-                              </h4>
-                            </div>
-                            {/* Image Section - Always Right with Badge Style */}
-                            <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md bg-slate-50 border border-slate-100 p-1 group-hover:bg-blue-50 group-hover:border-blue-200 transition-all duration-200">
-                              {capability.image ? (
-                                isFullUrl(capability.image) ||
-                                capability.image.startsWith("/") ? (
-                                  <div className="relative w-full h-full">
-                                    <Image
-                                      src={capability.image}
-                                      alt={capability.alt || capability.text}
-                                      fill
-                                      className="object-contain transition-transform duration-200 group-hover:scale-110"
-                                      sizes="(max-width: 640px) 24px, (max-width: 768px) 28px, 32px"
-                                    />
-                                  </div>
-                                ) : (
-                                  <div className="text-xs md:text-sm font-semibold text-blue-900">
-                                    {capability.image}
-                                  </div>
-                                )
-                              ) : (
-                                <div className="w-full h-full bg-slate-200 rounded flex items-center justify-center">
-                                  <span className="text-[8px] text-slate-500 font-medium">
-                                    ?
-                                  </span>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            )}
+      className="bg-slate-50 py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
+          Our Tech Stack
+        </h2>
+        {loading ? (
+          <div className="flex justify-center items-center py-12 md:py-20">
+            <p className="text-slate-600 text-base md:text-lg">
+              Loading tech stack...
+            </p>
           </div>
-        </div>
+        ) : categories.length === 0 ? (
+          <div className="flex justify-center items-center py-12 md:py-20">
+            <p className="text-slate-600 text-base md:text-lg">
+              No tech stack items available.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {categories.map((category) => (
+              <Card
+                key={category.id}
+                className="group overflow-hidden w-full flex flex-col transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg md:rounded-xl">
+                {/* Category Title with Gradient */}
+                <CardHeader className="relative p-0">
+                  <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
+                    <CardTitle className="relative text-sm md:text-base lg:text-lg font-bold text-white break-words text-center">
+                      {category.title}
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                {/* Capabilities List */}
+                <CardContent className="flex flex-col p-1.5 md:p-2 gap-1 md:gap-1.5">
+                  {category.capabilities.map((capability, index) => {
+                    return (
+                      <div
+                        key={capability.id}
+                        className={`flex flex-row items-center justify-between gap-2 md:gap-3 transition-colors duration-200 hover:bg-slate-50 rounded-md p-1 ${
+                          index < category.capabilities.length - 1
+                            ? "border-b border-slate-100 pb-1"
+                            : ""
+                        }`}>
+                        {/* Text Section - Always Left */}
+                        <div className="flex-1 flex flex-col justify-center min-w-0">
+                          <h4 className="text-xs md:text-sm lg:text-base font-semibold text-slate-800 break-words leading-relaxed group-hover:text-blue-900 transition-colors duration-200">
+                            {capability.text}
+                          </h4>
+                        </div>
+                        {/* Image Section - Always Right with Badge Style */}
+                        <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md bg-slate-50 border border-slate-100 p-1 group-hover:bg-blue-50 group-hover:border-blue-200 transition-all duration-200">
+                          {capability.image ? (
+                            isFullUrl(capability.image) ||
+                            capability.image.startsWith("/") ? (
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={capability.image}
+                                  alt={capability.alt || capability.text}
+                                  fill
+                                  className="object-contain transition-transform duration-200 group-hover:scale-110"
+                                  sizes="(max-width: 640px) 24px, (max-width: 768px) 28px, 32px"
+                                />
+                              </div>
+                            ) : (
+                              <div className="text-xs md:text-sm font-semibold text-blue-900">
+                                {capability.image}
+                              </div>
+                            )
+                          ) : (
+                            <div className="w-full h-full bg-slate-200 rounded flex items-center justify-center">
+                              <span className="text-[8px] text-slate-500 font-medium">
+                                ?
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import ClientLogoCarousel from "@/components/shared/ClientLogoCarousel";
 
 interface HeroData {
@@ -88,28 +87,6 @@ export default function Hero() {
 
   const currentHero = heroList[currentIndex] || heroList[0];
 
-  const scrollToSection = useCallback((id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerHeight =
-        window.innerWidth >= 1280
-          ? 68
-          : window.innerWidth >= 1024
-          ? 64
-          : window.innerWidth >= 640
-          ? 56
-          : 48;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerHeight - 8; // 8px extra spacing
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  }, []);
-
   // Default values if data is not loaded yet
   const number = currentHero?.number || "99.9%+";
   const heading = currentHero?.heading || "Technical Depth That Scales";
@@ -120,95 +97,78 @@ export default function Hero() {
 
   if (loading && heroList.length === 0) {
     return (
-      <div className="bg-blue-50 flex flex-col min-h-screen relative z-0">
-        <section className="hero-main-section flex flex-col justify-between min-h-screen py-4 md:py-6 lg:py-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-between flex-1">
-            <div className="flex-1 flex flex-col justify-center w-full">
-              <div className="text-center py-8 w-full">
-                <p className="text-gray-600 text-sm sm:text-base md:text-lg">
-                  Loading hero section...
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="hero-carousel-section w-full pt-4 md:pt-6 lg:pt-8 pb-2">
-            <ClientLogoCarousel pauseOnHover={true} duration="60s" />
-          </div>
-        </section>
-      </div>
+      <section className="bg-blue-50 min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <p className="text-gray-600 text-sm sm:text-base md:text-lg text-center">
+            Loading hero section...
+          </p>
+        </div>
+      </section>
     );
   }
 
   return (
-    <div className="bg-blue-300 flex flex-col min-h-screen relative z-0 overflow-visible">
-      <section className="hero-main-section flex flex-col justify-between min-h-screen py-4 md:py-6 lg:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-between flex-1">
-          {/* Main Content Grid */}
-          <div className="flex-1 flex flex-col justify-center items-center w-full py-2 md:py-4 lg:py-6 relative">
-            {/* Two Column Layout: Text First on Mobile, Side-by-Side on Desktop */}
-            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center">
-              {/* Text Content - First on Mobile, Left on Desktop */}
-              <div className="text-left flex flex-col justify-center w-full order-1">
-                <div
-                  className={`transition-opacity duration-500 ease-in-out w-full ${
-                    isTransitioning ? "opacity-0" : "opacity-100"
-                  }`}>
-                  {/* Large Number */}
-                  {number && (
-                    <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-orange-500 leading-none mb-2 md:mb-3 lg:mb-4 break-words">
-                      {number}
-                    </p>
-                  )}
-                  {/* Heading */}
-                  {heading && (
-                    <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-blue-900 leading-tight mb-2 md:mb-4 lg:mb-5 break-words">
-                      {heading}
-                    </h1>
-                  )}
-                  {/* Description */}
-                  {description && (
-                    <p className="text-sm sm:text-base md:text-base lg:text-lg text-slate-700 leading-relaxed break-words">
-                      {description}
-                    </p>
-                  )}
-                </div>
-              </div>
+    <section className="bg-blue-300 min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-8 md:py-12 lg:pt-8 lg:pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center mb-8 md:mb-12">
+          {/* Text Content */}
+          <div className="text-left flex flex-col justify-center space-y-4 md:space-y-6">
+            <div
+              className={`transition-opacity duration-500 ease-in-out ${
+                isTransitioning ? "opacity-0" : "opacity-100"
+              }`}>
+              {number && (
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-orange-500 leading-none mb-3 md:mb-4">
+                  {number}
+                </p>
+              )}
+              {heading && (
+                <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-blue-900 leading-tight mb-4 md:mb-6">
+                  {heading}
+                </h1>
+              )}
+              {description && (
+                <p className="text-base sm:text-lg md:text-lg lg:text-xl text-slate-700 leading-relaxed">
+                  {description}
+                </p>
+              )}
+            </div>
+          </div>
 
-              {/* Image - Second on Mobile, Right on Desktop */}
-              <div className="relative w-full order-2 flex items-center justify-center">
-                <div
-                  className={`transition-opacity duration-500 ease-in-out w-full ${
-                    isTransitioning ? "opacity-0" : "opacity-100"
-                  }`}>
-                  {imageUrl ? (
-                    <div className="relative w-full aspect-[4/3] rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden">
-                      <Image
-                        src={imageUrl}
-                        alt={heading || "Hero image"}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                        priority={currentIndex === 0}
-                      />
-                    </div>
-                  ) : (
-                    <div className="relative w-full aspect-[4/3] rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-gray-200 flex items-center justify-center">
-                      <p className="text-gray-400 text-sm md:text-base">
-                        No image available
-                      </p>
-                    </div>
-                  )}
+          {/* Image */}
+          <div className="relative w-full aspect-[4/3] flex items-center justify-center">
+            <div
+              className={`transition-opacity duration-500 ease-in-out w-full h-full ${
+                isTransitioning ? "opacity-0" : "opacity-100"
+              }`}>
+              {imageUrl ? (
+                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={imageUrl}
+                    alt={heading || "Hero image"}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={currentIndex === 0}
+                  />
                 </div>
-              </div>
+              ) : (
+                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-gray-200 flex items-center justify-center">
+                  <p className="text-gray-400 text-sm md:text-base">
+                    No image available
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Client Logo Carousel - Full Width on All Screens */}
-        <div className="hero-carousel-section w-full pt-4 md:pt-6 lg:pt-8 pb-2">
-          <ClientLogoCarousel pauseOnHover={true} duration="60s" />
-        </div>
-      </section>
-    </div>
+      {/* Client Logo Carousel */}
+      <div className="w-full pt-4 md:pt-6">
+        <ClientLogoCarousel pauseOnHover={true} duration="60s" />
+      </div>
+    </section>
   );
 }

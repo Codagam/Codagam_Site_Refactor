@@ -130,25 +130,25 @@ export default function Products() {
     <>
       <section
         id="products"
-        className="flex flex-col py-6 md:py-8 lg:py-10 bg-white scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full relative isolate">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl mb-6 md:mb-8 text-center font-bold text-blue-900 break-words px-4">
+        className="bg-white py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
             Our Products
           </h2>
           {loading ? (
-            <div className="flex-1 flex flex-col justify-center items-center py-12 md:py-20">
-              <p className="text-black text-sm md:text-base lg:text-lg">
+            <div className="flex justify-center items-center py-12 md:py-20">
+              <p className="text-slate-600 text-base md:text-lg">
                 Loading products...
               </p>
             </div>
           ) : products.length === 0 ? (
-            <div className="flex-1 flex flex-col justify-center items-center py-12 md:py-20">
-              <p className="text-black text-sm md:text-base lg:text-lg">
+            <div className="flex justify-center items-center py-12 md:py-20">
+              <p className="text-slate-600 text-base md:text-lg">
                 No products available.
               </p>
             </div>
           ) : (
-            <div className="w-full max-w-7xl mx-auto relative flex-1 flex flex-col justify-center">
+            <div className="w-full relative">
               <Carousel
                 opts={{
                   align: "start",

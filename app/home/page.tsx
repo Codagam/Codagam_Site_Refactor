@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full">
       <Navbar />
-      <main className="mt-12 sm:mt-14 md:mt-16 w-full">
+      <main className="pt-12 sm:pt-14 md:pt-16">
         <Hero />
         <About />
         <Services />

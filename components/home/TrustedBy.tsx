@@ -53,14 +53,12 @@ export default function TrustedBy() {
   return (
     <section
       id="case-studies"
-      className="py-6 md:py-8 lg:py-10 bg-white scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="w-full">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl mb-6 md:mb-8 text-center font-bold text-blue-900 break-words px-4">
-            Trusted by Innovative Companies
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 w-full">
+      className="bg-white py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
+          Trusted by Innovative Companies
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {caseStudies.map((caseStudy) => (
               <Card
                 key={caseStudy.id}
@@ -101,7 +99,6 @@ export default function TrustedBy() {
                 </CardContent>
               </Card>
             ))}
-          </div>
         </div>
       </div>
     </section>

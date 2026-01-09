@@ -46,12 +46,12 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="min-h-screen flex flex-col pt-8 md:pt-12 lg:pt-16 pb-6 md:pb-8 lg:pb-12 bg-slate-50 scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full relative isolate">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl mb-6 md:mb-8 text-center font-bold text-blue-900 break-words px-4">
+      className="bg-slate-50 py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {servicesGalleryItems.map((service) => {
             const hoverColor = service.hoverColor || "30 58 138";
             const IconComponent = iconMap[service.id] || Target;
