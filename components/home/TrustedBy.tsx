@@ -64,7 +64,7 @@ export default function TrustedBy() {
                 key={caseStudy.id}
                 className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg md:rounded-xl border-2 transition-all duration-300 hover:scale-105">
                 <CardHeader className="p-2 md:p-3 pb-1">
-                  <CardTitle className="text-sm md:text-base lg:text-lg font-bold text-white break-words">
+                  <CardTitle className="text-sm md:text-base lg:text-lg font-bold text-white wrap-break-word">
                     {caseStudy.title}
                   </CardTitle>
                 </CardHeader>
@@ -74,7 +74,7 @@ export default function TrustedBy() {
                     <p className="text-xs md:text-sm lg:text-base font-semibold text-white">
                       Challenge:
                     </p>
-                    <p className="text-xs md:text-sm lg:text-base text-white/90 leading-relaxed break-words">
+                    <p className="text-xs md:text-sm lg:text-base text-white/90 leading-relaxed wrap-break-word">
                       {caseStudy.challenge}
                     </p>
                   </div>
@@ -89,7 +89,7 @@ export default function TrustedBy() {
                           key={index}
                           className="flex items-start gap-2 md:gap-3">
                           <Check className="w-4 h-4 md:w-5 md:h-5 text-green-400 shrink-0 mt-0.5" />
-                          <span className="text-xs md:text-sm lg:text-base text-white/90 leading-relaxed break-words">
+                          <span className="text-xs md:text-sm lg:text-base text-white/90 leading-relaxed wrap-break-word">
                             {result}
                           </span>
                         </li>

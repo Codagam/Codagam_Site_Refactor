@@ -181,7 +181,7 @@ export default function Products() {
                               unoptimized={false}
                             />
                             {/* Gradient overlay for better logo visibility */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 z-10"></div>
+                            <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/50 z-10"></div>
                             {/* Logo Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center z-20">
                               <div className="relative w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
@@ -199,10 +199,10 @@ export default function Products() {
                           </div>
                           {/* Text Card Content */}
                           <CardHeader className="p-4 md:p-5 flex-1 flex flex-col min-h-0">
-                            <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-2 md:mb-3 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight break-words">
+                            <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-2 md:mb-3 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight wrap-break-word">
                               {product.headline}
                             </CardTitle>
-                            <p className="text-sm md:text-base leading-relaxed line-clamp-4 text-slate-600 break-words">
+                            <p className="text-sm md:text-base leading-relaxed line-clamp-4 text-slate-600 wrap-break-word">
                               {product.description}
                             </p>
                           </CardHeader>
@@ -235,14 +235,14 @@ export default function Products() {
                     sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
                   />
                 </div>
-                <DialogTitle className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-center break-words px-2 text-black">
+                <DialogTitle className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-center wrap-break-word px-2 text-black">
                   {selectedProduct.headline}
                 </DialogTitle>
               </div>
             </DialogHeader>
             <div className="space-y-4 md:space-y-6 mt-4 md:mt-5 w-full max-w-full">
               {/* Product Details */}
-              <p className="text-black leading-relaxed text-sm md:text-base break-words">
+              <p className="text-black leading-relaxed text-sm md:text-base wrap-break-word">
                 {selectedProduct.details}
               </p>
               {/* View Site Button */}

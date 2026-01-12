@@ -105,9 +105,9 @@ export default function TechStack() {
                 className="group overflow-hidden w-full flex flex-col transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg md:rounded-xl">
                 {/* Category Title with Gradient */}
                 <CardHeader className="relative p-0">
-                  <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
-                    <CardTitle className="relative text-sm md:text-base lg:text-lg font-bold text-white break-words text-center">
+                  <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-linear-to-br from-blue-900 via-blue-800 to-blue-900">
+                    <div className="absolute inset-0 bg-linear-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
+                    <CardTitle className="relative text-sm md:text-base lg:text-lg font-bold text-white wrap-break-word text-center">
                       {category.title}
                     </CardTitle>
                   </div>
@@ -125,7 +125,7 @@ export default function TechStack() {
                         }`}>
                         {/* Text Section - Always Left */}
                         <div className="flex-1 flex flex-col justify-center min-w-0">
-                          <h4 className="text-xs md:text-sm lg:text-base font-semibold text-slate-800 break-words leading-relaxed group-hover:text-blue-900 transition-colors duration-200">
+                          <h4 className="text-xs md:text-sm lg:text-base font-semibold text-slate-800 wrap-break-word leading-relaxed group-hover:text-blue-900 transition-colors duration-200">
                             {capability.text}
                           </h4>
                         </div>

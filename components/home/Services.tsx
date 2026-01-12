@@ -60,7 +60,7 @@ export default function Services() {
             return (
               <Card
                 key={service.id}
-                className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300 cursor-pointer h-full flex flex-col w-full max-w-full break-words rounded-xl"
+                className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300 cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word rounded-xl"
                 onClick={() => handleButtonClick(service.id)}
                 style={{
                   "--service-hover-color": rgbValues,
@@ -75,24 +75,24 @@ export default function Services() {
 
                 {/* Icon with colored background - positioned at top-right */}
                 <div 
-                  className="service-icon-bg absolute top-0 right-0 w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center rounded-tr-xl rounded-bl-xl z-30"
+                  className="service-icon-bg absolute top-0 right-0 w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex items-center justify-center rounded-tr-xl rounded-bl-xl z-30"
                   style={{
                     backgroundColor: `rgb(${rgbValues})`,
                   }}>
-                  <IconComponent className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
+                  <IconComponent className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
                 </div>
 
                 {/* Content */}
                 <CardContent className="relative z-10 p-3 md:p-4 lg:p-5 flex flex-col grow">
                   {/* Title */}
-                  <CardHeader className="p-0 mb-2 pr-12 md:pr-16">
-                    <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 break-words leading-tight">
+                  <CardHeader className="p-0 mb-2 pr-10 md:pr-12">
+                    <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word leading-tight">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
 
                   {/* Description */}
-                  <p className="text-sm md:text-base text-slate-700 group-hover:text-white/95 leading-relaxed mb-2 md:mb-2.5 line-clamp-4 transition-colors duration-300 break-words font-medium">
+                  <p className="text-sm md:text-base text-slate-700 group-hover:text-white/95 leading-relaxed mb-2 md:mb-2.5 line-clamp-4 transition-colors duration-300 wrap-break-word font-medium">
                     {service.description}
                   </p>
 
@@ -106,7 +106,7 @@ export default function Services() {
                           <span className="text-slate-900 group-hover:text-white mr-2 mt-1 shrink-0 text-xs font-bold transition-colors duration-300">
                             •
                           </span>
-                          <span className="flex-1 break-words">
+                          <span className="flex-1 wrap-break-word">
                             {offering}
                           </span>
                         </li>
@@ -146,7 +146,7 @@ export default function Services() {
               <div className="flex items-start gap-2 pr-12">
                 <div className="flex items-center gap-2 flex-1 min-w-0">
                   <DialogTitle
-                    className="text-lg md:text-xl font-bold leading-tight break-words"
+                    className="text-lg md:text-xl font-bold leading-tight wrap-break-word"
                     style={{
                       color: `rgb(${
                         selectedServiceData.hoverColor?.split(" ").join(", ") ||
@@ -171,7 +171,7 @@ export default function Services() {
                   })()}
                 </div>
               </div>
-              <DialogDescription className="text-sm break-words text-slate-700 leading-relaxed">
+              <DialogDescription className="text-sm wrap-break-word text-slate-700 leading-relaxed">
                 Comprehensive {selectedServiceData.title.toLowerCase()}{" "}
                 solutions tailored to your business needs
               </DialogDescription>
@@ -182,7 +182,7 @@ export default function Services() {
                 <h3 className="text-sm font-bold text-slate-900 mb-2">
                   Overview
                 </h3>
-                <p className="text-sm text-slate-700 leading-relaxed break-words font-medium">
+                <p className="text-sm text-slate-700 leading-relaxed wrap-break-word font-medium">
                   {selectedServiceData.description}
                 </p>
               </div>
@@ -210,7 +210,7 @@ export default function Services() {
                             }}>
                             •
                           </span>
-                          <span className="flex-1 break-words font-medium">
+                          <span className="flex-1 wrap-break-word font-medium">
                             {offering}
                           </span>
                         </li>
@@ -220,11 +220,11 @@ export default function Services() {
                 )}
 
               {/* Additional Details Section */}
-              <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-3 border border-slate-200">
+              <div className="bg-linear-to-br from-slate-50 to-slate-100 rounded-lg p-3 border border-slate-200">
                 <h3 className="text-sm font-bold text-slate-900 mb-2">
                   Why Choose Us?
                 </h3>
-                <p className="text-sm text-slate-700 leading-relaxed break-words mb-2.5 font-medium">
+                <p className="text-sm text-slate-700 leading-relaxed wrap-break-word mb-2.5 font-medium">
                   Our team brings years of experience and expertise in
                   delivering high-quality solutions that drive business growth.
                   We combine cutting-edge technology with proven methodologies
@@ -268,7 +268,7 @@ export default function Services() {
 
               {/* Contact CTA */}
               <div className="pt-3 border-t border-slate-200">
-                <p className="text-sm text-slate-700 break-words text-center leading-relaxed font-medium">
+                <p className="text-sm text-slate-700 wrap-break-word text-center leading-relaxed font-medium">
                   Ready to get started? Contact us using the contact form in the
                   footer to discuss your project requirements and receive a
                   customized quote.
