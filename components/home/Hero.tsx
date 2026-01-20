@@ -108,8 +108,33 @@ export default function Hero() {
   }
 
   return (
-    <section className="bg-slate-300 min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-8 md:py-12 lg:pt-8 lg:pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
+    <section className="relative min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-8 md:py-12 lg:pt-8 lg:pb-12 overflow-hidden">
+      {/* Background Images for each slide */}
+      {heroList.map((hero, index) => (
+        <div
+          key={hero.id}
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}>
+          {hero.imageUrl ? (
+            <Image
+              src={hero.imageUrl}
+              alt={hero.heading || "Hero background"}
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={index === 0}
+            />
+          ) : (
+            <div className="w-full h-full bg-slate-300" />
+          )}
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-slate-300/80" />
+        </div>
+      ))}
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center mb-8 md:mb-12">
           {/* Text Content */}
@@ -124,12 +149,12 @@ export default function Hero() {
                 </p>
               )}
               {heading && (
-                <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight mb-4 md:mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight mb-4 md:mb-6 drop-shadow-lg">
                   {heading}
                 </h1>
               )}
               {description && (
-                <p className="text-base sm:text-lg md:text-lg lg:text-xl text-slate-700 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-lg lg:text-xl text-slate-700 leading-relaxed drop-shadow-md">
                   {description}
                 </p>
               )}
@@ -143,7 +168,7 @@ export default function Hero() {
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}>
               {imageUrl ? (
-                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden shadow-lg">
+                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl ring-2 ring-white/20">
                   <Image
                     src={imageUrl}
                     alt={heading || "Hero image"}
@@ -154,7 +179,7 @@ export default function Hero() {
                   />
                 </div>
               ) : (
-                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-gray-200 flex items-center justify-center">
+                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-gray-200/80 backdrop-blur-sm flex items-center justify-center ring-2 ring-white/20">
                   <p className="text-gray-400 text-sm md:text-base">
                     No image available
                   </p>
@@ -166,7 +191,7 @@ export default function Hero() {
       </div>
 
       {/* Client Logo Carousel */}
-      <div className="w-full pt-4 md:pt-6">
+      <div className="relative z-10 w-full pt-4 md:pt-6">
         <ClientLogoCarousel pauseOnHover={true} duration="60s" />
       </div>
     </section>
