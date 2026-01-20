@@ -83,7 +83,7 @@ export default function TechStack() {
       className="bg-slate-50 py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
-          Our Tech Stack
+        Technology Stack & Capabilities
         </h2>
         {loading ? (
           <div className="flex justify-center items-center py-12 md:py-20">
