@@ -162,7 +162,7 @@ export default function Hero() {
           </div>
 
           {/* Image */}
-          <div className="relative w-full aspect-[4/3] flex items-center justify-center">
+          <div className="relative w-full aspect-4/3 flex items-center justify-center">
             <div
               className={`transition-opacity duration-500 ease-in-out w-full h-full ${
                 isTransitioning ? "opacity-0" : "opacity-100"
