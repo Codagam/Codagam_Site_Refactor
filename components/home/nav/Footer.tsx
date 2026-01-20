@@ -29,15 +29,10 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { ContactForm } from "@/components/shared/ContactForm";
+import FooterCallToAction from "./FooterCallToAction";
 
 // Types
 type FlagComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
-
-interface FooterContent {
-  id: string;
-  title: string;
-  description: string;
-}
 
 interface FooterOffice {
   id: string;
@@ -330,9 +325,6 @@ const COUNTRY_SWITCH_INTERVAL = 5000; // 5 seconds
 
 export default function Footer() {
   const [mounted, setMounted] = useState(false);
-  const [footerContent, setFooterContent] = useState<FooterContent | null>(
-    null
-  );
   const [offices, setOffices] = useState<FooterOffice[]>([]);
   const [socialLinks, setSocialLinks] = useState<FooterSocialLink[]>([]);
   const [currentCountryIndex, setCurrentCountryIndex] = useState(0);
@@ -345,13 +337,11 @@ export default function Footer() {
   useEffect(() => {
     const fetchFooterData = async () => {
       try {
-        const [contentRes, officesRes, socialLinksRes] = await Promise.all([
-          fetch("/api/footer/content"),
+        const [officesRes, socialLinksRes] = await Promise.all([
           fetch("/api/footer/offices"),
           fetch("/api/footer/social-links"),
         ]);
 
-        if (contentRes.ok) setFooterContent(await contentRes.json());
         if (officesRes.ok) setOffices(await officesRes.json());
         if (socialLinksRes.ok) setSocialLinks(await socialLinksRes.json());
       } catch (error) {
@@ -423,11 +413,6 @@ export default function Footer() {
     return () => clearInterval(timer);
   }, [mounted, sortedCountries.length]);
 
-  const defaultContent = {
-    title: "Let's Build Something Great",
-    description:
-      "Ready to transform your ideas into scalable products? Reach out to discuss your project.",
-  };
 
   return (
     <footer
@@ -545,7 +530,7 @@ export default function Footer() {
                       href="tel:+917598454546"
                       className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal"
                       style={{ fontWeight: 400 }}>
-                      +91 7598454546
+                      +91 75984 54546
                     </a>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-0.5">
@@ -658,22 +643,13 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        {/* Contact Section Header - Moved to bottom */}
-        <div className="mt-3 sm:mt-4 md:mt-5 lg:mt-5 xl:mt-6 2xl:mt-7 text-center w-full border-t border-blue-800 pt-3 sm:pt-4 md:pt-5 lg:pt-5 xl:pt-6 2xl:pt-7">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl mb-2 md:mb-3 lg:mb-4 font-bold wrap-break-word px-4 sm:px-6 lg:px-8">
-            {footerContent?.title || defaultContent.title}
-          </h2>
-          <p
-            className="text-xs md:text-sm lg:text-base max-w-6xl mx-auto opacity-90 px-4 sm:px-6 lg:px-8 font-normal wrap-break-word"
-            style={{ fontWeight: 400 }}>
-            {footerContent?.description || defaultContent.description}
-          </p>
-        </div>
       </div>
 
+      {/* Contact Section Header - Moved to bottom */}
+      <FooterCallToAction />
+
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-blue-800 py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-3.5 w-full">
+      <div className="border-t border-white py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-3.5 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex items-center justify-center sm:justify-between">
             <p
