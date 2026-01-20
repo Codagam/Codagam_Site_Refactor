@@ -53,32 +53,34 @@ export default function Services() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {servicesGalleryItems.map((service) => {
-            const hoverColor = service.hoverColor || "30 58 138";
             const IconComponent = iconMap[service.id] || Target;
-            const rgbValues = hoverColor.split(" ").join(", ");
+            const hoverColor = service.hoverColor || "bg-blue-600";
+            // Extract color from Tailwind class for button text color
+            // Handle both standard classes (bg-blue-600) and arbitrary values (bg-[rgb(...)])
+            const bgMatch = hoverColor.match(/bg-(.+)/);
+            let textColorClass = "text-blue-600"; // default
+            if (bgMatch) {
+              const colorValue = bgMatch[1];
+              // If it's a standard Tailwind class (e.g., blue-600), convert to text class
+              if (!colorValue.startsWith('[')) {
+                textColorClass = `text-${colorValue}`;
+              } else {
+                // If it's an arbitrary value, extract RGB
+                const rgbMatch = colorValue.match(/rgb\((\d+),(\d+),(\d+)\)/);
+                if (rgbMatch) {
+                  textColorClass = `text-[rgb(${rgbMatch[1]},${rgbMatch[2]},${rgbMatch[3]})]`;
+                }
+              }
+            }
 
             return (
               <Card
                 key={service.id}
-                className="service-card-group group relative overflow-hidden border-slate-200 hover:border-transparent transition-all duration-300 cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word rounded-xl"
-                onClick={() => handleButtonClick(service.id)}
-                style={{
-                  "--service-hover-color": rgbValues,
-                } as React.CSSProperties & { "--service-hover-color": string }}>
-                {/* Diagonal color fill from bottom-left on hover */}
-                <div
-                  className="service-card-hover"
-                  style={{
-                    backgroundColor: `rgb(${rgbValues})`,
-                  }}
-                />
-
-                {/* Icon with colored background - positioned at top-right */}
+                className={`service-card-group group relative overflow-hidden border-transparent transition-all duration-300 cursor-pointer h-full flex flex-col w-full max-w-full wrap-break-word rounded-xl ${hoverColor}`}
+                onClick={() => handleButtonClick(service.id)}>
+                {/* Icon without background - positioned at top-right */}
                 <div 
-                  className="service-icon-bg absolute top-0 right-0 w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex items-center justify-center rounded-tr-xl rounded-bl-xl z-30"
-                  style={{
-                    backgroundColor: `rgb(${rgbValues})`,
-                  }}>
+                  className="service-icon-bg absolute top-0 right-0 flex items-center justify-center z-30 p-2">
                   <IconComponent className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
                 </div>
 
@@ -86,13 +88,13 @@ export default function Services() {
                 <CardContent className="relative z-10 p-3 md:p-4 lg:p-5 flex flex-col grow">
                   {/* Title */}
                   <CardHeader className="p-0 mb-2 pr-10 md:pr-12">
-                    <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-0 text-blue-900 group-hover:text-white transition-colors duration-300 wrap-break-word leading-tight">
+                    <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-0 text-white wrap-break-word leading-tight">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
 
                   {/* Description */}
-                  <p className="text-sm md:text-base text-slate-700 group-hover:text-white/95 leading-relaxed mb-2 md:mb-2.5 line-clamp-4 transition-colors duration-300 wrap-break-word font-medium">
+                  <p className="text-sm md:text-base text-white/95 leading-relaxed mb-2 md:mb-2.5 line-clamp-4 wrap-break-word font-medium">
                     {service.description}
                   </p>
 
@@ -102,8 +104,8 @@ export default function Services() {
                       {service.offerings.map((offering, index) => (
                         <li
                           key={index}
-                          className="text-xs md:text-sm text-slate-700 group-hover:text-white/95 leading-relaxed flex items-start transition-colors duration-300">
-                          <span className="text-slate-900 group-hover:text-white mr-2 mt-1 shrink-0 text-xs font-bold transition-colors duration-300">
+                          className="text-xs md:text-sm text-white/95 leading-relaxed flex items-start">
+                          <span className="text-white mr-2 mt-1 shrink-0 text-xs font-bold">
                             •
                           </span>
                           <span className="flex-1 wrap-break-word">
@@ -116,19 +118,12 @@ export default function Services() {
 
                   {/* CTA */}
                   <Button
-                    className="flex items-center gap-2 text-sm md:text-base font-semibold text-white px-4 py-2 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:scale-105 hover:opacity-90"
-                    style={{
-                      backgroundColor: `rgb(${rgbValues})`,
-                      '--btn-color': `rgb(${rgbValues})`,
-                    } as React.CSSProperties & { '--btn-color': string }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = `rgb(${rgbValues})`;
-                    }}
+                    className={`flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:scale-105 hover:opacity-90 bg-white hover:bg-white/90 ${textColorClass}`}
                     variant="ghost"
                     size="sm">
                     <span className="font-semibold">Learn more</span>
                     <ArrowRight 
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2 text-white" 
+                      className={`w-4 h-4 transition-transform duration-300 group-hover:translate-x-2 ${textColorClass}`}
                     />
                   </Button>
                 </CardContent>
@@ -139,43 +134,50 @@ export default function Services() {
       </div>
 
       {/* Service Details Dialog */}
-      {selectedServiceData && (
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 md:p-5 rounded-xl md:rounded-2xl max-h-[90vh] overflow-y-auto w-full">
-            <DialogHeader className="space-y-2 border-b border-slate-200 pb-3">
-              <div className="flex items-start gap-2 pr-12">
-                <div className="flex items-center gap-2 flex-1 min-w-0">
-                  <DialogTitle
-                    className="text-lg md:text-xl font-bold leading-tight wrap-break-word"
-                    style={{
-                      color: `rgb(${
-                        selectedServiceData.hoverColor?.split(" ").join(", ") ||
-                        "59, 130, 246"
-                      })`,
-                    }}>
-                    {selectedServiceData.title}
-                  </DialogTitle>
-                  {(() => {
-                    const DialogIcon = iconMap[selectedServiceData.id] || Target;
-                    return (
-                      <DialogIcon
-                        className="w-6 h-6 md:w-7 md:h-7 shrink-0 ml-2"
-                        style={{
-                          color: `rgb(${
-                            selectedServiceData.hoverColor?.split(" ").join(", ") ||
-                            "59, 130, 246"
-                          })`,
-                        }}
-                      />
-                    );
-                  })()}
+      {selectedServiceData && (() => {
+        const dialogHoverColor = selectedServiceData.hoverColor || "bg-blue-600";
+        // Extract color from Tailwind class for dialog text color
+        const dialogBgMatch = dialogHoverColor.match(/bg-(.+)/);
+        let dialogTextColorClass = "text-blue-600"; // default
+        if (dialogBgMatch) {
+          const colorValue = dialogBgMatch[1];
+          // If it's a standard Tailwind class (e.g., blue-600), convert to text class
+          if (!colorValue.startsWith('[')) {
+            dialogTextColorClass = `text-${colorValue}`;
+          } else {
+            // If it's an arbitrary value, extract RGB
+            const rgbMatch = colorValue.match(/rgb\((\d+),(\d+),(\d+)\)/);
+            if (rgbMatch) {
+              dialogTextColorClass = `text-[rgb(${rgbMatch[1]},${rgbMatch[2]},${rgbMatch[3]})]`;
+            }
+          }
+        }
+        
+        return (
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 md:p-5 rounded-xl md:rounded-2xl max-h-[90vh] overflow-y-auto w-full">
+              <DialogHeader className="space-y-2 border-b border-slate-200 pb-3">
+                <div className="flex items-start gap-2 pr-12">
+                  <div className="flex items-center gap-2 flex-1 min-w-0">
+                    <DialogTitle
+                      className={`text-lg md:text-xl font-bold leading-tight wrap-break-word ${dialogTextColorClass}`}>
+                      {selectedServiceData.title}
+                    </DialogTitle>
+                    {(() => {
+                      const DialogIcon = iconMap[selectedServiceData.id] || Target;
+                      return (
+                        <DialogIcon
+                          className={`w-6 h-6 md:w-7 md:h-7 shrink-0 ml-2 ${dialogTextColorClass}`}
+                        />
+                      );
+                    })()}
+                  </div>
                 </div>
-              </div>
+              </DialogHeader>
               <DialogDescription className="text-sm wrap-break-word text-slate-700 leading-relaxed">
                 Comprehensive {selectedServiceData.title.toLowerCase()}{" "}
                 solutions tailored to your business needs
               </DialogDescription>
-            </DialogHeader>
             <div className="space-y-4 mt-4 w-full max-w-full">
               {/* Main Description */}
               <div className="bg-slate-50 rounded-lg p-3">
@@ -200,14 +202,7 @@ export default function Services() {
                           key={index}
                           className="flex items-start text-sm text-slate-700 leading-relaxed">
                           <span
-                            className="mr-2 mt-1 shrink-0 text-sm font-bold"
-                            style={{
-                              color: `rgb(${
-                                selectedServiceData.hoverColor
-                                  ?.split(" ")
-                                  .join(", ") || "59, 130, 246"
-                              })`,
-                            }}>
+                            className={`mr-2 mt-1 shrink-0 text-sm font-bold ${dialogTextColorClass}`}>
                             •
                           </span>
                           <span className="flex-1 wrap-break-word font-medium">
@@ -277,7 +272,8 @@ export default function Services() {
             </div>
           </DialogContent>
         </Dialog>
-      )}
+        );
+      })()}
     </section>
   );
 }

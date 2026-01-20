@@ -14,7 +14,7 @@ export const servicesGalleryItems: GalleryItem[] = [
     ],
     image: "/images/Codagam_Img (1).jpg",
     alt: "Custom Software Development",
-    hoverColor: "59 130 246", // Deep blue
+    hoverColor: "bg-blue-600", // Modern Blue
   },
   {
     id: "healthcare-technology",
@@ -29,7 +29,7 @@ export const servicesGalleryItems: GalleryItem[] = [
     ],
     image: "/images/gobi_today_splash.png",
     alt: "Healthcare Technology Services",
-    hoverColor: "34 197 94", // Green
+    hoverColor: "bg-emerald-500", // Modern Teal/Green
   },
   {
     id: "cloud-architecture-devops",
@@ -43,7 +43,7 @@ export const servicesGalleryItems: GalleryItem[] = [
     ],
     image: "/images/Cloud & DevOps Solutions.png",
     alt: "Cloud Architecture & DevOps Services",
-    hoverColor: "132 204 22", // Light green
+    hoverColor: "bg-indigo-500", // Modern Indigo
   },
   {
     id: "data-analytics-bi",
@@ -57,7 +57,7 @@ export const servicesGalleryItems: GalleryItem[] = [
     ],
     image: "/images/AI & Machine Learning.png",
     alt: "Data Analytics & BI Services",
-    hoverColor: "168 85 247", // Purple
+    hoverColor: "bg-purple-500", // Modern Purple
   },
   {
     id: "ai-ml-integration",
@@ -71,7 +71,7 @@ export const servicesGalleryItems: GalleryItem[] = [
     ],
     image: "/images/AI & Machine Learning.png",
     alt: "AI/ML Integration Services",
-    hoverColor: "249 115 22", // Orange
+    hoverColor: "bg-red-600", // Modern Red
   },
   {
     id: "secondary-services",
@@ -85,6 +85,6 @@ export const servicesGalleryItems: GalleryItem[] = [
     ],
     image: "/images/Custom Software Development.png",
     alt: "Secondary Services",
-    hoverColor: "236 72 153", // Pink
+    hoverColor: "bg-orange-500", // Modern Orange
   },
 ];

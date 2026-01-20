@@ -1915,19 +1915,6 @@ iframe {
 /* ============================================
    SERVICE CARD STYLES - KEEP ALL
    ============================================ */
-.service-card-hover {
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
-  transition: clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 0;
-  border-radius: inherit;
-}
-
-.service-card-group:hover .service-card-hover {
-  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
-}
-
 .service-icon-bg {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
