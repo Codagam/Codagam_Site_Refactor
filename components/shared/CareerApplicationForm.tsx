@@ -269,7 +269,7 @@ export function CareerApplicationForm({
     return (
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger asChild>
-          <Button variant={triggerVariant} size={triggerSize}>
+          <Button variant={triggerVariant} size={triggerSize} className="bg-blue-900 hover:bg-blue-800 text-white">
             {triggerText}
           </Button>
         </DialogTrigger>

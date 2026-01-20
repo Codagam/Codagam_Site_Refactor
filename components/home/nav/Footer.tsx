@@ -172,6 +172,17 @@ const formatAddress = (address: string): string[] => {
     : address.split(",").map((line) => line.trim());
 };
 
+const formatPhoneNumber = (phone: string): string => {
+  // Format Indian phone numbers: +91 75984 54546
+  if (phone.startsWith("+91")) {
+    const cleaned = phone.replace(/\s+/g, ""); // Remove all spaces
+    if (cleaned.length === 13) { // +91XXXXXXXXXX
+      return `${cleaned.slice(0, 3)} ${cleaned.slice(3, 8)} ${cleaned.slice(8)}`;
+    }
+  }
+  return phone; // Return as-is if not matching expected format
+};
+
 // Sub-components
 const CountryFlag = ({
   countryCode,
@@ -244,7 +255,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
               <a
                 href={`tel:${firstLocation.phone}`}
                 className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal wrap-break-word">
-                {firstLocation.phone}
+                {formatPhoneNumber(firstLocation.phone)}
               </a>
             </div>
           )}
@@ -530,7 +541,7 @@ export default function Footer() {
                       href="tel:+917598454546"
                       className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal"
                       style={{ fontWeight: 400 }}>
-                      +91 75984 54546
+                      {formatPhoneNumber("+917598454546")}
                     </a>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start pt-0.5">
