@@ -146,7 +146,7 @@ export function CareerApplicationForm({
                 <FormControl>
                   <Input
                     placeholder="Your Full Name"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-black dark:text-black placeholder:text-gray-400 dark:placeholder:text-gray-500 border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500"
                     autoComplete="name"
                     {...field}
                   />
@@ -168,7 +168,7 @@ export function CareerApplicationForm({
                   <Input
                     type="email"
                     placeholder="Your Email"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-black dark:text-black placeholder:text-gray-400 dark:placeholder:text-gray-500 border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500"
                     autoComplete="email"
                     {...field}
                   />
@@ -251,16 +251,13 @@ export function CareerApplicationForm({
           </div>
 
           {submitMessage && (
-            <div
-              className={`p-3 rounded-md border ${
-                submitMessage.includes("error")
-                  ? "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-300"
-                  : "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-300"
-              }`}>
-              <p className="text-xs sm:text-sm font-semibold leading-relaxed">
-                {submitMessage}
-              </p>
-            </div>
+            <p className={`text-xs sm:text-sm font-semibold leading-relaxed ${
+              submitMessage.includes("error")
+                ? "text-red-600"
+                : "text-green-600"
+            }`}>
+              {submitMessage}
+            </p>
           )}
         </form>
       </Form>
@@ -281,7 +278,7 @@ export function CareerApplicationForm({
             <DialogTitle className="text-lg sm:text-xl md:text-2xl font-bold leading-tight">
               Apply for a Position
             </DialogTitle>
-            <DialogDescription className="text-xs sm:text-sm leading-relaxed">
+            <DialogDescription className="text-xs sm:text-sm leading-relaxed text-black">
               Fill out the form below to submit your application. We&apos;ll
               review your resume and get back to you soon.
             </DialogDescription>
