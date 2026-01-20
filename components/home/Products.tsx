@@ -133,18 +133,18 @@ export default function Products() {
         className="bg-white py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
-            Our Products
+            Our Work
           </h2>
           {loading ? (
             <div className="flex justify-center items-center py-12 md:py-20">
               <p className="text-slate-600 text-base md:text-lg">
-                Loading products...
+                Loading portfolio...
               </p>
             </div>
           ) : products.length === 0 ? (
             <div className="flex justify-center items-center py-12 md:py-20">
               <p className="text-slate-600 text-base md:text-lg">
-                No products available.
+                No portfolio items available.
               </p>
             </div>
           ) : (
