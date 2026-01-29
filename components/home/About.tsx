@@ -12,6 +12,7 @@ const capabilities = [
     imageUrl: "/images/about/Polyglot Expertise.png",
     borderColor: "border-primary",
     hoverBgColor: "hover:bg-primary-hover",
+    descriptionColor: "text-yellow-200",
   },
   {
     id: "healthcare",
@@ -21,6 +22,7 @@ const capabilities = [
     imageUrl: "/images/about/Healthcare Mastery.png",
     borderColor: "border-primary",
     hoverBgColor: "hover:bg-primary-hover",
+    descriptionColor: "text-green-200",
   },
   {
     id: "emerging",
@@ -30,6 +32,7 @@ const capabilities = [
     imageUrl: "/images/about/Emerging Markets.png",
     borderColor: "border-primary",
     hoverBgColor: "hover:bg-primary-hover",
+    descriptionColor: "text-blue-200",
   },
   {
     id: "global",
@@ -39,6 +42,7 @@ const capabilities = [
     imageUrl: "/images/about/Global Delivery.png",
     borderColor: "border-primary",
     hoverBgColor: "hover:bg-primary-hover",
+    descriptionColor: "text-purple-200",
   },
 ];
 
@@ -105,10 +109,10 @@ export default function About() {
                 </div>
                 {/* Content on top */}
                 <div className="relative z-10 p-3 md:p-4 flex flex-col h-full text-primary-foreground">
-                  <h3 className="text-base md:text-lg font-bold mb-1.5 text-white">
+                  <h3 className="text-base md:text-lg font-bold mb-1.5 text-white text-center border-b-2 border-white pb-1.5">
                     {capability.title}
                   </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-white/90">
+                  <p className="text-sm md:text-base leading-relaxed text-white/80">
                     {capability.description}
                   </p>
                 </div>
