@@ -85,7 +85,7 @@ export default function About() {
 
         {/* Capabilities Section */}
         <div className="mb-12 md:mb-16">
-          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-primary text-center mb-6 md:mb-8 max-w-4xl mx-auto">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-black text-center mb-6 md:mb-8 max-w-4xl mx-auto">
             We build mission-critical software that bridges the gap between
             enterprise reliability and startup innovation.
           </h3>
@@ -107,7 +107,7 @@ export default function About() {
 
         {/* Who We Are & Why We're Different */}
         <div className="mb-8">
-          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-primary text-center mb-8 md:mb-12">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-black text-center mb-8 md:mb-12">
             Built by Engineers. Trusted by Enterprises.
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
