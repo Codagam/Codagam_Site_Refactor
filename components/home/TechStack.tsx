@@ -81,18 +81,19 @@ export default function TechStack() {
     <section
       id="stack"
       className="relative py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - path encoded for spaces and & */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/tech stack bg/Technology Stack & Capabilities.jpg"
+          src="/images/tech%20stack%20bg/Technology%20Stack%20%26%20Capabilities.jpg"
           alt="Technology Stack background"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           sizes="100vw"
           priority={false}
+          unoptimized
         />
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-section-bg/60" />
+        <div className="absolute inset-0 z-1 bg-section-bg/50" aria-hidden />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12">

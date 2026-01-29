@@ -428,7 +428,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-primary text-primary-foreground scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full"
+      className="bg-[#0B5A8E] text-primary-foreground scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full"
       style={{ fontFamily: "var(--font-riviera-nights)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 lg:py-12 w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-10 mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 w-full items-start">

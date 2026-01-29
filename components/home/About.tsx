@@ -1,50 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { Check } from "lucide-react";
-
-const capabilities = [
-  {
-    id: "polyglot",
-    title: "Polyglot Expertise",
-    description:
-      "Full-stack architecture spanning modern stacks (JavaScript, Python) and enterprise platforms (.NET, MS SQL Server) at global scale",
-    imageUrl: "/images/about/Polyglot Expertise.png",
-    borderColor: "border-primary",
-    hoverBgColor: "hover:bg-primary-hover",
-    descriptionColor: "text-yellow-200",
-  },
-  {
-    id: "healthcare",
-    title: "Healthcare Mastery",
-    description:
-      "2+ years building EMR systems, clinical workflows, and health tech compliance frameworks",
-    imageUrl: "/images/about/Healthcare Mastery.png",
-    borderColor: "border-primary",
-    hoverBgColor: "hover:bg-primary-hover",
-    descriptionColor: "text-green-200",
-  },
-  {
-    id: "emerging",
-    title: "Emerging Markets",
-    description:
-      "Deep understanding of India's digital transformation, tier-2/3 dynamics, and localized solutions",
-    imageUrl: "/images/about/Emerging Markets.png",
-    borderColor: "border-primary",
-    hoverBgColor: "hover:bg-primary-hover",
-    descriptionColor: "text-blue-200",
-  },
-  {
-    id: "global",
-    title: "Global Delivery",
-    description:
-      "Proven execution across US, UK, and Indian markets with 24/7 timezone coverage",
-    imageUrl: "/images/about/Global Delivery.png",
-    borderColor: "border-primary",
-    hoverBgColor: "hover:bg-primary-hover",
-    descriptionColor: "text-purple-200",
-  },
-];
 
 const whyDifferent = [
   {
@@ -84,46 +40,9 @@ export default function About() {
           About Codagam
         </h2>
 
-        {/* Capabilities Section */}
-        <div className="mb-6 md:mb-8">
-          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-black text-center mb-3 md:mb-4 max-w-4xl mx-auto">
-            We build mission-critical software that bridges the gap between
-            enterprise reliability and startup innovation.
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-            {capabilities.map((capability) => (
-              <div
-                key={capability.id}
-                className={`relative overflow-hidden rounded-lg md:rounded-xl border-2 ${capability.borderColor} ${capability.hoverBgColor} min-h-[140px] md:min-h-[160px] transition-all duration-300 hover:scale-105`}>
-                {/* Background image - shows lightly like hero */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={capability.imageUrl}
-                    alt={capability.title}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  {/* Overlay so image shows lightly and text stays readable */}
-                  <div className="absolute inset-0 bg-primary/80" />
-                </div>
-                {/* Content on top */}
-                <div className="relative z-10 p-3 md:p-4 flex flex-col h-full text-primary-foreground">
-                  <h3 className="text-base md:text-lg font-bold mb-1.5 text-white text-center border-b-2 border-white pb-1.5">
-                    {capability.title}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-white/80">
-                    {capability.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Who We Are & Why We're Different */}
         <div className="mb-0">
-          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-black text-center mb-4 md:mb-6">
+          <h3 className="text-base sm:text-lg md:text-xl font-normal text-black text-center mb-4 md:mb-6">
             Built by Engineers. Trusted by Enterprises.
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">

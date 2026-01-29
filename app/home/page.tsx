@@ -1,7 +1,8 @@
 import Navbar from "@/components/home/nav/Navbar";
 import Hero from "@/components/home/Hero";
 import Services from "@/components/home/Services";
-import Products from "@/components/home/Products";
+// import Products from "@/components/home/Products"; // Product section commented – using CapabilityCards
+import CapabilityCards from "@/components/home/CapabilityCards";
 import TechStack from "@/components/home/TechStack";
 import CareerSection from "@/components/home/CareerSection";
 import TrustedBy from "@/components/home/TrustedBy";
@@ -17,7 +18,8 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
-        <Products />
+        {/* <Products /> – product section replaced by 4 capability cards */}
+        <CapabilityCards />
         <TechStack />
         <TrustedBy />
         <CareerSection />
