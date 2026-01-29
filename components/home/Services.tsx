@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { 
   ArrowRight, 
   Code, 
@@ -46,8 +47,21 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-section-bg py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      className="relative py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/service bg/service section bg.jpg"
+          alt="Services background"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority={false}
+        />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-section-bg/60" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12">
           Our Services
         </h2>
