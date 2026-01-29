@@ -126,10 +126,10 @@ export default function Hero() {
               priority={index === 0}
             />
           ) : (
-            <div className="w-full h-full bg-muted" />
+            <div className="w-full h-full bg-primary/60" />
           )}
           {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-muted/80" />
+          <div className="absolute inset-0 bg-primary/80" />
         </div>
       ))}
 
@@ -144,7 +144,7 @@ export default function Hero() {
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}>
               {number && (
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-none mb-3 md:mb-4">
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-orange-700 leading-none mb-3 md:mb-4">
                   {number}
                 </p>
               )}
