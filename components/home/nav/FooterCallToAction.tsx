@@ -43,7 +43,7 @@ export default function FooterCallToAction({ className = "" }: FooterCallToActio
           {footerContent?.title || defaultContent.title}
         </h2>
         <p
-          className="text-xs md:text-sm lg:text-base max-w-6xl mx-auto opacity-90 font-normal wrap-break-word"
+          className="text-black text-xs md:text-sm lg:text-base max-w-6xl mx-auto font-normal wrap-break-word"
           style={{ fontWeight: 400 }}>
           {footerContent?.description || defaultContent.description}
         </p>

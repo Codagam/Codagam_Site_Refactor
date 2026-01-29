@@ -12,6 +12,7 @@
     --accent: 32 156 238;
     --accent-foreground: 255 255 255;
     --muted: 248 250 252;
+    --section-bg: 208 234 251; /* #D0EAFB 100% */
     --muted-foreground: 100 116 139;
     --border: 226 232 240;
     --card: 255 255 255;
@@ -30,6 +31,7 @@
   --color-accent: rgb(var(--accent));
   --color-accent-foreground: rgb(var(--accent-foreground));
   --color-muted: rgb(var(--muted));
+  --color-section-bg: rgb(var(--section-bg));
   --color-muted-foreground: rgb(var(--muted-foreground));
   --color-border: rgb(var(--border));
   --color-card: rgb(var(--card));
