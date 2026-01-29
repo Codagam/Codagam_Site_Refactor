@@ -108,7 +108,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative bg-primary-light min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-8 md:py-12 lg:pt-8 lg:pb-12 overflow-hidden">
+    <section className="relative bg-primary-light min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-6 sm:py-8 md:py-12 lg:pt-8 lg:pb-12 overflow-hidden">
       {/* Background Images for each slide */}
       {heroList.map((hero, index) => (
         <div
@@ -133,10 +133,11 @@ export default function Hero() {
         </div>
       ))}
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
+      {/* Content - wrapper constrains to viewport on all screens */}
+      <div className="relative z-10 w-full max-w-[100vw] flex-1 flex flex-col justify-center min-w-0 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center mb-8 md:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center mb-6 sm:mb-8 md:mb-12">
           {/* Text Content */}
           <div className="text-left flex flex-col justify-center space-y-4 md:space-y-6">
             <div
@@ -162,7 +163,7 @@ export default function Hero() {
           </div>
 
           {/* Image */}
-          <div className="relative w-full aspect-4/3 flex items-center justify-center">
+          <div className="relative w-full min-w-0 aspect-4/3 flex items-center justify-center">
             <div
               className={`transition-opacity duration-500 ease-in-out w-full h-full ${
                 isTransitioning ? "opacity-0" : "opacity-100"
@@ -188,11 +189,14 @@ export default function Hero() {
             </div>
           </div>
         </div>
+        </div>
       </div>
 
-      {/* Client Logo Carousel */}
-      <div className="relative z-10 w-full pt-4 md:pt-6">
-        <ClientLogoCarousel pauseOnHover={true} duration="60s" />
+      {/* Client Logo Carousel - white strip, full width, responsive */}
+      <div className="relative z-10 w-full max-w-[100vw] pt-4 sm:pt-6 md:pt-6 lg:pt-8 min-w-0">
+        <div className="w-full bg-white min-h-[90px] sm:min-h-[110px] md:min-h-[130px] lg:min-h-[150px] xl:min-h-[170px] 2xl:min-h-[190px] flex items-center justify-center py-4 sm:py-6 md:py-8 lg:py-10">
+          <ClientLogoCarousel pauseOnHover={true} duration="60s" />
+        </div>
       </div>
     </section>
   );

@@ -119,19 +119,19 @@ export default function ClientLogoCarousel({
   const shouldDuplicate = logos.length >= 4;
 
   return (
-    <div className="relative w-full overflow-hidden min-h-[50px] sm:min-h-[60px] md:min-h-[70px] lg:min-h-[80px] xl:min-h-[100px] 2xl:min-h-[120px]">
+    <div className="relative w-full max-w-[100vw] overflow-hidden min-h-[48px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px] xl:min-h-[88px] 2xl:min-h-[100px] flex items-center justify-center min-w-0">
       <Marquee
         pauseOnHover={pauseOnHover}
         speed={speed}
         duplicate={shouldDuplicate}
-        className="w-full">
+        className="w-full max-w-full">
         {logos.map((client, index) => (
           <div
             key={
               client.id ? `${client.id}-${index}` : `${client.name}-${index}`
             }
-            className="shrink-0 mx-3 sm:mx-4 md:mx-5 lg:mx-6 xl:mx-8 2xl:mx-10">
-            <div className="relative w-16 h-8 sm:w-20 sm:h-10 md:w-24 md:h-12 lg:w-28 lg:h-14 xl:w-32 xl:h-16 2xl:w-36 2xl:h-18 flex items-center justify-center group transition-all duration-300 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 brightness-0 hover:brightness-100">
+            className="shrink-0 mx-2 sm:mx-4 md:mx-5 lg:mx-6 xl:mx-8 2xl:mx-10">
+            <div className="relative w-14 h-7 sm:w-20 sm:h-10 md:w-24 md:h-12 lg:w-28 lg:h-14 xl:w-32 xl:h-16 2xl:w-36 2xl:h-18 flex items-center justify-center group transition-all duration-300 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 brightness-0 hover:brightness-100">
               <Image
                 src={client.logo}
                 alt={client.alt || client.name}
