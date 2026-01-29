@@ -53,34 +53,34 @@ export default function TrustedBy() {
   return (
     <section
       id="case-studies"
-      className="bg-white py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      className="bg-card py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12">
           Trusted by Innovative Companies
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {caseStudies.map((caseStudy) => (
               <Card
                 key={caseStudy.id}
-                className="bg-blue-900 border-blue-900 text-white hover:bg-blue-800 rounded-lg md:rounded-xl border-2 transition-all duration-300 hover:scale-105">
+                className="bg-primary border-primary text-primary-foreground hover:bg-primary-hover rounded-lg md:rounded-xl border-2 transition-all duration-300 hover:scale-105">
                 <CardHeader className="p-2 md:p-3 pb-1">
-                  <CardTitle className="text-sm md:text-base lg:text-lg font-bold text-white wrap-break-word">
+                  <CardTitle className="text-sm md:text-base lg:text-lg font-bold text-primary-foreground wrap-break-word">
                     {caseStudy.title}
                   </CardTitle>
                 </CardHeader>
 
                 <CardContent className="p-2 md:p-3 pt-0 flex flex-col gap-3 md:gap-4">
                   <div className="flex flex-col gap-2 md:gap-3">
-                    <p className="text-xs md:text-sm lg:text-base font-semibold text-white">
+                    <p className="text-xs md:text-sm lg:text-base font-semibold text-primary-foreground">
                       Challenge:
                     </p>
-                    <p className="text-xs md:text-sm lg:text-base text-white/90 leading-relaxed wrap-break-word">
+                    <p className="text-xs md:text-sm lg:text-base text-primary-foreground/90 leading-relaxed wrap-break-word">
                       {caseStudy.challenge}
                     </p>
                   </div>
 
                   <div className="flex flex-col gap-2 md:gap-3">
-                    <p className="text-xs md:text-sm lg:text-base font-semibold text-white">
+                    <p className="text-xs md:text-sm lg:text-base font-semibold text-primary-foreground">
                       Results:
                     </p>
                     <ul className="flex flex-col gap-1.5 md:gap-2">
@@ -89,7 +89,7 @@ export default function TrustedBy() {
                           key={index}
                           className="flex items-start gap-2 md:gap-3">
                           <Check className="w-4 h-4 md:w-5 md:h-5 text-green-400 shrink-0 mt-0.5" />
-                          <span className="text-xs md:text-sm lg:text-base text-white/90 leading-relaxed wrap-break-word">
+                          <span className="text-xs md:text-sm lg:text-base text-primary-foreground/90 leading-relaxed wrap-break-word">
                             {result}
                           </span>
                         </li>

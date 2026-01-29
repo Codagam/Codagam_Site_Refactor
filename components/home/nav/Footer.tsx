@@ -163,7 +163,7 @@ const getSocialIcon = (platform: string) => {
 const getSocialIconBg = (platform: string): string => {
   const normalized = platform.toLowerCase().trim();
   const key = Object.keys(SOCIAL_BG_COLORS).find((k) => normalized.includes(k));
-  return key ? SOCIAL_BG_COLORS[key] : "bg-gray-600";
+  return key ? SOCIAL_BG_COLORS[key] : "bg-muted-foreground";
 };
 
 const formatAddress = (address: string): string[] => {
@@ -242,7 +242,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
             </div>
           </div>
           {index < locations.length - 1 && (
-            <div className="border-t border-blue-800 pt-2 mt-2" />
+            <div className="border-t border-primary-hover pt-2 mt-2" />
           )}
         </div>
       ))}
@@ -254,7 +254,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
               <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`tel:${firstLocation.phone}`}
-                className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal wrap-break-word">
+                className="hover:text-primary-light transition-colors text-xs sm:text-sm font-normal wrap-break-word">
                 {formatPhoneNumber(firstLocation.phone)}
               </a>
             </div>
@@ -264,7 +264,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
               <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`mailto:${firstLocation.email}`}
-                className="hover:text-blue-200 transition-colors text-xs sm:text-sm break-all font-normal wrap-break-word">
+                className="hover:text-primary-light transition-colors text-xs sm:text-sm break-all font-normal wrap-break-word">
                 {firstLocation.email}
               </a>
             </div>
@@ -428,7 +428,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-blue-900 text-white scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full"
+      className="bg-primary text-primary-foreground scroll-mt-14 sm:scroll-mt-16 md:scroll-mt-18 w-full"
       style={{ fontFamily: "var(--font-riviera-nights)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 lg:py-12 w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-10 mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 w-full items-start">
@@ -539,7 +539,7 @@ export default function Footer() {
                     <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
                     <a
                       href="tel:+917598454546"
-                      className="hover:text-blue-200 transition-colors text-xs sm:text-sm font-normal"
+                      className="hover:text-primary-light transition-colors text-xs sm:text-sm font-normal"
                       style={{ fontWeight: 400 }}>
                       {formatPhoneNumber("+917598454546")}
                     </a>
@@ -548,7 +548,7 @@ export default function Footer() {
                     <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
                     <a
                       href="mailto:support@codagam.com"
-                      className="hover:text-blue-200 transition-colors text-xs sm:text-sm break-all font-normal"
+                      className="hover:text-primary-light transition-colors text-xs sm:text-sm break-all font-normal"
                       style={{ fontWeight: 400 }}>
                       support@codagam.com
                     </a>
@@ -572,7 +572,7 @@ export default function Footer() {
                       e.preventDefault();
                       scrollToSection(id);
                     }}
-                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
+                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-primary-light transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
                     style={{ fontWeight: 400 }}>
                     <Icon
                       className={`w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 ${color} shrink-0`}
@@ -598,7 +598,7 @@ export default function Footer() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-blue-200 transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
+                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-primary-light transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
                     style={{ fontWeight: 400 }}>
                     {logo ? (
                       <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative shrink-0">

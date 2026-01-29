@@ -14,7 +14,7 @@ export const servicesGalleryItems: GalleryItem[] = [
     ],
     image: "/images/Codagam_Img (1).jpg",
     alt: "Custom Software Development",
-    hoverColor: "bg-blue-600", // Modern Blue
+    hoverColor: "bg-primary", // Modern Blue
   },
   {
     id: "healthcare-technology",

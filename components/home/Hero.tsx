@@ -97,9 +97,9 @@ export default function Hero() {
 
   if (loading && heroList.length === 0) {
     return (
-      <section className="bg-blue-50 min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-12 md:py-16">
+      <section className="bg-primary-light min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <p className="text-gray-600 text-sm sm:text-base md:text-lg text-center">
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg text-center">
             Loading hero section...
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-8 md:py-12 lg:pt-8 lg:pb-12 overflow-hidden">
+    <section className="relative bg-primary-light min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-8 md:py-12 lg:pt-8 lg:pb-12 overflow-hidden">
       {/* Background Images for each slide */}
       {heroList.map((hero, index) => (
         <div
@@ -126,10 +126,10 @@ export default function Hero() {
               priority={index === 0}
             />
           ) : (
-            <div className="w-full h-full bg-slate-300" />
+            <div className="w-full h-full bg-muted" />
           )}
           {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-slate-300/80" />
+          <div className="absolute inset-0 bg-muted/80" />
         </div>
       ))}
 
@@ -144,7 +144,7 @@ export default function Hero() {
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}>
               {number && (
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-orange-500 leading-none mb-3 md:mb-4">
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-none mb-3 md:mb-4">
                   {number}
                 </p>
               )}
@@ -154,7 +154,7 @@ export default function Hero() {
                 </h1>
               )}
               {description && (
-                <p className="text-base sm:text-lg md:text-lg lg:text-xl text-slate-700 leading-relaxed drop-shadow-md">
+                <p className="text-base sm:text-lg md:text-lg lg:text-xl text-foreground leading-relaxed drop-shadow-md">
                   {description}
                 </p>
               )}
@@ -168,7 +168,7 @@ export default function Hero() {
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}>
               {imageUrl ? (
-                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl ring-2 ring-white/20">
+                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl ring-2 ring-primary/20">
                   <Image
                     src={imageUrl}
                     alt={heading || "Hero image"}
@@ -179,8 +179,8 @@ export default function Hero() {
                   />
                 </div>
               ) : (
-                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-gray-200/80 backdrop-blur-sm flex items-center justify-center ring-2 ring-white/20">
-                  <p className="text-gray-400 text-sm md:text-base">
+                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-muted/80 backdrop-blur-sm flex items-center justify-center ring-2 ring-background/20">
+                  <p className="text-muted-foreground text-sm md:text-base">
                     No image available
                   </p>
                 </div>

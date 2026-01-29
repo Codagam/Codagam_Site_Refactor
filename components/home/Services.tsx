@@ -46,19 +46,19 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-slate-50 py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      className="bg-muted py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12">
           Our Services
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {servicesGalleryItems.map((service) => {
             const IconComponent = iconMap[service.id] || Target;
-            const hoverColor = service.hoverColor || "bg-blue-600";
+            const hoverColor = service.hoverColor || "bg-primary";
             // Extract color from Tailwind class for button text color
             // Handle both standard classes (bg-blue-600) and arbitrary values (bg-[rgb(...)])
             const bgMatch = hoverColor.match(/bg-(.+)/);
-            let textColorClass = "text-blue-600"; // default
+            let textColorClass = "text-primary"; // default
             if (bgMatch) {
               const colorValue = bgMatch[1];
               // If it's a standard Tailwind class (e.g., blue-600), convert to text class
@@ -118,7 +118,7 @@ export default function Services() {
 
                   {/* CTA */}
                   <Button
-                    className={`flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:scale-105 hover:opacity-90 bg-white hover:bg-white/90 ${textColorClass}`}
+                    className={`flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:scale-105 hover:opacity-90 bg-background hover:bg-background/90 ${textColorClass}`}
                     variant="ghost"
                     size="sm">
                     <span className="font-semibold">Learn more</span>
@@ -135,7 +135,7 @@ export default function Services() {
 
       {/* Service Details Dialog */}
       {selectedServiceData && (() => {
-        const dialogHoverColor = selectedServiceData.hoverColor || "bg-blue-600";
+        const dialogHoverColor = selectedServiceData.hoverColor || "bg-primary";
         // Extract color from Tailwind class for dialog text color
         const dialogBgMatch = dialogHoverColor.match(/bg-(.+)/);
         let dialogTextColorClass = "text-blue-600"; // default
@@ -156,7 +156,7 @@ export default function Services() {
         return (
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 md:p-5 rounded-xl md:rounded-2xl max-h-[90vh] overflow-y-auto w-full">
-              <DialogHeader className="space-y-2 border-b border-slate-200 pb-3">
+              <DialogHeader className="space-y-2 border-b border-border pb-3">
                 <div className="flex items-start gap-2 pr-12">
                   <div className="flex items-center gap-2 flex-1 min-w-0">
                     <DialogTitle
@@ -174,17 +174,17 @@ export default function Services() {
                   </div>
                 </div>
               </DialogHeader>
-              <DialogDescription className="text-sm wrap-break-word text-slate-700 leading-relaxed">
+              <DialogDescription className="text-sm wrap-break-word text-foreground leading-relaxed">
                 Comprehensive {selectedServiceData.title.toLowerCase()}{" "}
                 solutions tailored to your business needs
               </DialogDescription>
             <div className="space-y-4 mt-4 w-full max-w-full">
               {/* Main Description */}
-              <div className="bg-slate-50 rounded-lg p-3">
-                <h3 className="text-sm font-bold text-slate-900 mb-2">
+              <div className="bg-muted rounded-lg p-3">
+                <h3 className="text-sm font-bold text-foreground mb-2">
                   Overview
                 </h3>
-                <p className="text-sm text-slate-700 leading-relaxed wrap-break-word font-medium">
+                <p className="text-sm text-foreground leading-relaxed wrap-break-word font-medium">
                   {selectedServiceData.description}
                 </p>
               </div>
@@ -193,14 +193,14 @@ export default function Services() {
               {selectedServiceData.offerings &&
                 selectedServiceData.offerings.length > 0 && (
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900 mb-2.5">
+                    <h3 className="text-sm font-bold text-foreground mb-2.5">
                       Key Offerings
                     </h3>
                     <ul className="space-y-2">
                       {selectedServiceData.offerings.map((offering, index) => (
                         <li
                           key={index}
-                          className="flex items-start text-sm text-slate-700 leading-relaxed">
+                          className="flex items-start text-sm text-foreground leading-relaxed">
                           <span
                             className={`mr-2 mt-1 shrink-0 text-sm font-bold ${dialogTextColorClass}`}>
                             •
@@ -215,11 +215,11 @@ export default function Services() {
                 )}
 
               {/* Additional Details Section */}
-              <div className="bg-linear-to-br from-slate-50 to-slate-100 rounded-lg p-3 border border-slate-200">
-                <h3 className="text-sm font-bold text-slate-900 mb-2">
+              <div className="bg-linear-to-br from-muted to-muted rounded-lg p-3 border border-border">
+                <h3 className="text-sm font-bold text-foreground mb-2">
                   Why Choose Us?
                 </h3>
-                <p className="text-sm text-slate-700 leading-relaxed wrap-break-word mb-2.5 font-medium">
+                <p className="text-sm text-foreground leading-relaxed wrap-break-word mb-2.5 font-medium">
                   Our team brings years of experience and expertise in
                   delivering high-quality solutions that drive business growth.
                   We combine cutting-edge technology with proven methodologies
@@ -230,7 +230,7 @@ export default function Services() {
                     <span className="text-green-600 mr-1 mt-0.5 text-sm">
                       ✓
                     </span>
-                    <span className="text-sm text-slate-700 font-medium">
+                    <span className="text-sm text-foreground font-medium">
                       Proven track record
                     </span>
                   </div>
@@ -238,7 +238,7 @@ export default function Services() {
                     <span className="text-green-600 mr-1 mt-0.5 text-sm">
                       ✓
                     </span>
-                    <span className="text-sm text-slate-700 font-medium">
+                    <span className="text-sm text-foreground font-medium">
                       Scalable solutions
                     </span>
                   </div>
@@ -246,7 +246,7 @@ export default function Services() {
                     <span className="text-green-600 mr-1 mt-0.5 text-sm">
                       ✓
                     </span>
-                    <span className="text-sm text-slate-700 font-medium">
+                    <span className="text-sm text-foreground font-medium">
                       Expert team
                     </span>
                   </div>
@@ -254,7 +254,7 @@ export default function Services() {
                     <span className="text-green-600 mr-1 mt-0.5 text-sm">
                       ✓
                     </span>
-                    <span className="text-sm text-slate-700 font-medium">
+                    <span className="text-sm text-foreground font-medium">
                       24/7 support
                     </span>
                   </div>
@@ -262,8 +262,8 @@ export default function Services() {
               </div>
 
               {/* Contact CTA */}
-              <div className="pt-3 border-t border-slate-200">
-                <p className="text-sm text-slate-700 wrap-break-word text-center leading-relaxed font-medium">
+              <div className="pt-3 border-t border-border">
+                <p className="text-sm text-foreground wrap-break-word text-center leading-relaxed font-medium">
                   Ready to get started? Contact us using the contact form in the
                   footer to discuss your project requirements and receive a
                   customized quote.

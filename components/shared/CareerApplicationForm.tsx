@@ -146,7 +146,7 @@ export function CareerApplicationForm({
                 <FormControl>
                   <Input
                     placeholder="Your Full Name"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-black dark:text-black placeholder:text-gray-400 dark:placeholder:text-gray-500 border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-foreground dark:text-foreground placeholder:text-muted-foreground dark:placeholder:text-muted-foreground border-border dark:border-border focus:border-primary dark:focus:border-primary"
                     autoComplete="name"
                     {...field}
                   />
@@ -168,7 +168,7 @@ export function CareerApplicationForm({
                   <Input
                     type="email"
                     placeholder="Your Email"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-black dark:text-black placeholder:text-gray-400 dark:placeholder:text-gray-500 border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500"
+                    className="h-9 sm:h-10 text-xs sm:text-sm text-foreground dark:text-foreground placeholder:text-muted-foreground dark:placeholder:text-muted-foreground border-border dark:border-border focus:border-primary dark:focus:border-primary"
                     autoComplete="email"
                     {...field}
                   />
@@ -211,20 +211,20 @@ export function CareerApplicationForm({
                         Choose file
                       </Button>
                       {/* File display area */}
-                      <div className="flex-1 min-w-0 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 px-2 sm:px-3 py-2 sm:py-2.5 flex items-center">
+                      <div className="flex-1 min-w-0 border border-border dark:border-border rounded-md bg-background dark:bg-muted px-2 sm:px-3 py-2 sm:py-2.5 flex items-center">
                         <span
                           className={`text-xs sm:text-sm truncate ${
                             fileName
-                              ? "text-gray-900 dark:text-gray-100 font-medium"
-                              : "text-gray-500 dark:text-gray-400"
+                              ? "text-foreground dark:text-foreground font-medium"
+                              : "text-muted-foreground dark:text-muted-foreground"
                           }`}>
                           {fileName || "No file chosen"}
                         </span>
                       </div>
                     </div>
                   </FormControl>
-                  <FormDescription className="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-1 mt-1.5">
-                    <Upload className="h-3 w-3 text-gray-500 dark:text-gray-400" />
+                  <FormDescription className="text-xs text-muted-foreground dark:text-muted-foreground flex items-center gap-1 mt-1.5">
+                    <Upload className="h-3 w-3 text-muted-foreground dark:text-muted-foreground" />
                     <span>PDF, DOC, or DOCX files up to 10MB</span>
                   </FormDescription>
                   <FormMessage className="text-xs text-red-600 dark:text-red-400 font-medium" />
@@ -269,7 +269,7 @@ export function CareerApplicationForm({
     return (
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger asChild>
-          <Button variant={triggerVariant} size={triggerSize} className="bg-blue-900 hover:bg-blue-800 text-white">
+          <Button variant={triggerVariant} size={triggerSize} className="bg-primary hover:bg-primary-hover text-primary-foreground">
             {triggerText}
           </Button>
         </DialogTrigger>
@@ -278,7 +278,7 @@ export function CareerApplicationForm({
             <DialogTitle className="text-lg sm:text-xl md:text-2xl font-bold leading-tight">
               Apply for a Position
             </DialogTitle>
-            <DialogDescription className="text-xs sm:text-sm leading-relaxed text-black">
+            <DialogDescription className="text-xs sm:text-sm leading-relaxed text-foreground">
               Fill out the form below to submit your application. We&apos;ll
               review your resume and get back to you soon.
             </DialogDescription>

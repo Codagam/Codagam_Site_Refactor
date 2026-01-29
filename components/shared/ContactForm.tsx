@@ -131,7 +131,7 @@ export function ContactForm({
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="h-8 sm:h-9 text-xs sm:text-sm text-black placeholder:text-slate-500"
+            className="h-8 sm:h-9 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground"
             style={{ fontWeight: 400 }}
             autoComplete="name"
             required
@@ -151,7 +151,7 @@ export function ContactForm({
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className={`h-8 sm:h-9 text-xs sm:text-sm text-black placeholder:text-slate-500 ${
+            className={`h-8 sm:h-9 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground ${
               emailError ? "border-red-500" : ""
             }`}
             style={{ fontWeight: 400 }}
@@ -178,7 +178,7 @@ export function ContactForm({
             placeholder="Your Phone (10 digits)"
             value={formData.phone}
             onChange={handleChange}
-            className="h-8 sm:h-9 text-xs sm:text-sm text-black placeholder:text-slate-500"
+            className="h-8 sm:h-9 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground"
             style={{ fontWeight: 400 }}
             maxLength={10}
             pattern="[0-9]{10}"
@@ -200,7 +200,7 @@ export function ContactForm({
             rows={3}
             value={formData.message}
             onChange={handleChange}
-            className="resize-none text-xs sm:text-sm text-black placeholder:text-slate-500"
+            className="resize-none text-xs sm:text-sm text-foreground placeholder:text-muted-foreground"
             style={{ fontWeight: 400 }}
             required
           />
@@ -209,7 +209,7 @@ export function ContactForm({
           type="submit"
           disabled={isSubmitting}
           variant="default"
-          className="w-full h-8 sm:h-9 text-xs sm:text-sm font-bold bg-white text-blue-900 hover:bg-slate-100"
+          className="w-full h-8 sm:h-9 text-xs sm:text-sm font-bold bg-background text-primary hover:bg-muted"
           style={{ fontWeight: 700 }}>
           {isSubmitting ? "Sending..." : "Send Message"}
         </Button>

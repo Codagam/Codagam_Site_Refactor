@@ -222,14 +222,14 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full bg-white">
+    <header className="fixed top-0 left-0 right-0 bg-background border-b border-border z-50 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full bg-background">
         <div className="flex justify-between items-center h-12 sm:h-14 md:h-16 lg:h-16 w-full">
           {/* Logo */}
           <Link
             href="/"
             onClick={handleScrollToTop}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer shrink-0">
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary tracking-tight hover:opacity-80 transition-opacity cursor-pointer shrink-0">
             Codagam
           </Link>
 
@@ -253,7 +253,7 @@ export default function Navbar() {
                 });
               }
             }}
-            className="hidden lg:flex bg-blue-900 hover:bg-blue-800 text-white text-sm px-4 py-2 shrink-0 whitespace-nowrap">
+            className="hidden lg:flex bg-primary hover:bg-primary-hover text-primary-foreground text-sm px-4 py-2 shrink-0 whitespace-nowrap">
             Contact
           </Button>
 
@@ -264,20 +264,20 @@ export default function Navbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-blue-900 hover:bg-slate-100"
+                  className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-primary hover:bg-muted"
                   aria-label="Toggle menu">
                   <Menu className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
                 </Button>
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[280px] sm:w-[350px] md:w-[400px] bg-white">
+                className="w-[280px] sm:w-[350px] md:w-[400px] bg-background">
                 <SheetHeader>
                   <SheetTitle className="flex items-center space-x-3 text-left">
                     <Link
                       href="/"
                       onClick={handleScrollToTop}
-                      className="text-xl sm:text-2xl font-bold text-blue-900 tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
+                      className="text-xl sm:text-2xl font-bold text-primary tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
                       Codagam
                     </Link>
                   </SheetTitle>
@@ -291,7 +291,7 @@ export default function Navbar() {
                   />
                   <Button
                     onClick={handleContactClick}
-                    className={`mt-4 w-full bg-blue-900 hover:bg-blue-800 text-white text-base font-medium py-3 px-4 rounded-lg mobile-menu-link ${
+                    className={`mt-4 w-full bg-primary hover:bg-primary-hover text-primary-foreground text-base font-medium py-3 px-4 rounded-lg mobile-menu-link ${
                       shouldAnimate ? "animate-slide-in-right" : ""
                     }`}
                     style={{
@@ -308,7 +308,7 @@ export default function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-blue-900 hover:bg-slate-100"
+              className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-primary hover:bg-muted"
               aria-label="Toggle menu"
               onClick={() => setIsOpen(true)}>
               <Menu className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />

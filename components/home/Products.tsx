@@ -130,20 +130,20 @@ export default function Products() {
     <>
       <section
         id="products"
-        className="bg-white py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+        className="bg-card py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12">
             Our Work
           </h2>
           {loading ? (
             <div className="flex justify-center items-center py-12 md:py-20">
-              <p className="text-slate-600 text-base md:text-lg">
+              <p className="text-muted-foreground text-base md:text-lg">
                 Loading portfolio...
               </p>
             </div>
           ) : products.length === 0 ? (
             <div className="flex justify-center items-center py-12 md:py-20">
-              <p className="text-slate-600 text-base md:text-lg">
+              <p className="text-muted-foreground text-base md:text-lg">
                 No portfolio items available.
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function Products() {
                           className="group h-[320px] md:h-[360px] lg:h-[380px] xl:h-[400px] w-full overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col border-0"
                           onClick={() => handleCardClick(product)}>
                           {/* Background Image Section with Logo Overlay */}
-                          <div className="relative h-[140px] md:h-[170px] lg:h-[180px] xl:h-[200px] overflow-hidden w-full bg-gray-100">
+                          <div className="relative h-[140px] md:h-[170px] lg:h-[180px] xl:h-[200px] overflow-hidden w-full bg-muted">
                             {/* Background Image */}
                             <Image
                               src={backgroundImage}
@@ -199,10 +199,10 @@ export default function Products() {
                           </div>
                           {/* Text Card Content */}
                           <CardHeader className="p-4 md:p-5 flex-1 flex flex-col min-h-0">
-                            <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-2 md:mb-3 transition-colors duration-300 text-blue-900 line-clamp-2 leading-tight wrap-break-word">
+                            <CardTitle className="text-base md:text-lg lg:text-xl font-bold mb-2 md:mb-3 transition-colors duration-300 text-primary line-clamp-2 leading-tight wrap-break-word">
                               {product.headline}
                             </CardTitle>
-                            <p className="text-sm md:text-base leading-relaxed line-clamp-4 text-slate-600 wrap-break-word">
+                            <p className="text-sm md:text-base leading-relaxed line-clamp-4 text-muted-foreground wrap-break-word">
                               {product.description}
                             </p>
                           </CardHeader>
@@ -211,8 +211,8 @@ export default function Products() {
                     );
                   })}
                 </CarouselContent>
-                <CarouselPrevious className="hidden sm:flex left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200" />
-                <CarouselNext className="hidden sm:flex right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200" />
+                <CarouselPrevious className="hidden sm:flex left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background border border-border" />
+                <CarouselNext className="hidden sm:flex right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background border border-border" />
               </Carousel>
             </div>
           )}
@@ -235,14 +235,14 @@ export default function Products() {
                     sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
                   />
                 </div>
-                <DialogTitle className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-center wrap-break-word px-2 text-black">
+                <DialogTitle className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-center wrap-break-word px-2 text-foreground">
                   {selectedProduct.headline}
                 </DialogTitle>
               </div>
             </DialogHeader>
             <div className="space-y-4 md:space-y-6 mt-4 md:mt-5 w-full max-w-full">
               {/* Product Details */}
-              <p className="text-black leading-relaxed text-sm md:text-base wrap-break-word">
+              <p className="text-foreground leading-relaxed text-sm md:text-base wrap-break-word">
                 {selectedProduct.details}
               </p>
               {/* View Site Button */}

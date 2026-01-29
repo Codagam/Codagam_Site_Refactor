@@ -2,17 +2,20 @@
 
 @layer base {
   :root {
+    /* Theme: Coolors Tailwind 209cee (sky blue) */
     --background: 255 255 255;
-    --foreground: 30 58 138;
-    --primary: 30 58 138;
+    --foreground: 15 23 42;
+    --primary: 32 156 238;
+    --primary-hover: 26 140 212;
+    --primary-light: 239 246 253;
     --primary-foreground: 255 255 255;
-    --accent: 30 58 138;
+    --accent: 32 156 238;
     --accent-foreground: 255 255 255;
     --muted: 248 250 252;
     --muted-foreground: 100 116 139;
     --border: 226 232 240;
     --card: 255 255 255;
-    --card-foreground: 30 58 138;
+    --card-foreground: 15 23 42;
   }
 }
 
@@ -20,6 +23,17 @@
 @theme inline {
   --color-background: rgb(var(--background));
   --color-foreground: rgb(var(--foreground));
+  --color-primary: rgb(var(--primary));
+  --color-primary-hover: rgb(var(--primary-hover));
+  --color-primary-light: rgb(var(--primary-light));
+  --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-border: rgb(var(--border));
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
   --font-sans: var(--font-open-sans), -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;

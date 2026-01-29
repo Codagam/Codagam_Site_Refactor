@@ -73,13 +73,13 @@ const NavLinks: React.FC<NavLinksProps> = ({
                 shouldAnimate ? "animate-slide-in-right" : ""
               } ${
                 active
-                  ? "text-blue-900 font-semibold bg-blue-50 scale-[1.02]"
-                  : "text-slate-700 hover:text-blue-900 hover:bg-slate-50"
+                  ? "text-primary font-semibold bg-primary-light scale-[1.02]"
+                  : "text-foreground hover:text-primary hover:bg-muted"
               }`}
               style={{ animationDelay }}
             >
               {active && (
-                <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-900 rounded-r-full" />
+                <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-r-full" />
               )}
               {item.label}
             </a>
@@ -101,13 +101,13 @@ const NavLinks: React.FC<NavLinksProps> = ({
             onClick={(e) => handleLinkClick(e, item.id)}
             className={`relative text-sm lg:text-base font-medium transition-all duration-300 whitespace-nowrap group ${
               active
-                ? "text-blue-900 font-semibold"
-                : "text-slate-700 hover:text-blue-900"
+                ? "text-primary font-semibold"
+                : "text-foreground hover:text-primary"
             }`}
           >
             {item.label}
             <span
-              className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-900 transition-all duration-300 ${
+              className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transition-all duration-300 ${
                 active
                   ? "opacity-100 scale-x-100"
                   : "opacity-0 scale-x-0 group-hover:opacity-50 group-hover:scale-x-100"

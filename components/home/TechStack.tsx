@@ -80,20 +80,20 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="bg-slate-50 py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      className="bg-muted py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 md:mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12">
         Technology Stack & Capabilities
         </h2>
         {loading ? (
           <div className="flex justify-center items-center py-12 md:py-20">
-            <p className="text-slate-600 text-base md:text-lg">
+            <p className="text-muted-foreground text-base md:text-lg">
               Loading tech stack...
             </p>
           </div>
         ) : categories.length === 0 ? (
           <div className="flex justify-center items-center py-12 md:py-20">
-            <p className="text-slate-600 text-base md:text-lg">
+            <p className="text-muted-foreground text-base md:text-lg">
               No tech stack items available.
             </p>
           </div>
@@ -102,11 +102,11 @@ export default function TechStack() {
             {categories.map((category) => (
               <Card
                 key={category.id}
-                className="group overflow-hidden w-full flex flex-col transition-all duration-300 hover:-translate-y-1 border-slate-200 hover:border-blue-900/20 rounded-lg md:rounded-xl">
+                className="group overflow-hidden w-full flex flex-col transition-all duration-300 hover:-translate-y-1 border-border hover:border-primary/20 rounded-lg md:rounded-xl">
                 {/* Category Title with Gradient */}
                 <CardHeader className="relative p-0">
-                  <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-linear-to-br from-blue-900 via-blue-800 to-blue-900">
-                    <div className="absolute inset-0 bg-linear-to-br from-blue-900/90 to-blue-800/90 group-hover:from-blue-800/95 group-hover:to-blue-700/95 transition-opacity duration-300"></div>
+                  <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-linear-to-br from-primary via-primary-hover to-primary">
+                    <div className="absolute inset-0 bg-linear-to-br from-primary/90 to-primary-hover/90 group-hover:from-primary-hover/95 group-hover:to-primary/95 transition-opacity duration-300"></div>
                     <CardTitle className="relative text-sm md:text-base lg:text-lg font-bold text-white wrap-break-word text-center">
                       {category.title}
                     </CardTitle>
@@ -118,19 +118,19 @@ export default function TechStack() {
                     return (
                       <div
                         key={capability.id}
-                        className={`flex flex-row items-center justify-between gap-2 md:gap-3 transition-colors duration-200 hover:bg-slate-50 rounded-md p-1 ${
+                        className={`flex flex-row items-center justify-between gap-2 md:gap-3 transition-colors duration-200 hover:bg-muted rounded-md p-1 ${
                           index < category.capabilities.length - 1
-                            ? "border-b border-slate-100 pb-1"
+                            ? "border-b border-border pb-1"
                             : ""
                         }`}>
                         {/* Text Section - Always Left */}
                         <div className="flex-1 flex flex-col justify-center min-w-0">
-                          <h4 className="text-xs md:text-sm lg:text-base font-semibold text-slate-800 wrap-break-word leading-relaxed group-hover:text-blue-900 transition-colors duration-200">
+                          <h4 className="text-xs md:text-sm lg:text-base font-semibold text-foreground wrap-break-word leading-relaxed group-hover:text-primary transition-colors duration-200">
                             {capability.text}
                           </h4>
                         </div>
                         {/* Image Section - Always Right with Badge Style */}
-                        <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md bg-slate-50 border border-slate-100 p-1 group-hover:bg-blue-50 group-hover:border-blue-200 transition-all duration-200">
+                        <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md bg-muted border border-border p-1 group-hover:bg-primary-light group-hover:border-primary transition-all duration-200">
                           {capability.image ? (
                             isFullUrl(capability.image) ||
                             capability.image.startsWith("/") ? (
@@ -144,13 +144,13 @@ export default function TechStack() {
                                 />
                               </div>
                             ) : (
-                              <div className="text-xs md:text-sm font-semibold text-blue-900">
+                              <div className="text-xs md:text-sm font-semibold text-primary">
                                 {capability.image}
                               </div>
                             )
                           ) : (
-                            <div className="w-full h-full bg-slate-200 rounded flex items-center justify-center">
-                              <span className="text-[8px] text-slate-500 font-medium">
+                            <div className="w-full h-full bg-muted rounded flex items-center justify-center">
+                              <span className="text-[8px] text-muted-foreground font-medium">
                                 ?
                               </span>
                             </div>
