@@ -103,12 +103,6 @@ const SOCIAL_BG_COLORS: Record<string, string> = {
 const QUICK_LINKS = [
   { id: "about", label: "About", icon: Users, color: "text-white" },
   { id: "services", label: "Services", icon: Wrench, color: "text-white" },
-  {
-    id: "products",
-    label: "Products",
-    icon: Grid3x3,
-    color: "text-white",
-  },
   { id: "stack", label: "Tech Stack", icon: Info, color: "text-white" },
   {
     id: "case-studies",
@@ -143,7 +137,6 @@ const PRODUCT_LINKS = [
     url: "https://surveymachi.com",
     logo: "/images/surveymachi.jpg",
   },
-  
 ] as const;
 
 // Helper functions
@@ -587,7 +580,7 @@ export default function Footer() {
               ))}
             </ul>
 
-            {/* Products */}
+            {/* Products - production app URLs */}
             <h3 className="font-bold text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl mb-5 sm:mb-6 md:mb-7 lg:mb-8 mt-10 sm:mt-12 md:mt-14 lg:mt-16 xl:mt-18 2xl:mt-20 flex items-center gap-2 justify-start wrap-break-word">
               Products
             </h3>
@@ -650,6 +643,7 @@ export default function Footer() {
                 asDialog={false}
                 showTitle={false}
                 className="text-white"
+                submitButtonClassName="bg-primary hover:bg-primary-hover text-primary-foreground"
               />
             </div>
           </div>

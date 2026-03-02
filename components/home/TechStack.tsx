@@ -84,7 +84,7 @@ export default function TechStack() {
       {/* Background Image - path encoded for spaces and & */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/tech%20stack%20bg/Technology%20Stack%20%26%20Capabilities.jpg"
+          src="/images/tech%20stack%20bg/Codagam_Img%20(5).jpg"
           alt="Technology Stack background"
           fill
           className="object-cover object-center"

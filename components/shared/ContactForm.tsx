@@ -30,6 +30,8 @@ interface ContactFormProps {
     | "link"
     | "black";
   triggerSize?: "default" | "sm" | "lg" | "icon";
+  /** Optional class for the submit button (e.g. white text in footer) */
+  submitButtonClassName?: string;
 }
 
 export function ContactForm({
@@ -40,6 +42,7 @@ export function ContactForm({
   triggerText = "Get in Touch",
   triggerVariant = "black",
   triggerSize = "default",
+  submitButtonClassName,
 }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -209,7 +212,9 @@ export function ContactForm({
           type="submit"
           disabled={isSubmitting}
           variant="default"
-          className="w-full h-8 sm:h-9 text-xs sm:text-sm font-bold bg-background text-primary hover:bg-muted"
+          className={`w-full h-8 sm:h-9 text-xs sm:text-sm font-bold ${
+            submitButtonClassName ?? "bg-background text-primary hover:bg-muted"
+          }`}
           style={{ fontWeight: 700 }}>
           {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
