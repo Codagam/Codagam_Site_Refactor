@@ -12,9 +12,9 @@ import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full bg-background">
       <Navbar />
-      <main className="pt-12 sm:pt-14 md:pt-16">
+      <main className="pt-12 sm:pt-14 md:pt-16 lg:pt-16">
         <Hero />
         <About />
         <Services />

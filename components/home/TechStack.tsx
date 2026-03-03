@@ -80,7 +80,7 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="relative py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 overflow-hidden">
+      className="relative py-12 sm:py-14 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 overflow-hidden">
       {/* Background Image - path encoded for spaces and & */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -96,18 +96,18 @@ export default function TechStack() {
         <div className="absolute inset-0 z-1 bg-section-bg/50" aria-hidden />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 text-center mb-8 md:mb-12">
         Technology Stack & Capabilities
         </h2>
         {loading ? (
           <div className="flex justify-center items-center py-12 md:py-20">
-            <p className="text-muted-foreground text-base md:text-lg">
+            <p className="text-black text-base md:text-lg">
               Loading tech stack...
             </p>
           </div>
         ) : categories.length === 0 ? (
           <div className="flex justify-center items-center py-12 md:py-20">
-            <p className="text-muted-foreground text-base md:text-lg">
+            <p className="text-black text-base md:text-lg">
               No tech stack items available.
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function TechStack() {
             {categories.map((category) => (
               <Card
                 key={category.id}
-                className="group overflow-hidden w-full flex flex-col transition-all duration-300 hover:-translate-y-1 border-border hover:border-primary/20 rounded-lg md:rounded-xl">
+                className="group overflow-hidden w-full flex flex-col bg-white transition-all duration-300 hover:-translate-y-1 border-border rounded-lg md:rounded-xl">
                 {/* Category Title with Gradient */}
                 <CardHeader className="relative p-0">
                   <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-linear-to-br from-primary via-primary-hover to-primary">
@@ -127,24 +127,20 @@ export default function TechStack() {
                   </div>
                 </CardHeader>
                 {/* Capabilities List */}
-                <CardContent className="flex flex-col p-1.5 md:p-2 gap-1 md:gap-1.5">
-                  {category.capabilities.map((capability, index) => {
+                <CardContent className="flex flex-col p-1.5 md:p-2 gap-1 md:gap-1.5 bg-white">
+                  {category.capabilities.map((capability) => {
                     return (
                       <div
                         key={capability.id}
-                        className={`flex flex-row items-center justify-between gap-2 md:gap-3 transition-colors duration-200 hover:bg-muted rounded-md p-1 ${
-                          index < category.capabilities.length - 1
-                            ? "border-b border-border pb-1"
-                            : ""
-                        }`}>
+                        className="flex flex-row items-center justify-between gap-2 md:gap-3 transition-colors duration-200 hover:bg-gray-100 rounded-md p-1">
                         {/* Text Section - Always Left */}
                         <div className="flex-1 flex flex-col justify-center min-w-0">
-                          <h4 className="text-xs md:text-sm lg:text-base font-semibold text-foreground wrap-break-word leading-relaxed group-hover:text-primary transition-colors duration-200">
+                          <h4 className="text-xs md:text-sm lg:text-base font-semibold text-black wrap-break-word leading-relaxed transition-colors duration-200">
                             {capability.text}
                           </h4>
                         </div>
                         {/* Image Section - Always Right with Badge Style */}
-                        <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md bg-muted border border-border p-1 group-hover:bg-primary-light group-hover:border-primary transition-all duration-200">
+                        <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md p-1">
                           {capability.image ? (
                             isFullUrl(capability.image) ||
                             capability.image.startsWith("/") ? (

@@ -97,9 +97,9 @@ export default function Hero() {
 
   if (loading && heroList.length === 0) {
     return (
-      <section className="bg-primary-light min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-12 md:py-16">
+      <section className="bg-background min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-12 sm:py-14 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <p className="text-muted-foreground text-sm sm:text-base md:text-lg text-center">
+          <p className="text-white/60 text-sm sm:text-base md:text-lg text-center">
             Loading hero section...
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative bg-primary-light min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-6 sm:py-8 md:py-12 lg:pt-8 lg:pb-12 overflow-hidden">
+    <section className="relative bg-background min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-4rem)] flex flex-col justify-between py-6 sm:py-8 md:py-12 lg:pt-8 lg:pb-12 overflow-hidden">
       {/* Background Images for each slide */}
       {heroList.map((hero, index) => (
         <div
@@ -126,16 +126,16 @@ export default function Hero() {
               priority={index === 0}
             />
           ) : (
-            <div className="w-full h-full bg-primary/60" />
+            <div className="w-full h-full bg-background" />
           )}
-          {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-primary/80" />
+          {/* Overlay for better text readability - matches nav/footer tint */}
+          <div className="absolute inset-0 bg-background/80" />
         </div>
       ))}
 
       {/* Content - wrapper constrains to viewport on all screens */}
       <div className="relative z-10 w-full max-w-[100vw] flex-1 flex flex-col justify-center min-w-0 overflow-x-hidden">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center mb-6 sm:mb-8 md:mb-12">
           {/* Text Content */}
@@ -145,7 +145,7 @@ export default function Hero() {
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}>
               {number && (
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-orange-700 leading-none mb-3 md:mb-4">
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-none mb-3 md:mb-4">
                   {number}
                 </p>
               )}
@@ -155,7 +155,7 @@ export default function Hero() {
                 </h1>
               )}
               {description && (
-                <p className="text-base sm:text-lg md:text-lg lg:text-xl text-foreground leading-relaxed drop-shadow-md">
+                <p className="text-base sm:text-lg md:text-lg lg:text-xl text-white/75 leading-relaxed drop-shadow-md">
                   {description}
                 </p>
               )}
@@ -180,8 +180,8 @@ export default function Hero() {
                   />
                 </div>
               ) : (
-                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-muted/80 backdrop-blur-sm flex items-center justify-center ring-2 ring-background/20">
-                  <p className="text-muted-foreground text-sm md:text-base">
+                <div className="relative w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm flex items-center justify-center ring-2 ring-white/20">
+                  <p className="text-white/60 text-sm md:text-base">
                     No image available
                   </p>
                 </div>

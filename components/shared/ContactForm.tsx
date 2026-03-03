@@ -134,7 +134,7 @@ export function ContactForm({
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="h-8 sm:h-9 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground"
+            className="h-8 sm:h-9 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500"
             style={{ fontWeight: 400 }}
             autoComplete="name"
             required
@@ -154,7 +154,7 @@ export function ContactForm({
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className={`h-8 sm:h-9 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground ${
+            className={`h-8 sm:h-9 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500 ${
               emailError ? "border-red-500" : ""
             }`}
             style={{ fontWeight: 400 }}
@@ -181,7 +181,7 @@ export function ContactForm({
             placeholder="Your Phone (10 digits)"
             value={formData.phone}
             onChange={handleChange}
-            className="h-8 sm:h-9 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground"
+            className="h-8 sm:h-9 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500"
             style={{ fontWeight: 400 }}
             maxLength={10}
             pattern="[0-9]{10}"
@@ -203,7 +203,7 @@ export function ContactForm({
             rows={3}
             value={formData.message}
             onChange={handleChange}
-            className="resize-none text-xs sm:text-sm text-foreground placeholder:text-muted-foreground"
+            className="resize-none text-xs sm:text-sm bg-white text-black placeholder:text-gray-500"
             style={{ fontWeight: 400 }}
             required
           />

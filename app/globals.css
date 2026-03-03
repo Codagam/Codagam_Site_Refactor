@@ -2,21 +2,27 @@
 
 @layer base {
   :root {
-    /* Theme: Coolors Tailwind 209cee (sky blue) */
-    --background: 255 255 255;
-    --foreground: 15 23 42;
-    --primary: 32 156 238;
-    --primary-hover: 26 140 212;
-    --primary-light: 239 246 253;
+    /* Theme: Codagam — Slate 950 + Blue 700 / Sky 500 */
+    --background: 11 17 32;
+    --foreground: 226 232 240;
+    --primary: 29 78 216;
+    --primary-hover: 30 64 175;
+    --primary-light: 191 219 254;
     --primary-foreground: 255 255 255;
-    --accent: 32 156 238;
+    --accent: 29 78 216;
     --accent-foreground: 255 255 255;
-    --muted: 248 250 252;
-    --section-bg: 208 234 251; /* #D0EAFB 100% */
+    --accent-secondary: 14 165 233;
+    --accent-secondary-light: 224 242 254;
+    --muted: 31 41 55;
+    --section-bg: 226 232 240;
+    --section-dark: 2 6 23;
     --muted-foreground: 100 116 139;
-    --border: 226 232 240;
-    --card: 255 255 255;
-    --card-foreground: 15 23 42;
+    --border: 31 41 55;
+    --card: 226 232 240;
+    --card-foreground: 2 6 23;
+    --nav-surface: 245 242 235;
+    --destructive: 224 92 58;
+    --success: 74 222 128;
   }
 }
 
@@ -49,6 +55,7 @@ html {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  background: rgb(var(--background));
 }
 
 body {

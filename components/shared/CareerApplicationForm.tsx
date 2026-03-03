@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Upload, Loader2 } from "lucide-react";
+import { Upload, Loader2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -52,6 +52,7 @@ interface CareerApplicationFormProps {
   onSuccess?: () => void;
   asDialog?: boolean;
   triggerText?: string;
+  triggerShowArrow?: boolean;
   triggerVariant?:
     | "default"
     | "destructive"
@@ -68,6 +69,7 @@ export function CareerApplicationForm({
   onSuccess,
   asDialog = false,
   triggerText = "Apply Now",
+  triggerShowArrow = false,
   triggerVariant = "black",
   triggerSize = "default",
 }: CareerApplicationFormProps) {
@@ -146,7 +148,7 @@ export function CareerApplicationForm({
                 <FormControl>
                   <Input
                     placeholder="Your Full Name"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-foreground dark:text-foreground placeholder:text-muted-foreground dark:placeholder:text-muted-foreground border-border dark:border-border focus:border-primary dark:focus:border-primary"
+                    className="h-9 sm:h-10 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500 border-border dark:border-border focus:border-primary dark:focus:border-primary"
                     autoComplete="name"
                     {...field}
                   />
@@ -168,7 +170,7 @@ export function CareerApplicationForm({
                   <Input
                     type="email"
                     placeholder="Your Email"
-                    className="h-9 sm:h-10 text-xs sm:text-sm text-foreground dark:text-foreground placeholder:text-muted-foreground dark:placeholder:text-muted-foreground border-border dark:border-border focus:border-primary dark:focus:border-primary"
+                    className="h-9 sm:h-10 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500 border-border dark:border-border focus:border-primary dark:focus:border-primary"
                     autoComplete="email"
                     {...field}
                   />
@@ -211,12 +213,12 @@ export function CareerApplicationForm({
                         Choose file
                       </Button>
                       {/* File display area */}
-                      <div className="flex-1 min-w-0 border border-border dark:border-border rounded-md bg-background dark:bg-muted px-2 sm:px-3 py-2 sm:py-2.5 flex items-center">
+                      <div className="flex-1 min-w-0 border border-border dark:border-border rounded-md bg-white px-2 sm:px-3 py-2 sm:py-2.5 flex items-center">
                         <span
                           className={`text-xs sm:text-sm truncate ${
                             fileName
-                              ? "text-foreground dark:text-foreground font-medium"
-                              : "text-muted-foreground dark:text-muted-foreground"
+                              ? "text-black font-medium"
+                              : "text-gray-500"
                           }`}>
                           {fileName || "No file chosen"}
                         </span>
@@ -271,6 +273,9 @@ export function CareerApplicationForm({
         <DialogTrigger asChild>
           <Button variant={triggerVariant} size={triggerSize} className="bg-primary hover:bg-primary-hover text-primary-foreground">
             {triggerText}
+            {triggerShowArrow && (
+              <ArrowRight className="ml-2 h-4 w-4 shrink-0" aria-hidden />
+            )}
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl p-4 sm:p-5 md:p-6 w-full max-h-[90vh] overflow-y-auto">

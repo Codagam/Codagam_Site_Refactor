@@ -1,51 +1,26 @@
 "use client";
 
-import { Check } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-interface CaseStudy {
-  id: string;
-  title: string;
-  challenge: string;
-  results: string[];
-}
-
-const caseStudies: CaseStudy[] = [
+const differentiators = [
   {
-    id: "healthcare",
-    title: "Healthcare Startup - EMR Platform",
-    challenge:
-      "Early-stage health tech startup needed patient-facing EMR app and clinic management system for India's competitive market.",
-    results: [
-      "Launched in 4 months (vs 8 typical)",
-      "5,000+ users across 20 clinics",
-      "99.7% uptime, sub-second response",
-      "Series A raised in 6 months",
-    ],
+    value: "19",
+    unit: "yr",
+    title: "Founder coding experience",
+    description:
+      "Writing production systems since 2006 — enterprise, SaaS, mobile, and everything between.",
   },
   {
-    id: "analytics",
-    title: "Analytics Startup - Data Platform",
-    challenge:
-      "B2B SaaS analytics company needed to scale from 10K to 100M events/day with improved latency.",
-    results: [
-      "10x throughput increase",
-      "60% cost per query reduction",
-      "Dashboard load: 8s → <500ms",
-      "PostgreSQL sharding implemented",
-    ],
+    value: "2",
+    unit: "yr+",
+    title: "Minimum engineer experience",
+    description:
+      "We don't use your project as a training ground. Everyone who touches your code has shipped before.",
   },
   {
-    id: "enterprise",
-    title: "Enterprise - Cloud Migration",
-    challenge:
-      "Legacy enterprise system on-premise with MS SQL Server, needed zero-downtime cloud migration.",
-    results: [
-      "Zero downtime migration",
-      "40% infrastructure cost reduction",
-      "99.9%+ uptime achieved",
-      "Global multi-region failover",
-    ],
+    value: "3",
+    unit: "",
+    title: "Time-zone overlaps supported",
+    description:
+      "India, US (EST/PST), and UK — meaningful daily overlap, not just async back-and-forth.",
   },
 ];
 
@@ -53,52 +28,57 @@ export default function TrustedBy() {
   return (
     <section
       id="case-studies"
-      className="bg-card py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      className="bg-muted/40 py-12 sm:py-14 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12">
-          Trusted by Innovative Companies
+        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
+          Why teams choose us
+        </p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-8 md:mb-10 max-w-2xl">
+          Trusted by teams who can&apos;t afford to get it wrong.
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {caseStudies.map((caseStudy) => (
-              <Card
-                key={caseStudy.id}
-                className="bg-primary border-primary text-primary-foreground hover:bg-primary-hover rounded-lg md:rounded-xl border-2 transition-all duration-300 hover:scale-105">
-                <CardHeader className="p-2 md:p-3 pb-1">
-                  <CardTitle className="text-sm md:text-base lg:text-lg font-bold text-primary-foreground wrap-break-word">
-                    {caseStudy.title}
-                  </CardTitle>
-                </CardHeader>
 
-                <CardContent className="p-2 md:p-3 pt-0 flex flex-col gap-3 md:gap-4">
-                  <div className="flex flex-col gap-2 md:gap-3">
-                    <p className="text-xs md:text-sm lg:text-base font-semibold text-primary-foreground">
-                      Challenge:
-                    </p>
-                    <p className="text-xs md:text-sm lg:text-base text-primary-foreground/90 leading-relaxed wrap-break-word">
-                      {caseStudy.challenge}
-                    </p>
-                  </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
+          {/* Testimonial */}
+          <div className="relative">
+            <span className="text-5xl sm:text-6xl font-serif text-primary/30 leading-none select-none">
+              &ldquo;
+            </span>
+            <p className="text-base sm:text-lg text-primary leading-relaxed pt-2">
+              Codagam brought a level of technical maturity we rarely see from
+              offshore partners. They understood our compliance requirements
+              from day one, asked the right questions, and delivered a system
+              we&apos;re genuinely proud of.
+            </p>
+            <p className="mt-4 text-sm text-primary/80">
+              — Healthcare Technology Client · Multi-tenant EMR Platform
+            </p>
+          </div>
 
-                  <div className="flex flex-col gap-2 md:gap-3">
-                    <p className="text-xs md:text-sm lg:text-base font-semibold text-primary-foreground">
-                      Results:
-                    </p>
-                    <ul className="flex flex-col gap-1.5 md:gap-2">
-                      {caseStudy.results.map((result, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 md:gap-3">
-                          <Check className="w-4 h-4 md:w-5 md:h-5 text-green-400 shrink-0 mt-0.5" />
-                          <span className="text-xs md:text-sm lg:text-base text-primary-foreground/90 leading-relaxed wrap-break-word">
-                            {result}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
+          {/* Differentiators */}
+          <div className="flex flex-col divide-y divide-border">
+            {differentiators.map((item) => (
+              <div
+                key={item.title}
+                className="py-5 sm:py-6 first:pt-0 last:pb-0">
+                <div className="flex items-baseline gap-1 mb-2">
+                  <span className="text-3xl sm:text-4xl font-bold text-foreground">
+                    {item.value}
+                  </span>
+                  {item.unit && (
+                    <span className="text-lg text-muted-foreground">
+                      {item.unit}
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-foreground mb-1.5">
+                  {item.title}
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
             ))}
+          </div>
         </div>
       </div>
     </section>

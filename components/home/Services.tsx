@@ -47,7 +47,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-12 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 overflow-hidden">
+      className="relative py-12 sm:py-14 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 overflow-hidden">
       {/* Background Image - path encoded for spaces */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -133,12 +133,12 @@ export default function Services() {
 
                   {/* CTA */}
                   <Button
-                    className={`flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:scale-105 hover:opacity-90 bg-background hover:bg-background/90 ${textColorClass}`}
+                    className="flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 h-auto rounded-lg transition-all duration-300 mt-auto w-fit hover:scale-105 bg-white hover:bg-gray-100 text-black hover:text-black"
                     variant="ghost"
                     size="sm">
                     <span className="font-semibold">Learn more</span>
                     <ArrowRight 
-                      className={`w-4 h-4 transition-transform duration-300 group-hover:translate-x-2 ${textColorClass}`}
+                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2 text-black"
                     />
                   </Button>
                 </CardContent>

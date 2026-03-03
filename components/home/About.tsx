@@ -1,25 +1,23 @@
 "use client";
 
-import { Gem, Target, Hexagon } from "lucide-react";
-
 const pillars = [
   {
     id: "bespoke",
-    icon: Gem,
+    symbol: "✦",
     title: "Bespoke, not templated",
     description:
       "Every system is designed around your specific business logic, users, and growth trajectory — never copy-pasted from a boilerplate.",
   },
   {
     id: "cost-effective",
-    icon: Target,
+    symbol: "◎",
     title: "Cost-effective without compromise",
     description:
       "India-based structure means senior engineering talent at rates that don't require enterprise budget. Rigorous hiring — 2+ year floor for every engineer.",
   },
   {
     id: "advanced",
-    icon: Hexagon,
+    symbol: "⬡",
     title: "Advanced, by default",
     description:
       "We don't use yesterday's tools. Our stack is continuously evaluated — AI integration, serverless, edge — wherever they genuinely help.",
@@ -30,18 +28,18 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden py-12 sm:py-14 md:py-16 lg:py-20 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
-      {/* Faint CODAGAM watermark - centered */}
+      className="relative overflow-hidden py-12 sm:py-14 md:py-16 lg:py-20 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16">
+      {/* Faint CODAGAM watermark - centered, responsive so it fits on sm screens */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[clamp(6rem,20vw,19rem)] font-bold leading-none tracking-tight text-white/5 whitespace-nowrap"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-bold leading-none tracking-tight text-white/5 whitespace-nowrap text-[clamp(2.5rem,12vw,4.5rem)] sm:text-[clamp(3.5rem,15vw,8rem)] md:text-[clamp(5rem,18vw,14rem)] lg:text-[clamp(6rem,20vw,19rem)]"
         aria-hidden
       >
         CODAGAM
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Eyebrow with line above */}
-        <div className="border-t border-white/10 pt-4">
+        <div className="pt-4">
           <p className="text-xs font-medium uppercase tracking-widest text-white/60">
             Who we are
           </p>
@@ -51,7 +49,7 @@ export default function About() {
         <h2 className="mt-3 max-w-[36rem] text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-[2.5rem]">
           Your home-grown team
           <br />
-          with a <em className="font-light not-italic text-primary">global outlook.</em>
+          with a <span className="text-primary italic">global outlook.</span>
         </h2>
 
         {/* Two-column grid - align top */}
@@ -78,14 +76,14 @@ export default function About() {
 
           {/* Right: pillar cards */}
           <div className="flex flex-col gap-4">
-            {pillars.map(({ id, icon: Icon, title, description }) => (
+            {pillars.map(({ id, symbol, title, description }) => (
               <div
                 key={id}
                 className="group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 px-5 py-5 transition-all duration-300 hover:translate-x-1 hover:border-white/15 hover:bg-white/10 sm:px-6 sm:py-6"
               >
                 <div className="absolute left-0 right-0 top-0 h-0.5 bg-gradient-to-r from-primary/80 to-primary/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="mb-3 text-primary opacity-90">
-                  <Icon className="h-5 w-5 sm:h-5 sm:w-5" strokeWidth={1.5} />
+                <div className="mb-3 text-primary text-xl font-medium" aria-hidden>
+                  {symbol}
                 </div>
                 <h3 className="mb-1.5 text-base font-medium tracking-wide text-white sm:text-[0.97rem]">
                   {title}

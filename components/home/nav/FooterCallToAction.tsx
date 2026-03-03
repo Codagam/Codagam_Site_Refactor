@@ -33,13 +33,13 @@ export default function FooterCallToAction({ className = "" }: FooterCallToActio
   const defaultContent = {
     title: "Let's Build Something Remarkable",
     description:
-      "Whether you're launching a healthcare platform, scaling a SaaS product, modernizing legacy enterprise systems, or expanding to global markets—we'd love to explore how we can help.",
+      "Custom-built, cost-effective software — crafted for growth and served with care, just like a home-cooked meal.",
   };
 
   return (
-    <div className={`w-full text-primary border-t border-border pt-3 sm:pt-4 md:pt-5 lg:pt-5 xl:pt-6 2xl:pt-7 pb-3 sm:pb-4 md:pb-5 lg:pb-5 xl:pb-6 2xl:pb-7 bg-muted ${className}`}>
+    <div className={`w-full bg-white pt-3 sm:pt-4 md:pt-5 lg:pt-5 xl:pt-6 2xl:pt-7 pb-3 sm:pb-4 md:pb-5 lg:pb-5 xl:pb-6 2xl:pb-7 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl mb-2 md:mb-3 lg:mb-4 font-bold wrap-break-word">
+        <h2 className="text-blue-600 text-base sm:text-lg md:text-xl lg:text-2xl mb-2 md:mb-3 lg:mb-4 font-bold wrap-break-word">
           {footerContent?.title || defaultContent.title}
         </h2>
         <p
