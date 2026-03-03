@@ -1,31 +1,28 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { Gem, Target, Hexagon } from "lucide-react";
 
-const whyDifferent = [
+const pillars = [
   {
-    id: "technical",
-    title: "Technical Depth",
+    id: "bespoke",
+    icon: Gem,
+    title: "Bespoke, not templated",
     description:
-      "Our leadership team codes, architects, and makes core technical decisions daily",
+      "Every system is designed around your specific business logic, users, and growth trajectory — never copy-pasted from a boilerplate.",
   },
   {
-    id: "healthcare-ai",
-    title: "Healthcare + AI Expertise",
+    id: "cost-effective",
+    icon: Target,
+    title: "Cost-effective without compromise",
     description:
-      "We've built EMR apps, clinic systems, and vaccine platforms—clinical workflows matter",
+      "India-based structure means senior engineering talent at rates that don't require enterprise budget. Rigorous hiring — 2+ year floor for every engineer.",
   },
   {
-    id: "global-local",
-    title: "Born Global, Rooted Local",
+    id: "advanced",
+    icon: Hexagon,
+    title: "Advanced, by default",
     description:
-      "We architect for emerging markets, not impose Western solutions",
-  },
-  {
-    id: "reliability",
-    title: "Reliability Obsession",
-    description:
-      "99.9%+ uptime, scalability, and enterprise security by design",
+      "We don't use yesterday's tools. Our stack is continuously evaluated — AI integration, serverless, edge — wherever they genuinely help.",
   },
 ];
 
@@ -33,64 +30,71 @@ export default function About() {
   return (
     <section
       id="about"
-      className="bg-card py-8 md:py-10 lg:py-12 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Heading */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-4 md:mb-6">
-          About Codagam
+      className="relative overflow-hidden bg-slate-900 py-12 sm:py-14 md:py-16 lg:py-20 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      {/* Faint CODAGAM watermark - centered */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[clamp(6rem,20vw,19rem)] font-bold leading-none tracking-tight text-white/5 whitespace-nowrap"
+        aria-hidden
+      >
+        CODAGAM
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* Eyebrow with line above */}
+        <div className="border-t border-white/10 pt-4">
+          <p className="text-xs font-medium uppercase tracking-widest text-white/60">
+            Who we are
+          </p>
+        </div>
+
+        {/* Main heading */}
+        <h2 className="mt-3 max-w-[36rem] text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-[2.5rem]">
+          Your home-grown team
+          <br />
+          with a <em className="font-light not-italic text-primary">global outlook.</em>
         </h2>
 
-        {/* Who We Are & Why We're Different */}
-        <div className="mb-0">
-          <h3 className="text-base sm:text-lg md:text-xl font-normal text-black text-center mb-4 md:mb-6">
-            Built by Engineers. Trusted by Enterprises.
-          </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-            {/* Who We Are */}
-            <div>
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-primary mb-2 md:mb-4">
-                Who We Are
-              </h3>
-              <div className="space-y-3">
-                <p className="text-base md:text-lg text-foreground leading-relaxed">
-                  Codagam Software Labs is a boutique software consulting firm
-                  headquartered in Gobichettipalayam, Tamil Nadu, specializing
-                  in enterprise-grade solutions for healthcare, analytics, and
-                  business intelligence platforms.
-                </p>
-                <p className="text-base md:text-lg text-foreground leading-relaxed">
-                  We&apos;re a team of full-stack engineers and architects with
-                  15+ years of combined experience architecting hybrid cloud
-                  solutions for Fortune 500 companies, building healthcare
-                  technology platforms, and launching multiple SaaS products.
-                  Our team is equally comfortable architecting Next.js
-                  microservices on GCP as designing enterprise .NET systems on
-                  Azure with SQL Server backends.
-                </p>
-              </div>
-            </div>
+        {/* Two-column grid - align top */}
+        <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14 lg:items-start">
+          {/* Left: intro copy */}
+          <div className="space-y-5">
+            <p className="text-base leading-relaxed text-white/75 sm:text-[1rem]">
+              We started Codagam because we saw too many teams choose between{" "}
+              <strong className="font-medium text-white/95">affordable and mediocre</strong> or{" "}
+              <strong className="font-medium text-white/95">premium and out-of-reach.</strong>{" "}
+              That&apos;s a false choice — and we built a firm to prove it.
+            </p>
+            <p className="text-base leading-relaxed text-white/75 sm:text-[1rem]">
+              Based in Tamil Nadu, India, the name Codagam blends &quot;Code&quot; with{" "}
+              <strong className="font-medium text-white/95">Agam</strong> — the Tamil word for mind.
+              We build software the way a craftsperson builds: with deep thought, fierce attention to
+              detail, and genuine pride in every line shipped.
+            </p>
+            <p className="text-base leading-relaxed text-white/75 sm:text-[1rem]">
+              We love hard problems. The messier the architecture, the trickier the integration, the
+              tighter the deadline — the more we lean in.
+            </p>
+          </div>
 
-            {/* Why We're Different */}
-            <div>
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-primary mb-2 md:mb-4">
-                Why We&apos;re Different
-              </h3>
-              <div className="space-y-3">
-                {whyDifferent.map((item) => (
-                  <div key={item.id} className="flex items-start gap-2">
-                    <Check className="w-5 h-5 md:w-5 md:h-5 text-green-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-base md:text-lg font-semibold text-primary mb-0.5">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm md:text-base text-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+          {/* Right: pillar cards */}
+          <div className="flex flex-col gap-4">
+            {pillars.map(({ id, icon: Icon, title, description }) => (
+              <div
+                key={id}
+                className="group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 px-5 py-5 transition-all duration-300 hover:translate-x-1 hover:border-white/15 hover:bg-white/10 sm:px-6 sm:py-6"
+              >
+                <div className="absolute left-0 right-0 top-0 h-0.5 bg-gradient-to-r from-primary/80 to-primary/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="mb-3 text-primary opacity-90">
+                  <Icon className="h-5 w-5 sm:h-5 sm:w-5" strokeWidth={1.5} />
+                </div>
+                <h3 className="mb-1.5 text-base font-medium tracking-wide text-white sm:text-[0.97rem]">
+                  {title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/45 sm:text-[0.855rem]">
+                  {description}
+                </p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
