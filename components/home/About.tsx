@@ -30,7 +30,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-slate-900 py-12 sm:py-14 md:py-16 lg:py-20 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
+      className="relative overflow-hidden py-12 sm:py-14 md:py-16 lg:py-20 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16">
       {/* Faint CODAGAM watermark - centered */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[clamp(6rem,20vw,19rem)] font-bold leading-none tracking-tight text-white/5 whitespace-nowrap"
