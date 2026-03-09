@@ -18,7 +18,7 @@ export default function BackToServicesLink() {
     <a
       href={SERVICES_HREF}
       onClick={handleClick}
-      className="mt-6 inline-block text-[.9rem] text-(--acc2) hover:text-(--acc3) transition-colors"
+      className="mt-4 inline-block text-[.9rem] text-(--acc2) hover:text-(--acc3) transition-colors"
       aria-label="Back to all services">
       ← All services
     </a>

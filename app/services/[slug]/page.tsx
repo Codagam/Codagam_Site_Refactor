@@ -67,11 +67,11 @@ export default async function ServicePage({
   return (
     <div className="min-h-screen w-full bg-(--bg-deep)">
       <Navbar />
-      <main className="relative z-10 pt-12 sm:pt-14 md:pt-16 lg:pt-16">
+      <main className="relative z-10 pt-8 sm:pt-10 md:pt-12 lg:pt-14">
         {/* Page hero */}
-        <section className="border-b border-(--border) py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-[5vw]">
+        <section className="border-b border-(--border) py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8">
           <div className="mx-auto max-w-[1100px]">
-            <p className="mb-4 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
+            <p className="mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
               <span
                 className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
                 aria-hidden
@@ -81,7 +81,7 @@ export default async function ServicePage({
             <h1 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
               What we build, and <em>how we build it.</em>
             </h1>
-            <p className="mt-4 max-w-[640px] text-base text-(--text-dim) leading-8">
+            <p className="mt-3 max-w-[640px] text-base text-(--text-dim) leading-8">
               Outcome-focused engineering across three core practice areas.
               Every engagement starts with understanding your actual problem —
               not fitting you into a template.
@@ -91,35 +91,35 @@ export default async function ServicePage({
         </section>
 
         {/* Service detail – two-column layout */}
-        <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-[5vw]">
+        <section className="py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8">
           <div className="mx-auto max-w-[1100px]">
-            <p className="mb-8 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
+            <p className="mb-6 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
               {service.eyebrow}
             </p>
 
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:items-start">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-10 lg:items-start">
               {/* Left: number, tag, fullTitle, copy, stack pills */}
               <div>
-                <div className="font-(--font-serif) text-4xl italic text-white/15 leading-none mb-4">
+                <div className="font-(--font-serif) text-4xl italic text-white/15 leading-none mb-3">
                   {service.number}
                 </div>
                 <p className="mb-3 flex items-center gap-2 text-[.69rem] font-medium uppercase tracking-[.11em] text-(--acc2)">
                   <span className="h-px w-3 bg-(--acc2)" />
                   {service.category}
                 </p>
-                <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.07] mb-4">
+                <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.07] mb-3">
                   {service.fullTitle}
                 </h2>
-                <p className="text-[.95rem] text-(--text-mid) leading-[1.82] mb-4">
+                <p className="text-[.95rem] text-(--text-mid) leading-[1.82] mb-3">
                   {service.copy}
                 </p>
                 {service.copy2 && (
-                  <p className="text-[.95rem] text-(--text-mid) leading-[1.82] mb-4">
+                  <p className="text-[.95rem] text-(--text-mid) leading-[1.82] mb-3">
                     {service.copy2}
                   </p>
                 )}
                 {service.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-6">
+                  <div className="flex flex-wrap gap-2 mt-4">
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
@@ -132,15 +132,15 @@ export default async function ServicePage({
               </div>
 
               {/* Right: "What you get" card – blue-100 block only */}
-              <div className="rounded-xl border border-slate-200 bg-blue-100 p-6 sm:p-8 shadow-sm">
-                <h4 className="text-[.7rem] font-medium uppercase tracking-[.12em] text-blue-900/60 mb-6">
+              <div className="rounded-xl border border-slate-200 bg-blue-100 p-5 sm:p-6 shadow-sm">
+                <h4 className="text-[.7rem] font-medium uppercase tracking-[.12em] text-blue-900/60 mb-4">
                   What you get
                 </h4>
                 <ul className="space-y-0">
                   {service.deliverables.map((d, i) => (
                     <li
                       key={i}
-                      className="flex gap-3 border-b border-slate-200 py-4 last:border-0">
+                      className="flex gap-3 border-b border-slate-200 py-3 last:border-0">
                       <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-blue-200 text-(--acc2) text-sm">
                         ✓
                       </span>
@@ -161,7 +161,7 @@ export default async function ServicePage({
             </div>
 
             {/* Unusual CTA – blue-100 block only */}
-            <div className="mt-16 flex flex-wrap items-center justify-between gap-6 rounded-xl border border-[rgba(91,141,238,.18)] bg-blue-100 p-8 sm:p-10">
+            <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[rgba(91,141,238,.18)] bg-blue-100 p-5 sm:p-6">
               <p className="font-(--font-serif) text-[1.05rem] text-slate-700 leading-[1.55] max-w-[420px] [&_em]:text-(--acc2) [&_em]:italic">
                 Need something <em>unusual?</em> Complex integrations, niche
                 stacks, AI features, voice transcription, multi-language systems
@@ -169,7 +169,7 @@ export default async function ServicePage({
               </p>
               <Link
                 href="/home#contact"
-                className="shrink-0 rounded-lg bg-white px-6 py-3 font-(--font-sans) text-sm text-(--bg-deep) shadow border border-slate-200 transition-colors hover:bg-(--acc2) hover:text-white hover:border-(--acc2)">
+                className="shrink-0 rounded-lg bg-white px-5 py-2.5 font-(--font-sans) text-sm text-(--bg-deep) shadow border border-slate-200 transition-colors hover:bg-(--acc2) hover:text-white hover:border-(--acc2)">
                 Tell us about it →
               </Link>
             </div>
@@ -177,22 +177,22 @@ export default async function ServicePage({
         </section>
 
         {/* Non-negotiables */}
-        <section className="border-t border-(--border) py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-[5vw]">
+        <section className="border-t border-(--border) py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8">
           <div className="mx-auto max-w-[1100px]">
-            <p className="mb-4 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
+            <p className="mb-3 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
               Non-negotiables
             </p>
-            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-12">
+            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-8">
               Secure by design.
               <br />
               Built to scale.
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
               {SECURITY_ITEMS.map((item, i) => (
                 <div
                   key={i}
-                  className="group rounded-lg border border-white/10 bg-[rgba(255,255,255,.05)] p-7 transition-colors hover:bg-blue-100 hover:border-slate-200">
-                  <div className="text-2xl mb-3" aria-hidden>
+                  className="group rounded-lg border border-white/10 bg-[rgba(255,255,255,.05)] p-5 sm:p-6 transition-colors hover:bg-blue-100 hover:border-slate-200">
+                  <div className="text-2xl mb-2" aria-hidden>
                     {item.icon}
                   </div>
                   <h3 className="text-[.95rem] font-medium text-white group-hover:text-(--bg-deep) mb-1.5 transition-colors">
@@ -208,20 +208,20 @@ export default async function ServicePage({
         </section>
 
         {/* Our engagement process */}
-        <section className="border-t border-(--border) py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-[5vw]">
+        <section className="border-t border-(--border) py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8">
           <div className="mx-auto max-w-[1100px]">
-            <p className="mb-4 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
+            <p className="mb-3 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
               How every project starts
             </p>
-            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-12">
+            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-8">
               Our engagement process.
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border)">
               {PROCESS_STEPS.map((step, i) => (
                 <div
                   key={i}
-                  className="group bg-[rgba(10,18,69,.95)] p-7 transition-colors hover:bg-blue-100">
-                  <div className="font-(--font-serif) text-[1.85rem] italic text-white/8 group-hover:text-blue-200 leading-none mb-4 transition-colors">
+                  className="group bg-[rgba(10,18,69,.95)] p-5 sm:p-6 transition-colors hover:bg-blue-100">
+                  <div className="font-(--font-serif) text-[1.85rem] italic text-white/8 group-hover:text-blue-200 leading-none mb-3 transition-colors">
                     {step.number}
                   </div>
                   <h3 className="text-[.94rem] font-semibold text-white group-hover:text-(--bg-deep) mb-2 transition-colors">
@@ -233,10 +233,10 @@ export default async function ServicePage({
                 </div>
               ))}
             </div>
-            <div className="mt-10 text-center">
+            <div className="mt-8 text-center">
               <Link
                 href="/home#contact"
-                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-(--font-sans) text-sm text-(--bg-deep) shadow transition-colors hover:bg-(--acc2) hover:text-(--bg-deep)">
+                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 font-(--font-sans) text-sm text-(--bg-deep) shadow transition-colors hover:bg-(--acc2) hover:text-(--bg-deep)">
                 Start with a discovery call
                 <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>

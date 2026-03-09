@@ -61,7 +61,7 @@ export function Marquee({
       <div className="flex w-max">
         <div
           className={cn(
-            "flex shrink-0 flex-nowrap items-center gap-[var(--gap)]",
+            "flex shrink-0 flex-nowrap items-center gap-(--gap)",
             direction === "left" && "animate-marquee-left",
             direction === "right" && "animate-marquee-right",
             reverse && "direction-reverse",
@@ -72,7 +72,7 @@ export function Marquee({
         {duplicate && (
           <div
             className={cn(
-              "flex shrink-0 flex-nowrap items-center gap-[var(--gap)]",
+              "flex shrink-0 flex-nowrap items-center gap-(--gap)",
               direction === "left" && "animate-marquee-left",
               direction === "right" && "animate-marquee-right",
               reverse && "direction-reverse",

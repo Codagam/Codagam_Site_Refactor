@@ -37,8 +37,9 @@
     --border: rgba(255, 255, 255, 0.08);
     --border-codagam: rgba(255, 255, 255, 0.08);
     --border-hi: rgba(255, 255, 255, 0.15);
-    --font-serif: "Fraunces", Georgia, serif;
-    --font-sans: "DM Sans", sans-serif;
+    --font-serif: var(--font-open-sans);
+    --font-sans: var(--font-open-sans), sans-serif;
+    --font-mono: var(--font-open-sans), monospace;
   }
 }
 
@@ -58,16 +59,20 @@
   --color-border: rgb(var(--border));
   --color-card: rgb(var(--card));
   --color-card-foreground: rgb(var(--card-foreground));
-  --font-sans: var(--font-open-sans), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
-  --font-riviera-nights: "Riviera Nights", var(--font-open-sans), -apple-system,
-    BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-sans: var(--font-open-sans), sans-serif;
+  --font-serif: var(--font-open-sans);
+  --font-mono: var(--font-open-sans), monospace;
 }
 
 /* Base Styles */
+*,
+*::before,
+*::after {
+  font-family: inherit;
+}
+
 html {
+  font-family: var(--font-sans);
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
@@ -78,9 +83,7 @@ html {
 body {
   background: var(--bg-deep);
   color: #fff;
-  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
   width: 100%;
@@ -113,7 +116,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-serif);
   font-weight: 600;
   line-height: 1.1;
   word-wrap: break-word;

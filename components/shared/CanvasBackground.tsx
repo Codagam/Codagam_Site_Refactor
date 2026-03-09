@@ -375,8 +375,17 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
       });
     }
 
+    function getSiteFont(): string {
+      if (typeof document === "undefined") return "sans-serif";
+      const v = getComputedStyle(document.documentElement)
+        .getPropertyValue("--font-open-sans")
+        .trim();
+      return v || "sans-serif";
+    }
+
     function drawNodes(now: number) {
       const u = H_.u;
+      const fontFamily = getSiteFont();
       nodes.forEach((nd) => {
         const pulse = 0.5 + 0.5 * Math.sin(now * 0.0014 + nd.phase);
         const r = u * 0.52;
@@ -418,12 +427,12 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
         g.fill();
         g.stroke();
         g.fillStyle = `rgba(255,255,255,${0.75 + 0.15 * pulse})`;
-        g.font = `${u * 0.52}px serif`;
+        g.font = `${u * 0.52}px ${fontFamily}, sans-serif`;
         g.textAlign = "center";
         g.textBaseline = "middle";
         g.fillText(nd.icon, nd.x, nd.y);
         g.fillStyle = `rgba(255,255,255,${0.5 + 0.1 * pulse})`;
-        g.font = `${u * 0.27}px 'DM Sans',sans-serif`;
+        g.font = `${u * 0.27}px ${fontFamily}, sans-serif`;
         g.textAlign = "center";
         g.textBaseline = "top";
         g.fillText(nd.label, nd.x, nd.y + r + u * 0.22);

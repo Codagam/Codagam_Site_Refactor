@@ -246,7 +246,7 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-[5vw] py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-[5vw] py-3 flex justify-between items-center">
         {/* Logo - Codagam theme: serif + acc2 span */}
         <Link
           href="/"
@@ -276,7 +276,7 @@ export default function Navbar() {
               });
             }
           }}
-          className="group hidden lg:flex ml-2 bg-blue-100 text-gray-900 border border-blue-200 py-1.5 px-3 rounded text-[.82rem] font-medium hover:bg-white transition-colors shrink-0 whitespace-nowrap"
+          className="group hidden lg:flex ml-2 bg-blue-100 text-gray-900 border border-blue-200 py-1.5 px-2.5 rounded text-[.8rem] font-medium hover:bg-white transition-colors shrink-0 whitespace-nowrap"
         >
           Book a call
           <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -319,7 +319,7 @@ export default function Navbar() {
                   />
                   <Button
                     onClick={handleContactClick}
-                    className={`group mt-4 w-full font-(--font-sans)! text-base! bg-blue-100 text-gray-900 py-3 px-10 rounded hover:bg-white mobile-menu-link ${
+                    className={`group mt-4 w-full font-(--font-sans)! text-base! bg-blue-100 text-gray-900 py-2.5 px-6 rounded hover:bg-white mobile-menu-link ${
                       shouldAnimate ? "animate-slide-in-right" : ""
                     }`}
                     style={{

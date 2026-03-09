@@ -7,34 +7,34 @@ export default function ServiceCards() {
   return (
     <section
       id="services"
-      className="relative border-t border-(--border) py-14 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-[5vw] scroll-mt-12 sm:scroll-mt-16"
+      className="relative border-t border-(--border) py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16"
       style={{
         background:
           "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",
       }}>
       <div className="mx-auto max-w-[1100px]">
-        <p className="mb-4 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
+        <p className="mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
           <span
             className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
             aria-hidden
           />
           What we build
         </p>
-        <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-2 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+        <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Engineering that <em>ships</em> and <em>scales.</em>
         </h2>
-        <p className="text-base text-(--text-dim) leading-8 max-w-[540px] mt-3">
+        <p className="text-base text-(--text-dim) leading-8 max-w-[540px] mt-2">
           Outcome-focused engineering across three core practice areas. Every
           engagement starts with understanding your actual problem — not fitting
           you into a template.
         </p>
 
-        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-3">
+        <div className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-3">
           {services.map((service) => (
             <Link
               key={service.id}
               href={`/services/${service.id}`}
-              className="group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-8 pr-10 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-(--acc2) focus:ring-offset-2 focus:ring-offset-(--bg-deep)">
+              className="group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-5 sm:p-6 md:p-8 pr-6 sm:pr-8 md:pr-10 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-(--acc2) focus:ring-offset-2 focus:ring-offset-(--bg-deep)">
               <span
                 className="absolute right-6 top-6 text-white/10 group-hover:text-(--acc2) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                 aria-hidden>

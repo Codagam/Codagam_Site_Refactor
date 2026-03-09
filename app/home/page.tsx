@@ -15,7 +15,7 @@ export default function Home() {
     <div className="min-h-dvh w-full max-w-[100vw] overflow-x-hidden bg-(--bg-deep)">
       <CanvasBackground />
       <Navbar />
-      <main className="relative z-10 pt-8 sm:pt-12 md:pt-14 lg:pt-16">
+      <main className="relative z-10 pt-5 sm:pt-8 md:pt-10 lg:pt-12">
         <Hero />
         <div className="relative z-20 bg-(--bg-deep) [&_section]:overflow-x-hidden">
           <About />

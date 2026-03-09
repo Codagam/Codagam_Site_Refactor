@@ -425,9 +425,9 @@ export default function Footer() {
     <footer
       id="contact"
       className="bg-background text-primary-foreground scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 w-full"
-      style={{ fontFamily: "var(--font-riviera-nights)" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 lg:py-12 w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-10 mb-6 sm:mb-8 md:mb-10 lg:mb-10 xl:mb-12 2xl:mb-12 w-full items-start">
+      style={{ fontFamily: "var(--font-sans)" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 py-5 sm:py-8 md:py-10 lg:py-12 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-8 mb-5 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-10 w-full items-start">
           {/* Company Info - Countries cycling, showing all addresses per country */}
           {mounted && sortedCountries.length > 0 ? (
             <div className="text-left w-full sm:order-1 md:order-1 lg:order-1">
@@ -583,7 +583,7 @@ export default function Footer() {
             </ul>
 
             {/* Products - production app URLs */}
-            <h3 className="font-bold text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl mb-5 sm:mb-6 md:mb-7 lg:mb-8 mt-10 sm:mt-12 md:mt-14 lg:mt-16 xl:mt-18 2xl:mt-20 flex items-center gap-2 justify-start wrap-break-word">
+            <h3 className="font-bold text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl mb-4 sm:mb-5 md:mb-6 lg:mb-7 mt-8 sm:mt-10 md:mt-12 lg:mt-14 flex items-center gap-2 justify-start wrap-break-word">
               Products
             </h3>
             <ul className="space-y-3 sm:space-y-3.5 md:space-y-4 lg:space-y-4 w-full">

@@ -31,20 +31,20 @@ export default function TrustedBy() {
   return (
     <section
       id="team"
-      className="relative border-t border-(--border) py-14 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-[5vw] scroll-mt-12 sm:scroll-mt-16 overflow-hidden bg-blue-100">
+      className="relative border-t border-(--border) py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 overflow-hidden bg-blue-100">
       <div className="relative z-10 mx-auto max-w-[1100px]">
-        <p className="mb-4 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-blue-900/60">
+        <p className="mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-blue-900/60">
           <span
             className="h-px w-6 shrink-0 bg-(--acc2) opacity-60"
             aria-hidden
           />
           Why teams choose us
         </p>
-        <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-2 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+        <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Extraordinary results, <em>repeatedly.</em>
         </h2>
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16">
+        <div className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {/* Testimonial - no card, direct on section background */}
           <div className="rv relative pr-4">
             <span
@@ -68,7 +68,7 @@ export default function TrustedBy() {
             {DIFFERENTIATORS.map((item, i) => (
               <div
                 key={item.title}
-                className={`rv flex gap-5 py-5 border-b border-slate-200 last:border-0 ${i === 1 ? "rv-d1" : i === 2 ? "rv-d2" : i === 3 ? "rv-d3" : ""}`}>
+                className={`rv flex gap-4 sm:gap-5 py-4 sm:py-5 border-b border-slate-200 last:border-0 ${i === 1 ? "rv-d1" : i === 2 ? "rv-d2" : i === 3 ? "rv-d3" : ""}`}>
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[rgba(91,141,238,.3)] bg-[rgba(91,141,238,.12)] text-(--acc2) text-lg">
                   {item.icon}
                 </div>
