@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Codagam Software Labs</title>
+<meta name="description" content="Next.js/MERN web products, enterprise .NET systems, and end-to-end engineering delivery. Bespoke software built for growth.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── SERVICES PAGE ── */
+.page-hero { background: var(--white); }
+
+/* Service detail cards */
+.svc-detail {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem;
+  align-items: start; padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+.svc-detail:first-child { border-top: none; padding-top: 3rem; }
+.svc-detail.reverse { direction: rtl; }
+.svc-detail.reverse > * { direction: ltr; }
+
+.svc-left .svc-num { font-family: var(--font-serif); font-size: 4rem; font-weight: 300; font-style: italic; color: var(--border); line-height: 1; margin-bottom: 1rem; }
+.svc-left .svc-tag { font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.11em; color: var(--accent); font-weight: 500; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+.svc-left .svc-tag::before { content: ''; display: block; width: 12px; height: 1px; background: var(--accent); }
+.svc-left h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.025em; margin-bottom: 1.1rem; line-height: 1.07; }
+.svc-left p { font-size: 0.95rem; color: var(--mid); line-height: 1.82; margin-bottom: 1.1rem; }
+
+.svc-right {
+  background: var(--cream); border-radius: 14px; padding: 2.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(15,14,12,.05);
+  position: relative; overflow: hidden;
+}
+.svc-right::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), rgba(200,82,26,.2));
+}
+.svc-right h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--light); font-family: var(--font-sans); font-weight: 500; margin-bottom: 1.35rem; }
+.deliverable-list { display: flex; flex-direction: column; gap: 0; }
+.deliverable {
+  display: flex; align-items: flex-start; gap: 0.9rem;
+  padding: 0.9rem 0; border-bottom: 1px solid rgba(221,216,206,.7);
+  transition: padding-left .2s;
+}
+.deliverable:hover { padding-left: 4px; }
+.deliverable:last-child { border-bottom: none; }
+.deliverable-check {
+  width: 20px; height: 20px; border-radius: 5px;
+  background: var(--sage-light); color: var(--sage);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.64rem; flex-shrink: 0; margin-top: 1px;
+}
+.deliverable div h5 { font-size: 0.9rem; font-family: var(--font-sans); font-weight: 500; margin-bottom: 0.2rem; }
+.deliverable div p { font-size: 0.81rem; color: var(--light); line-height: 1.55; }
+.stack-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
+.stack-pill {
+  font-size: 0.74rem; padding: 0.26rem 0.68rem; border-radius: 100px;
+  background: var(--white); border: 1px solid var(--border); color: var(--mid);
+  transition: border-color .2s, color .2s;
+}
+.stack-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Security section */
+.security-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.75rem; }
+.sec-item {
+  padding: 1.75rem; background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09); border-radius: 10px;
+  transition: background .25s, border-color .25s, transform .25s;
+  position: relative; overflow: hidden;
+}
+.sec-item::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.1), transparent);
+}
+.sec-item:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.15); transform: translateY(-3px); }
+.sec-icon { font-size: 1.2rem; margin-bottom: 0.85rem; }
+.sec-item h4 { color: var(--white); font-size: 0.95rem; font-family: var(--font-sans); font-weight: 500; margin-bottom: 0.4rem; }
+.sec-item p { font-size: 0.84rem; color: rgba(255,255,255,.42); line-height: 1.7; }
+
+/* Process */
+.process-steps {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 2.75rem;
+  box-shadow: 0 4px 24px rgba(15,14,12,.05);
+}
+.process-step {
+  background: var(--white); padding: 2.25rem 1.75rem;
+  transition: background .25s;
+  position: relative; overflow: hidden;
+}
+.process-step::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s cubic-bezier(.34,1.2,.64,1);
+}
+.process-step:hover { background: #fefaf8; }
+.process-step:hover::before { transform: scaleX(1); }
+.step-n { font-family: var(--font-serif); font-size: 1.85rem; font-weight: 300; font-style: italic; color: var(--border); line-height: 1; margin-bottom: 1.1rem; }
+.process-step h4 { font-size: 0.94rem; font-family: var(--font-sans); font-weight: 600; margin-bottom: 0.45rem; letter-spacing: -0.01em; }
+.process-step p { font-size: 0.83rem; color: var(--mid); line-height: 1.7; }
+
+/* unusual CTA */
+.unusual {
+  background: var(--sage-light); border: 1px solid #c4d8c8; border-radius: 14px;
+  padding: 2.75rem 3rem; margin-top: 3.5rem;
+  display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;
+  box-shadow: 0 4px 24px rgba(61,82,66,.06);
+}
+.unusual p { font-size: 1.05rem; font-family: var(--font-serif); max-width: 420px; line-height: 1.55; }
+.unusual p span { color: var(--accent); font-style: italic; }
+
+@media(max-width:900px){
+  .svc-detail { grid-template-columns: 1fr; gap: 2.5rem; }
+  .svc-detail.reverse { direction: ltr; }
+  .security-cols { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .unusual { flex-direction: column; align-items: flex-start; padding: 2rem; }
+}
+@media(max-width:600px){ .process-steps { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main class="page-main">
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-label">Services</p>
+    <h1>What we build,<br>and <em>how we build it.</em></h1>
+    <p>Outcome-focused engineering across three core practice areas. Every engagement starts with understanding your actual problem — not fitting you into a template.</p>
+  </div>
+</div>
+
+<!-- ── SERVICE DETAILS ── -->
+<section class="section section--white" id="web">
+  <div class="container">
+    <p class="eyebrow reveal">Service 01</p>
+
+    <div class="svc-detail">
+      <div class="svc-left reveal">
+        <div class="svc-num">01</div>
+        <span class="svc-tag">Web &amp; SaaS Products</span>
+        <h2>Modern Web Products<br>&amp; SaaS Platforms</h2>
+        <p>We build full-stack web applications that scale with your business. Whether you're launching a SaaS MVP, rebuilding a legacy dashboard, or launching a customer portal — we use Next.js and the MERN stack to deliver fast, maintainable, production-ready software.</p>
+        <p>Our engineering is TypeScript-first, test-aware, and built for teams who will need to own and extend the codebase long after we hand it over.</p>
+        <div class="stack-pills" style="margin-top:0.5rem;">
+          <span class="stack-pill">Next.js 14+</span>
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">MongoDB</span>
+          <span class="stack-pill">Node.js</span>
+          <span class="stack-pill">Prisma</span>
+          <span class="stack-pill">Tailwind CSS</span>
+          <span class="stack-pill">Vercel / AWS</span>
+        </div>
+      </div>
+      <div class="svc-right reveal reveal-d2">
+        <h4>What you get</h4>
+        <div class="deliverable-list">
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Multi-tenant SaaS architecture</h5><p>Isolated data, custom domains, and per-tenant billing logic.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Role-based UI &amp; access control</h5><p>RBAC/ABAC built in from the start — not bolted on later.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>API design &amp; documentation</h5><p>Clean REST or GraphQL APIs with developer-ready docs.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Analytics &amp; observability</h5><p>Structured logging, dashboards, and real-time monitoring.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Mobile-responsive &amp; accessible</h5><p>WCAG-compliant, performant on every device.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enterprise .NET -->
+    <div id="enterprise" class="svc-detail reverse">
+      <div class="svc-left reveal">
+        <div class="svc-num">02</div>
+        <span class="svc-tag">Enterprise Systems</span>
+        <h2>Enterprise .NET<br>&amp; SQL Server Systems</h2>
+        <p>For organisations that need longevity, compliance, and reliability above all else. We design and build robust internal tools, ERP integrations, reporting systems, and backend services using C#/.NET and SQL Server — technology stacks chosen for enterprise-grade durability.</p>
+        <p>Our principal engineer has 19 years of experience in enterprise architecture. When you're building systems that your business will depend on for a decade, that judgment matters enormously.</p>
+        <div class="stack-pills" style="margin-top:0.5rem;">
+          <span class="stack-pill">C# / .NET</span>
+          <span class="stack-pill">SQL Server</span>
+          <span class="stack-pill">Azure</span>
+          <span class="stack-pill">REST APIs</span>
+          <span class="stack-pill">Entity Framework</span>
+          <span class="stack-pill">RBAC / ABAC</span>
+          <span class="stack-pill">Azure DevOps</span>
+        </div>
+      </div>
+      <div class="svc-right reveal reveal-d2">
+        <h4>What you get</h4>
+        <div class="deliverable-list">
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Legacy system integration</h5><p>Bridge old and new — ERP connectors, data migrations, API wrappers.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Compliance-aware architecture</h5><p>Audit logging, data retention policies, and access controls built for regulators.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Complex reporting &amp; PDF generation</h5><p>Automated document creation, payslips, invoices, regulatory reports.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Performance-tuned SQL</h5><p>Query optimization, indexing strategy, and database health for scale.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Azure cloud deployment</h5><p>Managed services, autoscaling, and blue-green deployment strategies.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End to end -->
+    <div id="delivery" class="svc-detail">
+      <div class="svc-left reveal">
+        <div class="svc-num">03</div>
+        <span class="svc-tag">Full Delivery</span>
+        <h2>Architecture &amp;<br>End-to-End Delivery</h2>
+        <p>Some teams need an engineering partner who can own the entire technical lifecycle — from system design and technology selection, through development, to deployment and handover. That's what this service is.</p>
+        <p>We embed as a delivery-focused technical lead: setting architecture standards, reviewing code, managing CI/CD pipelines, and ensuring the system lands in your hands clean, documented, and maintainable.</p>
+        <div class="stack-pills" style="margin-top:0.5rem;">
+          <span class="stack-pill">System design</span>
+          <span class="stack-pill">AWS / Vercel</span>
+          <span class="stack-pill">Docker</span>
+          <span class="stack-pill">GitHub Actions</span>
+          <span class="stack-pill">Terraform</span>
+          <span class="stack-pill">Observability</span>
+        </div>
+      </div>
+      <div class="svc-right reveal reveal-d2">
+        <h4>What you get</h4>
+        <div class="deliverable-list">
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Technical roadmap &amp; architecture docs</h5><p>Written decisions, ADRs, and diagrams your team can actually use.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>CI/CD pipeline setup</h5><p>Automated testing, preview deployments, production gates.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Infrastructure as Code</h5><p>Reproducible, version-controlled environments — no snowflake servers.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Monitoring &amp; alerting</h5><p>Error tracking, uptime monitoring, performance dashboards from day one.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">✓</div>
+            <div><h5>Team onboarding &amp; documentation</h5><p>Handover packages that actually transfer knowledge.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unusual CTA -->
+    <div class="unusual reveal">
+      <p>Need something <span>unusual?</span> Complex integrations, niche stacks, AI features, voice transcription, multi-language systems — tell us the challenge.</p>
+      <a href="contact.html" class="btn btn-primary">Tell us about it →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECURITY ── -->
+<section class="section section--sage">
+  <div class="container">
+    <p class="eyebrow reveal">Non-negotiables</p>
+    <h2 class="section-title reveal">Secure by design.<br>Built to scale.</h2>
+    <div class="security-cols">
+      <div class="sec-item reveal">
+        <div class="sec-icon">🔒</div>
+        <h4>Security-first architecture</h4>
+        <p>Auth, RBAC/ABAC, encryption at rest and in transit, and audit logging designed in from day one — not retrofitted after a breach scare.</p>
+      </div>
+      <div class="sec-item reveal reveal-d1">
+        <div class="sec-icon">☁</div>
+        <h4>Cloud-native scaling</h4>
+        <p>Horizontal scaling, multi-region readiness, and zero-downtime deployment — whether you're on AWS, Azure, or Vercel.</p>
+      </div>
+      <div class="sec-item reveal reveal-d2">
+        <div class="sec-icon">📊</div>
+        <h4>Observability baked in</h4>
+        <p>Structured logging, distributed tracing, health endpoints, and alerting. Your team always knows what the system is doing — and why.</p>
+      </div>
+      <div class="sec-item reveal reveal-d3">
+        <div class="sec-icon">📋</div>
+        <h4>Compliance-aware</h4>
+        <p>HIPAA-equivalent, GDPR, and regulatory audit trail requirements — understood from the start, not discovered in a panic during review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="section section--cream">
+  <div class="container">
+    <p class="eyebrow reveal">How every project starts</p>
+    <h2 class="section-title reveal">Our engagement process.</h2>
+    <div class="process-steps reveal" style="transition-delay:.15s">
+      <div class="process-step">
+        <div class="step-n">01</div>
+        <h4>Discovery call</h4>
+        <p>30 minutes. We listen to your problem, ask honest questions, and tell you frankly what we think the right approach is.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-n">02</div>
+        <h4>Scoping &amp; proposal</h4>
+        <p>We write a clear scope, timeline, and fixed-fee or retainer proposal. No surprises, no hidden hourly charges.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-n">03</div>
+        <h4>Architecture &amp; kickoff</h4>
+        <p>Before a line of code is written, we agree on tech choices, architecture decisions, and communication cadence.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-n">04</div>
+        <h4>Build &amp; iterate</h4>
+        <p>Two-week sprints, live preview environments, and weekly video check-ins. You're never waiting on a black box.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.75rem;" class="reveal reveal-d2">
+      <a href="contact.html" class="btn btn-primary">Start with a discovery call →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<script src="layout.js"></script>
+</body>
+</html>

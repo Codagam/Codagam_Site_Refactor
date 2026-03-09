@@ -2,9 +2,7 @@ import Navbar from "@/components/home/nav/Navbar";
 import Hero from "@/components/home/Hero";
 import { CanvasBackground } from "@/components/shared/CanvasBackground";
 import { PoweredStrip } from "@/components/shared/PoweredStrip";
-import Services from "@/components/home/Services";
-// import Products from "@/components/home/Products"; // Product section commented – using CapabilityCards
-import CapabilityCards from "@/components/home/CapabilityCards";
+import ServiceCards from "@/components/home/ServiceCards";
 import TechStack from "@/components/home/TechStack";
 import CareerSection from "@/components/home/CareerSection";
 import TrustedBy from "@/components/home/TrustedBy";
@@ -21,9 +19,7 @@ export default function Home() {
         <Hero />
         <div className="relative z-20 bg-[var(--bg-deep)]">
           <About />
-          <Services />
-          {/* <Products /> – product section replaced by 4 capability cards */}
-          <CapabilityCards />
+          <ServiceCards />
           <TechStack />
           <TrustedBy />
           <CareerSection />
