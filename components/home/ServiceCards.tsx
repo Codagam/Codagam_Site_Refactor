@@ -34,22 +34,22 @@ export default function ServiceCards() {
             <Link
               key={service.id}
               href={`/services/${service.id}`}
-              className="group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-8 pr-10 text-left transition-colors hover:bg-[rgba(90,107,187,1)] focus:outline-none focus:ring-2 focus:ring-[var(--acc2)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]">
+              className="group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-8 pr-10 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-[var(--acc2)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]">
               <span
                 className="absolute right-6 top-6 text-white/10 group-hover:text-[var(--acc2)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                 aria-hidden>
                 ↗
               </span>
-              <span className="font-[var(--font-serif)] text-4xl italic text-white/[.06]">
+              <span className="font-[var(--font-serif)] text-4xl italic text-white/[.06] group-hover:text-blue-200 transition-colors">
                 {service.number}
               </span>
-              <span className="mt-2 inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-[var(--acc2)] bg-[rgba(91,141,238,.12)]">
+              <span className="mt-2 inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-[var(--acc2)] bg-[rgba(91,141,238,.12)] group-hover:bg-blue-200/80 group-hover:text-[var(--bg-deep)] transition-colors">
                 {service.category}
               </span>
-              <h3 className="mt-4 font-[var(--font-sans)] text-xl font-semibold text-[var(--text-hi)]">
+              <h3 className="mt-4 font-[var(--font-sans)] text-xl font-semibold text-[var(--text-hi)] group-hover:text-[var(--bg-deep)] transition-colors">
                 {service.title}
               </h3>
-              <p className="mt-2 text-[.86rem] leading-relaxed text-[var(--text-dim)]">
+              <p className="mt-2 text-[.86rem] leading-relaxed text-[var(--text-dim)] group-hover:text-slate-600 transition-colors">
                 {service.shortDescription}
               </p>
             </Link>

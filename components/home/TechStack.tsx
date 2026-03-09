@@ -116,10 +116,10 @@ export default function TechStack() {
             {categories.map((category) => (
               <div
                 key={category.id}
-                className="group flex flex-col bg-[rgba(10,18,69,.95)] transition-colors hover:bg-[rgba(90,107,187,1)] border-0 rounded-none overflow-hidden">
+                className="group flex flex-col bg-[rgba(10,18,69,.95)] transition-colors hover:bg-blue-100 border-0 rounded-none overflow-hidden">
                 {/* Category header - same pill/accent style as service cards */}
                 <div className="px-8 pt-8 pb-4">
-                  <span className="inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-[var(--acc2)] bg-[rgba(91,141,238,.12)]">
+                  <span className="inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-[var(--acc2)] bg-[rgba(91,141,238,.12)] group-hover:bg-blue-200/80 group-hover:text-[var(--bg-deep)] transition-colors">
                     {category.title}
                   </span>
                 </div>
@@ -128,8 +128,8 @@ export default function TechStack() {
                   {category.capabilities.map((capability) => (
                     <li
                       key={capability.id}
-                      className="flex flex-row items-center justify-between gap-3 border-b border-white/10 py-3.5 last:border-0">
-                      <span className="text-[.88rem] font-medium text-[var(--text-hi)] min-w-0 flex-1">
+                      className="flex flex-row items-center justify-between gap-3 border-b border-white/10 group-hover:border-slate-200 py-3.5 last:border-0 transition-colors">
+                      <span className="text-[.88rem] font-medium text-[var(--text-hi)] group-hover:text-[var(--bg-deep)] min-w-0 flex-1 transition-colors">
                         {capability.text}
                       </span>
                       <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md">
@@ -146,12 +146,12 @@ export default function TechStack() {
                               />
                             </div>
                           ) : (
-                            <span className="text-[.7rem] font-semibold text-[var(--acc2)]">
+                            <span className="text-[.7rem] font-semibold text-[var(--acc2)] group-hover:text-[var(--bg-deep)] transition-colors">
                               {capability.image}
                             </span>
                           )
                         ) : (
-                          <span className="text-[.65rem] text-white/40 font-medium">
+                          <span className="text-[.65rem] text-white/40 group-hover:text-slate-500 font-medium transition-colors">
                             ?
                           </span>
                         )}

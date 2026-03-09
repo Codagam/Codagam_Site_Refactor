@@ -169,7 +169,8 @@ const formatPhoneNumber = (phone: string): string => {
   // Format Indian phone numbers: +91 75984 54546
   if (phone.startsWith("+91")) {
     const cleaned = phone.replace(/\s+/g, ""); // Remove all spaces
-    if (cleaned.length === 13) { // +91XXXXXXXXXX
+    if (cleaned.length === 13) {
+      // +91XXXXXXXXXX
       return `${cleaned.slice(0, 3)} ${cleaned.slice(3, 8)} ${cleaned.slice(8)}`;
     }
   }
@@ -363,10 +364,10 @@ export default function Footer() {
         window.innerWidth >= 1280
           ? 68
           : window.innerWidth >= 1024
-          ? 64
-          : window.innerWidth >= 640
-          ? 56
-          : 48;
+            ? 64
+            : window.innerWidth >= 640
+              ? 56
+              : 48;
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerHeight - 8; // 8px extra spacing
@@ -380,19 +381,22 @@ export default function Footer() {
 
   // Group addresses by country
   const sortedCountries = useMemo(() => {
-    const grouped = offices.reduce((acc, office) => {
-      if (!acc[office.country]) {
-        acc[office.country] = {
-          country: office.country,
-          countryPosition: office.countryPosition,
-          countryCode: office.countryCode,
-          flagUrl: office.flagUrl,
-          locations: [],
-        };
-      }
-      acc[office.country].locations.push(office);
-      return acc;
-    }, {} as Record<string, CountryGroup>);
+    const grouped = offices.reduce(
+      (acc, office) => {
+        if (!acc[office.country]) {
+          acc[office.country] = {
+            country: office.country,
+            countryPosition: office.countryPosition,
+            countryCode: office.countryCode,
+            flagUrl: office.flagUrl,
+            locations: [],
+          };
+        }
+        acc[office.country].locations.push(office);
+        return acc;
+      },
+      {} as Record<string, CountryGroup>,
+    );
 
     return Object.values(grouped)
       .sort((a, b) => a.countryPosition - b.countryPosition)
@@ -416,7 +420,6 @@ export default function Footer() {
 
     return () => clearInterval(timer);
   }, [mounted, sortedCountries.length]);
-
 
   return (
     <footer
@@ -464,8 +467,7 @@ export default function Footer() {
                 </h2>
               </div>
               <div className="space-y-1 text-xs sm:text-sm wrap-break-word">
-                <h4
-                  className="font-bold text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-start">
+                <h4 className="font-bold text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-start">
                   <CountryFlag
                     countryCode="IN"
                     flagUrl={null}

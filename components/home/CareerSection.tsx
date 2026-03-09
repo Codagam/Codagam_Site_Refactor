@@ -3,30 +3,51 @@
 import React from "react";
 import { CareerApplicationForm } from "@/components/shared/CareerApplicationForm";
 
+const BULLETS = [
+  "Reply within a day",
+  "No sales pressure, ever",
+  "Honest assessment — even if it's not a fit",
+];
+
 export default function CareerSection() {
   return (
     <section
       id="career-section"
-      className="bg-section-bg pt-12 sm:pt-14 md:pt-16 lg:pt-12 pb-6 sm:pb-8 md:pb-10 lg:pb-8 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4 md:mb-6">
-            Ready to stop compromising on your software?
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Tell us what you&apos;re building. We&apos;ll tell you how we&apos;d
-            approach it — honestly.
-          </p>
-        </div>
-        <div className="flex justify-center">
+      className="rv relative border-t border-[var(--border)] py-32 px-[5vw] text-center scroll-mt-16 overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(ellipse 70% 80% at 50% 0%, rgba(91,141,238,.28) 0%, transparent 50%), radial-gradient(ellipse 120% 90% at 50% 100%, rgba(44,210,252,.18) 0%, transparent 50%), var(--bg-deep)",
+      }}>
+      <div className="relative z-10 mx-auto max-w-[1100px]">
+        <h2 className="rv font-[var(--font-serif)] text-[clamp(2rem,4vw,3.25rem)] font-semibold tracking-tight text-white mb-4 [&_em]:italic [&_em]:font-light [&_em]:text-[var(--acc2)]">
+          Tell us what you&apos;re <em>building next.</em>
+        </h2>
+        <p className="rv text-[1.05rem] text-[var(--text-dim)] leading-[1.6] max-w-[480px] mx-auto mb-10">
+          Whether you have a detailed spec or just a rough problem statement — we&apos;d love to hear it. Free discovery call, honest assessment, clear proposal.
+        </p>
+        <div className="rv flex flex-wrap gap-5 justify-center items-center">
           <CareerApplicationForm
             asDialog={true}
-            triggerText="Book a discovery call"
-            triggerShowArrow={true}
+            triggerText="Book a discovery call →"
+            triggerShowArrow={false}
             triggerVariant="black"
             triggerSize="lg"
           />
+          <a
+            href="mailto:hello@codagam.com"
+            className="inline-flex items-center gap-2 font-[var(--font-sans)] text-[.9rem] font-medium text-[var(--text-dim)] py-3 px-6 rounded-lg border border-[var(--border)] hover:text-white hover:border-[var(--acc2)] hover:bg-[rgba(91,141,238,.08)] transition-colors"
+          >
+            ✉ hello@codagam.com
+          </a>
         </div>
+        <ul className="rv mt-12 flex flex-wrap gap-8 justify-center items-center">
+          {BULLETS.map((text) => (
+            <li key={text} className="text-[.78rem] text-white/25 flex items-center gap-2">
+              <span className="text-[var(--acc2)]" aria-hidden>✓</span>
+              {text}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

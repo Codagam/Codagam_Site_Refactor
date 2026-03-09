@@ -68,7 +68,7 @@ export default async function ServicePage({
     <div className="min-h-screen w-full bg-[var(--bg-deep)]">
       <Navbar />
       <main className="relative z-10 pt-12 sm:pt-14 md:pt-16 lg:pt-16">
-        {/* Page hero – like services.html */}
+        {/* Page hero */}
         <section className="border-b border-[var(--border)] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-[5vw]">
           <div className="mx-auto max-w-[1100px]">
             <p className="mb-4 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
@@ -90,7 +90,7 @@ export default async function ServicePage({
           </div>
         </section>
 
-        {/* Service detail – two-column layout like services.html (svc-detail) */}
+        {/* Service detail – two-column layout */}
         <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-[5vw]">
           <div className="mx-auto max-w-[1100px]">
             <p className="mb-8 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
@@ -98,7 +98,7 @@ export default async function ServicePage({
             </p>
 
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:items-start">
-              {/* Left: number, tag, fullTitle, copy (two paragraphs), stack pills */}
+              {/* Left: number, tag, fullTitle, copy, stack pills */}
               <div>
                 <div className="font-[var(--font-serif)] text-4xl font-light italic text-white/[.15] leading-none mb-4">
                   {service.number}
@@ -131,25 +131,25 @@ export default async function ServicePage({
                 )}
               </div>
 
-              {/* Right: "What you get" card – like svc-right in services.html */}
-              <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-card)] p-6 sm:p-8">
-                <h4 className="text-[.7rem] font-medium uppercase tracking-[.12em] text-white/30 mb-6">
+              {/* Right: "What you get" card – blue-100 block only */}
+              <div className="rounded-xl border border-slate-200 bg-blue-100 p-6 sm:p-8 shadow-sm">
+                <h4 className="text-[.7rem] font-medium uppercase tracking-[.12em] text-blue-900/60 mb-6">
                   What you get
                 </h4>
                 <ul className="space-y-0">
                   {service.deliverables.map((d, i) => (
                     <li
                       key={i}
-                      className="flex gap-3 border-b border-white/10 py-4 last:border-0">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[rgba(91,141,238,.15)] text-[var(--acc2)] text-sm">
+                      className="flex gap-3 border-b border-slate-200 py-4 last:border-0">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-blue-200 text-[var(--acc2)] text-sm">
                         ✓
                       </span>
                       <div>
-                        <span className="text-[.9rem] font-medium text-[var(--text-hi)]">
+                        <span className="text-[.9rem] font-medium text-[var(--bg-deep)]">
                           {d.title}
                         </span>
                         {d.sub && (
-                          <p className="mt-0.5 text-[.81rem] text-[var(--text-dim)] leading-[1.55]">
+                          <p className="mt-0.5 text-[.81rem] text-slate-600 leading-[1.55]">
                             {d.sub}
                           </p>
                         )}
@@ -160,23 +160,23 @@ export default async function ServicePage({
               </div>
             </div>
 
-            {/* Unusual CTA – like services.html */}
-            <div className="mt-16 flex flex-wrap items-center justify-between gap-6 rounded-xl border border-[rgba(91,141,238,.18)] bg-[rgba(91,141,238,.06)] p-8 sm:p-10">
-              <p className="font-[var(--font-serif)] text-[1.05rem] text-[var(--text-mid)] leading-[1.55] max-w-[420px] [&_em]:text-[var(--acc2)] [&_em]:italic">
+            {/* Unusual CTA – blue-100 block only */}
+            <div className="mt-16 flex flex-wrap items-center justify-between gap-6 rounded-xl border border-[rgba(91,141,238,.18)] bg-blue-100 p-8 sm:p-10">
+              <p className="font-[var(--font-serif)] text-[1.05rem] text-slate-700 leading-[1.55] max-w-[420px] [&_em]:text-[var(--acc2)] [&_em]:italic">
                 Need something <em>unusual?</em> Complex integrations, niche
                 stacks, AI features, voice transcription, multi-language systems
                 — tell us the challenge.
               </p>
               <Link
                 href="/home#contact"
-                className="shrink-0 rounded-lg bg-white px-6 py-3 font-[var(--font-sans)] text-sm font-semibold text-[var(--bg-deep)] shadow transition-colors hover:bg-[var(--acc2)] hover:text-[var(--bg-deep)]">
+                className="shrink-0 rounded-lg bg-white px-6 py-3 font-[var(--font-sans)] text-sm font-semibold text-[var(--bg-deep)] shadow border border-slate-200 transition-colors hover:bg-[var(--acc2)] hover:text-white hover:border-[var(--acc2)]">
                 Tell us about it →
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Non-negotiables – Secure by design. Built to scale. */}
+        {/* Non-negotiables */}
         <section className="border-t border-[var(--border)] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-[5vw]">
           <div className="mx-auto max-w-[1100px]">
             <p className="mb-4 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
@@ -191,14 +191,14 @@ export default async function ServicePage({
               {SECURITY_ITEMS.map((item, i) => (
                 <div
                   key={i}
-                  className="rounded-lg border border-white/10 bg-[rgba(255,255,255,.05)] p-7 transition-colors hover:bg-[rgba(90,107,187,1)] hover:border-white/15">
+                  className="group rounded-lg border border-white/10 bg-[rgba(255,255,255,.05)] p-7 transition-colors hover:bg-blue-100 hover:border-slate-200">
                   <div className="text-2xl mb-3" aria-hidden>
                     {item.icon}
                   </div>
-                  <h3 className="text-[.95rem] font-medium text-white mb-1.5">
+                  <h3 className="text-[.95rem] font-medium text-white group-hover:text-[var(--bg-deep)] mb-1.5 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-[.84rem] text-[var(--text-dim)] leading-[1.7]">
+                  <p className="text-[.84rem] text-[var(--text-dim)] group-hover:text-slate-600 leading-[1.7] transition-colors">
                     {item.text}
                   </p>
                 </div>
@@ -220,14 +220,14 @@ export default async function ServicePage({
               {PROCESS_STEPS.map((step, i) => (
                 <div
                   key={i}
-                  className="bg-[rgba(10,18,69,.95)] p-7 transition-colors hover:bg-[rgba(90,107,187,1)]">
-                  <div className="font-[var(--font-serif)] text-[1.85rem] font-light italic text-white/[.08] leading-none mb-4">
+                  className="group bg-[rgba(10,18,69,.95)] p-7 transition-colors hover:bg-blue-100">
+                  <div className="font-[var(--font-serif)] text-[1.85rem] font-light italic text-white/[.08] group-hover:text-blue-200 leading-none mb-4 transition-colors">
                     {step.number}
                   </div>
-                  <h3 className="text-[.94rem] font-semibold text-white mb-2">
+                  <h3 className="text-[.94rem] font-semibold text-white group-hover:text-[var(--bg-deep)] mb-2 transition-colors">
                     {step.title}
                   </h3>
-                  <p className="text-[.83rem] text-[var(--text-dim)] leading-[1.7]">
+                  <p className="text-[.83rem] text-[var(--text-dim)] group-hover:text-slate-600 leading-[1.7] transition-colors">
                     {step.text}
                   </p>
                 </div>
