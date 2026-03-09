@@ -119,7 +119,7 @@ export default function ClientLogoCarousel({
   const shouldDuplicate = logos.length >= 4;
 
   return (
-    <div className="relative w-full max-w-[100vw] overflow-hidden min-h-[48px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px] xl:min-h-[88px] 2xl:min-h-[100px] flex items-center justify-center min-w-0">
+    <div className="relative w-full max-w-[100vw] overflow-hidden h-full min-h-[40px] flex items-center justify-center min-w-0">
       <Marquee
         pauseOnHover={pauseOnHover}
         speed={speed}

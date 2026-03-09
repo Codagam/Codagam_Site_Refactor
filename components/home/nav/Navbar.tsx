@@ -221,11 +221,12 @@ export default function Navbar() {
     const element = document.getElementById("contact");
     if (element) {
       const headerHeight = getHeaderHeight();
+      const gapBelowNav = 16;
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerHeight - 8;
+      const offsetPosition = elementPosition - headerHeight - gapBelowNav;
       window.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, offsetPosition),
         behavior: "smooth",
       });
     }
@@ -267,11 +268,12 @@ export default function Navbar() {
             const element = document.getElementById("contact");
             if (element) {
               const headerHeight = getHeaderHeight();
+              const gapBelowNav = 16;
               const elementPosition =
                 element.getBoundingClientRect().top + window.pageYOffset;
-              const offsetPosition = elementPosition - headerHeight - 8;
+              const offsetPosition = elementPosition - headerHeight - gapBelowNav;
               window.scrollTo({
-                top: offsetPosition,
+                top: Math.max(0, offsetPosition),
                 behavior: "smooth",
               });
             }

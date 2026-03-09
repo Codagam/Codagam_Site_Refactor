@@ -151,7 +151,7 @@ export function CareerApplicationForm({
                 <FormControl>
                   <Input
                     placeholder="Your Full Name"
-                    className="h-9 sm:h-10 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500 border-border dark:border-border focus:border-primary dark:focus:border-primary"
+                    className="h-9 sm:h-10 text-xs sm:text-sm bg-(--cta-bg-hover) text-black placeholder:text-(--muted-text) border-border dark:border-border focus:border-primary dark:focus:border-primary"
                     autoComplete="name"
                     {...field}
                   />
@@ -173,7 +173,7 @@ export function CareerApplicationForm({
                   <Input
                     type="email"
                     placeholder="Your Email"
-                    className="h-9 sm:h-10 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500 border-border dark:border-border focus:border-primary dark:focus:border-primary"
+                    className="h-9 sm:h-10 text-xs sm:text-sm bg-(--cta-bg-hover) text-black placeholder:text-(--muted-text) border-border dark:border-border focus:border-primary dark:focus:border-primary"
                     autoComplete="email"
                     {...field}
                   />
@@ -221,7 +221,7 @@ export function CareerApplicationForm({
                           className={`text-xs sm:text-sm truncate ${
                             fileName
                               ? "text-black font-medium"
-                              : "text-gray-500"
+                              : "text-(--muted-text)"
                           }`}>
                           {fileName || "No file chosen"}
                         </span>
@@ -279,7 +279,7 @@ export function CareerApplicationForm({
             size={triggerSize}
             className={
               triggerClassName ??
-              "group bg-blue-100 text-gray-900 hover:bg-white"
+              "group bg-(--cta-bg) text-(--cta-text) hover:bg-(--cta-bg-hover)"
             }>
             {typeof triggerText === "string" && triggerText.endsWith(" →")
               ? (

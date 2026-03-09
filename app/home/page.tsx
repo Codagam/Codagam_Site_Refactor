@@ -9,6 +9,7 @@ import CareerSection from "@/components/home/CareerSection";
 import TrustedBy from "@/components/home/TrustedBy";
 import About from "@/components/home/About";
 import Footer from "@/components/home/nav/Footer";
+import ClientLogoCarousel from "@/components/shared/ClientLogoCarousel";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 
 export default function Home() {
@@ -25,6 +26,10 @@ export default function Home() {
           <TechStack />
           <TrustedBy />
           <CareerSection />
+          {/* Client logo carousel strip - above footer */}
+          <div className="w-full bg-blue-100 border-t border-(--border) flex items-center justify-center py-2 sm:py-3 min-h-[52px] sm:min-h-[56px]">
+            <ClientLogoCarousel pauseOnHover={true} duration="60s" />
+          </div>
           <Footer />
         </div>
       </main>

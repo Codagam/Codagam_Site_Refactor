@@ -25,18 +25,19 @@ const NAV_ITEMS = [
   { id: "stack", label: "Tech Stack" },
 ] as const;
 
-// Scroll to section handler
+// Scroll to section handler — offset so section top sits clearly below fixed navbar
 const scrollToSection = (id: string, onNavigate?: () => void) => {
   const element = document.getElementById(id);
   if (!element) return;
 
   const headerHeight = getHeaderHeight();
+  const gapBelowNav = 16;
   const elementPosition =
     element.getBoundingClientRect().top + window.pageYOffset;
-  const offsetPosition = elementPosition - headerHeight - 8;
+  const offsetPosition = elementPosition - headerHeight - gapBelowNav;
 
   window.scrollTo({
-    top: offsetPosition,
+    top: Math.max(0, offsetPosition),
     behavior: "smooth",
   });
   onNavigate?.();

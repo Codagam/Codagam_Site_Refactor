@@ -100,19 +100,19 @@ export default function TechStack() {
         </p>
 
         {loading ? (
-          <div className="flex justify-center items-center py-10 sm:py-14 md:py-16">
+          <div className="flex justify-center items-center py-8 sm:py-10 md:py-12">
             <p className="text-(--text-mid) text-base md:text-lg">
               Loading tech stack...
             </p>
           </div>
         ) : categories.length === 0 ? (
-          <div className="flex justify-center items-center py-10 sm:py-14 md:py-16">
+          <div className="flex justify-center items-center py-8 sm:py-10 md:py-12">
             <p className="text-(--text-mid) text-base md:text-lg">
               No tech stack items available.
             </p>
           </div>
         ) : (
-          <div className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 md:mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
               <div
                 key={category.id}

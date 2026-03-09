@@ -357,18 +357,19 @@ export default function Footer() {
     if (element) {
       const headerHeight =
         window.innerWidth >= 1280
-          ? 68
+          ? 60
           : window.innerWidth >= 1024
-            ? 64
+            ? 56
             : window.innerWidth >= 640
-              ? 56
-              : 48;
+              ? 52
+              : 44;
+      const gapBelowNav = 16;
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerHeight - 8; // 8px extra spacing
+      const offsetPosition = elementPosition - headerHeight - gapBelowNav;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, offsetPosition),
         behavior: "smooth",
       });
     }
@@ -419,7 +420,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-background text-primary-foreground scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 w-full"
+      className="bg-(--bg-deep) text-primary-foreground scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 w-full"
       style={{ fontFamily: "var(--font-sans)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 py-5 sm:py-8 md:py-10 lg:py-12 w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-8 mb-5 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-10 w-full items-start">

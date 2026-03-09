@@ -45,22 +45,24 @@ export default function TrustedBy() {
         </h2>
 
         <div className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-6 sm:gap-8 md:gap-10 lg:gap-12">
-          {/* Testimonial - no card, direct on section background */}
-          <div className="rv relative pr-4">
-            <span
-              className="font-(--font-serif) text-7xl leading-none text-(--acc2) opacity-30 select-none"
-              aria-hidden>
-              &ldquo;
-            </span>
-            <p className="mt-2 text-[1.05rem] leading-[1.7] text-slate-700 italic">
-              Codagam brought a level of technical maturity we rarely see from
-              offshore partners. They understood our compliance requirements
-              from day one, asked the right questions, and delivered a system
-              we&apos;re genuinely proud of.
-            </p>
-            <p className="mt-5 text-[.8rem] text-slate-500">
-              — Healthcare Technology Client · Multi-tenant EMR Platform
-            </p>
+          {/* Testimonial - boxed, not full height */}
+          <div className="rv">
+            <div className="relative rounded-xl border border-slate-200 bg-white/95 p-5 sm:p-6 shadow-sm max-w-xl">
+              <span
+                className="font-(--font-serif) text-5xl leading-none text-(--acc2) opacity-30 select-none block"
+                aria-hidden>
+                &ldquo;
+              </span>
+              <p className="mt-2 text-[1.05rem] leading-[1.7] text-slate-700 italic">
+                Codagam brought a level of technical maturity we rarely see from
+                offshore partners. They understood our compliance requirements
+                from day one, asked the right questions, and delivered a system
+                we&apos;re genuinely proud of.
+              </p>
+              <p className="mt-4 text-[.8rem] text-slate-500">
+                — Healthcare Technology Client · Multi-tenant EMR Platform
+              </p>
+            </div>
           </div>
 
           {/* Differentiators */}

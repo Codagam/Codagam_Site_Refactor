@@ -219,7 +219,7 @@ export function ContactForm({
           disabled={isSubmitting}
           variant="default"
           className={`w-full h-8 sm:h-9 text-xs sm:text-sm font-bold ${
-            submitButtonClassName ?? "bg-blue-100 hover:bg-white text-gray-900"
+            submitButtonClassName ?? "bg-(--cta-bg) hover:bg-(--cta-bg-hover) text-(--cta-text)"
           }`}
           style={{ fontWeight: 700 }}>
           {isSubmitting ? "Sending..." : "Send Message"}

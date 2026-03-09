@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ClientLogoCarousel from "@/components/shared/ClientLogoCarousel";
 import Link from "next/link";
 
 interface HeroData {
@@ -165,13 +164,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
-      {/* Client Logo Carousel - white strip, full width */}
-      <div className="hero-carousel-section relative z-10 w-full max-w-[100vw] pt-2 sm:pt-3 md:pt-4 lg:pt-5 min-w-0">
-        <div className="w-full bg-white min-h-[70px] sm:min-h-[85px] md:min-h-[100px] lg:min-h-[115px] xl:min-h-[130px] flex items-center justify-center py-2 sm:py-4 md:py-5 lg:py-6">
-          <ClientLogoCarousel pauseOnHover={true} duration="60s" />
-        </div>
-      </div>
     </>
   );
 }
