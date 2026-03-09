@@ -28,8 +28,8 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative border-t border-(--border) py-28 px-[5vw] scroll-mt-16 bg-blue-100">
-      <div className="mx-auto max-w-[1100px] grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16">
+      className="relative border-t border-(--border) py-14 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-[5vw] scroll-mt-12 sm:scroll-mt-16 bg-blue-100">
+      <div className="mx-auto max-w-[1100px] grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-8 sm:gap-10 lg:gap-16">
         {/* Left: Who we are copy */}
         <div className="space-y-6">
           {/* Eyebrow: WHO WE ARE with lines on both sides */}

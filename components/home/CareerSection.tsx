@@ -13,7 +13,7 @@ export default function CareerSection() {
   return (
     <section
       id="career-section"
-      className="rv relative border-t border-(--border) py-32 px-[5vw] text-center scroll-mt-16 overflow-hidden"
+      className="rv relative border-t border-(--border) py-16 sm:py-24 md:py-28 lg:py-32 px-4 sm:px-[5vw] text-center scroll-mt-12 sm:scroll-mt-16 overflow-hidden"
       style={{
         background:
           "radial-gradient(ellipse 70% 80% at 50% 0%, rgba(91,141,238,.28) 0%, transparent 50%), radial-gradient(ellipse 120% 90% at 50% 100%, rgba(44,210,252,.18) 0%, transparent 50%), var(--bg-deep)",

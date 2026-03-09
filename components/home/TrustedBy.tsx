@@ -31,7 +31,7 @@ export default function TrustedBy() {
   return (
     <section
       id="team"
-      className="relative border-t border-(--border) py-28 px-[5vw] scroll-mt-16 overflow-hidden bg-blue-100">
+      className="relative border-t border-(--border) py-14 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-[5vw] scroll-mt-12 sm:scroll-mt-16 overflow-hidden bg-blue-100">
       <div className="relative z-10 mx-auto max-w-[1100px]">
         <p className="mb-4 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-blue-900/60">
           <span

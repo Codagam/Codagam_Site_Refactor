@@ -122,6 +122,9 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
     let signals: Signal[] = [];
     let t0: number | null = null;
     let lastSpawn = 0;
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function resize() {
       const el = containerRef?.current;
@@ -663,7 +666,9 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
       drawHouse(now);
       updateSignals();
       if (now < 800 && signals.length < nodes.length) spawnSignal();
-      const rate = 350 + Math.random() * 200;
+      const rate = prefersReducedMotion
+        ? 2500 + Math.random() * 1000
+        : 350 + Math.random() * 200;
       if (now - lastSpawn > rate) {
         spawnSignal();
         lastSpawn = now;

@@ -79,7 +79,7 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="relative border-t border-(--border) py-28 px-[5vw] scroll-mt-16 overflow-hidden"
+      className="relative border-t border-(--border) py-14 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-[5vw] scroll-mt-12 sm:scroll-mt-16 overflow-hidden"
       style={{
         background:
           "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",
