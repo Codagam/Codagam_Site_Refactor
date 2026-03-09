@@ -10,6 +10,7 @@ import {
   Phone,
   Mail,
   Users,
+  Briefcase,
 } from "lucide-react";
 import * as Flags from "country-flag-icons/react/3x2";
 import {
@@ -102,6 +103,7 @@ const SOCIAL_BG_COLORS: Record<string, string> = {
 const QUICK_LINKS = [
   { id: "about", label: "About", icon: Users, color: "text-white" },
   { id: "services", label: "Services", icon: Wrench, color: "text-white" },
+  { id: "work", label: "Work", icon: Briefcase, color: "text-white" },
   { id: "stack", label: "Tech Stack", icon: Info, color: "text-white" },
 ] as const;
 

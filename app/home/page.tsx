@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import { CanvasBackground } from "@/components/shared/CanvasBackground";
 import { PoweredStrip } from "@/components/shared/PoweredStrip";
 import ServiceCards from "@/components/home/ServiceCards";
+import { WorkSection } from "@/components/shared/WorkSection";
 import TechStack from "@/components/home/TechStack";
 import CareerSection from "@/components/home/CareerSection";
 import TrustedBy from "@/components/home/TrustedBy";
@@ -20,6 +21,7 @@ export default function Home() {
         <div className="relative z-20 bg-(--bg-deep) [&_section]:overflow-x-hidden">
           <About />
           <ServiceCards />
+          <WorkSection />
           <TechStack />
           <TrustedBy />
           <CareerSection />

@@ -21,6 +21,7 @@ const getHeaderHeight = (): number => {
 const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
+  { id: "work", label: "Work" },
   { id: "stack", label: "Tech Stack" },
 ] as const;
 
