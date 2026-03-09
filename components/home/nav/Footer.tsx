@@ -645,7 +645,8 @@ export default function Footer() {
                 asDialog={false}
                 showTitle={false}
                 className="text-white"
-                submitButtonClassName="bg-primary hover:bg-primary-hover text-primary-foreground"
+                submitButtonClassName="bg-blue-100 hover:bg-white text-gray-900"
+                fieldClassName="bg-blue-100 text-gray-900 placeholder:text-gray-500"
               />
             </div>
           </div>

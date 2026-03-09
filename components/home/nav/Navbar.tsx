@@ -276,9 +276,10 @@ export default function Navbar() {
               });
             }
           }}
-          className="hidden lg:flex ml-2 bg-white/[.08] text-white border border-white/20 py-1.5 px-3 rounded text-[.82rem] font-medium hover:!bg-white hover:!text-[var(--bg-deep)] transition-colors shrink-0 whitespace-nowrap"
+          className="group hidden lg:flex ml-2 bg-blue-100 text-gray-900 border border-blue-200 py-1.5 px-3 rounded text-[.82rem] font-medium hover:bg-white transition-colors shrink-0 whitespace-nowrap"
         >
-          Book a call →
+          Book a call
+          <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
         </Button>
 
           {/* Mobile Menu */}
@@ -318,7 +319,7 @@ export default function Navbar() {
                   />
                   <Button
                     onClick={handleContactClick}
-                    className={`mt-4 w-full !font-[var(--font-sans)] !text-base !font-medium bg-white text-[var(--bg-deep)] py-3 px-10 rounded mt-2 mobile-menu-link ${
+                    className={`group mt-4 w-full !font-[var(--font-sans)] !text-base !font-medium bg-blue-100 text-gray-900 py-3 px-10 rounded mt-2 hover:bg-white mobile-menu-link ${
                       shouldAnimate ? "animate-slide-in-right" : ""
                     }`}
                     style={{
@@ -327,7 +328,8 @@ export default function Navbar() {
                         : "0s",
                     }}
                   >
-                    Book a call →
+                    Book a call
+                    <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                   </Button>
                 </nav>
               </SheetContent>

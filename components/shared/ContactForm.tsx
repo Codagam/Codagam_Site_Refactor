@@ -32,6 +32,8 @@ interface ContactFormProps {
   triggerSize?: "default" | "sm" | "lg" | "icon";
   /** Optional class for the submit button (e.g. white text in footer) */
   submitButtonClassName?: string;
+  /** Optional class for input/textarea fields (e.g. bg-blue-100 in footer) */
+  fieldClassName?: string;
 }
 
 export function ContactForm({
@@ -43,6 +45,7 @@ export function ContactForm({
   triggerVariant = "black",
   triggerSize = "default",
   submitButtonClassName,
+  fieldClassName,
 }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -54,6 +57,9 @@ export function ContactForm({
   const [submitMessage, setSubmitMessage] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const fieldClass =
+    fieldClassName ?? "bg-white text-black placeholder:text-gray-500";
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -134,7 +140,7 @@ export function ContactForm({
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="h-8 sm:h-9 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500"
+            className={`h-8 sm:h-9 text-xs sm:text-sm ${fieldClass}`}
             style={{ fontWeight: 400 }}
             autoComplete="name"
             required
@@ -154,7 +160,7 @@ export function ContactForm({
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className={`h-8 sm:h-9 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500 ${
+            className={`h-8 sm:h-9 text-xs sm:text-sm ${fieldClass} ${
               emailError ? "border-red-500" : ""
             }`}
             style={{ fontWeight: 400 }}
@@ -181,7 +187,7 @@ export function ContactForm({
             placeholder="Your Phone (10 digits)"
             value={formData.phone}
             onChange={handleChange}
-            className="h-8 sm:h-9 text-xs sm:text-sm bg-white text-black placeholder:text-gray-500"
+            className={`h-8 sm:h-9 text-xs sm:text-sm ${fieldClass}`}
             style={{ fontWeight: 400 }}
             maxLength={10}
             pattern="[0-9]{10}"
@@ -203,7 +209,7 @@ export function ContactForm({
             rows={3}
             value={formData.message}
             onChange={handleChange}
-            className="resize-none text-xs sm:text-sm bg-white text-black placeholder:text-gray-500"
+            className={`resize-none text-xs sm:text-sm ${fieldClass}`}
             style={{ fontWeight: 400 }}
             required
           />
@@ -213,7 +219,7 @@ export function ContactForm({
           disabled={isSubmitting}
           variant="default"
           className={`w-full h-8 sm:h-9 text-xs sm:text-sm font-bold ${
-            submitButtonClassName ?? "bg-background text-primary hover:bg-muted"
+            submitButtonClassName ?? "bg-blue-100 hover:bg-white text-gray-900"
           }`}
           style={{ fontWeight: 700 }}>
           {isSubmitting ? "Sending..." : "Send Message"}

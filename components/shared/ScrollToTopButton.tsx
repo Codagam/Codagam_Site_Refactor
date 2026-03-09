@@ -31,7 +31,7 @@ const ScrollToTopButton: React.FC = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-16 sm:bottom-12 right-3 sm:right-4 md:right-6 p-2 sm:p-3 rounded-full bg-white text-[var(--bg-deep)] border border-[var(--border)] shadow-lg transition-all duration-300 hover:bg-[var(--acc2)] hover:text-[var(--bg-deep)] hover:border-[rgba(91,141,238,.3)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[var(--acc2)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)] z-50"
+          className="fixed bottom-16 sm:bottom-12 right-3 sm:right-4 md:right-6 p-2 sm:p-3 rounded-full bg-blue-100 text-gray-900 border border-blue-200 shadow-lg transition-all duration-300 hover:bg-white hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 focus:ring-offset-white z-50"
           aria-label="Scroll to top"
           title="Scroll to top">
           <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6" />

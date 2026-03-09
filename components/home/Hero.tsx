@@ -158,13 +158,9 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center flex-wrap pointer-events-auto opacity-0 animate-[rise_.8s_.9s_cubic-bezier(.22,1,.36,1)_forwards]">
             <Link
               href="#contact"
-              className="inline-flex justify-center sm:justify-start items-center w-full sm:w-auto rounded-[999px] bg-white !text-[var(--bg-deep)] px-7 py-3 font-[var(--font-sans)] text-[.9rem] font-semibold shadow-[0_14px_40px_rgba(0,0,0,.45)] transition-transform transition-colors duration-150 hover:bg-[var(--acc2)] hover:!text-[var(--bg-deep)] hover:-translate-y-0.5">
-              Book a discovery call →
-            </Link>
-            <Link
-              href="#work"
-              className="text-[.85rem] text-[var(--text-dim)] border-b border-white/15 pb-0.5 hover:text-white hover:border-white/35 transition-colors cursor-pointer">
-              See our work
+              className="group inline-flex justify-center sm:justify-start items-center gap-2 w-full sm:w-auto rounded-[999px] bg-blue-100 !text-gray-900 px-7 py-3 font-[var(--font-sans)] text-[.9rem] font-semibold shadow-[0_14px_40px_rgba(0,0,0,.45)] transition-transform transition-colors duration-150 hover:bg-white hover:!text-gray-900 hover:-translate-y-0.5">
+              Book a discovery call
+              <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
           </div>
         </div>

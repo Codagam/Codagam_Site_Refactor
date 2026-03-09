@@ -82,9 +82,9 @@ export default async function ServicePage({
               What we build, and <em>how we build it.</em>
             </h1>
             <p className="mt-4 max-w-[640px] text-base text-[var(--text-dim)] leading-8">
-              Outcome-focused engineering across three core practice areas. Every
-              engagement starts with understanding your actual problem — not
-              fitting you into a template.
+              Outcome-focused engineering across three core practice areas.
+              Every engagement starts with understanding your actual problem —
+              not fitting you into a template.
             </p>
             <BackToServicesLink />
           </div>
@@ -236,8 +236,9 @@ export default async function ServicePage({
             <div className="mt-10 text-center">
               <Link
                 href="/home#contact"
-                className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-[var(--font-sans)] text-sm font-semibold text-[var(--bg-deep)] shadow transition-colors hover:bg-[var(--acc2)] hover:text-[var(--bg-deep)]">
-                Start with a discovery call →
+                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-[var(--font-sans)] text-sm font-semibold text-[var(--bg-deep)] shadow transition-colors hover:bg-[var(--acc2)] hover:text-[var(--bg-deep)]">
+                Start with a discovery call
+                <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
           </div>

@@ -62,6 +62,8 @@ interface CareerApplicationFormProps {
     | "link"
     | "black";
   triggerSize?: "default" | "sm" | "lg" | "icon";
+  /** Optional class for the trigger button (e.g. bg-blue-100 in career CTA) */
+  triggerClassName?: string;
 }
 
 export function CareerApplicationForm({
@@ -72,6 +74,7 @@ export function CareerApplicationForm({
   triggerShowArrow = false,
   triggerVariant = "black",
   triggerSize = "default",
+  triggerClassName,
 }: CareerApplicationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
@@ -271,10 +274,25 @@ export function CareerApplicationForm({
     return (
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger asChild>
-          <Button variant={triggerVariant} size={triggerSize} className="bg-primary hover:bg-primary-hover text-primary-foreground">
-            {triggerText}
+          <Button
+            variant={triggerVariant}
+            size={triggerSize}
+            className={
+              triggerClassName ??
+              "group bg-blue-100 text-gray-900 hover:bg-white"
+            }>
+            {typeof triggerText === "string" && triggerText.endsWith(" →")
+              ? (
+                  <>
+                    {triggerText.slice(0, -2)}
+                    <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  </>
+                )
+              : (
+                  triggerText
+                )}
             {triggerShowArrow && (
-              <ArrowRight className="ml-2 h-4 w-4 shrink-0" aria-hidden />
+              <ArrowRight className="ml-2 h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" aria-hidden />
             )}
           </Button>
         </DialogTrigger>

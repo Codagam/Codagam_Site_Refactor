@@ -25,8 +25,8 @@ export default function ServiceCards() {
         </h2>
         <p className="text-base text-[var(--text-dim)] leading-8 max-w-[540px] mt-3">
           Outcome-focused engineering across three core practice areas. Every
-          engagement starts with understanding your actual problem — not
-          fitting you into a template.
+          engagement starts with understanding your actual problem — not fitting
+          you into a template.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-3">
@@ -54,19 +54,6 @@ export default function ServiceCards() {
               </p>
             </Link>
           ))}
-        </div>
-
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[rgba(91,141,238,.18)] bg-[rgba(91,141,238,.06)] p-8">
-          <p className="font-[var(--font-serif)] text-[1.1rem] text-[var(--text-mid)] [&_em]:text-[var(--acc2)]">
-            Need something unusual? Complex integrations, niche stacks, AI
-            features, voice transcription, multi-language systems — tell us the
-            challenge.
-          </p>
-          <Link
-            href="#contact"
-            className="shrink-0 rounded-lg bg-white px-5 py-2.5 font-[var(--font-sans)] text-sm font-semibold text-[var(--bg-deep)] shadow transition-colors hover:bg-[var(--acc2)] hover:text-[var(--bg-deep)]">
-            Tell us about it →
-          </Link>
         </div>
       </div>
     </section>
