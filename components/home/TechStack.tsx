@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { isFullUrl } from "@/lib/utils/image-url";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Capability {
   id: string;
@@ -80,97 +79,87 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="relative py-12 sm:py-14 md:py-16 lg:pt-12 lg:pb-16 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 overflow-hidden">
-      {/* Background Image - path encoded for spaces and & */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/tech%20stack%20bg/Codagam_Img%20(5).jpg"
-          alt="Technology Stack background"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority={false}
-          unoptimized
-        />
-        {/* Overlay for readability */}
-        <div className="absolute inset-0 z-1 bg-section-bg/50" aria-hidden />
-      </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 text-center mb-8 md:mb-12">
-        Technology Stack & Capabilities
+      className="relative border-t border-[var(--border)] py-28 px-[5vw] scroll-mt-16 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",
+      }}>
+      <div className="relative z-10 mx-auto max-w-[1100px]">
+        <p className="mb-4 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
+          <span
+            className="h-px w-6 shrink-0 bg-[var(--acc2)] opacity-40"
+            aria-hidden
+          />
+          Tech stack
+        </p>
+        <h2 className="font-[var(--font-serif)] text-[clamp(2rem,4vw,3.25rem)] font-semibold tracking-tight text-white mb-2 [&_em]:italic [&_em]:font-light [&_em]:text-[var(--acc2)]">
+          Technology stack <em>&amp; capabilities.</em>
         </h2>
+        <p className="text-base text-[var(--text-dim)] leading-8 max-w-[540px] mt-3">
+          Languages, frameworks, and tools we use to ship production software.
+        </p>
+
         {loading ? (
-          <div className="flex justify-center items-center py-12 md:py-20">
-            <p className="text-black text-base md:text-lg">
+          <div className="flex justify-center items-center py-16 md:py-20">
+            <p className="text-[var(--text-mid)] text-base md:text-lg">
               Loading tech stack...
             </p>
           </div>
         ) : categories.length === 0 ? (
-          <div className="flex justify-center items-center py-12 md:py-20">
-            <p className="text-black text-base md:text-lg">
+          <div className="flex justify-center items-center py-16 md:py-20">
+            <p className="text-[var(--text-mid)] text-base md:text-lg">
               No tech stack items available.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
-              <Card
+              <div
                 key={category.id}
-                className="group overflow-hidden w-full flex flex-col bg-white transition-all duration-300 hover:-translate-y-1 border-border rounded-lg md:rounded-xl">
-                {/* Category Title with Gradient */}
-                <CardHeader className="relative p-0">
-                  <div className="relative px-3 md:px-4 pt-2 md:pt-2.5 pb-2 bg-linear-to-br from-primary via-primary-hover to-primary">
-                    <div className="absolute inset-0 bg-linear-to-br from-primary/90 to-primary-hover/90 group-hover:from-primary-hover/95 group-hover:to-primary/95 transition-opacity duration-300"></div>
-                    <CardTitle className="relative text-sm md:text-base lg:text-lg font-bold text-white wrap-break-word text-center">
-                      {category.title}
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                {/* Capabilities List */}
-                <CardContent className="flex flex-col p-1.5 md:p-2 gap-1 md:gap-1.5 bg-white">
-                  {category.capabilities.map((capability) => {
-                    return (
-                      <div
-                        key={capability.id}
-                        className="flex flex-row items-center justify-between gap-2 md:gap-3 transition-colors duration-200 hover:bg-gray-100 rounded-md p-1">
-                        {/* Text Section - Always Left */}
-                        <div className="flex-1 flex flex-col justify-center min-w-0">
-                          <h4 className="text-xs md:text-sm lg:text-base font-semibold text-black wrap-break-word leading-relaxed transition-colors duration-200">
-                            {capability.text}
-                          </h4>
-                        </div>
-                        {/* Image Section - Always Right with Badge Style */}
-                        <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md p-1">
-                          {capability.image ? (
-                            isFullUrl(capability.image) ||
-                            capability.image.startsWith("/") ? (
-                              <div className="relative w-full h-full">
-                                <Image
-                                  src={capability.image}
-                                  alt={capability.alt || capability.text}
-                                  fill
-                                  className="object-contain transition-transform duration-200 group-hover:scale-110"
-                                  sizes="(max-width: 640px) 24px, (max-width: 768px) 28px, 32px"
-                                />
-                              </div>
-                            ) : (
-                              <div className="text-xs md:text-sm font-semibold text-primary">
-                                {capability.image}
-                              </div>
-                            )
-                          ) : (
-                            <div className="w-full h-full bg-muted rounded flex items-center justify-center">
-                              <span className="text-[8px] text-muted-foreground font-medium">
-                                ?
-                              </span>
+                className="group flex flex-col bg-[rgba(10,18,69,.95)] transition-colors hover:bg-[rgba(90,107,187,1)] border-0 rounded-none overflow-hidden">
+                {/* Category header - same pill/accent style as service cards */}
+                <div className="px-8 pt-8 pb-4">
+                  <span className="inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-[var(--acc2)] bg-[rgba(91,141,238,.12)]">
+                    {category.title}
+                  </span>
+                </div>
+                {/* Capabilities list */}
+                <ul className="flex flex-col px-8 pb-8">
+                  {category.capabilities.map((capability) => (
+                    <li
+                      key={capability.id}
+                      className="flex flex-row items-center justify-between gap-3 border-b border-white/10 py-3.5 last:border-0">
+                      <span className="text-[.88rem] font-medium text-[var(--text-hi)] min-w-0 flex-1">
+                        {capability.text}
+                      </span>
+                      <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md">
+                        {capability.image ? (
+                          isFullUrl(capability.image) ||
+                          capability.image.startsWith("/") ? (
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={capability.image}
+                                alt={capability.alt || capability.text}
+                                fill
+                                className="object-contain"
+                                sizes="(max-width: 640px) 24px, (max-width: 768px) 28px, 32px"
+                              />
                             </div>
-                          )}
-                        </div>
+                          ) : (
+                            <span className="text-[.7rem] font-semibold text-[var(--acc2)]">
+                              {capability.image}
+                            </span>
+                          )
+                        ) : (
+                          <span className="text-[.65rem] text-white/40 font-medium">
+                            ?
+                          </span>
+                        )}
                       </div>
-                    );
-                  })}
-                </CardContent>
-              </Card>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         )}
