@@ -61,6 +61,9 @@ export function ContactForm({
   const fieldClass =
     fieldClassName ?? "bg-white text-black placeholder:text-gray-500";
 
+  const defaultSubmitClasses =
+    "bg-(--cta-bg) hover:bg-(--cta-bg-hover) text-(--cta-text)";
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -219,7 +222,7 @@ export function ContactForm({
           disabled={isSubmitting}
           variant="default"
           className={`w-full h-8 sm:h-9 text-xs sm:text-sm font-bold ${
-            submitButtonClassName ?? "bg-(--cta-bg) hover:bg-(--cta-bg-hover) text-(--cta-text)"
+            submitButtonClassName ?? defaultSubmitClasses
           }`}
           style={{ fontWeight: 700 }}>
           {isSubmitting ? "Sending..." : "Send Message"}
