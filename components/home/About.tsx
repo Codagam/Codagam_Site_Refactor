@@ -28,7 +28,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative border-t border-(--border) py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 bg-blue-100">
+      className="relative border-t border-(--border) py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans">
       <div className="mx-auto max-w-[1100px] grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-5 sm:gap-6 lg:gap-10">
         {/* Left: Who we are copy */}
         <div className="space-y-5">

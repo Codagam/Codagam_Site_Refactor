@@ -70,7 +70,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-28 px-[5vw] bg-linear-to-b from-[rgba(13,22,90,.9)] to-(--bg-deep) border-t border-(--border)"
+      className="py-28 px-[5vw] bg-linear-to-b from-[rgba(13,22,90,.9)] to-(--bg-deep) border-t border-(--border) font-sans"
     >
       <div className="max-w-[1100px] mx-auto">
         <SectionEyebrow eyebrow="What we build" />

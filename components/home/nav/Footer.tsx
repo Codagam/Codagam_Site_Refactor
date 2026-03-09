@@ -10,7 +10,6 @@ import {
   Phone,
   Mail,
   Users,
-  FileText,
 } from "lucide-react";
 import * as Flags from "country-flag-icons/react/3x2";
 import {
@@ -104,12 +103,6 @@ const QUICK_LINKS = [
   { id: "about", label: "About", icon: Users, color: "text-white" },
   { id: "services", label: "Services", icon: Wrench, color: "text-white" },
   { id: "stack", label: "Tech Stack", icon: Info, color: "text-white" },
-  {
-    id: "case-studies",
-    label: "Case Studies",
-    icon: FileText,
-    color: "text-white",
-  },
 ] as const;
 
 const PRODUCT_LINKS = [

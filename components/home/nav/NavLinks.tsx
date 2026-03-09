@@ -22,7 +22,6 @@ const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "stack", label: "Tech Stack" },
-  { id: "case-studies", label: "Case Studies" },
 ] as const;
 
 // Scroll to section handler

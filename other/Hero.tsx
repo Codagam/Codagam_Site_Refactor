@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 min-h-screen flex flex-col justify-center items-start pt-24 pb-20 px-6 sm:px-10 lg:px-[5vw] pointer-events-none"
+      className="relative z-10 min-h-screen flex flex-col justify-center items-start pt-24 pb-20 px-6 sm:px-10 lg:px-[5vw] pointer-events-none font-sans"
     >
       <div
         className="fixed inset-0 z-1 pointer-events-none"

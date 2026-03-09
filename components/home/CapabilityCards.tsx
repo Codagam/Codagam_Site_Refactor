@@ -34,7 +34,7 @@ export default function CapabilityCards() {
   return (
     <section
       id="products"
-      className="border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 xl:py-14 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16"
+      className="border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 xl:py-14 scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 font-sans"
       style={{
         background:
           "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",

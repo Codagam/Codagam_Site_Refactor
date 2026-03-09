@@ -111,9 +111,9 @@ export default function Hero() {
 
   if (loading && heroList.length === 0) {
     return (
-      <section
-        id="hero"
-        className="hero-main-section relative z-10 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-10 md:py-12 bg-(--bg-deep)">
+<section
+      id="hero"
+      className="hero-main-section relative z-10 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-10 md:py-12 bg-(--bg-deep) font-sans">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <p className="text-(--text-dim) text-sm sm:text-base md:text-lg text-center">
             Loading hero section...
@@ -127,7 +127,7 @@ export default function Hero() {
     <>
       <section
         id="hero"
-        className="hero-main-section relative z-10 min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-screen w-full flex flex-col justify-center lg:justify-start items-center lg:items-start pt-14 pb-10 sm:pt-20 sm:pb-12 md:pt-24 md:pb-14 lg:pt-28 lg:pb-16 px-4 sm:px-5 md:px-6 lg:px-[5vw] pointer-events-none">
+        className="hero-main-section relative z-10 min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-screen w-full flex flex-col justify-center lg:justify-start items-center lg:items-start pt-14 pb-10 sm:pt-20 sm:pb-12 md:pt-24 md:pb-14 lg:pt-28 lg:pb-16 px-4 sm:px-5 md:px-6 lg:px-[5vw] pointer-events-none font-sans">
         {/* Overlay: leaves right side (50–70%+) visible so canvas diagram stays active */}
         <div
           className="fixed inset-0 z-1 pointer-events-none"
