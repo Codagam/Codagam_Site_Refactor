@@ -31,7 +31,7 @@ export function MarqueeStrip() {
 
   return (
     <div
-      className="bg-[rgba(8,14,56,.98)] py-3.5 overflow-hidden whitespace-nowrap border-t border-b border-(--border)"
+      className="border-t border-b border-(--border) bg-[rgba(8,14,56,.98)] py-3.5 overflow-hidden whitespace-nowrap"
       aria-hidden
     >
       <div className="inline-flex gap-10 animate-[marq_28s_linear_infinite]">
