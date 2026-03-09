@@ -12,12 +12,12 @@ import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-[var(--bg-deep)]">
+    <div className="min-h-screen w-full bg-(--bg-deep)">
       <CanvasBackground />
       <Navbar />
       <main className="relative z-10 pt-12 sm:pt-14 md:pt-16 lg:pt-16">
         <Hero />
-        <div className="relative z-20 bg-[var(--bg-deep)]">
+        <div className="relative z-20 bg-(--bg-deep)">
           <About />
           <ServiceCards />
           <TechStack />

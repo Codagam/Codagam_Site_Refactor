@@ -23,56 +23,22 @@ const SERVICES = [
 ];
 
 const WEB_DELIVERABLES = [
-  {
-    title: "Multi-tenant SaaS architecture",
-    sub: "Isolated data, custom domains, per-tenant billing logic.",
-  },
-  {
-    title: "Role-based UI & access control",
-    sub: "RBAC/ABAC built in from the start — not bolted on later.",
-  },
-  {
-    title: "API design & documentation",
-    sub: "Clean REST or GraphQL APIs with developer-ready docs.",
-  },
-  {
-    title: "Analytics & observability",
-    sub: "Structured logging, dashboards, and real-time monitoring.",
-  },
-  {
-    title: "Mobile-responsive & accessible",
-    sub: "WCAG-compliant, performant on every device.",
-  },
+  { title: "Multi-tenant SaaS architecture", sub: "Isolated data, custom domains, per-tenant billing logic." },
+  { title: "Role-based UI & access control", sub: "RBAC/ABAC built in from the start — not bolted on later." },
+  { title: "API design & documentation", sub: "Clean REST or GraphQL APIs with developer-ready docs." },
+  { title: "Analytics & observability", sub: "Structured logging, dashboards, and real-time monitoring." },
+  { title: "Mobile-responsive & accessible", sub: "WCAG-compliant, performant on every device." },
 ];
 
 const ENTERPRISE_DELIVERABLES = [
-  {
-    title: "Legacy system integration",
-    sub: "Bridge old and new — ERP connectors, data migrations, API wrappers.",
-  },
-  {
-    title: "Compliance-aware architecture",
-    sub: "Audit logging, data retention policies, access controls built for regulators.",
-  },
-  {
-    title: "Complex reporting & PDF generation",
-    sub: "Automated payslips, invoices, regulatory reports at scale.",
-  },
-  {
-    title: "Performance-tuned SQL",
-    sub: "Query optimisation, indexing strategy, database health for scale.",
-  },
-  {
-    title: "Cloud deployment on Azure",
-    sub: "Managed services, autoscaling, blue-green deployment strategies.",
-  },
+  { title: "Legacy system integration", sub: "Bridge old and new — ERP connectors, data migrations, API wrappers." },
+  { title: "Compliance-aware architecture", sub: "Audit logging, data retention policies, access controls built for regulators." },
+  { title: "Complex reporting & PDF generation", sub: "Automated payslips, invoices, regulatory reports at scale." },
+  { title: "Performance-tuned SQL", sub: "Query optimisation, indexing strategy, database health for scale." },
+  { title: "Cloud deployment on Azure", sub: "Managed services, autoscaling, blue-green deployment strategies." },
 ];
 
-function DeliverablesCard({
-  items,
-}: {
-  items: { title: string; sub: string }[];
-}) {
+function DeliverablesCard({ items }: { items: { title: string; sub: string }[] }) {
   return (
     <div className="bg-(--bg-card) border border-(--border) rounded-xl p-8">
       <h4 className="font-(--font-sans) text-[.75rem] uppercase tracking-widest text-white/30 mb-5">
@@ -81,7 +47,8 @@ function DeliverablesCard({
       {items.map((d) => (
         <div
           key={d.title}
-          className="flex items-start gap-3.5 py-3.5 border-b border-(--border) last:border-0">
+          className="flex items-start gap-3.5 py-3.5 border-b border-(--border) last:border-0"
+        >
           <div className="w-[18px] h-[18px] rounded bg-[rgba(91,141,238,.15)] text-(--acc2) flex items-center justify-center text-[.6rem] shrink-0 mt-0.5">
             ✓
           </div>
@@ -103,7 +70,8 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-28 px-[5vw] bg-linear-to-b from-[rgba(13,22,90,.9)] to-(--bg-deep) border-t border-(--border)">
+      className="py-28 px-[5vw] bg-linear-to-b from-[rgba(13,22,90,.9)] to-(--bg-deep) border-t border-(--border)"
+    >
       <div className="max-w-[1100px] mx-auto">
         <SectionEyebrow eyebrow="What we build" />
         <SectionTitle>
@@ -119,7 +87,8 @@ export function ServicesSection() {
           {SERVICES.map((s) => (
             <div
               key={s.num}
-              className="rv rv-d2 bg-[rgba(10,18,69,.95)] p-10 pr-8 relative transition-colors hover:bg-[rgba(90,107,187,1)] group">
+              className="rv rv-d2 bg-[rgba(10,18,69,.95)] p-10 pr-8 relative transition-colors hover:bg-[rgba(90,107,187,1)] group"
+            >
               <div className="absolute top-7 right-7 text-white/10 group-hover:text-(--acc2) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
                 ↗
               </div>
@@ -157,22 +126,16 @@ export function ServicesSection() {
               handover.
             </p>
             <div className="flex flex-wrap gap-1.5 mt-3">
-              {[
-                "Next.js",
-                "React",
-                "TypeScript",
-                "MongoDB",
-                "Node.js",
-                "Prisma",
-                "Tailwind CSS",
-                "Vercel / AWS",
-              ].map((t) => (
-                <span
-                  key={t}
-                  className="text-[.72rem] py-1 px-2.5 rounded-full bg-[rgba(91,141,238,.08)] border border-[rgba(91,141,238,.2)] text-(--acc3)">
-                  {t}
-                </span>
-              ))}
+              {["Next.js", "React", "TypeScript", "MongoDB", "Node.js", "Prisma", "Tailwind CSS", "Vercel / AWS"].map(
+                (t) => (
+                  <span
+                    key={t}
+                    className="text-[.72rem] py-1 px-2.5 rounded-full bg-[rgba(91,141,238,.08)] border border-[rgba(91,141,238,.2)] text-(--acc3)"
+                  >
+                    {t}
+                  </span>
+                )
+              )}
             </div>
           </div>
           <DeliverablesCard items={WEB_DELIVERABLES} />
@@ -200,20 +163,16 @@ export function ServicesSection() {
               business depends on long-term, that judgment matters enormously.
             </p>
             <div className="flex flex-wrap gap-1.5 mt-3">
-              {[
-                "C# / .NET",
-                "SQL Server",
-                "Azure",
-                "REST APIs",
-                "Entity Framework",
-                "RBAC / ABAC",
-              ].map((t) => (
-                <span
-                  key={t}
-                  className="text-[.72rem] py-1 px-2.5 rounded-full bg-[rgba(91,141,238,.08)] border border-[rgba(91,141,238,.2)] text-(--acc3)">
-                  {t}
-                </span>
-              ))}
+              {["C# / .NET", "SQL Server", "Azure", "REST APIs", "Entity Framework", "RBAC / ABAC"].map(
+                (t) => (
+                  <span
+                    key={t}
+                    className="text-[.72rem] py-1 px-2.5 rounded-full bg-[rgba(91,141,238,.08)] border border-[rgba(91,141,238,.2)] text-(--acc3)"
+                  >
+                    {t}
+                  </span>
+                )
+              )}
             </div>
           </div>
           <DeliverablesCard items={ENTERPRISE_DELIVERABLES} />

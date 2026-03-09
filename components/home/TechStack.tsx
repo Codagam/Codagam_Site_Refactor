@@ -79,7 +79,7 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="relative border-t border-[var(--border)] py-28 px-[5vw] scroll-mt-16 overflow-hidden"
+      className="relative border-t border-(--border) py-28 px-[5vw] scroll-mt-16 overflow-hidden"
       style={{
         background:
           "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",
@@ -87,39 +87,39 @@ export default function TechStack() {
       <div className="relative z-10 mx-auto max-w-[1100px]">
         <p className="mb-4 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
           <span
-            className="h-px w-6 shrink-0 bg-[var(--acc2)] opacity-40"
+            className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
             aria-hidden
           />
           Tech stack
         </p>
-        <h2 className="font-[var(--font-serif)] text-[clamp(2rem,4vw,3.25rem)] font-semibold tracking-tight text-white mb-2 [&_em]:italic [&_em]:font-light [&_em]:text-[var(--acc2)]">
+        <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-2 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Technology stack <em>&amp; capabilities.</em>
         </h2>
-        <p className="text-base text-[var(--text-dim)] leading-8 max-w-[540px] mt-3">
+        <p className="text-base text-(--text-dim) leading-8 max-w-[540px] mt-3">
           Languages, frameworks, and tools we use to ship production software.
         </p>
 
         {loading ? (
           <div className="flex justify-center items-center py-16 md:py-20">
-            <p className="text-[var(--text-mid)] text-base md:text-lg">
+            <p className="text-(--text-mid) text-base md:text-lg">
               Loading tech stack...
             </p>
           </div>
         ) : categories.length === 0 ? (
           <div className="flex justify-center items-center py-16 md:py-20">
-            <p className="text-[var(--text-mid)] text-base md:text-lg">
+            <p className="text-(--text-mid) text-base md:text-lg">
               No tech stack items available.
             </p>
           </div>
         ) : (
-          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
               <div
                 key={category.id}
                 className="group flex flex-col bg-[rgba(10,18,69,.95)] transition-colors hover:bg-blue-100 border-0 rounded-none overflow-hidden">
                 {/* Category header - same pill/accent style as service cards */}
                 <div className="px-8 pt-8 pb-4">
-                  <span className="inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-[var(--acc2)] bg-[rgba(91,141,238,.12)] group-hover:bg-blue-200/80 group-hover:text-[var(--bg-deep)] transition-colors">
+                  <span className="inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-(--acc2) bg-[rgba(91,141,238,.12)] group-hover:bg-blue-200/80 group-hover:text-(--bg-deep) transition-colors">
                     {category.title}
                   </span>
                 </div>
@@ -129,7 +129,7 @@ export default function TechStack() {
                     <li
                       key={capability.id}
                       className="flex flex-row items-center justify-between gap-3 border-b border-white/10 group-hover:border-slate-200 py-3.5 last:border-0 transition-colors">
-                      <span className="text-[.88rem] font-medium text-[var(--text-hi)] group-hover:text-[var(--bg-deep)] min-w-0 flex-1 transition-colors">
+                      <span className="text-[.88rem] font-medium text-(--text-hi) group-hover:text-(--bg-deep) min-w-0 flex-1 transition-colors">
                         {capability.text}
                       </span>
                       <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md">
@@ -146,7 +146,7 @@ export default function TechStack() {
                               />
                             </div>
                           ) : (
-                            <span className="text-[.7rem] font-semibold text-[var(--acc2)] group-hover:text-[var(--bg-deep)] transition-colors">
+                            <span className="text-[.7rem] font-semibold text-(--acc2) group-hover:text-(--bg-deep) transition-colors">
                               {capability.image}
                             </span>
                           )

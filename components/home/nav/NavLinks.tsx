@@ -68,7 +68,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => handleLinkClick(e, item.id)}
-              className={`block font-[var(--font-serif)] text-3xl font-light text-white py-3 px-4 transition-opacity mobile-menu-link ${
+              className={`block font-(--font-serif) text-3xl text-white py-3 px-4 transition-opacity mobile-menu-link ${
                 shouldAnimate ? "animate-slide-in-right" : ""
               } ${active ? "opacity-100" : "opacity-90 hover:opacity-100"}`}
               style={{ animationDelay }}

@@ -5,25 +5,19 @@ import Link from "next/link";
 import {
   ArrowRight,
   Code,
-  HeartPulse,
-  Cloud,
   BarChart3,
-  Brain,
   Target,
 } from "lucide-react";
-import { servicesGalleryItems } from "@/lib/content/services";
+import { servicesGalleryItems, type ServiceGalleryItem } from "@/lib/content/services";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const iconMap: Record<
   string,
   React.ComponentType<{ className?: string; style?: React.CSSProperties }>
 > = {
-  "custom-software-development": Code,
-  "healthcare-technology": HeartPulse,
-  "cloud-architecture-devops": Cloud,
-  "data-analytics-bi": BarChart3,
-  "ai-ml-integration": Brain,
-  "secondary-services": Target,
+  "web-saas": Code,
+  "enterprise": BarChart3,
+  "end-to-end": Target,
 };
 
 export default function Services() {
@@ -50,7 +44,7 @@ export default function Services() {
           Our Services
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {servicesGalleryItems.map((service) => {
+          {servicesGalleryItems.map((service: ServiceGalleryItem) => {
             const IconComponent = iconMap[service.id] || Target;
             const hoverColor = service.hoverColor || "bg-primary";
             const bgMatch = hoverColor.match(/bg-(.+)/);
@@ -94,7 +88,7 @@ export default function Services() {
 
                     {service.offerings && service.offerings.length > 0 && (
                       <ul className="space-y-1.5 md:space-y-2 flex-1 mb-2 md:mb-2.5">
-                        {service.offerings.slice(0, 3).map((offering, index) => (
+                        {(service.offerings ?? []).slice(0, 3).map((offering: string, index: number) => (
                           <li
                             key={index}
                             className="text-xs md:text-sm text-white/95 leading-relaxed flex items-start">

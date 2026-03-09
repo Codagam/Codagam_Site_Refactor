@@ -3,6 +3,14 @@ export interface ServiceDeliverable {
   sub?: string;
 }
 
+export interface ServiceGalleryItem {
+  id: string;
+  title: string;
+  description: string;
+  hoverColor?: string;
+  offerings?: string[];
+}
+
 export interface ServiceDetail {
   id: string;
   number: string;
@@ -160,3 +168,13 @@ export const services: ServiceDetail[] = [
     ],
   },
 ];
+
+export const servicesGalleryItems: ServiceGalleryItem[] = services.map(
+  (s) => ({
+    id: s.id,
+    title: s.title,
+    description: s.shortDescription,
+    hoverColor: "bg-primary",
+    offerings: s.deliverables.map((d) => d.title),
+  }),
+);

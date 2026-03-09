@@ -240,9 +240,9 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] w-full transition-[background-color,border-color] duration-400 ${
+      className={`fixed top-0 left-0 right-0 z-100 w-full transition-[background-color,border-color] duration-400 ${
         scrolled
-          ? "bg-[rgba(10,18,69,.94)] backdrop-blur-[20px] border-b border-[var(--border)]"
+          ? "bg-[rgba(10,18,69,.94)] backdrop-blur-[20px] border-b border-(--border)"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -251,7 +251,7 @@ export default function Navbar() {
         <Link
           href="/"
           onClick={handleScrollToTop}
-          className="font-[var(--font-serif)] text-xl font-bold text-white [&_span]:text-[var(--acc2)] tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0"
+          className="font-(--font-serif) text-xl text-white tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0 [&_span]:text-(--acc2)"
         >
           Coda<span>gam</span>
         </Link>
@@ -297,14 +297,14 @@ export default function Navbar() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[280px] sm:w-[350px] md:w-[400px] bg-[var(--bg-deep)] border-[var(--border)]"
+                className="w-[280px] sm:w-[350px] md:w-[400px] bg-(--bg-deep) border-(--border)"
               >
                 <SheetHeader>
                   <SheetTitle className="flex items-center space-x-3 text-left">
                     <Link
                       href="/"
                       onClick={handleScrollToTop}
-                      className="font-[var(--font-serif)] text-xl font-bold text-white [&_span]:text-[var(--acc2)]"
+                      className="font-(--font-serif) text-xl text-white [&_span]:text-(--acc2)"
                     >
                       Coda<span>gam</span>
                     </Link>
@@ -319,7 +319,7 @@ export default function Navbar() {
                   />
                   <Button
                     onClick={handleContactClick}
-                    className={`group mt-4 w-full !font-[var(--font-sans)] !text-base !font-medium bg-blue-100 text-gray-900 py-3 px-10 rounded mt-2 hover:bg-white mobile-menu-link ${
+                    className={`group mt-4 w-full font-(--font-sans)! text-base! bg-blue-100 text-gray-900 py-3 px-10 rounded hover:bg-white mobile-menu-link ${
                       shouldAnimate ? "animate-slide-in-right" : ""
                     }`}
                     style={{
