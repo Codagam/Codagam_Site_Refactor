@@ -37,11 +37,29 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [scrolled, setScrolled] = useState(false);
 
   // Initialize mounted state
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Codagam theme: scrolled state for nav background (FULL-WEBSITE-REBUILD-PROMPT §5)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    if (isOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   // Handle mobile menu animation
   useEffect(() => {
@@ -221,40 +239,47 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-background border-b border-border z-50 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full bg-background">
-        <div className="flex justify-between items-center h-12 sm:h-14 md:h-16 lg:h-16 w-full">
-          {/* Logo */}
-          <Link
-            href="/"
-            onClick={handleScrollToTop}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary tracking-tight hover:opacity-80 transition-opacity cursor-pointer shrink-0">
-            Codagam
-          </Link>
+    <header
+      className={`fixed top-0 left-0 right-0 z-[100] w-full transition-[background-color,border-color] duration-400 ${
+        scrolled
+          ? "bg-[rgba(10,18,69,.94)] backdrop-blur-[20px] border-b border-[var(--border)]"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-[5vw] py-4 flex justify-between items-center">
+        {/* Logo - Codagam theme: serif + acc2 span */}
+        <Link
+          href="/"
+          onClick={handleScrollToTop}
+          className="font-[var(--font-serif)] text-xl font-bold text-white [&_span]:text-[var(--acc2)] tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0"
+        >
+          Coda<span>gam</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-4 items-center shrink-0">
-            <NavLinks variant="desktop" isActive={isActive} />
-          </nav>
+        {/* Desktop Navigation - theme link styles */}
+        <nav className="hidden lg:flex gap-1 items-center shrink-0">
+          <NavLinks variant="desktop" isActive={isActive} />
+        </nav>
 
-          {/* Get Started Button */}
-          <Button
-            onClick={() => {
-              const element = document.getElementById("contact");
-              if (element) {
-                const headerHeight = getHeaderHeight();
-                const elementPosition =
-                  element.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerHeight - 8;
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: "smooth",
-                });
-              }
-            }}
-            className="hidden lg:flex bg-primary hover:bg-primary-hover text-primary-foreground text-sm px-4 py-2 shrink-0 whitespace-nowrap">
-            Contact
-          </Button>
+        {/* Desktop CTA - "Book a call →" theme (FULL-WEBSITE-REBUILD-PROMPT §5) */}
+        <Button
+          onClick={() => {
+            const element = document.getElementById("contact");
+            if (element) {
+              const headerHeight = getHeaderHeight();
+              const elementPosition =
+                element.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - headerHeight - 8;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          }}
+          className="hidden lg:flex ml-2 bg-white/[.08] text-white border border-white/20 py-1.5 px-3 rounded text-[.82rem] font-medium hover:!bg-white hover:!text-[var(--bg-deep)] transition-colors shrink-0 whitespace-nowrap"
+        >
+          Book a call →
+        </Button>
 
           {/* Mobile Menu */}
           {mounted ? (
@@ -263,21 +288,24 @@ export default function Navbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-primary hover:bg-muted"
-                  aria-label="Toggle menu">
+                  className="lg:hidden h-9 w-9 sm:h-10 sm:w-10 text-white hover:bg-white/[.07] rounded"
+                  aria-label="Toggle menu"
+                >
                   <Menu className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
                 </Button>
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[280px] sm:w-[350px] md:w-[400px] bg-background">
+                className="w-[280px] sm:w-[350px] md:w-[400px] bg-[var(--bg-deep)] border-[var(--border)]"
+              >
                 <SheetHeader>
                   <SheetTitle className="flex items-center space-x-3 text-left">
                     <Link
                       href="/"
                       onClick={handleScrollToTop}
-                      className="text-xl sm:text-2xl font-bold text-primary tracking-tight hover:opacity-80 transition-opacity cursor-pointer">
-                      Codagam
+                      className="font-[var(--font-serif)] text-xl font-bold text-white [&_span]:text-[var(--acc2)]"
+                    >
+                      Coda<span>gam</span>
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
@@ -290,15 +318,16 @@ export default function Navbar() {
                   />
                   <Button
                     onClick={handleContactClick}
-                    className={`mt-4 w-full bg-primary hover:bg-primary-hover text-primary-foreground text-base font-medium py-3 px-4 rounded-lg mobile-menu-link ${
+                    className={`mt-4 w-full !font-[var(--font-sans)] !text-base !font-medium bg-white text-[var(--bg-deep)] py-3 px-10 rounded mt-2 mobile-menu-link ${
                       shouldAnimate ? "animate-slide-in-right" : ""
                     }`}
                     style={{
                       animationDelay: shouldAnimate
                         ? `${(NAV_ITEMS.length + 1) * 0.1}s`
                         : "0s",
-                    }}>
-                    Contact
+                    }}
+                  >
+                    Book a call →
                   </Button>
                 </nav>
               </SheetContent>
@@ -307,13 +336,13 @@ export default function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden transition-colors duration-300 h-9 w-9 sm:h-10 sm:w-10 text-primary hover:bg-muted"
+              className="lg:hidden h-9 w-9 sm:h-10 sm:w-10 text-white hover:bg-white/[.07] rounded"
               aria-label="Toggle menu"
-              onClick={() => setIsOpen(true)}>
+              onClick={() => setIsOpen(true)}
+            >
               <Menu className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
             </Button>
           )}
-        </div>
       </div>
     </header>
   );

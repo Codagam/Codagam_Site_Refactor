@@ -68,18 +68,11 @@ const NavLinks: React.FC<NavLinksProps> = ({
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => handleLinkClick(e, item.id)}
-              className={`relative text-base md:text-lg font-medium transition-all duration-300 py-3 px-4 rounded-lg flex items-center mobile-menu-link ${
+              className={`block font-[var(--font-serif)] text-3xl font-light text-white py-3 px-4 transition-opacity mobile-menu-link ${
                 shouldAnimate ? "animate-slide-in-right" : ""
-              } ${
-                active
-                  ? "text-primary font-semibold bg-primary-light scale-[1.02]"
-                  : "text-foreground hover:text-primary hover:bg-muted"
-              }`}
+              } ${active ? "opacity-100" : "opacity-90 hover:opacity-100"}`}
               style={{ animationDelay }}
             >
-              {active && (
-                <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-r-full" />
-              )}
               {item.label}
             </a>
           );
@@ -88,7 +81,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
     );
   }
 
-  // Desktop variant
+  // Desktop variant - Codagam theme: text-white/45 hover:text-white hover:bg-white/[.07]
   return (
     <>
       {NAV_ITEMS.map((item) => {
@@ -98,20 +91,13 @@ const NavLinks: React.FC<NavLinksProps> = ({
             key={item.id}
             href={`#${item.id}`}
             onClick={(e) => handleLinkClick(e, item.id)}
-            className={`relative text-sm lg:text-base font-medium transition-all duration-300 whitespace-nowrap group ${
+            className={`text-[.82rem] py-1.5 px-3 rounded transition-colors whitespace-nowrap ${
               active
-                ? "text-primary font-semibold"
-                : "text-foreground hover:text-primary"
+                ? "text-white bg-white/[.07]"
+                : "text-white/45 hover:text-white hover:bg-white/[.07]"
             }`}
           >
             {item.label}
-            <span
-              className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transition-all duration-300 ${
-                active
-                  ? "opacity-100 scale-x-100"
-                  : "opacity-0 scale-x-0 group-hover:opacity-50 group-hover:scale-x-100"
-              }`}
-            />
           </a>
         );
       })}

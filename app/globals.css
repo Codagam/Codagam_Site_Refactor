@@ -23,6 +23,22 @@
     --nav-surface: 245 242 235;
     --destructive: 224 92 58;
     --success: 74 222 128;
+
+    /* Codagam hero/canvas theme (THEME-COLORS.md / FULL-WEBSITE-REBUILD-PROMPT) */
+    --bg-deep: #0a1245;
+    --bg-mid: #0d165a;
+    --bg-card: rgba(17, 29, 106, 0.6);
+    --acc2: #7aaaf5;
+    --accent: #5b8dee;
+    --acc3: #a3c4f9;
+    --text-dim: rgba(255, 255, 255, 0.42);
+    --text-mid: rgba(255, 255, 255, 0.62);
+    --text-hi: rgba(255, 255, 255, 0.88);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-codagam: rgba(255, 255, 255, 0.08);
+    --border-hi: rgba(255, 255, 255, 0.15);
+    --font-serif: "Fraunces", Georgia, serif;
+    --font-sans: "DM Sans", sans-serif;
   }
 }
 
@@ -55,13 +71,14 @@ html {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
-  background: rgb(var(--background));
+  background: var(--bg-deep);
+  scroll-behavior: smooth;
 }
 
 body {
-  background: rgb(var(--background));
-  color: rgb(var(--foreground));
-  font-family: var(--font-open-sans), -apple-system, BlinkMacSystemFont,
+  background: var(--bg-deep);
+  color: #fff;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   line-height: 1.6;
@@ -74,12 +91,31 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Codagam theme scrollbar (FULL-WEBSITE-REBUILD-PROMPT §3) */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(91, 141, 238, 0.3) var(--bg-deep);
+}
+body::-webkit-scrollbar {
+  width: 5px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(91, 141, 238, 0.3);
+  border-radius: 3px;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  line-height: 1.1;
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1889,6 +1925,26 @@ iframe {
 /* ============================================
    ANIMATIONS - KEEP ALL
    ============================================ */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
 @keyframes marquee-left {
   from {
     transform: translateX(0);

@@ -1,5 +1,7 @@
 import Navbar from "@/components/home/nav/Navbar";
 import Hero from "@/components/home/Hero";
+import { CanvasBackground } from "@/components/shared/CanvasBackground";
+import { PoweredStrip } from "@/components/shared/PoweredStrip";
 import Services from "@/components/home/Services";
 // import Products from "@/components/home/Products"; // Product section commented – using CapabilityCards
 import CapabilityCards from "@/components/home/CapabilityCards";
@@ -12,19 +14,23 @@ import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-background">
+    <div className="min-h-screen w-full bg-[var(--bg-deep)]">
+      <CanvasBackground />
       <Navbar />
-      <main className="pt-12 sm:pt-14 md:pt-16 lg:pt-16">
+      <main className="relative z-10 pt-12 sm:pt-14 md:pt-16 lg:pt-16">
         <Hero />
-        <About />
-        <Services />
-        {/* <Products /> – product section replaced by 4 capability cards */}
-        <CapabilityCards />
-        <TechStack />
-        <TrustedBy />
-        <CareerSection />
+        <div className="relative z-20 bg-[var(--bg-deep)]">
+          <About />
+          <Services />
+          {/* <Products /> – product section replaced by 4 capability cards */}
+          <CapabilityCards />
+          <TechStack />
+          <TrustedBy />
+          <CareerSection />
+          <Footer />
+        </div>
       </main>
-      <Footer />
+      <PoweredStrip />
       <ScrollToTopButton />
     </div>
   );
