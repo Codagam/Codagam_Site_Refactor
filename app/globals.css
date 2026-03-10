@@ -40,6 +40,25 @@
     --font-serif: var(--font-open-sans);
     --font-sans: var(--font-open-sans), sans-serif;
     --font-mono: var(--font-open-sans), monospace;
+
+    /* Navbar height for hero viewport (match Navbar getHeaderHeight) */
+    --navbar-h: 44px;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --navbar-h: 52px;
+    }
+  }
+  @media (min-width: 1024px) {
+    :root {
+      --navbar-h: 56px;
+    }
+  }
+  @media (min-width: 1280px) {
+    :root {
+      --navbar-h: 60px;
+    }
   }
 }
 
@@ -78,7 +97,7 @@ html {
   max-width: 100vw;
   background: var(--bg-deep);
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem; /* match fixed navbar height so anchor scroll shows section right below nav */
+  scroll-padding-top: var(--navbar-h, 4rem);
 }
 
 body {
@@ -135,7 +154,7 @@ section {
 
 section#hero.hero-main-section,
 section.hero-main-section {
-  min-height: 100dvh;
+  min-height: calc(100dvh - var(--navbar-h, 56px));
 }
 
 * {

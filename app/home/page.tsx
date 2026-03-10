@@ -16,7 +16,7 @@ export default function Home() {
     <div className="min-h-dvh w-full max-w-[100vw] overflow-x-hidden bg-(--bg-deep)">
       <ScrollToHash />
       <Navbar />
-      <main className="relative z-10 w-full min-w-0 pt-3 sm:pt-4 md:pt-5 lg:pt-8 overflow-x-hidden">
+      <main className="relative z-10 w-full min-w-0 pt-(--navbar-h) overflow-x-hidden">
         <Hero />
         <div className="relative z-20 bg-(--bg-deep) w-full min-w-0 [&_section]:w-full [&_section]:min-w-0 [&_section]:overflow-x-hidden">
           <About />

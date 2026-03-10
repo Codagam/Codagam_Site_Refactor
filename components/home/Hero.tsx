@@ -122,7 +122,7 @@ export default function Hero() {
     return (
       <section
         id="hero"
-        className="hero-main-section relative z-10 min-h-dvh flex flex-col justify-center items-center py-8 sm:py-10 md:py-12 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] bg-(--bg-deep) font-sans overflow-x-hidden"
+        className="hero-main-section relative z-10 min-h-[calc(100dvh-var(--navbar-h,56px))] flex flex-col justify-center items-center py-8 sm:py-10 md:py-12 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] bg-(--bg-deep) font-sans overflow-x-hidden"
       >
         <div className="w-full max-w-7xl mx-auto min-w-0">
           <p className="text-(--text-dim) text-sm sm:text-base text-center">
@@ -136,24 +136,25 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="hero-main-section relative z-10 w-full min-h-dvh flex flex-col font-sans overflow-x-hidden pointer-events-none bg-(--bg-deep)
-        pt-5 pb-3 sm:pt-6 sm:pb-4 md:pt-8 md:pb-5 lg:pt-10 lg:pb-6
+      className="hero-main-section relative z-10 w-full min-h-[calc(100dvh-var(--navbar-h,56px))] flex flex-col font-sans overflow-x-hidden pointer-events-none bg-(--bg-deep)
+        pt-4 pb-3 sm:pt-5 sm:pb-4 md:pt-6 md:pb-5 lg:pt-8 lg:pb-6
         px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw]"
     >
-      {/* Overlay: matches canvas base; left dark for text, right shows animation (sm, md, lg) */}
+      {/* Overlay: left dark for text, right transparent for animation */}
       <div
         className="absolute inset-0 z-1 pointer-events-none"
         style={{ background: overlayStyle }}
         aria-hidden
       />
-      <HeroCanvasWrapper />
-      {/* Content + strip: flex-1 centers content; strip at bottom */}
+      {/* Desktop/sm+: canvas on right, full height */}
+      <HeroCanvasWrapper variant="desktop" />
+      {/* Content: full height on left (sm+), top on mobile/tablet */}
       <div className="relative z-2 flex flex-col flex-1 min-h-0 w-full">
         <div className="flex flex-col justify-center flex-1 min-h-0">
-          {/* Content: centered on sm, left on md+; responsive widths */}
-          <div className="hero-content w-full flex flex-col justify-center items-center md:items-start text-center md:text-left min-w-0 max-w-[min(100%,540px)] md:max-w-[50%] lg:max-w-[48%] xl:max-w-[46%]">
+          {/* Left content: centered on mobile/tablet, left-aligned on sm+; top/down center on small screens */}
+          <div className="hero-content w-full flex flex-col justify-center items-center sm:items-start text-center sm:text-left min-w-0 max-w-[min(100%,540px)] sm:max-w-[48%] md:max-w-[50%] lg:max-w-[52%] xl:max-w-[46%]">
             <div
-              className={`inline-flex items-center justify-center md:justify-start gap-2 text-[.68rem] sm:text-[.7rem] font-medium uppercase tracking-[.14em] text-(--acc2) bg-[rgba(5,12,55,.92)] border border-white/12 py-1.5 px-3 sm:px-4 rounded-full mb-2.5 sm:mb-3 md:mb-4 opacity-0 animate-[rise_.8s_.3s_cubic-bezier(.22,1,.36,1)_forwards] shadow-[0_18px_45px_rgba(1,5,32,.95)] backdrop-blur-[6px] transition-opacity duration-500 self-center md:self-start ${
+              className={`inline-flex items-center justify-center sm:justify-start gap-2 text-[.68rem] sm:text-[.7rem] font-medium uppercase tracking-[.14em] text-(--acc2) bg-[rgba(5,12,55,.92)] border border-white/12 py-1.5 px-3 sm:px-4 rounded-full mb-2.5 sm:mb-3 md:mb-4 opacity-0 animate-[rise_.8s_.3s_cubic-bezier(.22,1,.36,1)_forwards] shadow-[0_18px_45px_rgba(1,5,32,.95)] backdrop-blur-[6px] transition-opacity duration-500 self-center sm:self-start ${
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}
             >
@@ -168,13 +169,13 @@ export default function Hero() {
               {heading}
             </h1>
             <p
-              className={`text-[clamp(0.78rem,1.6vw,0.98rem)] sm:text-[clamp(0.82rem,1.4vw,1.02rem)] text-(--text-dim) leading-[1.55] sm:leading-[1.65] w-full max-w-[min(100%,400px)] md:max-w-none mx-auto md:mx-0 mb-3 sm:mb-4 md:mb-5 opacity-0 animate-[rise_.8s_.7s_cubic-bezier(.22,1,.36,1)_forwards] transition-opacity duration-500 ${
+              className={`text-[clamp(0.78rem,1.6vw,0.98rem)] sm:text-[clamp(0.82rem,1.4vw,1.02rem)] text-(--text-dim) leading-[1.55] sm:leading-[1.65] w-full max-w-[min(100%,400px)] sm:max-w-none mx-auto sm:mx-0 mb-3 sm:mb-4 md:mb-5 opacity-0 animate-[rise_.8s_.7s_cubic-bezier(.22,1,.36,1)_forwards] transition-opacity duration-500 ${
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}
             >
               {description}
             </p>
-            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center flex-wrap pointer-events-auto opacity-0 animate-[rise_.8s_.9s_cubic-bezier(.22,1,.36,1)_forwards] justify-center md:justify-start w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center flex-wrap pointer-events-auto opacity-0 animate-[rise_.8s_.9s_cubic-bezier(.22,1,.36,1)_forwards] justify-center sm:justify-start w-full sm:w-auto">
               <Link
                 href="#contact"
                 className="group inline-flex justify-center sm:justify-start items-center gap-2 w-full sm:w-auto min-h-[42px] sm:min-h-0 rounded-[999px] bg-blue-100 text-gray-900! px-4 py-2.5 sm:px-5 sm:py-2 font-(--font-sans) text-[.8125rem] sm:text-[.875rem] shadow-[0_14px_40px_rgba(0,0,0,.45)] transition-colors duration-150 hover:bg-white hover:text-gray-900! hover:-translate-y-0.5"
@@ -195,6 +196,8 @@ export default function Hero() {
             </p>
           </div>
         </div>
+        {/* Mobile/tablet: canvas below content, centered (top and down center) */}
+        <HeroCanvasWrapper variant="mobile" />
       </div>
     </section>
   );
