@@ -167,7 +167,7 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
         rR: { x: hcx + hw + u * 0.2, y: hcy - bh / 2 },
         rTop: { x: hcx, y: hcy - bh / 2 - rh },
         chx: hcx + hw * 0.28,
-        chy: hcy - bh / 2 - rh + u * 0.45,
+        chy: hcy - bh / 2 - rh - u * 0.05,
         chw: u * 0.3,
         chh: u * 0.62,
         dx: hcx - u * 0.38,
@@ -180,7 +180,12 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
           w: u * 0.72,
           h: u * 0.56
         },
-        wR: { x: hcx + u * 0.1, y: hcy - u * 0.45, w: u * 0.72, h: u * 0.56 }
+        wR: {
+          x: hcx + hw - u * 0.6 - u * 0.72,
+          y: hcy - u * 0.45,
+          w: u * 0.72,
+          h: u * 0.56
+        }
       };
     }
 
@@ -279,7 +284,7 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
         ],
         [
           { x: H_.chx + H_.chw / 2, y: H_.chy },
-          { x: H_.chx + H_.chw / 2, y: rTop.y - u * 0.8 }
+          { x: H_.chx + H_.chw / 2, y: rTop.y - u * 1.7 }
         ]
       ].forEach((pts) => traces.push({ pts, nodeIdx: -1, decor: true }));
     }
@@ -435,7 +440,7 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
         g.font = `${u * 0.27}px ${fontFamily}, sans-serif`;
         g.textAlign = "center";
         g.textBaseline = "top";
-        g.fillText(nd.label, nd.x, nd.y + r + u * 0.22);
+        g.fillText(nd.label, nd.x, nd.y + r + u * 0.48);
         g.fillStyle = `rgba(122,170,245,${0.5 + 0.3 * pulse})`;
         g.beginPath();
         g.arc(nd.x, nd.y, u * 0.09, 0, Math.PI * 2);
@@ -568,33 +573,6 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
         g.fillStyle = `rgba(91,141,238,${0.08 + 0.05 * Math.sin(now * 0.0012 + wi)})`;
         g.fillRect(w.x, w.y, w.w, w.h);
       });
-      g.save();
-      g.beginPath();
-      g.rect(bx + 1, by + 1, bw - 2, bh - 2);
-      g.clip();
-      g.strokeStyle = `rgba(122,170,245,${0.14 + 0.05 * pulse})`;
-      g.lineWidth = u * 0.04;
-      g.setLineDash([u * 0.12, u * 0.18]);
-      g.beginPath();
-      g.moveTo(bx + u * 0.35, hcy - u * 0.25);
-      g.lineTo(bx + bw - u * 0.35, hcy - u * 0.25);
-      g.stroke();
-      g.beginPath();
-      g.moveTo(hcx, by + u * 0.3);
-      g.lineTo(hcx, by + bh - dh - u * 0.15);
-      g.stroke();
-      g.setLineDash([]);
-      [
-        { x: hcx - u * 0.7, y: hcy - u * 0.25 },
-        { x: hcx + u * 0.7, y: hcy - u * 0.25 },
-        { x: hcx, y: hcy - u * 0.25 }
-      ].forEach((p) => {
-        g.fillStyle = `rgba(122,170,245,${0.35 + 0.15 * pulse})`;
-        g.beginPath();
-        g.arc(p.x, p.y, u * 0.09, 0, Math.PI * 2);
-        g.fill();
-      });
-      g.restore();
     }
 
     function spawnSignal() {
