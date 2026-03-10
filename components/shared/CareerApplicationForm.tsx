@@ -145,13 +145,13 @@ export function CareerApplicationForm({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs sm:text-sm font-bold">
+                <FormLabel className="text-xs sm:text-sm font-semibold text-slate-700">
                   Full Name
                 </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Your Full Name"
-                    className="h-9 sm:h-10 text-xs sm:text-sm bg-(--cta-bg-hover) text-black placeholder:text-(--muted-text) border-border dark:border-border focus:border-primary dark:focus:border-primary"
+                    className="h-9 sm:h-10 text-sm bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-(--acc2) focus-visible:ring-offset-2 focus-visible:border-(--acc2)"
                     autoComplete="name"
                     {...field}
                   />
@@ -166,14 +166,14 @@ export function CareerApplicationForm({
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs sm:text-sm font-bold">
+                <FormLabel className="text-xs sm:text-sm font-semibold text-slate-700">
                   Email
                 </FormLabel>
                 <FormControl>
                   <Input
                     type="email"
                     placeholder="Your Email"
-                    className="h-9 sm:h-10 text-xs sm:text-sm bg-(--cta-bg-hover) text-black placeholder:text-(--muted-text) border-border dark:border-border focus:border-primary dark:focus:border-primary"
+                    className="h-9 sm:h-10 text-sm bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-(--acc2) focus-visible:ring-offset-2 focus-visible:border-(--acc2)"
                     autoComplete="email"
                     {...field}
                   />
@@ -190,7 +190,7 @@ export function CareerApplicationForm({
               const { ref, ...restFieldProps } = fieldProps;
               return (
                 <FormItem>
-                  <FormLabel className="text-xs sm:text-sm font-bold">
+                  <FormLabel className="text-xs sm:text-sm font-semibold text-slate-700">
                     Resume / CV
                   </FormLabel>
                   <FormControl>
@@ -211,25 +211,26 @@ export function CareerApplicationForm({
                       <Button
                         type="button"
                         onClick={() => fileInputRef.current?.click()}
-                        variant="black"
-                        className="h-9 sm:h-10 px-3 sm:px-4 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0">
+                        variant="outline"
+                        className="h-9 sm:h-10 px-3 sm:px-4 text-sm font-semibold whitespace-nowrap shrink-0 border-slate-300 bg-white text-slate-800 hover:bg-slate-50 hover:border-slate-400"
+                      >
                         Choose file
                       </Button>
                       {/* File display area */}
-                      <div className="flex-1 min-w-0 border border-border dark:border-border rounded-md bg-white px-2 sm:px-3 py-2 sm:py-2.5 flex items-center">
+                      <div className="flex-1 min-w-0 border border-slate-200 rounded-md bg-slate-50 px-2 sm:px-3 py-2 sm:py-2.5 flex items-center">
                         <span
-                          className={`text-xs sm:text-sm truncate ${
+                          className={`text-sm truncate ${
                             fileName
-                              ? "text-black font-medium"
-                              : "text-(--muted-text)"
+                              ? "text-slate-900 font-medium"
+                              : "text-slate-500"
                           }`}>
                           {fileName || "No file chosen"}
                         </span>
                       </div>
                     </div>
                   </FormControl>
-                  <FormDescription className="text-xs text-muted-foreground dark:text-muted-foreground flex items-center gap-1 mt-1.5">
-                    <Upload className="h-3 w-3 text-muted-foreground dark:text-muted-foreground" />
+                  <FormDescription className="text-xs text-slate-500 flex items-center gap-1 mt-1.5">
+                    <Upload className="h-3.5 w-3.5 text-slate-400" />
                     <span>PDF, DOC, or DOCX files up to 10MB</span>
                   </FormDescription>
                   <FormMessage className="text-xs text-red-600 dark:text-red-400 font-medium" />
@@ -242,8 +243,7 @@ export function CareerApplicationForm({
             <Button
               type="submit"
               disabled={isSubmitting}
-              variant="black"
-              className="w-full h-10 sm:h-11 text-xs sm:text-sm font-semibold">
+              className="w-full h-10 sm:h-11 text-sm font-semibold bg-(--acc2) text-white border-0 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-(--acc2) focus-visible:ring-offset-2">
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -279,7 +279,7 @@ export function CareerApplicationForm({
             size={triggerSize}
             className={
               triggerClassName ??
-              "group bg-(--cta-bg) text-(--cta-text) hover:bg-(--cta-bg-hover)"
+              "group bg-white text-(--bg-deep) border border-slate-200 hover:border-(--acc2) hover:text-(--acc2) font-medium"
             }>
             {typeof triggerText === "string" && triggerText.endsWith(" →")
               ? (
@@ -296,12 +296,12 @@ export function CareerApplicationForm({
             )}
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl p-4 sm:p-5 md:p-6 w-full max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl p-4 sm:p-5 md:p-6 w-full max-h-[90vh] overflow-y-auto bg-white border border-slate-200 shadow-xl text-slate-900 [&>button]:text-slate-400 [&>button]:hover:text-slate-900 [&>button]:right-4 [&>button]:top-4">
           <DialogHeader className="space-y-1.5 sm:space-y-2 text-left">
-            <DialogTitle className="text-lg sm:text-xl md:text-2xl font-bold leading-tight">
+            <DialogTitle className="text-lg sm:text-xl md:text-2xl font-bold leading-tight text-slate-900">
               Apply for a Position
             </DialogTitle>
-            <DialogDescription className="text-xs sm:text-sm leading-relaxed text-foreground">
+            <DialogDescription className="text-sm leading-relaxed text-slate-600">
               Fill out the form below to submit your application. We&apos;ll
               review your resume and get back to you soon.
             </DialogDescription>

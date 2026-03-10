@@ -30,8 +30,9 @@ export default function CareerSection() {
             asDialog={true}
             triggerText="Join our team →"
             triggerShowArrow={false}
-            triggerVariant="black"
+            triggerVariant="outline"
             triggerSize="lg"
+            triggerClassName="bg-white text-(--bg-deep) border-2 border-slate-200 hover:border-(--acc2) hover:bg-white hover:text-(--acc2) font-semibold shadow-sm"
           />
           <a
             href="mailto:support@codagam.com"
