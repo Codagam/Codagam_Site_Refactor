@@ -133,6 +133,11 @@ section {
   box-sizing: border-box;
 }
 
+section#hero.hero-main-section,
+section.hero-main-section {
+  min-height: 100dvh;
+}
+
 * {
   box-sizing: border-box;
 }

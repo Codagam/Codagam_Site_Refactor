@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useCallback } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavLinksProps {
   onNavigate?: () => void;
@@ -49,14 +51,32 @@ const NavLinks: React.FC<NavLinksProps> = ({
   variant = "desktop",
   shouldAnimate = false,
 }) => {
-  // Link click handler
+  const pathname = usePathname();
+  const isHomePage = pathname === "/home" || pathname?.startsWith("/home/");
+
+  // Link click handler (only when on home page)
   const handleLinkClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-      e.preventDefault();
-      scrollToSection(id, onNavigate);
+      if (isHomePage) {
+        e.preventDefault();
+        scrollToSection(id, onNavigate);
+      }
     },
-    [onNavigate]
+    [onNavigate, isHomePage]
   );
+
+  const linkClassName =
+    variant === "mobile"
+      ? (active: boolean) =>
+          `block font-(--font-serif) text-3xl text-white py-2.5 px-3 transition-opacity mobile-menu-link ${
+            active ? "opacity-100" : "opacity-90 hover:opacity-100"
+          }`
+      : (active: boolean) =>
+          `text-[.82rem] py-1.5 px-3 rounded transition-colors whitespace-nowrap ${
+            active
+              ? "text-white bg-white/[.07]"
+              : "text-white/45 hover:text-white hover:bg-white/[.07]"
+          }`;
 
   if (variant === "mobile") {
     return (
@@ -64,42 +84,63 @@ const NavLinks: React.FC<NavLinksProps> = ({
         {NAV_ITEMS.map((item, index) => {
           const active = isActive ? isActive(item.id) : false;
           const animationDelay = shouldAnimate ? `${(index + 1) * 0.1}s` : "0s";
+          const className = `${linkClassName(active)} ${
+            shouldAnimate ? "animate-slide-in-right" : ""
+          }`;
+          if (isHomePage) {
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleLinkClick(e, item.id)}
+                className={className}
+                style={{ animationDelay }}
+              >
+                {item.label}
+              </a>
+            );
+          }
           return (
-            <a
+            <Link
               key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => handleLinkClick(e, item.id)}
-              className={`block font-(--font-serif) text-3xl text-white py-2.5 px-3 transition-opacity mobile-menu-link ${
-                shouldAnimate ? "animate-slide-in-right" : ""
-              } ${active ? "opacity-100" : "opacity-90 hover:opacity-100"}`}
+              href={`/home#${item.id}`}
+              className={className}
               style={{ animationDelay }}
+              onClick={onNavigate}
             >
               {item.label}
-            </a>
+            </Link>
           );
         })}
       </>
     );
   }
 
-  // Desktop variant - Codagam theme: text-white/45 hover:text-white hover:bg-white/[.07]
+  // Desktop variant
   return (
     <>
       {NAV_ITEMS.map((item) => {
         const active = isActive ? isActive(item.id) : false;
+        if (isHomePage) {
+          return (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => handleLinkClick(e, item.id)}
+              className={linkClassName(active)}
+            >
+              {item.label}
+            </a>
+          );
+        }
         return (
-          <a
+          <Link
             key={item.id}
-            href={`#${item.id}`}
-            onClick={(e) => handleLinkClick(e, item.id)}
-            className={`text-[.82rem] py-1.5 px-3 rounded transition-colors whitespace-nowrap ${
-              active
-                ? "text-white bg-white/[.07]"
-                : "text-white/45 hover:text-white hover:bg-white/[.07]"
-            }`}
+            href={`/home#${item.id}`}
+            className={linkClassName(active)}
           >
             {item.label}
-          </a>
+          </Link>
         );
       })}
     </>

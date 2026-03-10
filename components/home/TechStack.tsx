@@ -79,12 +79,12 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="relative border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 overflow-x-hidden font-sans"
+      className="relative w-full border-t border-(--border) py-4 sm:py-5 md:py-7 lg:py-9 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] scroll-mt-12 sm:scroll-mt-16 overflow-x-hidden font-sans"
       style={{
         background:
           "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",
       }}>
-      <div className="relative z-10 mx-auto max-w-[1100px] w-full min-w-0">
+      <div className="relative z-10 mx-auto w-full min-w-0">
         <p className="mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
           <span
             className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
@@ -100,19 +100,19 @@ export default function TechStack() {
         </p>
 
         {loading ? (
-          <div className="flex justify-center items-center py-6 sm:py-8 md:py-10">
+          <div className="flex justify-center items-center py-5 sm:py-6 md:py-8">
             <p className="text-(--text-mid) text-base md:text-lg">
               Loading tech stack...
             </p>
           </div>
         ) : categories.length === 0 ? (
-          <div className="flex justify-center items-center py-6 sm:py-8 md:py-10">
+          <div className="flex justify-center items-center py-5 sm:py-6 md:py-8">
             <p className="text-(--text-mid) text-base md:text-lg">
               No tech stack items available.
             </p>
           </div>
         ) : (
-          <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-3 sm:mt-5 md:mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
               <div
                 key={category.id}
@@ -129,7 +129,7 @@ export default function TechStack() {
                     <li
                       key={capability.id}
                       className="flex flex-row items-center justify-between gap-2 sm:gap-3 border-b border-white/10 group-hover:border-slate-200 py-2.5 sm:py-3 last:border-0 transition-colors min-w-0">
-                      <span className="text-[.88rem] font-medium text-(--text-hi) group-hover:text-(--bg-deep) min-w-0 flex-1 break-words transition-colors">
+                      <span className="text-[.88rem] font-medium text-(--text-hi) group-hover:text-(--bg-deep) min-w-0 flex-1 wrap-break-word transition-colors">
                         {capability.text}
                       </span>
                       <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md">

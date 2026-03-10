@@ -65,15 +65,15 @@ export function WorkSection() {
   return (
     <section
       id="work"
-      className="relative border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans overflow-x-hidden">
-      <div className="mx-auto max-w-[1100px] w-full min-w-0">
+      className="relative w-full border-t border-(--border) py-4 sm:py-5 md:py-7 lg:py-9 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans overflow-x-hidden">
+      <div className="mx-auto w-full min-w-0">
         <h2 className="rv font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Real projects, <em>real impact.</em>
         </h2>
         <p className="text-blue-950 text-sm mb-2">
           We don&apos;t talk in generalities. Here&apos;s what we&apos;ve actually built — the situations, the challenges, and the outcomes.
         </p>
-        <div className="rv rv-d2 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 mt-4 sm:mt-6 md:mt-8">
+        <div className="rv rv-d2 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mt-3 sm:mt-5 md:mt-6">
           {CASES.map((c) => (
             <div
               key={c.num}
@@ -124,7 +124,7 @@ export function WorkSection() {
           ))}
         </div>
 
-        <div className="rv mt-6 sm:mt-8 text-center">
+        <div className="rv mt-5 sm:mt-6 md:mt-7 text-center">
           <p className="text-(--bg-deep) text-[.9rem] mb-3">
             Have a project that looks like these? Or completely unlike them?
           </p>

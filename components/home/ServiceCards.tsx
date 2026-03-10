@@ -7,12 +7,12 @@ export default function ServiceCards() {
   return (
     <section
       id="services"
-      className="relative border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 font-sans overflow-x-hidden"
+      className="relative border-t border-(--border) w-full py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] scroll-mt-12 sm:scroll-mt-16 font-sans overflow-x-hidden"
       style={{
         background:
           "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",
       }}>
-      <div className="mx-auto max-w-[1100px] w-full min-w-0">
+      <div className="mx-auto w-full min-w-0">
         <p className="mb-2 sm:mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
           <span
             className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
@@ -29,7 +29,7 @@ export default function ServiceCards() {
           you into a template.
         </p>
 
-        <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-3">
+        <div className="mt-3 sm:mt-5 md:mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-3">
           {services.map((service) => (
             <Link
               key={service.id}

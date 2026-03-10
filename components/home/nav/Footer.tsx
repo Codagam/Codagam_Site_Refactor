@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Info,
   Wrench,
@@ -220,7 +222,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
         <div key={office.id} className="space-y-1.5">
           <div className="flex items-start gap-1.5 sm:gap-2 justify-start">
             <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
-            <div className="text-left text-xs sm:text-sm font-normal wrap-break-word leading-relaxed">
+            <div className="text-left text-[10px] sm:text-xs md:text-sm font-normal wrap-break-word leading-relaxed">
               {formatAddress(office.address).map((line, idx) => (
                 <p
                   key={idx}
@@ -243,7 +245,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
               <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`tel:${firstLocation.phone}`}
-                className="hover:text-primary-light transition-colors text-xs sm:text-sm font-normal wrap-break-word">
+                className="hover:text-primary-light transition-colors text-[10px] sm:text-xs md:text-sm font-normal wrap-break-word">
                 {formatPhoneNumber(firstLocation.phone)}
               </a>
             </div>
@@ -253,7 +255,7 @@ const OfficeAddresses = ({ locations }: { locations: FooterOffice[] }) => {
               <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
               <a
                 href={`mailto:${firstLocation.email}`}
-                className="hover:text-primary-light transition-colors text-xs sm:text-sm break-all font-normal wrap-break-word">
+                className="hover:text-primary-light transition-colors text-[10px] sm:text-xs md:text-sm break-all font-normal wrap-break-word">
                 {firstLocation.email}
               </a>
             </div>
@@ -375,6 +377,9 @@ export default function Footer() {
     }
   }, []);
 
+  const pathname = usePathname();
+  const isHomePage = pathname === "/home" || pathname?.startsWith("/home/");
+
   // Group addresses by country
   const sortedCountries = useMemo(() => {
     const grouped = offices.reduce(
@@ -422,23 +427,23 @@ export default function Footer() {
       id="contact"
       className="bg-(--bg-deep) text-primary-foreground scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 w-full overflow-x-hidden"
       style={{ fontFamily: "var(--font-sans)" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-10 w-full min-w-0">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-8 mb-4 sm:mb-5 md:mb-6 lg:mb-8 w-full min-w-0 items-start">
+      <div className="mx-auto w-full min-w-0 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] py-4 sm:py-5 md:py-6 lg:py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-3 sm:mb-4 md:mb-5 lg:mb-6 w-full min-w-0 items-start">
           {/* Company Info - Countries cycling, showing all addresses per country */}
           {mounted && sortedCountries.length > 0 ? (
             <div className="text-left w-full sm:order-1 md:order-1 lg:order-1">
-              <div className="mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5 flex justify-start">
-                <h2 className="text-white font-bold text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl wrap-break-word">
+              <div className="mb-2 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-4 flex justify-start">
+                <h2 className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg xl:text-lg wrap-break-word">
                   Codagam
                 </h2>
               </div>
               <div
-                className={`space-y-1 text-xs sm:text-sm transition-opacity duration-500 ease-in-out wrap-break-word ${
+                className={`space-y-1 text-[10px] sm:text-xs md:text-sm transition-opacity duration-500 ease-in-out wrap-break-word ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}>
                 {sortedCountries[currentCountryIndex] && (
                   <>
-                    <h4 className="font-bold text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-start">
+                    <h4 className="font-bold text-[10px] sm:text-xs md:text-sm mb-1 sm:mb-1.5 flex items-center gap-1.5 justify-start">
                       <CountryFlag
                         countryCode={
                           sortedCountries[currentCountryIndex].countryCode
@@ -457,13 +462,13 @@ export default function Footer() {
             </div>
           ) : (
             <div className="text-left w-full sm:order-1 md:order-1 lg:order-1">
-              <div className="mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5 flex justify-start">
-                <h2 className="text-white font-bold text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl wrap-break-word">
+              <div className="mb-2 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-4 flex justify-start">
+                <h2 className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg xl:text-lg wrap-break-word">
                   Codagam
                 </h2>
               </div>
-              <div className="space-y-1 text-xs sm:text-sm wrap-break-word">
-                <h4 className="font-bold text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center gap-1.5 justify-start">
+              <div className="space-y-1 text-[10px] sm:text-xs md:text-sm wrap-break-word">
+                <h4 className="font-bold text-[10px] sm:text-xs md:text-sm mb-1 sm:mb-1.5 flex items-center gap-1.5 justify-start">
                   <CountryFlag
                     countryCode="IN"
                     flagUrl={null}
@@ -475,7 +480,7 @@ export default function Footer() {
                   <div className="flex items-start gap-1.5 sm:gap-2 justify-start">
                     <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
                     <div
-                      className="text-left text-xs sm:text-sm font-normal wrap-break-word leading-relaxed"
+                      className="text-left text-[10px] sm:text-xs md:text-sm font-normal wrap-break-word leading-relaxed"
                       style={{ fontWeight: 400 }}>
                       <p
                         className="font-normal wrap-break-word mb-0.5"
@@ -502,7 +507,7 @@ export default function Footer() {
                   <div className="flex items-start gap-1.5 sm:gap-2 justify-start">
                     <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mt-0.5 shrink-0 text-white" />
                     <div
-                      className="text-left text-xs sm:text-sm font-normal wrap-break-word leading-relaxed"
+                      className="text-left text-[10px] sm:text-xs md:text-sm font-normal wrap-break-word leading-relaxed"
                       style={{ fontWeight: 400 }}>
                       <p
                         className="font-normal wrap-break-word mb-0.5"
@@ -530,7 +535,7 @@ export default function Footer() {
                     <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
                     <a
                       href="tel:+917598454546"
-                      className="hover:text-primary-light transition-colors text-xs sm:text-sm font-normal"
+                      className="hover:text-primary-light transition-colors text-[10px] sm:text-xs md:text-sm font-normal"
                       style={{ fontWeight: 400 }}>
                       {formatPhoneNumber("+917598454546")}
                     </a>
@@ -539,7 +544,7 @@ export default function Footer() {
                     <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-white" />
                     <a
                       href="mailto:support@codagam.com"
-                      className="hover:text-primary-light transition-colors text-xs sm:text-sm break-all font-normal"
+                      className="hover:text-primary-light transition-colors text-[10px] sm:text-xs md:text-sm break-all font-normal"
                       style={{ fontWeight: 400 }}>
                       support@codagam.com
                     </a>
@@ -551,35 +556,53 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="text-left w-full sm:order-3 md:order-3 lg:order-2">
-            <h3 className="font-bold text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5 flex items-center gap-2 justify-start wrap-break-word">
+            <h3 className="font-bold text-[10px] sm:text-xs md:text-sm lg:text-base mb-2 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-4 flex items-center gap-2 justify-start wrap-break-word">
               Quick Links
             </h3>
-            <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-3 w-full">
+            <ul className="space-y-1.5 sm:space-y-2 md:space-y-2.5 lg:space-y-3 w-full">
               {QUICK_LINKS.map(({ id, label, icon: Icon, color }) => (
                 <li key={id}>
-                  <a
-                    href={`#${id}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(id);
-                    }}
-                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-primary-light transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
-                    style={{ fontWeight: 400 }}>
-                    <Icon
-                      className={`w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 ${color} shrink-0`}
-                    />
-                    <span
-                      className="font-normal wrap-break-word"
-                      style={{ fontWeight: 400 }}>
-                      {label}
-                    </span>
-                  </a>
+                  {isHomePage ? (
+                    <a
+                      href={`#${id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(id);
+                      }}
+                      className="flex items-center gap-1.5 sm:gap-2 md:gap-2 text-[10px] sm:text-xs md:text-sm hover:text-primary-light transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
+                      style={{ fontWeight: 400 }}
+                    >
+                      <Icon
+                        className={`w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 ${color} shrink-0`}
+                      />
+                      <span
+                        className="font-normal wrap-break-word"
+                        style={{ fontWeight: 400 }}>
+                        {label}
+                      </span>
+                    </a>
+                  ) : (
+                    <Link
+                      href={`/home#${id}`}
+                      className="flex items-center gap-1.5 sm:gap-2 md:gap-2 text-[10px] sm:text-xs md:text-sm hover:text-primary-light transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
+                      style={{ fontWeight: 400 }}
+                    >
+                      <Icon
+                        className={`w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 ${color} shrink-0`}
+                      />
+                      <span
+                        className="font-normal wrap-break-word"
+                        style={{ fontWeight: 400 }}>
+                        {label}
+                      </span>
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
 
             {/* Products - production app URLs */}
-            <h3 className="font-bold text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl mb-4 sm:mb-5 md:mb-6 lg:mb-7 mt-8 sm:mt-10 md:mt-12 lg:mt-14 flex items-center gap-2 justify-start wrap-break-word">
+            <h3 className="font-bold text-[10px] sm:text-xs md:text-sm lg:text-base mb-3 sm:mb-4 md:mb-4 lg:mb-5 mt-6 sm:mt-8 md:mt-10 lg:mt-12 flex items-center gap-2 justify-start wrap-break-word">
               Products
             </h3>
             <ul className="space-y-3 sm:space-y-3.5 md:space-y-4 lg:space-y-4 w-full">
@@ -589,7 +612,7 @@ export default function Footer() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 text-xs sm:text-sm md:text-base hover:text-primary-light transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
+                    className="flex items-center gap-1.5 sm:gap-2 md:gap-2 text-[10px] sm:text-xs md:text-sm hover:text-primary-light transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
                     style={{ fontWeight: 400 }}>
                     {logo ? (
                       <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative shrink-0">
@@ -617,7 +640,7 @@ export default function Footer() {
 
           {/* Follow Us */}
           <div className="text-left w-full sm:order-4 md:order-4 lg:order-3">
-            <h3 className="font-bold text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5 wrap-break-word">
+            <h3 className="font-bold text-[10px] sm:text-xs md:text-sm lg:text-base mb-2 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-4 wrap-break-word">
               Follow Us
             </h3>
             <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-4 lg:gap-4 xl:gap-5 justify-start w-full">
@@ -633,7 +656,7 @@ export default function Footer() {
 
           {/* Get in Touch - Contact Form */}
           <div className="text-left w-full sm:order-2 md:order-2 lg:order-4 sm:col-span-2 md:col-span-1 lg:col-span-1">
-            <h3 className="font-bold text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-5 wrap-break-word">
+            <h3 className="font-bold text-[10px] sm:text-xs md:text-sm lg:text-base mb-2 sm:mb-3 md:mb-4 lg:mb-4 xl:mb-4 wrap-break-word">
               Get in Touch
             </h3>
             <div className="w-full">
@@ -654,10 +677,10 @@ export default function Footer() {
 
       {/* Bottom Copyright Bar */}
       <div className="border-t border-white py-2 sm:py-2.5 md:py-3 w-full min-w-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 w-full min-w-0">
+        <div className="mx-auto w-full min-w-0 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw]">
           <div className="flex items-center justify-center sm:justify-between">
             <p
-              className="text-[0.65rem] sm:text-xs md:text-xs lg:text-xs xl:text-sm text-center flex-1 font-normal"
+              className="text-[0.55rem] sm:text-[0.6rem] md:text-xs lg:text-xs text-center flex-1 font-normal"
               style={{ fontWeight: 400 }}>
               © 2025 Codagam Software Labs Private Limited. All rights reserved.
             </p>

@@ -31,8 +31,8 @@ export default function TrustedBy() {
   return (
     <section
       id="team"
-      className="relative border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 overflow-x-hidden bg-blue-100 font-sans">
-      <div className="relative z-10 mx-auto max-w-[1100px] w-full min-w-0">
+      className="relative w-full border-t border-(--border) py-4 sm:py-5 md:py-7 lg:py-9 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] scroll-mt-12 sm:scroll-mt-16 overflow-x-hidden bg-blue-100 font-sans">
+      <div className="relative z-10 mx-auto w-full min-w-0">
         <p className="mb-2 sm:mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-blue-900/60">
           <span
             className="h-px w-6 shrink-0 bg-(--acc2) opacity-60"
@@ -44,7 +44,7 @@ export default function TrustedBy() {
           Extraordinary results, <em>repeatedly.</em>
         </h2>
 
-        <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+        <div className="mt-3 sm:mt-5 md:mt-6 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {/* Testimonial - boxed, not full height */}
           <div className="rv min-w-0">
             <div className="relative rounded-xl border border-slate-200 bg-white/95 p-4 sm:p-5 md:p-6 shadow-sm max-w-xl min-w-0">
@@ -70,7 +70,7 @@ export default function TrustedBy() {
             {DIFFERENTIATORS.map((item, i) => (
               <div
                 key={item.title}
-                className={`rv flex gap-3 sm:gap-4 py-3 sm:py-4 md:py-5 border-b border-slate-200 last:border-0 min-w-0 ${i === 1 ? "rv-d1" : i === 2 ? "rv-d2" : i === 3 ? "rv-d3" : ""}`}>
+                className={`rv flex gap-2.5 sm:gap-3 md:gap-4 py-2.5 sm:py-3 md:py-4 border-b border-slate-200 last:border-0 min-w-0 ${i === 1 ? "rv-d1" : i === 2 ? "rv-d2" : i === 3 ? "rv-d3" : ""}`}>
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[rgba(91,141,238,.3)] bg-[rgba(91,141,238,.12)] text-(--acc2) text-lg">
                   {item.icon}
                 </div>

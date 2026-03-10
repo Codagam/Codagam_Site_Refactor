@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,6 +39,9 @@ export default function Navbar() {
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === "/home" || pathname?.startsWith("/home/");
 
   // Initialize mounted state
   useEffect(() => {
@@ -218,20 +222,24 @@ export default function Navbar() {
 
   // Handler to scroll to contact section
   const handleContactClick = useCallback(() => {
-    const element = document.getElementById("contact");
-    if (element) {
-      const headerHeight = getHeaderHeight();
-      const gapBelowNav = 4;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerHeight - gapBelowNav;
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: "smooth",
-      });
+    if (isHomePage) {
+      const element = document.getElementById("contact");
+      if (element) {
+        const headerHeight = getHeaderHeight();
+        const gapBelowNav = 4;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerHeight - gapBelowNav;
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: "smooth",
+        });
+      }
+    } else {
+      router.push("/home#contact");
     }
     setIsOpen(false);
-  }, []);
+  }, [isHomePage, router]);
 
   // Check if section is active
   const isActive = useCallback(
@@ -247,7 +255,7 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-[5vw] py-2.5 sm:py-3 flex justify-between items-center gap-2 min-w-0 w-full">
+      <div className="mx-auto w-full min-w-0 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] py-2.5 sm:py-3 flex justify-between items-center gap-2">
         {/* Logo - Codagam theme: serif + acc2 span */}
         <Link
           href="/"
@@ -265,17 +273,21 @@ export default function Navbar() {
         {/* Desktop CTA - "Book a call →" theme (FULL-WEBSITE-REBUILD-PROMPT §5) */}
         <Button
           onClick={() => {
-            const element = document.getElementById("contact");
-            if (element) {
-              const headerHeight = getHeaderHeight();
-              const gapBelowNav = 4;
-              const elementPosition =
-                element.getBoundingClientRect().top + window.pageYOffset;
-              const offsetPosition = elementPosition - headerHeight - gapBelowNav;
-              window.scrollTo({
-                top: Math.max(0, offsetPosition),
-                behavior: "smooth",
-              });
+            if (isHomePage) {
+              const element = document.getElementById("contact");
+              if (element) {
+                const headerHeight = getHeaderHeight();
+                const gapBelowNav = 4;
+                const elementPosition =
+                  element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - gapBelowNav;
+                window.scrollTo({
+                  top: Math.max(0, offsetPosition),
+                  behavior: "smooth",
+                });
+              }
+            } else {
+              router.push("/home#contact");
             }
           }}
           className="group hidden lg:flex ml-2 bg-blue-100 text-gray-900 border border-blue-200 py-1.5 px-2.5 rounded text-[.8rem] font-medium hover:bg-white transition-colors shrink-0 whitespace-nowrap"

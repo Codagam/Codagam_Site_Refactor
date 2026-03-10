@@ -67,10 +67,10 @@ export default async function ServicePage({
   return (
     <div className="min-h-screen w-full bg-(--bg-deep)">
       <Navbar />
-      <main className="relative z-10 pt-8 sm:pt-10 md:pt-12 lg:pt-14">
+      <main className="relative z-10 w-full min-w-0 pt-4 sm:pt-5 md:pt-6 lg:pt-8 overflow-x-hidden">
         {/* Page hero */}
-        <section className="border-b border-(--border) py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-[1100px]">
+        <section className="w-full border-b border-(--border) py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw]">
+          <div className="mx-auto w-full min-w-0">
             <p className="mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
               <span
                 className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
@@ -91,13 +91,13 @@ export default async function ServicePage({
         </section>
 
         {/* Service detail – two-column layout */}
-        <section className="py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-[1100px]">
-            <p className="mb-6 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
+        <section className="w-full py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw]">
+          <div className="mx-auto w-full min-w-0">
+            <p className="mb-4 sm:mb-5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
               {service.eyebrow}
             </p>
 
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-10 lg:items-start">
+            <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8 lg:items-start">
               {/* Left: number, tag, fullTitle, copy, stack pills */}
               <div>
                 <div className="font-(--font-serif) text-4xl italic text-white/15 leading-none mb-3">
@@ -177,17 +177,17 @@ export default async function ServicePage({
         </section>
 
         {/* Non-negotiables */}
-        <section className="border-t border-(--border) py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-[1100px]">
+        <section className="w-full border-t border-(--border) py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw]">
+          <div className="mx-auto w-full min-w-0">
             <p className="mb-3 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
               Non-negotiables
             </p>
-            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-8">
+            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-4 sm:mb-5 md:mb-6">
               Secure by design.
               <br />
               Built to scale.
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
               {SECURITY_ITEMS.map((item, i) => (
                 <div
                   key={i}
@@ -208,12 +208,12 @@ export default async function ServicePage({
         </section>
 
         {/* Our engagement process */}
-        <section className="border-t border-(--border) py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-[1100px]">
+        <section className="w-full border-t border-(--border) py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw]">
+          <div className="mx-auto w-full min-w-0">
             <p className="mb-3 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
               How every project starts
             </p>
-            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-8">
+            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-4 sm:mb-5 md:mb-6">
               Our engagement process.
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border)">
