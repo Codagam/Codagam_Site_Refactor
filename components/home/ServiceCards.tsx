@@ -7,13 +7,13 @@ export default function ServiceCards() {
   return (
     <section
       id="services"
-      className="relative border-t border-(--border) py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 font-sans"
+      className="relative border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 font-sans overflow-x-hidden"
       style={{
         background:
           "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",
       }}>
-      <div className="mx-auto max-w-[1100px]">
-        <p className="mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
+      <div className="mx-auto max-w-[1100px] w-full min-w-0">
+        <p className="mb-2 sm:mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
           <span
             className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
             aria-hidden
@@ -29,12 +29,12 @@ export default function ServiceCards() {
           you into a template.
         </p>
 
-        <div className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-3">
+        <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-3">
           {services.map((service) => (
             <Link
               key={service.id}
               href={`/services/${service.id}`}
-              className="group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-5 sm:p-6 md:p-8 pr-6 sm:pr-8 md:pr-10 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-(--acc2) focus:ring-offset-2 focus:ring-offset-(--bg-deep)">
+              className="group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-4 sm:p-5 md:p-6 lg:p-8 pr-5 sm:pr-6 md:pr-8 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-(--acc2) focus:ring-offset-2 focus:ring-offset-(--bg-deep) min-w-0">
               <span
                 className="absolute right-6 top-6 text-white/10 group-hover:text-(--acc2) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                 aria-hidden>

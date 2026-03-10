@@ -113,8 +113,8 @@ export default function Hero() {
     return (
 <section
       id="hero"
-      className="hero-main-section relative z-10 min-h-[75vh] sm:min-h-[80vh] md:min-h-[85vh] flex flex-col justify-center items-center py-10 sm:py-12 md:py-14 bg-(--bg-deep) font-sans">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      className="hero-main-section relative z-10 min-h-[75vh] sm:min-h-[80vh] md:min-h-[85vh] flex flex-col justify-center items-center py-8 sm:py-10 md:py-12 bg-(--bg-deep) font-sans overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-w-0">
           <p className="text-(--text-dim) text-sm sm:text-base md:text-lg text-center">
             Loading hero section...
           </p>
@@ -141,7 +141,7 @@ export default function Hero() {
           aria-hidden
         />
         {/* Left content: full-width centered on sm/md; lg+ left-aligned ~44% with canvas on right */}
-        <div className="hero-content relative z-2 w-full max-w-[min(480px,94vw)] sm:max-w-[min(520px,88vw)] md:max-w-[min(540px,75vw)] lg:max-w-[44%] mx-auto lg:mx-0 lg:shrink-0 text-center lg:text-left px-0 sm:px-2 flex flex-col">
+        <div className="hero-content relative z-2 w-full max-w-[min(480px,94vw)] sm:max-w-[min(520px,88vw)] md:max-w-[min(540px,75vw)] lg:max-w-[44%] mx-auto lg:mx-0 shrink-0 min-w-0 text-center lg:text-left px-0 sm:px-2 flex flex-col overflow-hidden">
           <div
             className={`inline-flex items-center justify-center lg:justify-start gap-2 text-[.7rem] sm:text-[.68rem] font-medium uppercase tracking-[.14em] text-(--acc2) bg-[rgba(5,12,55,.92)] border border-white/12 py-1.5 px-4 rounded-full mb-5 sm:mb-6 opacity-0 animate-[rise_.8s_.3s_cubic-bezier(.22,1,.36,1)_forwards] shadow-[0_18px_45px_rgba(1,5,32,.95)] backdrop-blur-[6px] transition-opacity duration-500 self-start ${
               isTransitioning ? "opacity-0" : "opacity-100"

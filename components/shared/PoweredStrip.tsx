@@ -26,7 +26,7 @@ export function PoweredStrip() {
   return (
     <div
       id="poweredStrip"
-      className={`fixed bottom-0 left-0 right-0 z-10 py-5 px-[5vw] bg-linear-to-t from-[rgba(10,18,69,.9)] to-transparent flex items-center gap-6 flex-wrap pointer-events-none transition-opacity duration-500 opacity-0 animate-[rise_.8s_1.2s_forwards] ${
+      className={`fixed bottom-0 left-0 right-0 z-10 py-3 sm:py-4 px-4 sm:px-[5vw] bg-linear-to-t from-[rgba(10,18,69,.9)] to-transparent flex items-center gap-3 sm:gap-4 md:gap-6 flex-wrap pointer-events-none transition-opacity duration-500 opacity-0 animate-[rise_.8s_1.2s_forwards] min-w-0 overflow-x-hidden ${
         hidden ? "opacity-0!" : ""
       }`}
     >

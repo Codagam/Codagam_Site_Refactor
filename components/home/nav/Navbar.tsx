@@ -247,12 +247,12 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-[5vw] py-3 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-[5vw] py-2.5 sm:py-3 flex justify-between items-center gap-2 min-w-0 w-full">
         {/* Logo - Codagam theme: serif + acc2 span */}
         <Link
           href="/"
           onClick={handleScrollToTop}
-          className="font-(--font-serif) text-xl text-white tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0 [&_span]:text-(--acc2)"
+          className="font-(--font-serif) text-lg sm:text-xl text-white tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0 min-w-0 truncate [&_span]:text-(--acc2)"
         >
           Coda<span>gam</span>
         </Link>

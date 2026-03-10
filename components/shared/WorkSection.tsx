@@ -65,20 +65,20 @@ export function WorkSection() {
   return (
     <section
       id="work"
-      className="relative border-t border-(--border) py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans">
-      <div className="mx-auto max-w-[1100px]">
+      className="relative border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans overflow-x-hidden">
+      <div className="mx-auto max-w-[1100px] w-full min-w-0">
         <h2 className="rv font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Real projects, <em>real impact.</em>
         </h2>
         <p className="text-blue-950 text-sm mb-2">
           We don&apos;t talk in generalities. Here&apos;s what we&apos;ve actually built — the situations, the challenges, and the outcomes.
         </p>
-        <div className="rv rv-d2 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-10">
+        <div className="rv rv-d2 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 mt-4 sm:mt-6 md:mt-8">
           {CASES.map((c) => (
             <div
               key={c.num}
               className={cn(
-                "relative flex flex-col bg-white/95 border border-slate-200 rounded-xl p-5 sm:p-6 md:p-8 shadow-[0_18px_45px_rgba(15,23,42,.08)] transition-colors hover:bg-slate-50 hover:border-slate-300",
+                "relative flex flex-col bg-white/95 border border-slate-200 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-[0_18px_45px_rgba(15,23,42,.08)] transition-colors hover:bg-slate-50 hover:border-slate-300 min-w-0",
                 c.fullWidth && "md:col-span-2",
                 c.featured && "md:col-span-2"
               )}
@@ -124,7 +124,7 @@ export function WorkSection() {
           ))}
         </div>
 
-        <div className="rv mt-8 sm:mt-10 text-center">
+        <div className="rv mt-6 sm:mt-8 text-center">
           <p className="text-(--bg-deep) text-[.9rem] mb-3">
             Have a project that looks like these? Or completely unlike them?
           </p>

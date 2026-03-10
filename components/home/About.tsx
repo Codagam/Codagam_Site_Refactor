@@ -28,10 +28,10 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative border-t border-(--border) py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans">
-      <div className="mx-auto max-w-[1100px] grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-5 sm:gap-6 lg:gap-10">
+      className="relative border-t border-(--border) py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-5 md:px-6 lg:px-8 scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans overflow-x-hidden">
+      <div className="mx-auto max-w-[1100px] w-full min-w-0 grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-4 sm:gap-5 md:gap-6 lg:gap-8">
         {/* Left: Who we are copy */}
-        <div className="space-y-5">
+        <div className="space-y-4 sm:space-y-5 min-w-0">
           {/* Eyebrow: WHO WE ARE with lines on both sides */}
           <p className="flex items-center gap-2.5 mb-3 text-[.7rem] font-medium uppercase tracking-[.14em] text-blue-900/60">
             <span className="w-6 h-px bg-(--acc2) opacity-60 shrink-0" aria-hidden />
@@ -66,11 +66,11 @@ export default function About() {
         </div>
 
         {/* Right: three pillar cards */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2.5 sm:gap-3 min-w-0">
           {pillars.map(({ id, symbol, title, description }) => (
             <div
               key={id}
-              className="rounded-xl border border-slate-200 bg-white/95 py-4 px-5 sm:px-6 shadow transition-colors duration-200 hover:bg-slate-50 hover:border-slate-300">
+              className="rounded-xl border border-slate-200 bg-white/95 py-3 px-4 sm:py-4 sm:px-5 md:px-6 shadow transition-colors duration-200 hover:bg-slate-50 hover:border-slate-300 min-w-0">
               <div
                 className="mb-3 text-[1.1rem] text-(--acc2)"
                 aria-hidden>

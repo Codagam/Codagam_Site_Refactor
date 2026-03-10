@@ -420,10 +420,10 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-(--bg-deep) text-primary-foreground scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 w-full"
+      className="bg-(--bg-deep) text-primary-foreground scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 w-full overflow-x-hidden"
       style={{ fontFamily: "var(--font-sans)" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 py-5 sm:py-8 md:py-10 lg:py-12 w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-8 mb-5 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-10 w-full items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-10 w-full min-w-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-6 xl:gap-8 mb-4 sm:mb-5 md:mb-6 lg:mb-8 w-full min-w-0 items-start">
           {/* Company Info - Countries cycling, showing all addresses per country */}
           {mounted && sortedCountries.length > 0 ? (
             <div className="text-left w-full sm:order-1 md:order-1 lg:order-1">
@@ -653,8 +653,8 @@ export default function Footer() {
       <FooterCallToAction />
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-white py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-3.5 w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="border-t border-white py-2 sm:py-2.5 md:py-3 w-full min-w-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 w-full min-w-0">
           <div className="flex items-center justify-center sm:justify-between">
             <p
               className="text-[0.65rem] sm:text-xs md:text-xs lg:text-xs xl:text-sm text-center flex-1 font-normal"
