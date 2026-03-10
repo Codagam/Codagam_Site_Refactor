@@ -28,16 +28,16 @@ export default function CareerSection() {
         <div className="rv flex flex-wrap gap-2.5 sm:gap-3 md:gap-4 justify-center items-center">
           <CareerApplicationForm
             asDialog={true}
-            triggerText="Book a discovery call →"
+            triggerText="Join our team →"
             triggerShowArrow={false}
             triggerVariant="black"
             triggerSize="lg"
           />
           <a
-            href="mailto:hello@codagam.com"
+            href="mailto:support@codagam.com"
             className="inline-flex items-center gap-2 font-(--font-sans) text-[.9rem] text-(--text-dim) py-2.5 px-5 rounded-lg border border-(--border) hover:text-white hover:border-(--acc2) hover:bg-[rgba(91,141,238,.08)] transition-colors"
           >
-            ✉ hello@codagam.com
+            ✉ support@codagam.com
           </a>
         </div>
         <ul className="rv mt-3 sm:mt-5 md:mt-6 flex flex-wrap gap-3 sm:gap-4 md:gap-5 justify-center items-center">
