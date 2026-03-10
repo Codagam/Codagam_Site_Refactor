@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const CASES = [
   {
@@ -8,6 +9,7 @@ const CASES = [
     stack: "Next.js · Node.js · MongoDB",
     title:
       "Multi-Tenant Healthcare EMR\nwith Tamil-English Voice Transcription",
+    image: "/images/work/EMR.png",
     situation:
       "A healthcare provider needed a comprehensive Electronic Medical Records platform supporting multiple clinics, with clinical note documentation via voice input — in both Tamil and English — and enterprise-grade access control to meet Indian healthcare compliance requirements.",
     challenge:
@@ -21,6 +23,7 @@ const CASES = [
     num: "02",
     stack: ".NET · C# · SQL Server · PDF Generation",
     title: "Enterprise Payroll & Payslip Generator",
+    image: "/images/work/Enterprise Payroll & Payslip Generator.png",
     situation:
       "An organisation running entirely manual payroll — spreadsheets, manual calculations, emailed PDFs — needed a fully automated system integrated with their existing HR database.",
     outcome:
@@ -32,6 +35,7 @@ const CASES = [
     num: "03",
     stack: "Next.js · TypeScript · MongoDB · REST API · SaaS",
     title: "Dynamic Link Platform —\nFirebase Alternative",
+    image: "/images/work/Dynamic Link Platform.png",
     situation:
       "Google's deprecation of Firebase Dynamic Links left thousands of product teams scrambling. Mobile apps relying on smart redirects and deferred deep linking had nowhere to go.",
     outcome:
@@ -43,6 +47,7 @@ const CASES = [
     num: "04",
     stack: "Next.js · MongoDB · Voice Input · RAG",
     title: "Hyperlocal Classifieds\nwith Voice & AI Navigation",
+    image: "/images/work/AI Navigation.png",
     situation:
       "A Tamil Nadu community needed a localised classified platform with Tamil language accessibility for non-English speakers — voice input, RAG-powered navigation, and a scalable architecture for planned nationwide expansion.",
     outcome:
@@ -54,6 +59,7 @@ const CASES = [
     num: "05",
     stack: "Next.js · TypeScript · Tailwind CSS · API Routes",
     title: "Codagam — Custom SaaS &\nSoftware Development Website",
+    image: "/images/work/Software Development Website.png",
     situation:
       "Codagam needed a modern, performant marketing site to showcase services, case studies, and tech stack — with CMS-style content for hero, footer, and tech stack, plus an admin area for non-developers to manage copy and links.",
     outcome:
@@ -78,14 +84,26 @@ export function WorkSection() {
             <div
               key={c.num}
               className={cn(
-                "relative flex flex-col bg-white/95 border border-slate-200 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-[0_18px_45px_rgba(15,23,42,.08)] transition-colors hover:bg-slate-50 hover:border-slate-300 min-w-0",
+                "relative flex flex-col bg-white/95 border border-slate-200 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-[0_18px_45px_rgba(15,23,42,.08)] transition-colors hover:bg-slate-50 hover:border-slate-300 min-w-0 overflow-hidden",
                 c.fullWidth && "md:col-span-2",
                 c.featured && "md:col-span-2"
               )}
             >
-              <div className="absolute top-4 right-5 font-(--font-serif) text-5xl italic text-slate-200 pointer-events-none">
-                {c.num}
-              </div>
+              {"image" in c && c.image && (
+                <span
+                  className="pointer-events-none absolute right-0 top-0 h-28 w-32 sm:h-32 sm:w-40 md:h-36 md:w-44"
+                  aria-hidden>
+                  <span className="relative block h-full w-full">
+                    <Image
+                      src={encodeURI(c.image)}
+                      alt=""
+                      fill
+                      className="object-contain object-top-right"
+                      sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
+                    />
+                  </span>
+                </span>
+              )}
               <div className="text-[.68rem] font-medium uppercase tracking-widest text-(--acc2) mb-2">
                 {c.stack}
               </div>

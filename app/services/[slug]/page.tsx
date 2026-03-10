@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { services } from "@/lib/content/services";
 import Navbar from "@/components/home/nav/Navbar";
 import Footer from "@/components/home/nav/Footer";
@@ -69,8 +70,22 @@ export default async function ServicePage({
       <Navbar />
       <main className="relative z-10 w-full min-w-0 pt-4 sm:pt-5 md:pt-6 lg:pt-8 overflow-x-hidden">
         {/* Page hero */}
-        <section className="w-full border-b border-(--border) py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw]">
-          <div className="mx-auto w-full min-w-0">
+        <section className="relative w-full border-b border-(--border) py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] overflow-hidden">
+          <div className="mx-auto w-full min-w-0 relative">
+            {/* Decorative image – top right */}
+            <div
+              className="pointer-events-none absolute right-12 sm:right-16 md:right-24 lg:right-32 top-0 w-48 h-40 sm:w-56 sm:h-48 md:w-64 md:h-52 lg:w-72 lg:h-60 hidden sm:block"
+              aria-hidden>
+              <div className="relative w-full h-full">
+                <Image
+                  src="/images/service bg/software-engineer-png-graphic-clipart-design_20962986.png"
+                  alt=""
+                  fill
+                  className="object-contain object-top-right"
+                  sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 288px"
+                />
+              </div>
+            </div>
             <p className="mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
               <span
                 className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
@@ -98,11 +113,8 @@ export default async function ServicePage({
             </p>
 
             <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8 lg:items-start">
-              {/* Left: number, tag, fullTitle, copy, stack pills */}
+              {/* Left: tag, fullTitle, copy, stack pills */}
               <div>
-                <div className="font-(--font-serif) text-4xl italic text-white/15 leading-none mb-3">
-                  {service.number}
-                </div>
                 <p className="mb-3 flex items-center gap-2 text-[.69rem] font-medium uppercase tracking-[.11em] text-(--acc2)">
                   <span className="h-px w-3 bg-(--acc2)" />
                   {service.category}
@@ -131,32 +143,49 @@ export default async function ServicePage({
                 )}
               </div>
 
-              {/* Right: "What you get" card – blue-100 block only */}
-              <div className="rounded-xl border border-slate-200 bg-blue-100 p-5 sm:p-6 shadow-sm">
-                <h4 className="text-[.7rem] font-medium uppercase tracking-[.12em] text-blue-900/60 mb-4">
-                  What you get
-                </h4>
-                <ul className="space-y-0">
-                  {service.deliverables.map((d, i) => (
-                    <li
-                      key={i}
-                      className="flex gap-3 border-b border-slate-200 py-3 last:border-0">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-blue-200 text-(--acc2) text-sm">
-                        ✓
-                      </span>
-                      <div>
-                        <span className="text-[.9rem] font-medium text-(--bg-deep)">
-                          {d.title}
-                        </span>
-                        {d.sub && (
-                          <p className="mt-0.5 text-[.81rem] text-slate-600 leading-[1.55]">
-                            {d.sub}
-                          </p>
-                        )}
+              {/* Right: "What you get" card with image centered and large */}
+              <div className="rounded-xl border border-slate-200 bg-blue-100 p-5 sm:p-6 shadow-sm overflow-hidden">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-4 sm:gap-6 items-center">
+                  <div>
+                    <h4 className="text-[.7rem] font-medium uppercase tracking-[.12em] text-blue-900/60 mb-4">
+                      What you get
+                    </h4>
+                    <ul className="space-y-0">
+                      {service.deliverables.map((d, i) => (
+                        <li
+                          key={i}
+                          className="flex gap-3 border-b border-slate-200 py-3 last:border-0">
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-blue-200 text-(--acc2) text-sm">
+                            ✓
+                          </span>
+                          <div>
+                            <span className="text-[.9rem] font-medium text-(--bg-deep)">
+                              {d.title}
+                            </span>
+                            {d.sub && (
+                              <p className="mt-0.5 text-[.81rem] text-slate-600 leading-[1.55]">
+                                {d.sub}
+                              </p>
+                            )}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {service.cardImage && (
+                    <div className="relative flex items-center justify-center min-h-[200px] sm:min-h-[260px] md:min-h-[280px]">
+                      <div className="relative w-full max-w-sm aspect-square md:aspect-auto md:h-[280px] md:min-w-[240px]">
+                        <Image
+                          src={encodeURI(service.cardImage)}
+                          alt=""
+                          fill
+                          className="object-contain object-center"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                       </div>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 

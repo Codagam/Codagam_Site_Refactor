@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { services } from "@/lib/content/services";
 
 export default function ServiceCards() {
@@ -34,9 +35,24 @@ export default function ServiceCards() {
             <Link
               key={service.id}
               href={`/services/${service.id}`}
-              className="group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-4 sm:p-5 md:p-6 lg:p-8 pr-5 sm:pr-6 md:pr-8 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-(--acc2) focus:ring-offset-2 focus:ring-offset-(--bg-deep) min-w-0">
+              className="service-card-group group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-4 sm:p-5 md:p-6 lg:p-8 pr-5 sm:pr-6 md:pr-8 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-(--acc2) focus:ring-offset-2 focus:ring-offset-(--bg-deep) min-w-0 overflow-hidden">
+              {service.cardImage && (
+                <span
+                  className="service-icon-bg pointer-events-none absolute right-0 top-0 h-28 w-32 sm:h-32 sm:w-40 md:h-36 md:w-44"
+                  aria-hidden>
+                  <span className="relative block h-full w-full">
+                    <Image
+                      src={encodeURI(service.cardImage)}
+                      alt=""
+                      fill
+                      className="object-contain object-top-right"
+                      sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
+                    />
+                  </span>
+                </span>
+              )}
               <span
-                className="absolute right-6 top-6 text-white/10 group-hover:text-(--acc2) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                className="absolute right-6 top-6 z-10 text-white/10 group-hover:text-(--acc2) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                 aria-hidden>
                 ↗
               </span>

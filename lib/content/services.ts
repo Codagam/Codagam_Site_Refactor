@@ -11,6 +11,8 @@ export interface ServiceDetail {
   /** Full title on service detail page (e.g. "Modern Web Products & SaaS Platforms") */
   fullTitle: string;
   shortDescription: string;
+  /** Optional image shown in top-right of service card on home (path under /public) */
+  cardImage?: string;
   eyebrow: string;
   headline: string;
   copy: string;
@@ -29,6 +31,7 @@ export const services: ServiceDetail[] = [
     fullTitle: "Modern Web Products & SaaS Platforms",
     shortDescription:
       "Full-stack SaaS, dashboards, portals — Next.js, MERN, TypeScript. Optimised for performance and developer velocity from day one.",
+    cardImage: "/images/service bg/Modern Web Products & SaaS Platforms.png",
     eyebrow: "Service 01",
     headline: "Build fast. Scale confidently. Own the codebase forever.",
     copy:
@@ -76,6 +79,7 @@ export const services: ServiceDetail[] = [
     fullTitle: "Enterprise .NET & SQL Server Systems",
     shortDescription:
       "Robust internal tools, ERP integrations, backend services — for organisations that need reliability and compliance longevity.",
+    cardImage: "/images/service bg/Enterprise .NET & SQL Server Systems.png",
     eyebrow: "Service 02",
     headline: "Systems your business will depend on for decades.",
     copy:
@@ -122,6 +126,7 @@ export const services: ServiceDetail[] = [
     fullTitle: "Architecture & End-to-End Delivery",
     shortDescription:
       "System design to deployment, CI/CD monitoring, handover — we lead the entire engineering lifecycle when you need it.",
+    cardImage: "/images/service bg/Architecture & End-to-End Delivery.png",
     eyebrow: "Service 03",
     headline: "From discovery to deployment — we own the full lifecycle.",
     copy:

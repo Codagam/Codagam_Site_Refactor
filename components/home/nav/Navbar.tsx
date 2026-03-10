@@ -256,10 +256,15 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto w-full min-w-0 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] py-2.5 sm:py-3 flex justify-between items-center gap-2">
-        {/* Logo - Codagam theme: serif + acc2 span */}
+        {/* Logo - Codagam theme: serif + acc2 span - always goes to home */}
         <Link
-          href="/"
-          onClick={handleScrollToTop}
+          href="/home"
+          onClick={(e) => {
+            if (isHomePage) {
+              e.preventDefault();
+              handleScrollToTop(e);
+            }
+          }}
           className="font-(--font-serif) text-lg sm:text-xl text-white tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0 min-w-0 truncate [&_span]:text-(--acc2)"
         >
           Coda<span>gam</span>
@@ -316,8 +321,14 @@ export default function Navbar() {
                 <SheetHeader>
                   <SheetTitle className="flex items-center space-x-3 text-left">
                     <Link
-                      href="/"
-                      onClick={handleScrollToTop}
+                      href="/home"
+                      onClick={(e) => {
+                        if (isHomePage) {
+                          e.preventDefault();
+                          handleScrollToTop(e);
+                        }
+                        handleMobileNavigate();
+                      }}
                       className="font-(--font-serif) text-xl text-white [&_span]:text-(--acc2)"
                     >
                       Coda<span>gam</span>
