@@ -150,7 +150,7 @@ export default function TechStack() {
                       }`}>
                         {capability.text}
                       </span>
-                      <div className="shrink-0 flex items-center justify-center w-5 h-5 md:w-6 md:h-6 rounded-md">
+                      <div className="shrink-0 flex items-center justify-center w-5 h-5 md:w-6 md:h-6 rounded-lg bg-gray-200/90 dark:bg-gray-700/80 overflow-hidden">
                         {capability.image ? (
                           isFullUrl(capability.image) ||
                           capability.image.startsWith("/") ? (
