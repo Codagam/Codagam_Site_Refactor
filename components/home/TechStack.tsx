@@ -33,7 +33,7 @@ export default function TechStack() {
           const mappedCategories: TechStackCategory[] = data
             .filter(
               (
-                item: unknown
+                item: unknown,
               ): item is {
                 id: string;
                 title: string;
@@ -47,7 +47,7 @@ export default function TechStack() {
                 "capabilities" in item &&
                 typeof (item as { id: unknown }).id === "string" &&
                 typeof (item as { title: unknown }).title === "string" &&
-                Array.isArray((item as { capabilities: unknown }).capabilities)
+                Array.isArray((item as { capabilities: unknown }).capabilities),
             )
             .map(
               (item: {
@@ -60,7 +60,7 @@ export default function TechStack() {
                 title: item.title,
                 position: item.position || 0,
                 capabilities: item.capabilities || [],
-              })
+              }),
             );
           setCategories(mappedCategories);
         } else {
@@ -113,26 +113,44 @@ export default function TechStack() {
           </div>
         ) : (
           <div className="mt-3 sm:mt-5 md:mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map((category) => (
+            {categories.map((category, index) => {
+              const isReverse = index % 2 === 1; // 2nd, 4th, 6th... card: blue-100 default, hover dark
+              return (
               <div
                 key={category.id}
-                className="group flex flex-col bg-[rgba(10,18,69,.95)] transition-colors hover:bg-blue-100 border-0 rounded-none overflow-hidden min-w-0">
-                {/* Category header - same pill/accent style as service cards */}
-                <div className="px-4 sm:px-5 md:px-6 lg:px-8 pt-4 sm:pt-5 md:pt-6 pb-2.5 sm:pb-3 md:pb-4">
-                  <span className="inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-(--acc2) bg-[rgba(91,141,238,.12)] group-hover:bg-blue-200/80 group-hover:text-(--bg-deep) transition-colors">
+                className={`group flex flex-col border-0 rounded-none overflow-hidden min-w-0 transition-colors ${
+                  isReverse
+                    ? "bg-blue-100 hover:bg-[rgba(10,18,69,.95)]"
+                    : "bg-[rgba(10,18,69,.95)] hover:bg-blue-100"
+                }`}>
+                {/* Category header */}
+                <div className="px-3 sm:px-4 md:px-4 lg:px-5 pt-3 sm:pt-3.5 md:pt-4 pb-1.5 sm:pb-2 md:pb-2.5">
+                  <span className={`inline-block rounded px-2 py-0.5 text-[.62rem] font-medium uppercase tracking-wide transition-colors ${
+                    isReverse
+                      ? "text-(--bg-deep) bg-blue-200/80 group-hover:bg-[rgba(91,141,238,.12)] group-hover:text-(--acc2)"
+                      : "text-(--acc2) bg-[rgba(91,141,238,.12)] group-hover:bg-blue-200/80 group-hover:text-(--bg-deep)"
+                  }`}>
                     {category.title}
                   </span>
                 </div>
                 {/* Capabilities list */}
-                <ul className="flex flex-col px-4 sm:px-5 md:px-6 lg:px-8 pb-4 sm:pb-5 md:pb-6 lg:pb-8">
+                <ul className="flex flex-col px-3 sm:px-4 md:px-4 lg:px-5 pb-3 sm:pb-4 md:pb-5 lg:pb-6">
                   {category.capabilities.map((capability) => (
                     <li
                       key={capability.id}
-                      className="flex flex-row items-center justify-between gap-2 sm:gap-3 border-b border-white/10 group-hover:border-slate-200 py-2.5 sm:py-3 last:border-0 transition-colors min-w-0">
-                      <span className="text-[.88rem] font-medium text-(--text-hi) group-hover:text-(--bg-deep) min-w-0 flex-1 wrap-break-word transition-colors">
+                      className={`flex flex-row items-center justify-between gap-2 py-1.5 sm:py-2 last:border-0 transition-colors min-w-0 border-b ${
+                        isReverse
+                          ? "border-slate-200/80 group-hover:border-white/10"
+                          : "border-white/10 group-hover:border-slate-200/80"
+                      }`}>
+                      <span className={`text-[.8rem] font-medium min-w-0 flex-1 wrap-break-word transition-colors ${
+                        isReverse
+                          ? "text-(--bg-deep) group-hover:text-(--text-hi)"
+                          : "text-(--text-hi) group-hover:text-(--bg-deep)"
+                      }`}>
                         {capability.text}
                       </span>
-                      <div className="shrink-0 flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md">
+                      <div className="shrink-0 flex items-center justify-center w-5 h-5 md:w-6 md:h-6 rounded-md">
                         {capability.image ? (
                           isFullUrl(capability.image) ||
                           capability.image.startsWith("/") ? (
@@ -142,16 +160,24 @@ export default function TechStack() {
                                 alt={capability.alt || capability.text}
                                 fill
                                 className="object-contain"
-                                sizes="(max-width: 640px) 24px, (max-width: 768px) 28px, 32px"
+                                sizes="(max-width: 640px) 20px, (max-width: 768px) 24px, 24px"
                               />
                             </div>
                           ) : (
-                            <span className="text-[.7rem] font-semibold text-(--acc2) group-hover:text-(--bg-deep) transition-colors">
+                            <span className={`text-[.65rem] font-semibold transition-colors ${
+                              isReverse
+                                ? "text-(--bg-deep) group-hover:text-(--acc2)"
+                                : "text-(--acc2) group-hover:text-(--bg-deep)"
+                            }`}>
                               {capability.image}
                             </span>
                           )
                         ) : (
-                          <span className="text-[.65rem] text-white/40 group-hover:text-slate-500 font-medium transition-colors">
+                          <span className={`text-[.6rem] font-medium transition-colors ${
+                            isReverse
+                              ? "text-slate-500 group-hover:text-white/40"
+                              : "text-white/40 group-hover:text-slate-500"
+                          }`}>
                             ?
                           </span>
                         )}
@@ -160,7 +186,8 @@ export default function TechStack() {
                   ))}
                 </ul>
               </div>
-            ))}
+            );
+            })}
           </div>
         )}
       </div>
