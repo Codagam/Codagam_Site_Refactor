@@ -1,6 +1,6 @@
 import Navbar from "@/components/home/nav/Navbar";
 import Hero from "@/components/home/Hero";
-import { CanvasBackground } from "@/components/shared/CanvasBackground";
+import HeroCanvasWrapper from "@/components/home/HeroCanvasWrapper";
 import { PoweredStrip } from "@/components/shared/PoweredStrip";
 import ServiceCards from "@/components/home/ServiceCards";
 import { WorkSection } from "@/components/shared/WorkSection";
@@ -15,9 +15,9 @@ import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 export default function Home() {
   return (
     <div className="min-h-dvh w-full max-w-[100vw] overflow-x-hidden bg-(--bg-deep)">
-      <CanvasBackground />
+      <HeroCanvasWrapper />
       <Navbar />
-      <main className="relative z-10 pt-5 sm:pt-8 md:pt-10 lg:pt-12">
+      <main className="relative z-10 pt-4 sm:pt-6 md:pt-8 lg:pt-12">
         <Hero />
         <div className="relative z-20 bg-(--bg-deep) [&_section]:overflow-x-hidden">
           <About />

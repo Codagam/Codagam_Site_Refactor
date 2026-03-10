@@ -298,6 +298,9 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
 
     function drawBg() {
       const { hcx, hcy } = H_;
+      // Base: solid --bg-deep so left edge always matches hero left; no seam
+      g.fillStyle = "#0a1245";
+      g.fillRect(0, 0, W, H);
       const grad = g.createRadialGradient(
         hcx,
         hcy,
@@ -309,8 +312,17 @@ export function CanvasBackground({ containerRef }: CanvasBackgroundProps = {}) {
       grad.addColorStop(0, "#1a2f8e");
       grad.addColorStop(0.35, "#111d6a");
       grad.addColorStop(0.7, "#0d165a");
-      grad.addColorStop(1, "#0a1245");
+      grad.addColorStop(1, "rgba(10,18,69,0)");
       g.fillStyle = grad;
+      g.fillRect(0, 0, W, H);
+      // Soft left tint so left half stays --bg-deep; very gradual, no visible line
+      const leftGrad = g.createLinearGradient(0, 0, W * 0.85, 0);
+      leftGrad.addColorStop(0, "#0a1245");
+      leftGrad.addColorStop(0.35, "#0a1245");
+      leftGrad.addColorStop(0.55, "rgba(10,18,69,.92)");
+      leftGrad.addColorStop(0.75, "rgba(10,18,69,.5)");
+      leftGrad.addColorStop(1, "transparent");
+      g.fillStyle = leftGrad;
       g.fillRect(0, 0, W, H);
     }
 

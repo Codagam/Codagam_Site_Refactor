@@ -102,17 +102,18 @@ export default function Hero() {
     ? (currentHero!.description ?? DEFAULT_DESCRIPTION)
     : DEFAULT_DESCRIPTION;
 
-  // Combined overlay: left→right fade (so right-side canvas stays visible/active) + top fade
-  const overlayStyle = {
-    background:
-      "linear-gradient(to bottom, rgba(10,18,69,.6) 0%, transparent 35%), linear-gradient(to right, rgba(10,18,69,.95) 0%, rgba(10,18,69,.8) 28%, rgba(10,18,69,.25) 52%, transparent 70%)",
-  };
+  // Overlay lg+: one smooth gradient so no visible seam; left matches content, right shows canvas
+  const overlayStyleLg =
+    "linear-gradient(to bottom, rgba(10,18,69,.55) 0%, transparent 38%), linear-gradient(to right, rgba(10,18,69,.92) 0%, rgba(10,18,69,.7) 25%, rgba(10,18,69,.35) 48%, rgba(10,18,69,.06) 68%, transparent 82%)";
+  // Overlay for mobile/tablet (no canvas): top fade only
+  const overlayStyleSm =
+    "linear-gradient(to bottom, rgba(10,18,69,.7) 0%, rgba(10,18,69,.2) 30%, transparent 55%)";
 
   if (loading && heroList.length === 0) {
     return (
 <section
       id="hero"
-      className="hero-main-section relative z-10 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-10 md:py-12 bg-(--bg-deep) font-sans">
+      className="hero-main-section relative z-10 min-h-[75vh] sm:min-h-[80vh] md:min-h-[85vh] flex flex-col justify-center items-center py-10 sm:py-12 md:py-14 bg-(--bg-deep) font-sans">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <p className="text-(--text-dim) text-sm sm:text-base md:text-lg text-center">
             Loading hero section...
@@ -126,15 +127,21 @@ export default function Hero() {
     <>
       <section
         id="hero"
-        className="hero-main-section relative z-10 min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-screen w-full flex flex-col justify-center lg:justify-start items-center lg:items-start pt-14 pb-10 sm:pt-20 sm:pb-12 md:pt-24 md:pb-14 lg:pt-28 lg:pb-16 px-4 sm:px-5 md:px-6 lg:px-[5vw] pointer-events-none font-sans">
-        {/* Overlay: leaves right side (50–70%+) visible so canvas diagram stays active */}
+        className="hero-main-section relative z-10 min-h-[75vh] sm:min-h-[80vh] md:min-h-[85vh] lg:min-h-[100dvh] w-full flex flex-col justify-center lg:justify-start items-center lg:items-start pt-12 pb-8 sm:pt-16 sm:pb-10 md:pt-20 md:pb-12 lg:pt-28 lg:pb-16 px-4 sm:px-5 md:px-6 lg:px-[5vw] pointer-events-none font-sans lg:bg-transparent bg-(--bg-deep)">
+        {/* Overlay lg+: left→right fade so canvas stays visible */}
         <div
-          className="fixed inset-0 z-1 pointer-events-none"
-          style={overlayStyle}
+          className="hidden lg:block fixed inset-0 z-1 pointer-events-none"
+          style={{ background: overlayStyleLg }}
           aria-hidden
         />
-        {/* Left content: responsive on sm/md; lg+ unchanged (~44% so right is canvas) */}
-        <div className="hero-content relative z-2 w-full max-w-[min(520px,92vw)] sm:max-w-[min(520px,88vw)] md:max-w-[min(520px,75vw)] lg:max-w-[44%] mx-auto lg:mx-0 lg:shrink-0 text-center lg:text-left">
+        {/* Overlay mobile/tablet: top fade only (no canvas) */}
+        <div
+          className="lg:hidden fixed inset-0 z-1 pointer-events-none"
+          style={{ background: overlayStyleSm }}
+          aria-hidden
+        />
+        {/* Left content: full-width centered on sm/md; lg+ left-aligned ~44% with canvas on right */}
+        <div className="hero-content relative z-2 w-full max-w-[min(480px,94vw)] sm:max-w-[min(520px,88vw)] md:max-w-[min(540px,75vw)] lg:max-w-[44%] mx-auto lg:mx-0 lg:shrink-0 text-center lg:text-left px-0 sm:px-2">
           <div
             className={`inline-flex items-center justify-center lg:justify-start gap-2 text-[.7rem] sm:text-[.68rem] font-medium uppercase tracking-[.14em] text-(--acc2) bg-[rgba(5,12,55,.92)] border border-white/12 py-1.5 px-4 rounded-full mb-3 sm:mb-5 opacity-0 animate-[rise_.8s_.3s_cubic-bezier(.22,1,.36,1)_forwards] shadow-[0_18px_45px_rgba(1,5,32,.95)] backdrop-blur-[6px] transition-opacity duration-500 ${
               isTransitioning ? "opacity-0" : "opacity-100"
@@ -149,15 +156,15 @@ export default function Hero() {
             {heading}
           </h1>
           <p
-            className={`text-[clamp(.8125rem,1.2vw,1.05rem)] lg:text-[clamp(.875rem,1.3vw,1.05rem)] text-(--text-dim) leading-7 lg:leading-8 max-w-[400px] mx-auto lg:mx-0 mb-5 sm:mb-6 opacity-0 animate-[rise_.8s_.7s_cubic-bezier(.22,1,.36,1)_forwards] transition-opacity duration-500 ${
+            className={`text-[clamp(0.8125rem,2vw,1.05rem)] sm:text-[clamp(0.875rem,1.5vw,1.05rem)] lg:text-[clamp(.875rem,1.3vw,1.05rem)] text-(--text-dim) leading-[1.65] sm:leading-7 lg:leading-8 max-w-[400px] sm:max-w-[420px] mx-auto lg:mx-0 mb-5 sm:mb-6 opacity-0 animate-[rise_.8s_.7s_cubic-bezier(.22,1,.36,1)_forwards] transition-opacity duration-500 ${
               isTransitioning ? "opacity-0" : "opacity-100"
             }`}>
             {description}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center flex-wrap pointer-events-auto opacity-0 animate-[rise_.8s_.9s_cubic-bezier(.22,1,.36,1)_forwards] justify-center lg:justify-start">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center flex-wrap pointer-events-auto opacity-0 animate-[rise_.8s_.9s_cubic-bezier(.22,1,.36,1)_forwards] justify-center lg:justify-start">
             <Link
               href="#contact"
-              className="group inline-flex justify-center sm:justify-start items-center gap-2 w-full sm:w-auto rounded-[999px] bg-blue-100 text-gray-900! px-6 py-2.5 font-(--font-sans) text-[.9rem] shadow-[0_14px_40px_rgba(0,0,0,.45)] transition-colors duration-150 hover:bg-white hover:text-gray-900! hover:-translate-y-0.5">
+              className="group inline-flex justify-center sm:justify-start items-center gap-2 w-full sm:w-auto min-h-[44px] sm:min-h-0 rounded-[999px] bg-blue-100 text-gray-900! px-6 py-3 sm:py-2.5 font-(--font-sans) text-[.9rem] shadow-[0_14px_40px_rgba(0,0,0,.45)] transition-colors duration-150 hover:bg-white hover:text-gray-900! hover:-translate-y-0.5">
               Book a discovery call
               <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
