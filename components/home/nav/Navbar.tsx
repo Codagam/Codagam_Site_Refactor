@@ -221,7 +221,7 @@ export default function Navbar() {
     const element = document.getElementById("contact");
     if (element) {
       const headerHeight = getHeaderHeight();
-      const gapBelowNav = 16;
+      const gapBelowNav = 4;
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerHeight - gapBelowNav;
@@ -268,7 +268,7 @@ export default function Navbar() {
             const element = document.getElementById("contact");
             if (element) {
               const headerHeight = getHeaderHeight();
-              const gapBelowNav = 16;
+              const gapBelowNav = 4;
               const elementPosition =
                 element.getBoundingClientRect().top + window.pageYOffset;
               const offsetPosition = elementPosition - headerHeight - gapBelowNav;

@@ -363,7 +363,7 @@ export default function Footer() {
             : window.innerWidth >= 640
               ? 52
               : 44;
-      const gapBelowNav = 16;
+      const gapBelowNav = 4;
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerHeight - gapBelowNav;
