@@ -138,7 +138,7 @@ export default function Hero() {
         <HeroCanvasWrapper variant="desktop" />
         <div className="relative z-2 flex flex-col flex-1 min-h-0 w-full">
           <div className="flex flex-col justify-center flex-1 min-h-0">
-            <div className="hero-content w-full flex flex-col justify-center items-center sm:items-start text-center sm:text-left min-w-0 max-w-[min(100%,540px)] sm:max-w-[48%] md:max-w-[50%] lg:max-w-[52%] xl:max-w-[46%]">
+            <div className="hero-content w-full flex flex-col justify-center items-center text-center min-w-0 max-w-[min(100%,540px)] sm:max-w-[48%] md:max-w-[50%] lg:max-w-[52%] xl:max-w-[46%]">
               <CodagamAnimation skipRedirect onComplete={() => setAnimationComplete(true)} />
             </div>
           </div>
