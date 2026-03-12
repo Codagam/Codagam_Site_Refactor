@@ -132,7 +132,7 @@ export default function TechStack() {
                       <span className="text-[.8rem] font-medium min-w-0 flex-1 wrap-break-word transition-colors text-(--text-hi) group-hover:text-(--bg-deep)">
                         {capability.text}
                       </span>
-                      <div className="shrink-0 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white overflow-hidden p-0.5">
+                      <div className="shrink-0 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white border border-slate-200/80 overflow-hidden p-0.5">
                         {capability.image ? (
                           isFullUrl(capability.image) ||
                           capability.image.startsWith("/") ? (
