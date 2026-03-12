@@ -256,7 +256,7 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto w-full min-w-0 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] py-2.5 sm:py-3 flex justify-between items-center gap-2">
-        {/* Logo - Codagam theme: serif + acc2 span - always goes to home */}
+        {/* Logo - Codagam theme: serif + white + ™ - always goes to home */}
         <Link
           href="/home"
           onClick={(e) => {
@@ -265,9 +265,9 @@ export default function Navbar() {
               handleScrollToTop(e);
             }
           }}
-          className="font-(--font-serif) text-lg sm:text-xl text-white tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0 min-w-0 truncate [&_span]:text-(--acc2)"
+          className="font-(--font-serif) text-lg sm:text-xl text-white tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0 min-w-0 truncate"
         >
-          Coda<span>gam</span>
+          <strong>Codagam<sup className="align-super text-[0.6em] opacity-90">™</sup></strong>
         </Link>
 
         {/* Desktop Navigation - theme link styles */}
@@ -329,9 +329,9 @@ export default function Navbar() {
                         }
                         handleMobileNavigate();
                       }}
-                      className="font-(--font-serif) text-xl text-white [&_span]:text-(--acc2)"
+                      className="font-(--font-serif) text-xl text-white"
                     >
-                      Coda<span>gam</span>
+                      <strong>Codagam<sup className="align-super text-[0.6em] opacity-90">™</sup></strong>
                     </Link>
                   </SheetTitle>
                 </SheetHeader>

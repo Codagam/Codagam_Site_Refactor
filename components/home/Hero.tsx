@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import HeroCanvasWrapper from "@/components/home/HeroCanvasWrapper";
+import CodagamAnimation from "@/components/shared/CodagamAnimation";
 
 const HERO_SECTORS = [
   "Aviation",
@@ -44,6 +45,7 @@ export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
     const fetchHeroData = async () => {
@@ -118,16 +120,29 @@ export default function Hero() {
   const overlayStyle =
     "linear-gradient(to bottom, rgba(10,18,69,.45) 0%, transparent 35%), linear-gradient(to right, rgba(10,18,69,.96) 0%, rgba(10,18,69,.82) 22%, rgba(10,18,69,.5) 48%, rgba(10,18,69,.12) 68%, transparent 88%)";
 
-  if (loading && heroList.length === 0) {
+  if (!animationComplete) {
+    const overlayStyle =
+      "linear-gradient(to bottom, rgba(10,18,69,.45) 0%, transparent 35%), linear-gradient(to right, rgba(10,18,69,.96) 0%, rgba(10,18,69,.82) 22%, rgba(10,18,69,.5) 48%, rgba(10,18,69,.12) 68%, transparent 88%)";
     return (
       <section
         id="hero"
-        className="hero-main-section relative z-10 min-h-[calc(100dvh-var(--navbar-h,56px))] flex flex-col justify-center items-center py-8 sm:py-10 md:py-12 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] bg-(--bg-deep) font-sans overflow-x-hidden"
+        className="hero-main-section relative z-10 min-h-[calc(100dvh-var(--navbar-h,56px))] flex flex-col font-sans overflow-x-hidden pointer-events-none bg-(--bg-deep)
+          pt-4 pb-3 sm:pt-5 sm:pb-4 md:pt-6 md:pb-5 lg:pt-8 lg:pb-6
+          px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw]"
       >
-        <div className="w-full max-w-7xl mx-auto min-w-0">
-          <p className="text-(--text-dim) text-sm sm:text-base text-center">
-            Loading hero section...
-          </p>
+        <div
+          className="absolute inset-0 z-1 pointer-events-none"
+          style={{ background: overlayStyle }}
+          aria-hidden
+        />
+        <HeroCanvasWrapper variant="desktop" />
+        <div className="relative z-2 flex flex-col flex-1 min-h-0 w-full">
+          <div className="flex flex-col justify-center flex-1 min-h-0">
+            <div className="hero-content w-full flex flex-col justify-center items-center sm:items-start text-center sm:text-left min-w-0 max-w-[min(100%,540px)] sm:max-w-[48%] md:max-w-[50%] lg:max-w-[52%] xl:max-w-[46%]">
+              <CodagamAnimation skipRedirect onComplete={() => setAnimationComplete(true)} />
+            </div>
+          </div>
+          <HeroCanvasWrapper variant="mobile" />
         </div>
       </section>
     );
