@@ -92,7 +92,7 @@ export default function TechStack() {
           />
           Tech stack
         </p>
-        <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+        <h2 className="font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Technology stack <em>&amp; capabilities.</em>
         </h2>
         <p className="text-base text-(--text-dim) leading-8 max-w-[540px] mt-2">

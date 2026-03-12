@@ -425,8 +425,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-(--bg-deep) text-primary-foreground scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 w-full overflow-x-hidden"
-      style={{ fontFamily: "var(--font-sans)" }}>
+      className="font-sans bg-(--bg-deep) text-primary-foreground scroll-mt-12 sm:scroll-mt-14 md:scroll-mt-16 lg:scroll-mt-16 w-full overflow-x-hidden">
       <div className="mx-auto w-full min-w-0 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] py-4 sm:py-5 md:py-6 lg:py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-3 sm:mb-4 md:mb-5 lg:mb-6 w-full min-w-0 items-start">
           {/* Company Info - Countries cycling, showing all addresses per country */}

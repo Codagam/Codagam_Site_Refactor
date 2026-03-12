@@ -93,7 +93,7 @@ export default async function ServicePage({
               />
               Services
             </p>
-            <h1 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+            <h1 className="font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
               What we build, and <em>how we build it.</em>
             </h1>
             <p className="mt-3 max-w-[640px] text-base text-(--text-dim) leading-8">
@@ -119,7 +119,7 @@ export default async function ServicePage({
                   <span className="h-px w-3 bg-(--acc2)" />
                   {service.category}
                 </p>
-                <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.07] mb-3">
+                <h2 className="font-sans text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.07] mb-3">
                   {service.fullTitle}
                 </h2>
                 <p className="text-[.95rem] text-(--text-mid) leading-[1.82] mb-3">
@@ -191,14 +191,14 @@ export default async function ServicePage({
 
             {/* Unusual CTA – blue-100 block only */}
             <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[rgba(91,141,238,.18)] bg-blue-100 p-5 sm:p-6">
-              <p className="font-(--font-serif) text-[1.05rem] text-slate-700 leading-[1.55] max-w-[420px] [&_em]:text-(--acc2) [&_em]:italic">
+              <p className="font-sans text-[1.05rem] text-slate-700 leading-[1.55] max-w-[420px] [&_em]:text-(--acc2) [&_em]:italic">
                 Need something <em>unusual?</em> Complex integrations, niche
                 stacks, AI features, voice transcription, multi-language systems
                 — tell us the challenge.
               </p>
               <Link
                 href="/home#contact"
-                className="shrink-0 rounded-lg bg-white px-5 py-2.5 font-(--font-sans) text-sm text-(--bg-deep) shadow border border-slate-200 transition-colors hover:bg-(--acc2) hover:text-white hover:border-(--acc2)">
+                className="shrink-0 rounded-lg bg-white px-5 py-2.5 font-sans text-sm text-(--bg-deep) shadow border border-slate-200 transition-colors hover:bg-(--acc2) hover:text-white hover:border-(--acc2)">
                 Tell us about it →
               </Link>
             </div>
@@ -211,7 +211,7 @@ export default async function ServicePage({
             <p className="mb-3 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
               Non-negotiables
             </p>
-            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-4 sm:mb-5 md:mb-6">
+            <h2 className="font-sans text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-4 sm:mb-5 md:mb-6">
               Secure by design.
               <br />
               Built to scale.
@@ -242,7 +242,7 @@ export default async function ServicePage({
             <p className="mb-3 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/40">
               How every project starts
             </p>
-            <h2 className="font-(--font-serif) text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-4 sm:mb-5 md:mb-6">
+            <h2 className="font-sans text-[clamp(1.75rem,3vw,2.5rem)] tracking-tight text-white leading-[1.1] mb-4 sm:mb-5 md:mb-6">
               Our engagement process.
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border)">
@@ -250,7 +250,7 @@ export default async function ServicePage({
                 <div
                   key={i}
                   className="group bg-[rgba(10,18,69,.95)] p-5 sm:p-6 transition-colors hover:bg-blue-100">
-                  <div className="font-(--font-serif) text-[1.85rem] italic text-white/8 group-hover:text-blue-200 leading-none mb-3 transition-colors">
+                  <div className="font-sans text-[1.85rem] italic text-white/8 group-hover:text-blue-200 leading-none mb-3 transition-colors">
                     {step.number}
                   </div>
                   <h3 className="text-[.94rem] font-semibold text-white group-hover:text-(--bg-deep) mb-2 transition-colors">
@@ -265,7 +265,7 @@ export default async function ServicePage({
             <div className="mt-8 text-center">
               <Link
                 href="/home#contact"
-                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 font-(--font-sans) text-sm text-(--bg-deep) shadow transition-colors hover:bg-(--acc2) hover:text-(--bg-deep)">
+                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 font-sans text-sm text-(--bg-deep) shadow transition-colors hover:bg-(--acc2) hover:text-(--bg-deep)">
                 Start with a discovery call
                 <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>

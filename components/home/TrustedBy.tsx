@@ -40,7 +40,7 @@ export default function TrustedBy() {
           />
           Why teams choose us
         </p>
-        <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+        <h2 className="font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Extraordinary results, <em>repeatedly.</em>
         </h2>
 
@@ -49,7 +49,7 @@ export default function TrustedBy() {
           <div className="rv min-w-0">
             <div className="relative rounded-xl border border-slate-200 bg-white/95 p-4 sm:p-5 md:p-6 shadow-sm max-w-xl min-w-0">
               <span
-                className="font-(--font-serif) text-5xl leading-none text-(--acc2) opacity-30 select-none block"
+                className="font-sans text-5xl leading-none text-(--acc2) opacity-30 select-none block"
                 aria-hidden>
                 &ldquo;
               </span>

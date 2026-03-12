@@ -68,7 +68,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
   const linkClassName =
     variant === "mobile"
       ? (active: boolean) =>
-          `block font-(--font-serif) text-3xl text-white py-2.5 px-3 transition-opacity mobile-menu-link ${
+          `block font-sans text-3xl text-white py-2.5 px-3 transition-opacity mobile-menu-link ${
             active ? "opacity-100" : "opacity-90 hover:opacity-100"
           }`
       : (active: boolean) =>

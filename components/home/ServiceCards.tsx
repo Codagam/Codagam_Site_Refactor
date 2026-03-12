@@ -21,7 +21,7 @@ export default function ServiceCards() {
           />
           What we build
         </p>
-        <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+        <h2 className="font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Engineering that <em>ships</em> and <em>scales.</em>
         </h2>
         <p className="text-base text-(--text-dim) leading-8 max-w-[540px] mt-2">
@@ -56,13 +56,13 @@ export default function ServiceCards() {
                 aria-hidden>
                 ↗
               </span>
-              <span className="font-(--font-serif) text-4xl italic text-white/6 group-hover:text-blue-200 transition-colors">
+              <span className="font-sans text-4xl italic text-white/6 group-hover:text-blue-200 transition-colors">
                 {service.number}
               </span>
               <span className="mt-2 inline-block rounded px-2.5 py-1 text-[.68rem] font-medium uppercase tracking-wide text-(--acc2) bg-[rgba(91,141,238,.12)] group-hover:bg-blue-200/80 group-hover:text-(--bg-deep) transition-colors">
                 {service.category}
               </span>
-              <h3 className="mt-4 font-(--font-sans) text-xl text-(--text-hi) group-hover:text-(--bg-deep) transition-colors">
+              <h3 className="mt-4 font-sans text-xl text-(--text-hi) group-hover:text-(--bg-deep) transition-colors">
                 {service.title}
               </h3>
               <p className="mt-2 text-[.86rem] leading-relaxed text-(--text-dim) group-hover:text-slate-600 transition-colors">

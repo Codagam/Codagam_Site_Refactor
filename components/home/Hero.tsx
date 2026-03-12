@@ -177,7 +177,7 @@ export default function Hero() {
               {eyebrow}
             </div>
             <h1
-              className={`font-(--font-serif) text-[clamp(1.5rem,4.2vw,3.25rem)] sm:text-[clamp(1.75rem,4.8vw,3.75rem)] md:text-[clamp(1.9rem,4vw,4rem)] lg:text-[clamp(2rem,2.2vw,4rem)] text-white leading-[1.08] tracking-[-.03em] mb-2.5 sm:mb-3 md:mb-4 w-full opacity-0 animate-[rise_.8s_.5s_cubic-bezier(.22,1,.36,1)_forwards] [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2) transition-opacity duration-500 ${
+              className={`font-sans text-[clamp(1.5rem,4.2vw,3.25rem)] sm:text-[clamp(1.75rem,4.8vw,3.75rem)] md:text-[clamp(1.9rem,4vw,4rem)] lg:text-[clamp(2rem,2.2vw,4rem)] text-white leading-[1.08] tracking-[-.03em] mb-2.5 sm:mb-3 md:mb-4 w-full opacity-0 animate-[rise_.8s_.5s_cubic-bezier(.22,1,.36,1)_forwards] [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2) transition-opacity duration-500 ${
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}
             >
@@ -193,7 +193,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center flex-wrap pointer-events-auto opacity-0 animate-[rise_.8s_.9s_cubic-bezier(.22,1,.36,1)_forwards] justify-center sm:justify-start w-full sm:w-auto">
               <Link
                 href="#contact"
-                className="group inline-flex justify-center sm:justify-start items-center gap-2 w-full sm:w-auto min-h-[42px] sm:min-h-0 rounded-[999px] bg-blue-100 text-gray-900! px-4 py-2.5 sm:px-5 sm:py-2 font-(--font-sans) text-[.8125rem] sm:text-[.875rem] shadow-[0_14px_40px_rgba(0,0,0,.45)] transition-colors duration-150 hover:bg-white hover:text-gray-900! hover:-translate-y-0.5"
+                className="group inline-flex justify-center sm:justify-start items-center gap-2 w-full sm:w-auto min-h-[42px] sm:min-h-0 rounded-[999px] bg-blue-100 text-gray-900! px-4 py-2.5 sm:px-5 sm:py-2 font-sans text-[.8125rem] sm:text-[.875rem] shadow-[0_14px_40px_rgba(0,0,0,.45)] transition-colors duration-150 hover:bg-white hover:text-gray-900! hover:-translate-y-0.5"
               >
                 Book a discovery call
                 <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>

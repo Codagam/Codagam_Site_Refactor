@@ -39,7 +39,7 @@ export default function About() {
             <span className="w-6 h-px bg-(--acc2) opacity-60 shrink-0" aria-hidden />
           </p>
 
-          <h2 className="font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) leading-[1.1] [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+          <h2 className="font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) leading-[1.1] [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
             Your home-grown team
             <br />
             <em>with a global outlook.</em>
@@ -76,7 +76,7 @@ export default function About() {
                 aria-hidden>
                 {symbol}
               </div>
-              <h3 className="font-(--font-sans) text-base text-(--bg-deep) mb-1.5">
+              <h3 className="font-sans text-base text-(--bg-deep) mb-1.5">
                 {title}
               </h3>
               <p className="text-[.86rem] leading-relaxed text-slate-600">

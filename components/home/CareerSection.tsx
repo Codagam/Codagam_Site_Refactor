@@ -19,7 +19,7 @@ export default function CareerSection() {
           "radial-gradient(ellipse 70% 80% at 50% 0%, rgba(91,141,238,.28) 0%, transparent 50%), radial-gradient(ellipse 120% 90% at 50% 100%, rgba(44,210,252,.18) 0%, transparent 50%), var(--bg-deep)",
       }}>
       <div className="relative z-10 mx-auto w-full min-w-0">
-        <h2 className="rv font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-2 sm:mb-3 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+        <h2 className="rv font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-2 sm:mb-3 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Tell us what you&apos;re <em>building next.</em>
         </h2>
         <p className="rv text-[1.05rem] text-(--text-dim) leading-[1.6] max-w-[480px] mx-auto mb-3 sm:mb-5 md:mb-6">
@@ -36,7 +36,7 @@ export default function CareerSection() {
           />
           <a
             href="mailto:support@codagam.com"
-            className="inline-flex items-center gap-2 font-(--font-sans) text-[.9rem] text-(--text-dim) py-2.5 px-5 rounded-lg border border-(--border) hover:text-white hover:border-(--acc2) hover:bg-[rgba(91,141,238,.08)] transition-colors"
+            className="inline-flex items-center gap-2 font-sans text-[.9rem] text-(--text-dim) py-2.5 px-5 rounded-lg border border-(--border) hover:text-white hover:border-(--acc2) hover:bg-[rgba(91,141,238,.08)] transition-colors"
           >
             ✉ support@codagam.com
           </a>

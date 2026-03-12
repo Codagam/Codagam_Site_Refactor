@@ -73,7 +73,7 @@ export function WorkSection() {
       id="work"
       className="relative w-full border-t border-(--border) py-4 sm:py-5 md:py-7 lg:py-9 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans overflow-x-hidden">
       <div className="mx-auto w-full min-w-0">
-        <h2 className="rv font-(--font-serif) text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
+        <h2 className="rv font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Real projects, <em>real impact.</em>
         </h2>
         <p className="text-blue-950 text-sm mb-2">
@@ -107,7 +107,7 @@ export function WorkSection() {
               <div className="text-[.68rem] font-medium uppercase tracking-widest text-(--acc2) mb-2">
                 {c.stack}
               </div>
-              <h3 className="font-(--font-serif) text-[clamp(1.3rem,2.2vw,1.75rem)] tracking-tight mb-3 leading-tight text-(--bg-deep) whitespace-pre-line">
+              <h3 className="font-sans text-[clamp(1.3rem,2.2vw,1.75rem)] tracking-tight mb-3 leading-tight text-(--bg-deep) whitespace-pre-line">
                 {c.title}
               </h3>
               {c.situation && (
@@ -148,7 +148,7 @@ export function WorkSection() {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-100 text-gray-900 border border-blue-200 py-2.5 px-6 font-(--font-sans) text-[.9rem] hover:bg-white transition-colors">
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-100 text-gray-900 border border-blue-200 py-2.5 px-6 font-sans text-[.9rem] hover:bg-white transition-colors">
             Let&apos;s talk about yours →
           </a>
         </div>

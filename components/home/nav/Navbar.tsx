@@ -265,7 +265,7 @@ export default function Navbar() {
               handleScrollToTop(e);
             }
           }}
-          className="font-(--font-serif) text-lg sm:text-xl text-white tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0 min-w-0 truncate"
+          className="font-sans text-lg sm:text-xl text-white tracking-tight hover:opacity-90 transition-opacity cursor-pointer shrink-0 min-w-0 truncate"
         >
           <strong>Codagam<sup className="align-super text-[0.6em] opacity-90">™</sup></strong>
         </Link>
@@ -329,7 +329,7 @@ export default function Navbar() {
                         }
                         handleMobileNavigate();
                       }}
-                      className="font-(--font-serif) text-xl text-white"
+                      className="font-sans text-xl text-white"
                     >
                       <strong>Codagam<sup className="align-super text-[0.6em] opacity-90">™</sup></strong>
                     </Link>
@@ -344,7 +344,7 @@ export default function Navbar() {
                   />
                   <Button
                     onClick={handleContactClick}
-                    className={`group mt-4 w-full font-(--font-sans)! text-base! bg-blue-100 text-gray-900 py-2.5 px-6 rounded hover:bg-white mobile-menu-link ${
+                    className={`group mt-4 w-full font-sans! text-base! bg-blue-100 text-gray-900 py-2.5 px-6 rounded hover:bg-white mobile-menu-link ${
                       shouldAnimate ? "animate-slide-in-right" : ""
                     }`}
                     style={{
