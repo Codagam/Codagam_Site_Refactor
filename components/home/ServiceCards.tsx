@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { services } from "@/lib/content/services";
+import { AnimatedSection, AnimatedItem } from "@/components/shared/AnimatedSection";
 
 export default function ServiceCards() {
   return (
@@ -13,7 +14,7 @@ export default function ServiceCards() {
         background:
           "linear-gradient(to bottom, rgba(13,22,90,.9) 0%, var(--bg-deep) 100%)",
       }}>
-      <div className="mx-auto w-full min-w-0">
+      <AnimatedSection className="mx-auto w-full min-w-0">
         <p className="mb-2 sm:mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-white/30">
           <span
             className="h-px w-6 shrink-0 bg-(--acc2) opacity-40"
@@ -30,12 +31,15 @@ export default function ServiceCards() {
           you into a template.
         </p>
 
-        <div className="mt-3 sm:mt-5 md:mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-3">
+        <AnimatedSection
+          staggerChildren
+          className="mt-3 sm:mt-5 md:mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-(--border) bg-(--border) sm:grid-cols-3">
           {services.map((service) => (
-            <Link
-              key={service.id}
-              href={`/services/${service.id}`}
-              className="service-card-group group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-4 sm:p-5 md:p-6 lg:p-8 pr-5 sm:pr-6 md:pr-8 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-(--acc2) focus:ring-offset-2 focus:ring-offset-(--bg-deep) min-w-0 overflow-hidden">
+            <AnimatedItem key={service.id}>
+              <Link
+                href={`/services/${service.id}`}
+                className="service-card-group group relative flex flex-col items-start bg-[rgba(10,18,69,.95)] p-4 sm:p-5 md:p-6 lg:p-8 pr-5 sm:pr-6 md:pr-8 text-left transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-(--acc2) focus:ring-offset-2 focus:ring-offset-(--bg-deep) min-w-0 overflow-hidden"
+              >
               {service.cardImage && (
                 <span
                   className="service-icon-bg pointer-events-none absolute right-0 top-0 h-28 w-32 sm:h-32 sm:w-40 md:h-36 md:w-44"
@@ -68,10 +72,11 @@ export default function ServiceCards() {
               <p className="mt-2 text-[.86rem] leading-relaxed text-(--text-dim) group-hover:text-slate-600 transition-colors">
                 {service.shortDescription}
               </p>
-            </Link>
+              </Link>
+            </AnimatedItem>
           ))}
-        </div>
-      </div>
+        </AnimatedSection>
+      </AnimatedSection>
     </section>
   );
 }

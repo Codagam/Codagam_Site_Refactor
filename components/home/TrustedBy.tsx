@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedSection, AnimatedItem } from "@/components/shared/AnimatedSection";
+
 const DIFFERENTIATORS = [
   {
     icon: "⧫",
@@ -33,7 +35,8 @@ export default function TrustedBy() {
       id="team"
       className="relative w-full border-t border-(--border) py-4 sm:py-5 md:py-7 lg:py-9 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] scroll-mt-12 sm:scroll-mt-16 overflow-x-hidden bg-blue-100 font-sans">
       <div className="relative z-10 mx-auto w-full min-w-0">
-        <p className="mb-2 sm:mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-blue-900/60">
+        <AnimatedSection>
+          <p className="mb-2 sm:mb-3 flex items-center gap-2.5 text-[.7rem] font-medium uppercase tracking-[.14em] text-blue-900/60">
           <span
             className="h-px w-6 shrink-0 bg-(--acc2) opacity-60"
             aria-hidden
@@ -43,10 +46,10 @@ export default function TrustedBy() {
         <h2 className="font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-(--bg-deep) mb-1.5 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Extraordinary results, <em>repeatedly.</em>
         </h2>
+        </AnimatedSection>
 
         <div className="mt-3 sm:mt-5 md:mt-6 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-          {/* Testimonial - boxed, not full height */}
-          <div className="rv min-w-0">
+          <AnimatedSection className="rv min-w-0">
             <div className="relative rounded-xl border border-slate-200 bg-white/95 p-4 sm:p-5 md:p-6 shadow-sm max-w-xl min-w-0">
               <span
                 className="font-sans text-5xl leading-none text-(--acc2) opacity-30 select-none block"
@@ -63,14 +66,15 @@ export default function TrustedBy() {
                 — Healthcare Technology Client · Multi-tenant EMR Platform
               </p>
             </div>
-          </div>
+          </AnimatedSection>
 
           {/* Differentiators */}
-          <div className="flex flex-col min-w-0">
+          <AnimatedSection staggerChildren className="flex flex-col min-w-0">
             {DIFFERENTIATORS.map((item, i) => (
-              <div
+              <AnimatedItem
                 key={item.title}
-                className={`rv flex gap-2.5 sm:gap-3 md:gap-4 py-2.5 sm:py-3 md:py-4 border-b border-slate-200 last:border-0 min-w-0 ${i === 1 ? "rv-d1" : i === 2 ? "rv-d2" : i === 3 ? "rv-d3" : ""}`}>
+                className={i === 1 ? "rv-d1" : i === 2 ? "rv-d2" : i === 3 ? "rv-d3" : ""}>
+                <div className="flex gap-2.5 sm:gap-3 md:gap-4 py-2.5 sm:py-3 md:py-4 border-b border-slate-200 last:border-0 min-w-0">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[rgba(91,141,238,.3)] bg-[rgba(91,141,238,.12)] text-(--acc2) text-lg">
                   {item.icon}
                 </div>
@@ -82,9 +86,10 @@ export default function TrustedBy() {
                     {item.description}
                   </p>
                 </div>
-              </div>
+                </div>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

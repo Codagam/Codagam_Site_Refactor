@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import HeroCanvasWrapper from "@/components/home/HeroCanvasWrapper";
 import CodagamAnimation from "@/components/shared/CodagamAnimation";
+import { motion } from "framer-motion";
 
 const HERO_SECTORS = [
   "Aviation",
@@ -168,6 +169,12 @@ export default function Hero() {
         <div className="flex flex-col justify-center flex-1 min-h-0">
           {/* Left content: centered on mobile/tablet, left-aligned on sm+; top/down center on small screens */}
           <div className="hero-content w-full flex flex-col justify-center items-center sm:items-start text-center sm:text-left min-w-0 max-w-[min(100%,540px)] sm:max-w-[48%] md:max-w-[50%] lg:max-w-[52%] xl:max-w-[46%]">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
+              className="w-full flex flex-col items-center sm:items-start"
+            >
             <div
               className="inline-flex items-center justify-center sm:justify-start gap-2 text-[.68rem] sm:text-[.7rem] font-medium uppercase tracking-[.14em] text-(--acc2) bg-[rgba(5,12,55,.92)] border border-white/12 py-1.5 px-3 sm:px-4 rounded-full mb-2.5 sm:mb-3 md:mb-4 shadow-[0_18px_45px_rgba(1,5,32,.95)] backdrop-blur-[6px] self-center sm:self-start"
             >
@@ -203,6 +210,7 @@ export default function Hero() {
                 </span>
               ))}
             </p>
+            </motion.div>
           </div>
         </div>
         {/* Mobile/tablet: canvas below content, centered (top and down center) */}

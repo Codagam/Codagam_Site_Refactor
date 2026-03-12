@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatedSection } from "@/components/shared/AnimatedSection";
+
 const pillars = [
   {
     id: "bespoke",
@@ -29,7 +31,7 @@ export default function About() {
     <section
       id="about"
       className="relative w-full border-t border-(--border) py-4 sm:py-5 md:py-7 lg:py-9 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] scroll-mt-12 sm:scroll-mt-16 bg-blue-100 font-sans overflow-x-hidden">
-      <div className="mx-auto w-full min-w-0 grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+      <AnimatedSection className="mx-auto w-full min-w-0 grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-3 sm:gap-4 md:gap-5 lg:gap-6">
         {/* Left: Who we are copy */}
         <div className="space-y-3 sm:space-y-4 min-w-0">
           {/* Eyebrow: WHO WE ARE with lines on both sides */}
@@ -85,7 +87,7 @@ export default function About() {
             </div>
           ))}
         </div>
-      </div>
+      </AnimatedSection>
     </section>
   );
 }

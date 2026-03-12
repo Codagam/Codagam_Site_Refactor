@@ -10,6 +10,7 @@ import Footer from "@/components/home/nav/Footer";
 import ClientLogoCarousel from "@/components/shared/ClientLogoCarousel";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 import ScrollToHash from "@/components/shared/ScrollToHash";
+import { AnimatedSection } from "@/components/shared/AnimatedSection";
 
 export default function Home() {
   return (
@@ -26,9 +27,9 @@ export default function Home() {
           <TrustedBy />
           <CareerSection />
           {/* Client logo carousel strip - above footer */}
-          <div className="w-full min-w-0 bg-blue-100 border-t border-(--border) flex items-center justify-center py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 lg:px-[4vw] min-h-[40px] sm:min-h-[44px] md:min-h-[48px]">
+          <AnimatedSection className="w-full min-w-0 bg-blue-100 border-t border-(--border) flex items-center justify-center py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 lg:px-[4vw] min-h-[40px] sm:min-h-[44px] md:min-h-[48px]">
             <ClientLogoCarousel pauseOnHover={true} duration="60s" />
-          </div>
+          </AnimatedSection>
           <Footer />
         </div>
       </main>

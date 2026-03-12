@@ -2,6 +2,7 @@
 
 import React from "react";
 import { CareerApplicationForm } from "@/components/shared/CareerApplicationForm";
+import { AnimatedSection } from "@/components/shared/AnimatedSection";
 
 const BULLETS = [
   "Reply within a day",
@@ -19,6 +20,7 @@ export default function CareerSection() {
           "radial-gradient(ellipse 70% 80% at 50% 0%, rgba(91,141,238,.28) 0%, transparent 50%), radial-gradient(ellipse 120% 90% at 50% 100%, rgba(44,210,252,.18) 0%, transparent 50%), var(--bg-deep)",
       }}>
       <div className="relative z-10 mx-auto w-full min-w-0">
+        <AnimatedSection className="text-center">
         <h2 className="rv font-sans text-[clamp(2rem,4vw,3.25rem)] tracking-tight text-white mb-2 sm:mb-3 [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)">
           Tell us what you&apos;re <em>building next.</em>
         </h2>
@@ -49,6 +51,7 @@ export default function CareerSection() {
             </li>
           ))}
         </ul>
+        </AnimatedSection>
       </div>
     </section>
   );
