@@ -169,28 +169,22 @@ export default function Hero() {
           {/* Left content: centered on mobile/tablet, left-aligned on sm+; top/down center on small screens */}
           <div className="hero-content w-full flex flex-col justify-center items-center sm:items-start text-center sm:text-left min-w-0 max-w-[min(100%,540px)] sm:max-w-[48%] md:max-w-[50%] lg:max-w-[52%] xl:max-w-[46%]">
             <div
-              className={`inline-flex items-center justify-center sm:justify-start gap-2 text-[.68rem] sm:text-[.7rem] font-medium uppercase tracking-[.14em] text-(--acc2) bg-[rgba(5,12,55,.92)] border border-white/12 py-1.5 px-3 sm:px-4 rounded-full mb-2.5 sm:mb-3 md:mb-4 opacity-0 animate-[rise_.8s_.3s_cubic-bezier(.22,1,.36,1)_forwards] shadow-[0_18px_45px_rgba(1,5,32,.95)] backdrop-blur-[6px] transition-opacity duration-500 self-center sm:self-start ${
-                isTransitioning ? "opacity-0" : "opacity-100"
-              }`}
+              className="inline-flex items-center justify-center sm:justify-start gap-2 text-[.68rem] sm:text-[.7rem] font-medium uppercase tracking-[.14em] text-(--acc2) bg-[rgba(5,12,55,.92)] border border-white/12 py-1.5 px-3 sm:px-4 rounded-full mb-2.5 sm:mb-3 md:mb-4 shadow-[0_18px_45px_rgba(1,5,32,.95)] backdrop-blur-[6px] self-center sm:self-start"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-(--acc2) shadow-[0_0_7px_var(--acc2)] animate-[blink_2.5s_ease-in-out_infinite]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-(--acc2) shadow-[0_0_7px_var(--acc2)]" />
               {eyebrow}
             </div>
             <h1
-              className={`font-sans text-[clamp(1.5rem,4.2vw,3.25rem)] sm:text-[clamp(1.75rem,4.8vw,3.75rem)] md:text-[clamp(1.9rem,4vw,4rem)] lg:text-[clamp(2rem,2.2vw,4rem)] text-white leading-[1.08] tracking-[-.03em] mb-2.5 sm:mb-3 md:mb-4 w-full opacity-0 animate-[rise_.8s_.5s_cubic-bezier(.22,1,.36,1)_forwards] [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2) transition-opacity duration-500 ${
-                isTransitioning ? "opacity-0" : "opacity-100"
-              }`}
+              className="font-sans text-[clamp(1.5rem,4.2vw,3.25rem)] sm:text-[clamp(1.75rem,4.8vw,3.75rem)] md:text-[clamp(1.9rem,4vw,4rem)] lg:text-[clamp(2rem,2.2vw,4rem)] text-white leading-[1.08] tracking-[-.03em] mb-2.5 sm:mb-3 md:mb-4 w-full [&_em]:italic [&_em]:font-light [&_em]:text-(--acc2)"
             >
               {heading}
             </h1>
             <p
-              className={`text-[clamp(0.78rem,1.6vw,0.98rem)] sm:text-[clamp(0.82rem,1.4vw,1.02rem)] text-(--text-dim) leading-[1.55] sm:leading-[1.65] w-full max-w-[min(100%,400px)] sm:max-w-none mx-auto sm:mx-0 mb-3 sm:mb-4 md:mb-5 opacity-0 animate-[rise_.8s_.7s_cubic-bezier(.22,1,.36,1)_forwards] transition-opacity duration-500 ${
-                isTransitioning ? "opacity-0" : "opacity-100"
-              }`}
+              className="text-[clamp(0.78rem,1.6vw,0.98rem)] sm:text-[clamp(0.82rem,1.4vw,1.02rem)] text-(--text-dim) leading-[1.55] sm:leading-[1.65] w-full max-w-[min(100%,400px)] sm:max-w-none mx-auto sm:mx-0 mb-3 sm:mb-4 md:mb-5"
             >
               {description}
             </p>
-            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center flex-wrap pointer-events-auto opacity-0 animate-[rise_.8s_.9s_cubic-bezier(.22,1,.36,1)_forwards] justify-center sm:justify-start w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center flex-wrap pointer-events-auto justify-center sm:justify-start w-full sm:w-auto">
               <Link
                 href="#contact"
                 className="group inline-flex justify-center sm:justify-start items-center gap-2 w-full sm:w-auto min-h-[42px] sm:min-h-0 rounded-[999px] bg-blue-100 text-gray-900! px-4 py-2.5 sm:px-5 sm:py-2 font-sans text-[.8125rem] sm:text-[.875rem] shadow-[0_14px_40px_rgba(0,0,0,.45)] transition-colors duration-150 hover:bg-white hover:text-gray-900! hover:-translate-y-0.5"
@@ -200,7 +194,7 @@ export default function Hero() {
               </Link>
             </div>
             {/* Powering text below button — text only, no bg */}
-            <p className="w-full mt-4 sm:mt-5 md:mt-6 flex flex-wrap items-center gap-2 sm:gap-2.5 text-[.65rem] sm:text-[.7rem] text-white/50 uppercase tracking-[.12em] opacity-0 animate-[rise_.8s_1.1s_forwards]">
+            <p className="w-full mt-4 sm:mt-5 md:mt-6 flex flex-wrap items-center gap-2 sm:gap-2.5 text-[.65rem] sm:text-[.7rem] text-white/50 uppercase tracking-[.12em]">
               <span className="whitespace-nowrap">Powering</span>
               {HERO_SECTORS.map((s) => (
                 <span key={s} className="flex items-center gap-1.5">

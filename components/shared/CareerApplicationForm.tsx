@@ -154,7 +154,7 @@ export function CareerApplicationForm({
                     placeholder="Your Full Name"
                     className={`h-9 sm:h-10 text-sm border-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${
                       formTheme === "dark"
-                        ? "bg-white/10 border-white/30 !text-white placeholder:!text-white/60 focus-visible:!border-[var(--acc2)] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        ? "bg-white/10 border-white/30 text-white! placeholder:text-white/60! focus-visible:border-(--acc2)! focus-visible:ring-0 focus-visible:ring-offset-0"
                         : "bg-white border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:border-(--acc2) focus-visible:ring-2 focus-visible:ring-(--acc2) focus-visible:ring-offset-2"
                     }`}
                     autoComplete="name"
@@ -180,7 +180,7 @@ export function CareerApplicationForm({
                     placeholder="Your Email"
                     className={`h-9 sm:h-10 text-sm border-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${
                       formTheme === "dark"
-                        ? "bg-white/10 border-white/30 !text-white placeholder:!text-white/60 focus-visible:!border-[var(--acc2)] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        ? "bg-white/10 border-white/30 text-white! placeholder:text-white/60! focus-visible:border-(--acc2)! focus-visible:ring-0 focus-visible:ring-offset-0"
                         : "bg-white border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:border-(--acc2) focus-visible:ring-2 focus-visible:ring-(--acc2) focus-visible:ring-offset-2"
                     }`}
                     autoComplete="email"
@@ -221,7 +221,7 @@ export function CareerApplicationForm({
                         variant="outline"
                         className={`h-9 sm:h-10 px-3 sm:px-4 text-sm font-semibold whitespace-nowrap shrink-0 ${
                           formTheme === "dark"
-                            ? "border-white/30 bg-white/10 text-white hover:bg-white/20 hover:border-[var(--acc2)]"
+                            ? "border-white/30 bg-white/10 text-white hover:bg-white/20 hover:border-(--acc2)"
                             : "border-slate-300 bg-white text-slate-800 hover:bg-slate-50 hover:border-slate-400"
                         }`}
                       >
