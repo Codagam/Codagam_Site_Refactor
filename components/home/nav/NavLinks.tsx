@@ -52,7 +52,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
   shouldAnimate = false,
 }) => {
   const pathname = usePathname();
-  const isHomePage = pathname === "/home" || pathname?.startsWith("/home/");
+  const isHomePage = pathname === "/" || pathname?.startsWith("/#");
 
   // Link click handler (only when on home page)
   const handleLinkClick = useCallback(
@@ -103,7 +103,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
           return (
             <Link
               key={item.id}
-              href={`/home#${item.id}`}
+              href={`/#${item.id}`}
               className={className}
               style={{ animationDelay }}
               onClick={onNavigate}
@@ -136,7 +136,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
         return (
           <Link
             key={item.id}
-            href={`/home#${item.id}`}
+            href={`/#${item.id}`}
             className={linkClassName(active)}
           >
             {item.label}

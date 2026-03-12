@@ -23,7 +23,7 @@ const CodagamAnimation = ({ skipRedirect = false, onComplete }: CodagamAnimation
   useEffect(() => {
     if (skipRedirect) return;
     const timer = setTimeout(() => {
-      router.push("/home");
+      router.push("/");
     }, redirectSeconds);
     return () => clearTimeout(timer);
   }, [skipRedirect, redirectSeconds, router]);

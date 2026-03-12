@@ -197,7 +197,7 @@ export default async function ServicePage({
                 — tell us the challenge.
               </p>
               <Link
-                href="/home#contact"
+                href="/#contact"
                 className="shrink-0 rounded-lg bg-white px-5 py-2.5 font-sans text-sm text-(--bg-deep) shadow border border-slate-200 transition-colors hover:bg-(--acc2) hover:text-white hover:border-(--acc2)">
                 Tell us about it →
               </Link>
@@ -264,7 +264,7 @@ export default async function ServicePage({
             </div>
             <div className="mt-8 text-center">
               <Link
-                href="/home#contact"
+                href="/#contact"
                 className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 font-sans text-sm text-(--bg-deep) shadow transition-colors hover:bg-(--acc2) hover:text-(--bg-deep)">
                 Start with a discovery call
                 <span className="ml-1.5 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>

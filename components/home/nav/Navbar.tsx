@@ -41,7 +41,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const isHomePage = pathname === "/home" || pathname?.startsWith("/home/");
+  const isHomePage = pathname === "/" || pathname?.startsWith("/#");
 
   // Initialize mounted state
   useEffect(() => {
@@ -236,7 +236,7 @@ export default function Navbar() {
         });
       }
     } else {
-      router.push("/home#contact");
+      router.push("/#contact");
     }
     setIsOpen(false);
   }, [isHomePage, router]);
@@ -258,7 +258,7 @@ export default function Navbar() {
       <div className="mx-auto w-full min-w-0 px-4 sm:px-5 md:px-6 lg:px-[4vw] xl:px-[6vw] 2xl:px-[8vw] py-2.5 sm:py-3 flex justify-between items-center gap-2">
         {/* Logo - Codagam theme: serif + white + ™ - always goes to home */}
         <Link
-          href="/home"
+          href="/"
           onClick={(e) => {
             if (isHomePage) {
               e.preventDefault();
@@ -292,7 +292,7 @@ export default function Navbar() {
                 });
               }
             } else {
-              router.push("/home#contact");
+              router.push("/#contact");
             }
           }}
           className="group hidden lg:flex ml-2 bg-blue-100 text-gray-900 border border-blue-200 py-1.5 px-2.5 rounded text-[.8rem] font-medium hover:bg-white transition-colors shrink-0 whitespace-nowrap"
@@ -321,7 +321,7 @@ export default function Navbar() {
                 <SheetHeader>
                   <SheetTitle className="flex items-center space-x-3 text-left">
                     <Link
-                      href="/home"
+                      href="/"
                       onClick={(e) => {
                         if (isHomePage) {
                           e.preventDefault();

@@ -378,7 +378,7 @@ export default function Footer() {
   }, []);
 
   const pathname = usePathname();
-  const isHomePage = pathname === "/home" || pathname?.startsWith("/home/");
+  const isHomePage = pathname === "/" || pathname?.startsWith("/#");
 
   // Group addresses by country
   const sortedCountries = useMemo(() => {
@@ -582,7 +582,7 @@ export default function Footer() {
                     </a>
                   ) : (
                     <Link
-                      href={`/home#${id}`}
+                      href={`/#${id}`}
                       className="flex items-center gap-1.5 sm:gap-2 md:gap-2 text-[10px] sm:text-xs md:text-sm hover:text-primary-light transition-colors justify-start font-normal not-italic wrap-break-word max-w-full"
                       style={{ fontWeight: 400 }}
                     >
