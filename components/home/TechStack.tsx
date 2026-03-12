@@ -150,17 +150,17 @@ export default function TechStack() {
                       }`}>
                         {capability.text}
                       </span>
-                      <div className="shrink-0 flex items-center justify-center w-5 h-5 md:w-6 md:h-6 rounded-lg bg-gray-200/90 dark:bg-gray-700/80 overflow-hidden">
+                      <div className="shrink-0 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gray-200/90 dark:bg-gray-700/80 overflow-hidden p-0.5">
                         {capability.image ? (
                           isFullUrl(capability.image) ||
                           capability.image.startsWith("/") ? (
-                            <div className="relative w-full h-full">
+                            <div className="relative w-full h-full min-w-0 min-h-0">
                               <Image
                                 src={capability.image}
                                 alt={capability.alt || capability.text}
                                 fill
                                 className="object-contain"
-                                sizes="(max-width: 640px) 20px, (max-width: 768px) 24px, 24px"
+                                sizes="(max-width: 640px) 28px, 32px"
                               />
                             </div>
                           ) : (
