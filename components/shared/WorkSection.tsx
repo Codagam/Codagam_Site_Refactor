@@ -47,7 +47,7 @@ const CASES = [
     num: "04",
     stack: "Next.js · MongoDB · Voice Input · RAG",
     title: "Hyperlocal Classifieds\nwith Voice & AI Navigation",
-    image: "/images/work/AI Navigation.png",
+    image: "/images/work/ai voice.png",
     situation:
       "A Tamil Nadu community needed a localised classified platform with Tamil language accessibility for non-English speakers — voice input, RAG-powered navigation, and a scalable architecture for planned nationwide expansion.",
     outcome:
